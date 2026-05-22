@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { UserHeader } from "@/components/game/user-header"
 import { AdventureBanner } from "@/components/game/adventure-banner"
@@ -9,12 +10,28 @@ import { DailyMissions } from "@/components/game/daily-missions"
 import { ReadingLibrary } from "@/components/game/reading-library"
 import { PKChallenge } from "@/components/game/pk-challenge"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
+import { supabase } from "@/lib/supabase"
 
 type NavItem = "home" | "library" | "adventure" | "pets" | "profile"
 
 export default function HomePage() {
   const [activeNav, setActiveNav] = useState<NavItem>("home")
   const router = useRouter()
+
+  useEffect(() => {
+    const testSupabase = async () => {
+      const { data, error } = await supabase.from("books").select("*")
+
+      if (error) {
+        console.log("Supabase books query error:", error.message)
+        return
+      }
+
+      console.log(data ?? [])
+    }
+
+    testSupabase()
+  }, [])
 
   const handleNavigation = (item: NavItem) => {
     setActiveNav(item)
@@ -59,6 +76,8 @@ export default function HomePage() {
       
       {/* Main content */}
       <div className="mx-auto max-w-md px-4 py-4 relative z-10">
+        <p className="text-xs text-muted-foreground">Supabase Connected</p>
+
         {/* User Header with progression */}
         <UserHeader
           username="小冒险家"
