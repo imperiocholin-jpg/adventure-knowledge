@@ -14,13 +14,6 @@ export default function LibraryPage() {
 
   return (
     <div className="min-h-screen bg-background pb-24">
-      {/* Ambient background */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 right-0 w-48 h-48 bg-purple-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-0 w-56 h-56 bg-amber-500/5 rounded-full blur-3xl" />
-      </div>
-
       {/* Content */}
       <div className="relative z-10">
         {/* Header */}

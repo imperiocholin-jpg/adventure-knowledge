@@ -1,25 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import dynamic from "next/dynamic"
 import { cn } from "@/lib/utils"
 import { Heart, Sparkles, Star, Crown, Volume2, VolumeX, Utensils, Gamepad2, Moon, Dumbbell, Shirt } from "lucide-react"
-
-// Dynamically import 3D scene to avoid SSR issues
-const Pet3DScene = dynamic(
-  () => import("./pet-3d-scene").then((mod) => mod.Pet3DScene),
-  { 
-    ssr: false,
-    loading: () => (
-      <div className="w-full h-full rounded-3xl bg-gradient-to-b from-amber-50 via-orange-50/80 to-rose-50/60 flex items-center justify-center">
-        <div className="flex flex-col items-center gap-2">
-          <div className="w-8 h-8 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
-          <span className="text-xs text-amber-600">正在召唤伙伴...</span>
-        </div>
-      </div>
-    )
-  }
-)
+import { Pet2DScene } from "./pet-2d-scene"
 
 interface PetShowcaseProps {
   petEmoji: string
@@ -158,12 +142,12 @@ export function PetShowcase({
           </div>
         </div>
 
-        {/* 3D Pet Scene - large immersive area */}
+        {/* 2D Pet Scene - lightweight and fast */}
         <div 
-          className="h-[420px] cursor-pointer"
+          className="h-[380px] cursor-pointer"
           onClick={handleTap}
         >
-          <Pet3DScene 
+          <Pet2DScene 
             mood={mood}
             rarity={rarity}
             isTapped={isTapped}

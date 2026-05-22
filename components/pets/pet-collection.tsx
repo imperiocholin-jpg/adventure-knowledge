@@ -199,7 +199,7 @@ export function PetCollection({
                     <span className="text-3xl">{pet.emoji}</span>
                     {pet.rarity === "legendary" && (
                       <div className="absolute -top-1 -right-1">
-                        <Sparkles className="h-4 w-4 text-amber-400 animate-pulse" />
+                        <Sparkles className="h-4 w-4 text-amber-400" />
                       </div>
                     )}
                   </>

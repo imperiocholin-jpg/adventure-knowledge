@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Home, BookOpen, Compass, PawPrint, User, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -10,12 +11,12 @@ interface BottomNavigationProps {
   onNavigate?: (item: NavItem) => void
 }
 
-const navItems: { id: NavItem; label: string; icon: typeof Home }[] = [
-  { id: "home", label: "首页", icon: Home },
-  { id: "library", label: "书架", icon: BookOpen },
-  { id: "adventure", label: "冒险", icon: Compass },
-  { id: "pets", label: "宠物", icon: PawPrint },
-  { id: "profile", label: "我的", icon: User },
+const navItems: { id: NavItem; label: string; icon: typeof Home; href: string }[] = [
+  { id: "home", label: "首页", icon: Home, href: "/" },
+  { id: "library", label: "书架", icon: BookOpen, href: "/library" },
+  { id: "adventure", label: "冒险", icon: Compass, href: "/adventure" },
+  { id: "pets", label: "宠物", icon: PawPrint, href: "/pets" },
+  { id: "profile", label: "我的", icon: User, href: "/profile" },
 ]
 
 export function BottomNavigation({
@@ -25,13 +26,7 @@ export function BottomNavigation({
   return (
     <div className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-md">
       {/* Floating navigation container */}
-      <nav className="relative flex items-center justify-around rounded-2xl bg-white/80 backdrop-blur-xl border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.12)] px-2 py-1.5">
-        {/* Decorative gradient orbs */}
-        <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
-          <div className="absolute -top-10 left-1/4 w-20 h-20 bg-primary/10 rounded-full blur-2xl" />
-          <div className="absolute -top-10 right-1/4 w-20 h-20 bg-game-xp/10 rounded-full blur-2xl" />
-        </div>
-        
+      <nav className="relative flex items-center justify-around rounded-2xl bg-white border border-border/30 shadow-lg px-2 py-1.5">
         {navItems.map((item) => {
           const Icon = item.icon
           const isActive = activeItem === item.id
@@ -40,57 +35,58 @@ export function BottomNavigation({
           // Special rendering for Adventure button
           if (isAdventure) {
             return (
-              <button
+              <Link
                 key={item.id}
+                href={item.href}
+                prefetch={true}
                 onClick={() => onNavigate?.(item.id)}
                 className="relative flex flex-col items-center -mt-5"
               >
                 {/* Floating circle button */}
                 <div className={cn(
-                  "relative flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300",
+                  "relative flex items-center justify-center w-14 h-14 rounded-full transition-colors",
                   isActive 
-                    ? "bg-gradient-to-br from-primary to-emerald-600 shadow-[0_4px_20px_rgba(34,197,94,0.5)]" 
-                    : "bg-gradient-to-br from-primary/90 to-emerald-600/90 shadow-lg"
+                    ? "bg-gradient-to-br from-primary to-emerald-600 shadow-lg" 
+                    : "bg-gradient-to-br from-primary/90 to-emerald-600/90 shadow-md"
                 )}>
                   <Icon 
                     className="h-7 w-7 text-white" 
                     strokeWidth={2}
                   />
                   {/* Sparkle */}
-                  <Sparkles className="absolute -top-0.5 -right-0.5 h-3.5 w-3.5 text-amber-300 animate-pulse" />
+                  <Sparkles className="absolute -top-0.5 -right-0.5 h-3.5 w-3.5 text-amber-300" />
                 </div>
                 {/* Label below the circle */}
                 <span className="text-[10px] font-semibold text-primary mt-1">
                   {item.label}
                 </span>
-              </button>
+              </Link>
             )
           }
 
           return (
-            <button
+            <Link
               key={item.id}
+              href={item.href}
+              prefetch={true}
               onClick={() => onNavigate?.(item.id)}
               className={cn(
-                "relative flex flex-col items-center gap-0.5 rounded-xl px-4 py-2 transition-all duration-300",
+                "relative flex flex-col items-center gap-0.5 rounded-xl px-4 py-2 transition-colors",
                 isActive 
                   ? "text-primary" 
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
-              {/* Active background glow */}
+              {/* Active background */}
               {isActive && (
-                <>
-                  <div className="absolute inset-0 rounded-xl bg-primary/10" />
-                  <div className="absolute -inset-1 rounded-xl bg-primary/15 blur-md -z-10" />
-                </>
+                <div className="absolute inset-0 rounded-xl bg-primary/10" />
               )}
               
               {/* Icon */}
               <Icon 
                 className={cn(
-                  "h-5 w-5 transition-all duration-300",
-                  isActive && "scale-110 drop-shadow-[0_0_8px_rgba(34,197,94,0.5)]"
+                  "h-5 w-5",
+                  isActive && "scale-110"
                 )} 
                 fill={isActive ? "currentColor" : "none"}
                 strokeWidth={isActive ? 1.5 : 2}
@@ -98,12 +94,12 @@ export function BottomNavigation({
               
               {/* Label */}
               <span className={cn(
-                "text-[10px] font-medium transition-all duration-300 relative",
+                "text-[10px] font-medium relative",
                 isActive && "font-semibold"
               )}>
                 {item.label}
               </span>
-            </button>
+            </Link>
           )
         })}
       </nav>

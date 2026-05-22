@@ -65,7 +65,7 @@ export default function PetsPage() {
   return (
     <div className="min-h-screen bg-background pb-40 relative overflow-hidden">
       {/* Header - clean and minimal */}
-      <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-xl border-b border-border/30">
+      <header className="sticky top-0 z-40 bg-background border-b border-border/30">
         <div className="flex items-center justify-between px-4 py-3">
           <Button 
             variant="ghost" 
@@ -186,7 +186,7 @@ export default function PetsPage() {
                 
                 <div className="relative flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
                       <Swords className="h-6 w-6 text-white" />
                     </div>
                     <div>
@@ -197,7 +197,7 @@ export default function PetsPage() {
                       <p className="text-xs text-white/80">和{petData.name}一起参加答题挑战!</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1.5">
+                  <div className="flex items-center gap-1 bg-white/20 rounded-full px-3 py-1.5">
                     <span className="text-xs font-medium text-white">开始挑战</span>
                     <ChevronRight className="h-4 w-4 text-white" />
                   </div>

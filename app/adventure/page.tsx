@@ -43,37 +43,8 @@ export default function AdventurePage() {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-indigo-100/80 via-sky-50 to-emerald-50/50 pb-24">
-      {/* === AMBIENT WORLD PARTICLES === */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Floating magical particles */}
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={`ambient-${i}`}
-            className="absolute rounded-full animate-[floatAmbient_15s_ease-in-out_infinite]"
-            style={{
-              width: `${3 + Math.random() * 4}px`,
-              height: `${3 + Math.random() * 4}px`,
-              background: i % 3 === 0 
-                ? 'rgba(251,191,36,0.4)' 
-                : i % 3 === 1 
-                  ? 'rgba(52,211,153,0.3)' 
-                  : 'rgba(167,139,250,0.3)',
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${i * 0.8}s`,
-              animationDuration: `${12 + Math.random() * 8}s`,
-              boxShadow: '0 0 6px currentColor',
-            }}
-          />
-        ))}
-        
-        {/* Soft light rays */}
-        <div className="absolute top-0 left-[20%] w-40 h-[60%] bg-gradient-to-b from-amber-200/20 to-transparent rotate-6 blur-3xl" />
-        <div className="absolute top-0 right-[25%] w-32 h-[50%] bg-gradient-to-b from-cyan-200/15 to-transparent -rotate-12 blur-3xl" />
-      </div>
-
       {/* === HEADER === */}
-      <header className="sticky top-0 z-40 bg-white/60 backdrop-blur-xl border-b border-white/40 shadow-sm">
+      <header className="sticky top-0 z-40 bg-white border-b border-border/30">
         <div className="flex items-center justify-between px-4 py-3">
           <Link 
             href="/"
@@ -119,9 +90,9 @@ export default function AdventurePage() {
       {/* === WELCOME TOAST === */}
       {showWelcome && (
         <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 animate-in fade-in-0 slide-in-from-top-4 duration-500">
-          <div className="px-4 py-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-white/60 flex items-center gap-2">
+          <div className="px-4 py-2 bg-white rounded-2xl shadow-xl border border-border/50 flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-amber-500" />
-            <span className="text-sm font-medium text-foreground">欢迎回到冒险世界！</span>
+            <span className="text-sm font-medium text-foreground">欢迎回到冒险世界!</span>
           </div>
         </div>
       )}
@@ -167,57 +138,6 @@ export default function AdventurePage() {
 
       {/* === BOTTOM NAVIGATION === */}
       <BottomNavigation activeItem="adventure" onNavigate={handleNavigation} />
-
-      {/* === GLOBAL ANIMATIONS === */}
-      <style jsx global>{`
-        @keyframes floatAmbient {
-          0%, 100% {
-            transform: translateY(0) translateX(0) scale(1);
-            opacity: 0.3;
-          }
-          25% {
-            transform: translateY(-30px) translateX(15px) scale(1.1);
-            opacity: 0.6;
-          }
-          50% {
-            transform: translateY(-15px) translateX(-10px) scale(0.9);
-            opacity: 0.4;
-          }
-          75% {
-            transform: translateY(-40px) translateX(8px) scale(1.05);
-            opacity: 0.5;
-          }
-        }
-        
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0) translateX(0);
-            opacity: 0.3;
-          }
-          25% {
-            transform: translateY(-20px) translateX(10px);
-            opacity: 0.6;
-          }
-          50% {
-            transform: translateY(-10px) translateX(-5px);
-            opacity: 0.4;
-          }
-          75% {
-            transform: translateY(-25px) translateX(5px);
-            opacity: 0.5;
-          }
-        }
-        
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(200%); }
-        }
-        
-        @keyframes pulse-glow {
-          0%, 100% { box-shadow: 0 0 10px rgba(52,211,153,0.3); }
-          50% { box-shadow: 0 0 25px rgba(52,211,153,0.6); }
-        }
-      `}</style>
     </div>
   )
 }

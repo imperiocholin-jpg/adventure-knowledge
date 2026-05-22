@@ -1,7 +1,6 @@
 "use client"
 
-import { ArrowLeft, Bell, Search, Sparkles, BookOpen } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { ArrowLeft, Bell, Sparkles, BookOpen } from "lucide-react"
 
 interface LibraryHeaderProps {
   onBack?: () => void
@@ -10,7 +9,7 @@ interface LibraryHeaderProps {
 
 export function LibraryHeader({ onBack, notificationCount = 0 }: LibraryHeaderProps) {
   return (
-    <div className="sticky top-0 z-30 bg-gradient-to-b from-background via-background to-background/80 backdrop-blur-md">
+    <div className="sticky top-0 z-30 bg-background border-b border-border/30">
       <div className="flex items-center justify-between px-4 py-3">
         {/* Back button */}
         <button
@@ -24,7 +23,7 @@ export function LibraryHeader({ onBack, notificationCount = 0 }: LibraryHeaderPr
         <div className="flex items-center gap-2">
           <div className="relative">
             <BookOpen className="h-5 w-5 text-primary" />
-            <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-amber-400 animate-pulse" />
+            <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-amber-400" />
           </div>
           <h1 className="text-lg font-bold text-foreground">魔法书库</h1>
         </div>
