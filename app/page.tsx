@@ -10,27 +10,65 @@ import { DailyMissions } from "@/components/game/daily-missions"
 import { ReadingLibrary } from "@/components/game/reading-library"
 import { PKChallenge } from "@/components/game/pk-challenge"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
-import { supabase } from "@/lib/supabase"
 
 type NavItem = "home" | "library" | "adventure" | "pets" | "profile"
 
 export default function HomePage() {
   const [activeNav, setActiveNav] = useState<NavItem>("home")
+  const [isLoadingData, setIsLoadingData] = useState(false)
+  const [dataError, setDataError] = useState<string | null>(null)
   const router = useRouter()
 
   useEffect(() => {
-    const testSupabase = async () => {
-      const { data, error } = await supabase.from("books").select("*")
+    let isMounted = true
 
-      if (error) {
-        console.log("Supabase books query error:", error.message)
-        return
+    const fetchApiData = async (url: string) => {
+      const response = await fetch(url)
+
+      if (!response.ok) {
+        throw new Error(`Request failed: ${url} (${response.status})`)
       }
 
-      console.log(data ?? [])
+      const result = await response.json()
+      return Array.isArray(result?.data) ? result.data : []
     }
 
-    testSupabase()
+    const testApiRoutes = async () => {
+      if (isMounted) {
+        setIsLoadingData(true)
+        setDataError(null)
+      }
+
+      try {
+        const [books, pets, users, tasks] = await Promise.all([
+          fetchApiData("/api/books"),
+          fetchApiData("/api/pets"),
+          fetchApiData("/api/users"),
+          fetchApiData("/api/tasks"),
+        ])
+
+        console.log(books)
+        console.log(pets)
+        console.log(users)
+        console.log(tasks)
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "Unknown fetch error"
+        console.log("API data fetch error:", message)
+        if (isMounted) {
+          setDataError("数据加载失败，已显示默认页面")
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoadingData(false)
+        }
+      }
+    }
+
+    testApiRoutes()
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   const handleNavigation = (item: NavItem) => {
@@ -77,6 +115,8 @@ export default function HomePage() {
       {/* Main content */}
       <div className="mx-auto max-w-md px-4 py-4 relative z-10">
         <p className="text-xs text-muted-foreground">Supabase Connected</p>
+        {isLoadingData && <p className="text-xs text-muted-foreground">Loading data...</p>}
+        {dataError && <p className="text-xs text-amber-600">{dataError}</p>}
 
         {/* User Header with progression */}
         <UserHeader
