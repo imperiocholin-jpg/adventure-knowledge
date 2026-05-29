@@ -3,24 +3,30 @@
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { Sparkles, Star, Heart, Zap } from "lucide-react"
+import { PetAvatar } from "@/components/pets/pet-avatar"
+import { UserAvatar } from "@/components/user/user-avatar"
 
 interface BattleArenaProps {
   playerPet: {
     emoji: string
+    avatarSrc?: string | null
     name: string
     level: number
+    attack: number
     health: number
     maxHealth: number
   }
   opponentPet: {
     emoji: string
+    avatarSrc?: string | null
     name: string
     level: number
+    attack: number
     health: number
     maxHealth: number
   }
-  playerAvatar: string
-  opponentAvatar: string
+  playerAvatarSrc: string
+  opponentAvatarSrc?: string | null
   playerName: string
   opponentName: string
   isPlayerTurn: boolean
@@ -32,8 +38,8 @@ interface BattleArenaProps {
 export function BattleArena({
   playerPet,
   opponentPet,
-  playerAvatar,
-  opponentAvatar,
+  playerAvatarSrc,
+  opponentAvatarSrc,
   playerName,
   opponentName,
   isPlayerTurn,
@@ -52,6 +58,47 @@ export function BattleArena({
   }, [battlePhase])
 
   // Add floating hearts on pet interaction
+  const renderPetCombatStats = (
+    pet: BattleArenaProps["playerPet"],
+    side: "player" | "opponent",
+  ) => {
+    const hpPercent = pet.maxHealth > 0 ? Math.max(0, Math.min(100, (pet.health / pet.maxHealth) * 100)) : 0
+    const atkClass = side === "player" ? "text-amber-600" : "text-amber-600"
+    const hpClass = side === "player" ? "text-emerald-700" : "text-rose-700"
+    const barClass =
+      side === "player"
+        ? "bg-gradient-to-r from-emerald-400 to-green-400"
+        : "bg-gradient-to-r from-rose-400 to-pink-400"
+    const barWidth = side === "player" ? "w-24" : "w-20"
+    const barHeight = side === "player" ? "h-2.5" : "h-2"
+
+    return (
+      <div className={cn("mt-1", barWidth)}>
+        <div className="flex items-center justify-between gap-2 text-[9px] font-semibold leading-none">
+          <span className={atkClass}>ATK {pet.attack}</span>
+          <span className={hpClass}>
+            HP {pet.health}/{pet.maxHealth}
+          </span>
+        </div>
+        <div className="mt-0.5 flex items-center gap-1">
+          <Heart className={cn("w-2.5 h-2.5 shrink-0", hpClass)} />
+          <div
+            className={cn(
+              "flex-1 rounded-full overflow-hidden bg-white/50 shadow-inner",
+              barWidth,
+              barHeight,
+            )}
+          >
+            <div
+              className={cn("h-full transition-all duration-500 rounded-full", barClass)}
+              style={{ width: `${hpPercent}%` }}
+            />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const addHeart = () => {
     const id = Date.now()
     setFloatingHearts(prev => [...prev, id])
@@ -125,7 +172,11 @@ export function BattleArena({
           <div className="absolute top-0 right-4 flex flex-col items-center">
             {/* Opponent info */}
             <div className="flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm shadow-sm">
-              <span className="text-lg">{opponentAvatar}</span>
+              {opponentAvatarSrc ? (
+                <UserAvatar src={opponentAvatarSrc} alt={opponentName} size="xs" className="ring-1 ring-white" />
+              ) : (
+                <span className="text-lg">👧</span>
+              )}
               <span className="text-xs font-semibold text-foreground">{opponentName}</span>
             </div>
             
@@ -140,10 +191,14 @@ export function BattleArena({
               {/* Pet glow */}
               <div className="absolute inset-0 bg-gradient-to-b from-rose-200/50 to-transparent rounded-full blur-xl scale-150" />
               
-              {/* Pet emoji */}
-              <div className="relative text-5xl filter drop-shadow-lg animate-pet-idle">
-                {opponentPet.emoji}
-              </div>
+              <PetAvatar
+                src={opponentPet.avatarSrc}
+                emoji={opponentPet.emoji}
+                alt={`${opponentPet.name}头像`}
+                size="lg"
+                rounded="full"
+                className="shadow-lg animate-pet-idle"
+              />
               
               {/* Pet name & level */}
               <div className="mt-1 text-center">
@@ -151,14 +206,7 @@ export function BattleArena({
                   {opponentPet.name} Lv.{opponentPet.level}
                 </span>
               </div>
-              
-              {/* Health bar */}
-              <div className="mt-1 w-20 h-2 bg-white/50 rounded-full overflow-hidden shadow-inner">
-                <div 
-                  className="h-full bg-gradient-to-r from-rose-400 to-pink-400 transition-all duration-500 rounded-full"
-                  style={{ width: `${(opponentPet.health / opponentPet.maxHealth) * 100}%` }}
-                />
-              </div>
+              {renderPetCombatStats(opponentPet, "opponent")}
             </div>
           </div>
 
@@ -166,7 +214,7 @@ export function BattleArena({
           <div className="absolute bottom-0 left-4 flex flex-col items-center">
             {/* Player info */}
             <div className="flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm shadow-sm border-2 border-primary/20">
-              <span className="text-lg">{playerAvatar}</span>
+              <UserAvatar src={playerAvatarSrc} alt={playerName} size="xs" className="ring-1 ring-white" />
               <span className="text-xs font-semibold text-foreground">{playerName}</span>
               <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold">你</span>
             </div>
@@ -183,10 +231,14 @@ export function BattleArena({
               {/* Pet glow */}
               <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-transparent rounded-full blur-xl scale-150" />
               
-              {/* Pet emoji */}
-              <div className="relative text-6xl filter drop-shadow-lg animate-pet-idle">
-                {playerPet.emoji}
-              </div>
+              <PetAvatar
+                src={playerPet.avatarSrc}
+                emoji={playerPet.emoji}
+                alt={`${playerPet.name}头像`}
+                size="xl"
+                rounded="full"
+                className="shadow-lg animate-pet-idle"
+              />
               
               {/* Floating hearts */}
               {floatingHearts.map(id => (
@@ -202,14 +254,7 @@ export function BattleArena({
                   {playerPet.name} Lv.{playerPet.level}
                 </span>
               </div>
-              
-              {/* Health bar */}
-              <div className="mt-1 w-24 h-2.5 bg-white/50 rounded-full overflow-hidden shadow-inner">
-                <div 
-                  className="h-full bg-gradient-to-r from-emerald-400 to-green-400 transition-all duration-500 rounded-full"
-                  style={{ width: `${(playerPet.health / playerPet.maxHealth) * 100}%` }}
-                />
-              </div>
+              {renderPetCombatStats(playerPet, "player")}
             </div>
           </div>
 

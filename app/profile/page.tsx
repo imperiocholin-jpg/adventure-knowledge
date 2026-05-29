@@ -1,21 +1,68 @@
 "use client"
 
-import { useState } from "react"
+import { useCallback, useEffect, useMemo } from "react"
 import { useRouter } from "next/navigation"
+
 import { AdventurerHero } from "@/components/profile/adventurer-hero"
 import { GrowthProgress } from "@/components/profile/growth-progress"
 import { AchievementWall } from "@/components/profile/achievement-wall"
 import { AdventureJournal } from "@/components/profile/adventure-journal"
 import { SocialRanking } from "@/components/profile/social-ranking"
 import { PetHomeShowcase } from "@/components/profile/pet-home-showcase"
-import { SettingsArea } from "@/components/profile/settings-area"
+import { ProfileMenuList, buildDefaultProfileMenuItems } from "@/components/profile/profile-menu"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
+import { PlayerPageShell } from "@/components/layout/player-page-shell"
+import { useProfileOverview } from "@/hooks/use-profile-overview"
+import { resolveAdventurerTitleLabel, resolveRankBadge } from "@/lib/profile/rank-badge"
 
 type NavItem = "home" | "library" | "adventure" | "pets" | "profile"
 
 export default function ProfilePage() {
   const router = useRouter()
-  const [activeNav] = useState<NavItem>("profile")
+  const { user, pet, social, dashboard, refresh } = useProfileOverview()
+
+  useEffect(() => {
+    void (async () => {
+      try {
+        const response = await fetch("/api/auth/session", { cache: "no-store" })
+        if (!response.ok) {
+          router.push("/auth")
+          return
+        }
+        void fetch("/api/users/daily-activity", { method: "POST" }).catch(() => undefined)
+      } catch {
+        router.push("/auth")
+      }
+    })()
+  }, [router])
+
+  const refreshAll = useCallback(async () => {
+    await refresh()
+  }, [refresh])
+
+  useEffect(() => {
+    const onVisible = () => {
+      if (document.visibilityState === "visible") void refreshAll()
+    }
+    document.addEventListener("visibilitychange", onVisible)
+    return () => document.removeEventListener("visibilitychange", onVisible)
+  }, [refreshAll])
+
+  const adventureLevel = dashboard.adventureUser?.adventureLevel ?? user.adventureLevel
+  const adventureTitle = resolveAdventurerTitleLabel(adventureLevel)
+  const rankBadge = resolveRankBadge(adventureLevel)
+  const dailyStreak = dashboard.adventureUser?.dailyStreak ?? user.dailyStreak
+  const battleWins = dashboard.battleWins || social.myBattleWins
+
+  const favoriteMemory = useMemo(() => {
+    if (dashboard.completedBooks > 0) {
+      return `已完成 ${dashboard.completedBooks} 本书的阅读挑战`
+    }
+    if (dashboard.treasuresUnlocked > 0) {
+      return `发现了 ${dashboard.treasuresUnlocked} 件神秘宝藏`
+    }
+    return "继续冒险，创造更多美好回忆吧"
+  }, [dashboard.completedBooks, dashboard.treasuresUnlocked])
 
   const handleNavigation = (item: NavItem) => {
     if (item === "home") router.push("/")
@@ -24,69 +71,74 @@ export default function ProfilePage() {
     if (item === "pets") router.push("/pets")
   }
 
+  const handleLogout = async () => {
+    if (!window.confirm("确定要退出登录吗？")) return
+    await fetch("/api/auth/logout", { method: "POST" })
+    router.push("/auth")
+    router.refresh()
+  }
+
+  const menuItems = buildDefaultProfileMenuItems({ onLogout: () => void handleLogout() })
+
   return (
-    <div className="min-h-screen bg-background pb-24">
-      {/* Adventurer Hero - magical identity card */}
+    <PlayerPageShell className="bg-background">
       <AdventurerHero
-        username="小冒险家"
-        adventureTitle="森林守护者"
-        level={12}
-        currentWorld="魔法森林"
-        rankBadge="gold"
+        avatar={user.avatarSrc}
+        username={user.username}
+        adventureTitle={adventureTitle}
+        level={adventureLevel}
+        currentWorld={dashboard.currentWorld}
+        rankBadge={rankBadge}
+        followingCount={social.followingCount}
+        followerCount={social.followerCount}
+        schoolName={user.schoolName}
+        gradeClass={user.gradeClass}
+        age={user.age}
+        metrics={{
+          coins: user.coins,
+          dailyStreak,
+          battleWins,
+        }}
+        onEditProfile={() => router.push("/profile/edit")}
+        onFollowingClick={() => router.push("/profile/following")}
+        onFollowersClick={() => router.push("/profile/followers")}
       />
 
-      {/* Content sections - more breathing room */}
-      <div className="px-4 py-5 space-y-5">
-        {/* Growth Progress - 2x2 grid */}
+      <div className="space-y-4 px-4 pb-5 pt-3">
         <GrowthProgress
-          readingStreak={7}
-          worldsExplored={3}
-          completedBooks={12}
-          collectedStars={156}
-          currentLevelXp={680}
-          nextLevelXp={1000}
-          adventureLevel={12}
+          worldsExplored={dashboard.worldsExplored}
+          completedBooks={dashboard.completedBooks}
+          collectedStars={dashboard.adventureProgress?.totalStars ?? 0}
+          currentLevelXp={dashboard.adventureUser?.userExpInLevel ?? user.userExpInLevel}
+          nextLevelXp={dashboard.adventureUser?.userExpToNext ?? user.userExpToNext}
+          adventureLevel={adventureLevel}
         />
 
-        {/* Pet Home Showcase - emotional bond */}
         <PetHomeShowcase
-          petEmoji="🐕"
-          petName="毛毛"
-          affectionLevel={85}
-          companionDays={28}
-          favoriteMemory="一起完成了《小王子》"
+          petEmoji={pet.emoji}
+          petAvatarSrc={pet.avatarSrc}
+          petName={pet.name}
+          affectionLevel={dashboard.petBond}
+          companionDays={dashboard.companionDays}
+          favoriteMemory={favoriteMemory}
           onClick={() => router.push("/pets")}
         />
 
-        {/* Achievement Wall - horizontal scroll */}
+        <SocialRanking myRank={social.myRank} onViewAll={() => router.push("/leaderboard")} />
+
         <AchievementWall
-          onViewAll={() => console.log("View all badges")}
+          featuredBadges={dashboard.featuredBadges}
+          totalUnlocked={dashboard.totalBadgesUnlocked}
+          totalBadges={dashboard.totalBadges}
+          onViewAll={() => router.push("/adventure/progress")}
         />
 
-        {/* Adventure Journal - only 3 entries */}
-        <AdventureJournal />
+        <AdventureJournal entries={dashboard.journalEntries} />
 
-        {/* Social Ranking - compact card */}
-        <SocialRanking
-          myRank={15}
-          myScore={1560}
-          onViewAll={() => router.push("/battle")}
-        />
-
-        {/* Settings - collapsed to single button */}
-        <SettingsArea
-          onSettings={() => console.log("Settings")}
-          onFeedback={() => console.log("Feedback")}
-          onParentArea={() => console.log("Parent area")}
-          onAccount={() => console.log("Account")}
-        />
+        <ProfileMenuList items={menuItems} onNavigate={(href) => router.push(href)} />
       </div>
 
-      {/* Bottom Navigation */}
-      <BottomNavigation
-        activeItem={activeNav}
-        onNavigate={handleNavigation}
-      />
-    </div>
+      <BottomNavigation onNavigate={handleNavigation} />
+    </PlayerPageShell>
   )
 }

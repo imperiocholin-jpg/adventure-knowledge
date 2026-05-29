@@ -1,0 +1,60 @@
+{
+  "chapterId": "chapter_3",
+  "title": "时间花园与丢失的晨光书签",
+  "theme": "温暖成长",
+  "targetAge": "小学2-4年级",
+  "estimatedMinutes": 5,
+  "sections": [
+    {
+      "id": "c3_s1",
+      "text": "小雨和毛毛走进时间花园，听见滴答滴答的声音。花园里的钟花今天都慢半拍，太阳都露头了，花瓣还在打哈欠。月灯轻声说：晨光书签不见了，钟花找不到起床信号。"
+    },
+    {
+      "id": "c3_s2",
+      "text": "毛毛闻到一股暖暖的味道，带着小雨沿发光脚印前进。脚印绕过喷泉后停住，一缕金色晨光躲在草叶下，像害羞的小鱼。小雨蹲下来，小声说：我们不是来抓你，是来请你回家。"
+    },
+    {
+      "id": "c3_s3",
+      "text": "晨光慢慢变成一枚小书签，可旁边还缺了一角。回程时，他们发现钟盘前缠着打结的分钟藤。毛毛先拨开外层，小雨按蓝、绿、金的顺序解开三个结，最后一角晨光刚好亮起来。"
+    },
+    {
+      "id": "c3_s4",
+      "text": "小雨把修好的晨光书签放进钟盘凹槽，当的一声响起，钟花一朵朵准时开花。天空出现一条彩色小径，尽头立着新路牌：回声峡谷。毛毛贴着小雨，尾巴摇得像在鼓掌。"
+    }
+  ],
+  "challenge": {
+    "prompt": "修好晨光书签后，时间花园发生了什么变化？",
+    "options": ["钟花准时开花", "全部变黑了", "毛毛睡着了"],
+    "answerIndex": 0,
+    "successResponse": "毛毛鼓掌：太棒了！你把故事结果记住了。",
+    "retryResponse": "毛毛提示：答案和“钟花”有关哦。",
+    "sourceBookTitle": "冒险主线故事",
+    "sourceChapterLabel": "第3章"
+  },
+  "aiCompanionLine": "毛毛拍拍你：你超有耐心！难题最怕这种稳稳的队长。",
+  "petFeedback": {
+    "emotion": "安心快乐",
+    "animation": "soft_nuzzle",
+    "text": "毛毛轻轻贴贴你，眼睛弯弯的，看起来特别安心。"
+  },
+  "reward": {
+    "type": "item",
+    "id": "morning_bookmark",
+    "name": "晨光书签",
+    "amount": 1,
+    "text": "获得 晨光书签 x1，时间花园恢复活力！"
+  },
+  "lightChoices": [
+    {
+      "id": "c3_choice_echo_now",
+      "label": "现在就去回声峡谷",
+      "nextChapterId": "chapter_4"
+    },
+    {
+      "id": "c3_choice_hi_flowers",
+      "label": "先和钟花挥挥手",
+      "nextChapterId": "chapter_4"
+    }
+  ],
+  "nextButtonText": "去回声峡谷！"
+}

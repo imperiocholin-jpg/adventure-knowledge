@@ -4,6 +4,7 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { Heart, Dumbbell, Gamepad2, Sparkles, Palette, Gift, Utensils, Stars, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { PetFloatingHint } from "@/components/pets/pet-floating-hint"
 
 interface PetActionsProps {
   canEvolve?: boolean
@@ -111,12 +112,10 @@ export function PetActions({
 
       {/* Floating reward notification */}
       {showReward && (
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 z-50 animate-in fade-in-0 slide-in-from-bottom-4 duration-300">
-          <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-xl border border-primary/20">
-            <span className="text-xl">{showReward.type}</span>
-            <span className="text-sm font-semibold text-primary">{showReward.value}</span>
-          </div>
-        </div>
+        <PetFloatingHint
+          text={`${showReward.type} ${showReward.value}`}
+          className="top-12"
+        />
       )}
 
       {/* Action buttons grid */}

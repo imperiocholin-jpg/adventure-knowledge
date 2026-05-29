@@ -23,6 +23,7 @@ import {
   Map
 } from "lucide-react"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
+import { PlayerPageShell } from "@/components/layout/player-page-shell"
 
 type FilterType = "all" | "unlocked" | "locked" | "rare" | "epic" | "legendary"
 
@@ -125,7 +126,7 @@ const allDiscoveries = [
   },
   {
     id: 9,
-    name: "探险家地图",
+    name: "冒险家地图",
     icon: Map,
     rarity: "rare",
     unlocked: false,
@@ -167,7 +168,7 @@ export default function CollectionPage() {
   const foundSecrets = hiddenSecrets.filter(s => s.found).length
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-purple-50/50 to-background pb-24">
+    <PlayerPageShell className="bg-gradient-to-b from-violet-50 via-purple-50/50 to-background">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-white/40">
         <div className="flex items-center justify-between px-4 py-3">
@@ -413,6 +414,6 @@ export default function CollectionPage() {
         if (item === "pets") router.push("/pets")
         if (item === "profile") router.push("/profile")
       }} />
-    </div>
+    </PlayerPageShell>
   )
 }

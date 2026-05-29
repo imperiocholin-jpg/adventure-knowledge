@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo } from "react"
 import { cn } from "@/lib/utils"
 import { 
   Lock, 
@@ -16,6 +16,8 @@ import {
   Gem,
   Eye
 } from "lucide-react"
+
+import { MapPetCompanion, MAP_PET_COMPANION_OFFSET } from "@/components/adventure/map-pet-companion"
 
 type Region = {
   id: string
@@ -110,18 +112,18 @@ const regions: Region[] = [
     atmosphere: "ocean"
   },
   {
-    id: "volcano-realm",
-    name: "炎龙火山",
+    id: "dream-tower",
+    name: "梦境之塔",
     icon: Flame,
     unlocked: false,
     progress: 0,
-    totalStages: 10,
+    totalStages: 12,
     completedStages: 0,
-    color: "text-red-500",
-    bgGradient: "from-red-500/40 to-orange-600/30",
-    glowColor: "rgba(239,68,68,0.5)",
+    color: "text-violet-500",
+    bgGradient: "from-violet-500/40 to-fuchsia-500/30",
+    glowColor: "rgba(168,85,247,0.5)",
     position: { x: 52, y: 45 },
-    description: "龙族的领地",
+    description: "高阶文学与艺术",
     atmosphere: "volcano"
   },
 ]
@@ -135,12 +137,100 @@ const discoveries = [
 
 interface WorldMapProps {
   onRegionSelect?: (regionId: string) => void
+  onLockedRegionSelect?: (regionId: string) => void
   selectedRegion?: string
   playerPosition?: { x: number; y: number }
+  regionProgress?: Record<
+    string,
+    {
+      progress: number
+      completedStages: number
+      unlocked?: boolean
+    }
+  >
+  /** 地图右下角宠物伙伴 */
+  companionPet?: {
+    name: string
+    emoji: string
+    avatarSrc: string | null
+  }
 }
 
-export function WorldMap({ onRegionSelect, selectedRegion, playerPosition = { x: 22, y: 72 } }: WorldMapProps) {
-  const [hoveredRegion, setHoveredRegion] = useState<string | null>(null)
+export function WorldMap({
+  onRegionSelect,
+  onLockedRegionSelect,
+  selectedRegion,
+  playerPosition = { x: 22, y: 72 },
+  regionProgress,
+  companionPet,
+}: WorldMapProps) {
+  const mergedRegions = useMemo(() => {
+    return regions.map((region) => {
+      const override = regionProgress?.[region.id]
+      if (!override) return region
+      return {
+        ...region,
+        unlocked: typeof override.unlocked === "boolean" ? override.unlocked : region.unlocked,
+        completedStages: Math.max(0, override.completedStages),
+        progress: Math.min(100, Math.max(0, override.progress)),
+      }
+    })
+  }, [regionProgress])
+  const regionById = useMemo(
+    () => Object.fromEntries(mergedRegions.map((region) => [region.id, region])),
+    [mergedRegions],
+  )
+  const regionConnections = useMemo(() => {
+    // Main route order to make progression clear on map.
+    const mainRoute = [
+      "magic-forest",
+      "ice-mountain",
+      "ancient-desert",
+      "sky-kingdom",
+      "ocean-ruins",
+      "dream-tower",
+    ]
+    const connections: Array<{
+      fromId: string
+      toId: string
+      from: Region
+      to: Region
+      state: "active" | "next" | "locked"
+      index: number
+    }> = []
+    for (let i = 0; i < mainRoute.length - 1; i += 1) {
+      const fromId = mainRoute[i]
+      const toId = mainRoute[i + 1]
+      const from = regionById[fromId]
+      const to = regionById[toId]
+      if (!from || !to) continue
+      const state = from.unlocked && to.unlocked ? "active" : from.unlocked ? "next" : "locked"
+      connections.push({ fromId, toId, from, to, state, index: i })
+    }
+    return connections
+  }, [regionById])
+  const routeOrderIndexMap = useMemo(() => {
+    const mainRoute = [
+      "magic-forest",
+      "ice-mountain",
+      "ancient-desert",
+      "sky-kingdom",
+      "ocean-ruins",
+      "dream-tower",
+    ]
+    return Object.fromEntries(mainRoute.map((regionId, idx) => [regionId, idx + 1]))
+  }, [])
+
+  const buildConnectorPath = (from: Region["position"], to: Region["position"], index: number) => {
+    const x1 = from.x
+    const y1 = from.y
+    const x2 = to.x
+    const y2 = to.y
+    const mx = (x1 + x2) / 2
+    const my = (y1 + y2) / 2
+    const bend = index % 2 === 0 ? -6 : 6
+    return `M ${x1} ${y1} Q ${mx} ${my + bend} ${x2} ${y2}`
+  }
 
   return (
     <div className="relative w-full h-[400px] overflow-hidden rounded-3xl">
@@ -284,12 +374,16 @@ export function WorldMap({ onRegionSelect, selectedRegion, playerPosition = { x:
       ))}
       
       {/* === CONNECTION PATHS === */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none">
+      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
         <defs>
           <linearGradient id="pathGradientActive" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="rgba(251,191,36,0.8)" />
             <stop offset="50%" stopColor="rgba(52,211,153,0.6)" />
             <stop offset="100%" stopColor="rgba(251,191,36,0.4)" />
+          </linearGradient>
+          <linearGradient id="pathGradientNext" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(251,191,36,0.7)" />
+            <stop offset="100%" stopColor="rgba(251,191,36,0.3)" />
           </linearGradient>
           <linearGradient id="pathGradientLocked" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="rgba(156,163,175,0.3)" />
@@ -304,42 +398,25 @@ export function WorldMap({ onRegionSelect, selectedRegion, playerPosition = { x:
             </feMerge>
           </filter>
         </defs>
-        
-        {/* Active paths - glowing trails */}
-        <path
-          d="M88,288 Q140,220 260,90"
-          stroke="url(#pathGradientActive)"
-          strokeWidth="4"
-          strokeDasharray="12,6"
-          fill="none"
-          filter="url(#glow)"
-          className="animate-[dashMove_3s_linear_infinite]"
-        />
-        <path
-          d="M88,288 Q180,300 312,220"
-          stroke="url(#pathGradientActive)"
-          strokeWidth="4"
-          strokeDasharray="12,6"
-          fill="none"
-          filter="url(#glow)"
-          className="animate-[dashMove_3s_linear_infinite_0.5s]"
-        />
-        
-        {/* Locked paths */}
-        <path
-          d="M260,90 Q200,70 112,60"
-          stroke="url(#pathGradientLocked)"
-          strokeWidth="2"
-          strokeDasharray="4,4"
-          fill="none"
-        />
-        <path
-          d="M88,168 Q120,200 88,288"
-          stroke="url(#pathGradientLocked)"
-          strokeWidth="2"
-          strokeDasharray="4,4"
-          fill="none"
-        />
+
+        {regionConnections.map((connection) => (
+          <path
+            key={`${connection.fromId}-${connection.toId}`}
+            d={buildConnectorPath(connection.from.position, connection.to.position, connection.index)}
+            stroke={
+              connection.state === "active"
+                ? "url(#pathGradientActive)"
+                : connection.state === "next"
+                  ? "url(#pathGradientNext)"
+                  : "url(#pathGradientLocked)"
+            }
+            strokeWidth={connection.state === "active" ? 1.2 : 0.9}
+            strokeDasharray={connection.state === "active" ? "3,2" : "2,2"}
+            fill="none"
+            filter={connection.state === "active" ? "url(#glow)" : undefined}
+            className={connection.state === "active" ? "animate-[dashMove_3s_linear_infinite]" : undefined}
+          />
+        ))}
       </svg>
       
       {/* === HIDDEN DISCOVERIES === */}
@@ -392,17 +469,20 @@ export function WorldMap({ onRegionSelect, selectedRegion, playerPosition = { x:
       </div>
       
       {/* === REGION NODES === */}
-      {regions.map((region) => {
+      {mergedRegions.map((region) => {
         const Icon = region.icon
         const isSelected = selectedRegion === region.id
-        const isHovered = hoveredRegion === region.id
         
         return (
           <button
             key={region.id}
-            onClick={() => region.unlocked && onRegionSelect?.(region.id)}
-            onMouseEnter={() => setHoveredRegion(region.id)}
-            onMouseLeave={() => setHoveredRegion(null)}
+            onClick={() => {
+              if (region.unlocked) {
+                onRegionSelect?.(region.id)
+                return
+              }
+              onLockedRegionSelect?.(region.id)
+            }}
             className={cn(
               "absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 z-10",
               region.unlocked ? "cursor-pointer" : "cursor-not-allowed"
@@ -417,7 +497,7 @@ export function WorldMap({ onRegionSelect, selectedRegion, playerPosition = { x:
               <div 
                 className={cn(
                   "absolute inset-0 rounded-full blur-2xl transition-all duration-500",
-                  isSelected || isHovered ? "scale-[2] opacity-80" : "scale-150 opacity-40"
+                  isSelected ? "scale-[2] opacity-80" : "scale-150 opacity-40"
                 )}
                 style={{ backgroundColor: region.glowColor }}
               />
@@ -473,6 +553,13 @@ export function WorldMap({ onRegionSelect, selectedRegion, playerPosition = { x:
                     <Star className="h-2.5 w-2.5 text-white fill-white" />
                     <span className="text-[9px] font-bold text-white">{region.completedStages}</span>
                   </div>
+
+                  {/* Route order badge */}
+                  {routeOrderIndexMap[region.id] && (
+                    <div className="absolute -bottom-1 -left-1 w-5 h-5 rounded-full bg-foreground/85 text-white text-[9px] font-bold flex items-center justify-center">
+                      {routeOrderIndexMap[region.id]}
+                    </div>
+                  )}
                   
                   {/* Completion checkmark for 100% */}
                   {region.progress === 100 && (
@@ -495,43 +582,19 @@ export function WorldMap({ onRegionSelect, selectedRegion, playerPosition = { x:
               "absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap transition-all duration-300",
               "px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm",
               region.unlocked
-                ? isSelected || isHovered
+                ? isSelected
                   ? "bg-foreground text-background scale-105"
                   : "bg-white/95 text-foreground"
                 : "bg-gray-300/80 text-gray-500"
             )}>
               {region.name}
             </div>
-            
-            {/* Hover tooltip - positioned based on region location */}
-            {region.unlocked && isHovered && !isSelected && (
-              <div className={cn(
-                "absolute left-1/2 -translate-x-1/2 w-28 p-2 rounded-xl",
-                "bg-white/95 backdrop-blur-md shadow-xl border border-white/50",
-                "animate-in fade-in-0 zoom-in-95 duration-200 z-30",
-                // Position tooltip below for top regions, above for bottom regions
-                region.position.y < 40 ? "top-full mt-8" : "bottom-full mb-8"
-              )}>
-                <p className="text-[9px] text-muted-foreground text-center">{region.description}</p>
-                <div className="flex items-center justify-center gap-1 text-[10px] mt-1">
-                  <Sparkles className="h-3 w-3 text-amber-500" />
-                  <span className="font-semibold">{region.completedStages}/{region.totalStages}</span>
-                </div>
-                {/* Tooltip arrow - flip based on position */}
-                <div className={cn(
-                  "absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45 border-white/50",
-                  region.position.y < 40 
-                    ? "-top-1.5 border-l border-t" 
-                    : "-bottom-1.5 border-r border-b"
-                )} />
-              </div>
-            )}
           </button>
         )
       })}
       
       {/* === MAP LEGEND - simplified and moved to left side === */}
-      <div className="absolute bottom-2 left-2 flex items-center gap-3 bg-white/90 backdrop-blur-md rounded-full px-3 py-1.5 shadow-lg border border-white/50">
+      <div className="absolute bottom-2 left-2 z-20 flex items-center gap-3 rounded-full border border-white/50 bg-white/90 px-3 py-1.5 shadow-lg backdrop-blur-md">
         <div className="flex items-center gap-1">
           <div className="w-2 h-2 rounded-full bg-gradient-to-r from-emerald-400 to-emerald-500" />
           <span className="text-[8px] text-muted-foreground">已解锁</span>
@@ -545,6 +608,18 @@ export function WorldMap({ onRegionSelect, selectedRegion, playerPosition = { x:
           <span className="text-[8px] text-muted-foreground">位置</span>
         </div>
       </div>
+
+      {companionPet ? (
+        <MapPetCompanion
+          petName={companionPet.name}
+          petEmoji={companionPet.emoji}
+          petAvatarSrc={companionPet.avatarSrc}
+          style={{
+            right: MAP_PET_COMPANION_OFFSET.right,
+            bottom: MAP_PET_COMPANION_OFFSET.bottom,
+          }}
+        />
+      ) : null}
       
       {/* === CSS ANIMATIONS === */}
       <style jsx>{`

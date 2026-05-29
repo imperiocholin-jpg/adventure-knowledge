@@ -1,10 +1,27 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Home, BookOpen, Compass, PawPrint, User, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { PLAYER_SHELL_MAX_CLASS } from "@/components/layout/player-page-shell"
 
 type NavItem = "home" | "library" | "adventure" | "pets" | "profile"
+
+export function resolveActiveNavItem(pathname: string): NavItem {
+  if (pathname === "/") return "home"
+  if (pathname.startsWith("/library")) return "library"
+  if (pathname.startsWith("/adventure")) return "adventure"
+  if (
+    pathname.startsWith("/pets") ||
+    pathname.startsWith("/battle") ||
+    pathname.startsWith("/leaderboard")
+  ) {
+    return "pets"
+  }
+  if (pathname.startsWith("/profile")) return "profile"
+  return "home"
+}
 
 interface BottomNavigationProps {
   activeItem?: NavItem
@@ -20,16 +37,23 @@ const navItems: { id: NavItem; label: string; icon: typeof Home; href: string }[
 ]
 
 export function BottomNavigation({
-  activeItem = "home",
+  activeItem,
   onNavigate,
 }: BottomNavigationProps) {
+  const pathname = usePathname()
+  const resolvedActiveItem = activeItem ?? resolveActiveNavItem(pathname)
+
   return (
-    <div className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-md">
-      {/* Floating navigation container */}
-      <nav className="relative flex items-center justify-around rounded-2xl bg-white border border-border/30 shadow-lg px-2 py-1.5">
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 px-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+      <nav
+        className={cn(
+          "pointer-events-auto relative mx-auto flex w-full items-center justify-around rounded-2xl border border-border/30 bg-white px-2 py-1.5 shadow-lg",
+          PLAYER_SHELL_MAX_CLASS,
+        )}
+      >
         {navItems.map((item) => {
           const Icon = item.icon
-          const isActive = activeItem === item.id
+          const isActive = resolvedActiveItem === item.id
           const isAdventure = item.id === "adventure"
 
           // Special rendering for Adventure button

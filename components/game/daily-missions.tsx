@@ -11,9 +11,11 @@ interface Mission {
   icon: "book" | "question" | "challenge" | "pet"
   xpReward: number
   coinReward: number
+  petReward?: number
   progress: number
   maxProgress: number
   completed: boolean
+  status?: "incomplete" | "claimable" | "claimed"
 }
 
 interface DailyMissionsProps {
@@ -103,7 +105,19 @@ const iconStyleMap = {
 }
 
 export function DailyMissions({ missions = defaultMissions, onClaimReward }: DailyMissionsProps) {
-  const completedCount = missions.filter(m => m.completed).length
+  const normalizedMissions = missions.map((mission) => {
+    const missionStatus =
+      mission.status ??
+      (mission.completed ? "claimable" : "incomplete")
+
+    return {
+      ...mission,
+      status: missionStatus,
+      completed: missionStatus !== "incomplete",
+    }
+  })
+
+  const completedCount = normalizedMissions.filter((m) => m.completed).length
   const allComplete = completedCount === missions.length
 
   return (
@@ -152,7 +166,7 @@ export function DailyMissions({ missions = defaultMissions, onClaimReward }: Dai
 
       {/* Mission list */}
       <div className="space-y-2.5 relative">
-        {missions.map((mission) => {
+        {normalizedMissions.map((mission) => {
           const Icon = iconMap[mission.icon]
           const iconStyle = iconStyleMap[mission.icon]
           const progressPercent = (mission.progress / mission.maxProgress) * 100
@@ -225,7 +239,7 @@ export function DailyMissions({ missions = defaultMissions, onClaimReward }: Dai
                 </div>
 
                 {/* Rewards or Claim button */}
-                {mission.completed ? (
+                {mission.status === "claimable" ? (
                   <Button
                     size="sm"
                     onClick={() => onClaimReward?.(mission.id)}
@@ -237,6 +251,15 @@ export function DailyMissions({ missions = defaultMissions, onClaimReward }: Dai
                     <Gift className="h-3 w-3 mr-1" />
                     领取
                   </Button>
+                ) : mission.status === "claimed" ? (
+                  <Button
+                    size="sm"
+                    disabled
+                    className="rounded-lg px-3 py-1.5 h-auto text-xs font-bold text-white shadow-md bg-gradient-to-r from-emerald-500 to-teal-500 opacity-90"
+                  >
+                    <Check className="h-3 w-3 mr-1" />
+                    已领取
+                  </Button>
                 ) : (
                   <div className="flex flex-col items-end gap-0.5">
                     <div className="flex items-center gap-1 text-[10px] font-bold text-violet-600">
@@ -247,6 +270,12 @@ export function DailyMissions({ missions = defaultMissions, onClaimReward }: Dai
                       <Coins className="h-3 w-3 text-amber-500" />
                       +{mission.coinReward}
                     </div>
+                    {mission.petReward ? (
+                      <div className="flex items-center gap-1 text-[10px] font-bold text-pink-600">
+                        <Heart className="h-3 w-3 text-pink-500 fill-pink-500" />
+                        +{mission.petReward}
+                      </div>
+                    ) : null}
                   </div>
                 )}
               </div>

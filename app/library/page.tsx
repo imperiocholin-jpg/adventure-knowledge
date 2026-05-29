@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { LibraryHeader } from "@/components/library/library-header"
 import { SearchFilter } from "@/components/library/search-filter"
@@ -8,67 +9,85 @@ import { BookCollection } from "@/components/library/book-collection"
 import { ReadingStats } from "@/components/library/reading-stats"
 import { UnlockableRewards } from "@/components/library/unlockable-rewards"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
+import { PlayerPageShell } from "@/components/layout/player-page-shell"
+import {
+  fetchAdventureDashboard,
+  resolveAdventurerTitleLabel,
+} from "@/lib/adventure/adventure-dashboard-client"
+import { getCatalogStats } from "@/lib/library/library-books"
+import type { GradeBand } from "@/lib/library/moe-catalog-2020"
 
 export default function LibraryPage() {
   const router = useRouter()
+  const [searchQuery, setSearchQuery] = useState("")
+  const [gradeBand, setGradeBand] = useState<GradeBand | "">("")
+  const stats = getCatalogStats()
+  const [totalStars, setTotalStars] = useState(0)
+  const [worldProgress, setWorldProgress] = useState(0)
+  const [adventureLevel, setAdventureLevel] = useState(1)
+  const [dailyStreak, setDailyStreak] = useState(0)
+  const [userExpInLevel, setUserExpInLevel] = useState(0)
+  const [userExpToNext, setUserExpToNext] = useState(100)
+  const [adventureTitle, setAdventureTitle] = useState("见习冒险家")
+
+  useEffect(() => {
+    void (async () => {
+      const dashboard = await fetchAdventureDashboard()
+      if (dashboard.progress) {
+        setTotalStars(dashboard.progress.totalStars)
+        setWorldProgress(dashboard.progress.worldProgress)
+      }
+      if (dashboard.user) {
+        setAdventureLevel(dashboard.user.adventureLevel)
+        setAdventureTitle(resolveAdventurerTitleLabel(dashboard.user.adventureLevel))
+        setDailyStreak(dashboard.user.dailyStreak)
+        setUserExpInLevel(dashboard.user.userExpInLevel)
+        setUserExpToNext(dashboard.user.userExpToNext)
+      }
+    })()
+  }, [])
+
+  const handleBookSelect = (bookId: string, available: boolean) => {
+    if (!available) return
+    router.push(`/library/read/${bookId}`)
+  }
 
   return (
-    <div className="min-h-screen bg-background pb-24">
-      {/* Content */}
+    <PlayerPageShell className="bg-background">
       <div className="relative z-10">
-        {/* Header */}
-        <LibraryHeader 
-          onBack={() => router.push("/")}
-          notificationCount={3}
-        />
+        <LibraryHeader onBack={() => router.push("/")} notificationCount={3} />
 
-        {/* Main content */}
         <div className="space-y-5 pt-2">
-          {/* Search bar */}
-          <SearchFilter
-            onSearch={(query) => console.log("[v0] Search:", query)}
-            onLevelChange={(level) => console.log("[v0] Level:", level)}
-          />
+          <SearchFilter onSearch={setSearchQuery} onLevelChange={setGradeBand} />
 
-          {/* Reading Progress Stats */}
           <ReadingStats
-            totalBooks={24}
-            completedBooks={8}
-            totalStars={18}
-            maxStars={72}
-            readingStreak={7}
-            weeklyProgress={65}
+            totalBooks={stats.total}
+            completedBooks={0}
+            totalStars={totalStars}
+            readingStreak={dailyStreak}
+            worldProgress={worldProgress}
+            adventureLevel={adventureLevel}
+            adventureTitle={adventureTitle}
+            adventureExpInLevel={userExpInLevel}
+            adventureExpToNext={userExpToNext}
           />
 
-          {/* Featured Reading Worlds */}
           <FeaturedWorlds
-            onWorldSelect={(worldId) => console.log("[v0] World selected:", worldId)}
-            onExploreMore={() => router.push("/library/worlds")}
+            onWorldSelect={(worldId) => router.push(`/adventure/${worldId}`)}
+            onExploreMore={() => router.push("/adventure")}
           />
 
-          {/* Book Collection Grid - now includes category filters */}
           <BookCollection
-            onBookSelect={(bookId) => console.log("[v0] Book selected:", bookId)}
-            onViewAll={() => router.push("/library/books")}
-            onCategoryChange={(cat) => console.log("[v0] Category:", cat)}
+            gradeBand={gradeBand}
+            searchQuery={searchQuery}
+            onBookSelect={handleBookSelect}
           />
 
-          {/* Unlockable Rewards */}
-          <UnlockableRewards
-            onRewardClick={(rewardId) => console.log("[v0] Reward clicked:", rewardId)}
-            onViewAll={() => router.push("/library/treasures")}
-          />
+          <UnlockableRewards onViewAll={() => router.push("/library/treasures")} />
         </div>
       </div>
 
-      {/* Bottom Navigation */}
-      <BottomNavigation
-        activeItem="library"
-        onNavigate={(item) => {
-          if (item === "home") router.push("/")
-          if (item === "adventure") router.push("/adventure")
-        }}
-      />
-    </div>
+      <BottomNavigation />
+    </PlayerPageShell>
   )
 }

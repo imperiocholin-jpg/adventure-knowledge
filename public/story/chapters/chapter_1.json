@@ -1,0 +1,60 @@
+{
+  "chapterId": "chapter_1",
+  "title": "雾灯谷与会发光的纸船",
+  "theme": "冒险开场",
+  "targetAge": "小学2-4年级",
+  "estimatedMinutes": 4,
+  "sections": [
+    {
+      "id": "c1_s1",
+      "text": "放学后，小雨在河边捡到一只会发光的纸船。纸船轻轻抖了抖，船身上浮出一行小字：请把我送到雾灯谷。毛毛从书包里探出头，耳朵一抖一抖，像在说我们出发吧。"
+    },
+    {
+      "id": "c1_s2",
+      "text": "纸船顺着河水慢慢漂走，小雨和毛毛一路追。路边的灯一盏盏亮起来，像在给他们指路。远处出现一座小桥，桥下水面闪着星星一样的亮点。小雨的心咚咚跳，又紧张又兴奋。"
+    },
+    {
+      "id": "c1_s3",
+      "text": "他们跑到桥边时，纸船停在一块圆石旁。圆石咕噜咕噜滚了一下，吐出一颗亮晶晶的小珠子。毛毛用爪子轻轻碰了碰，小珠子就跳到了纸船上，纸船的光一下子更亮了。"
+    },
+    {
+      "id": "c1_s4",
+      "text": "河对岸的雾慢慢散开，露出一条小路。小路尽头有一盏暖黄的灯，像在等他们过去。毛毛回头看着小雨，尾巴摇得飞快，眼睛亮亮的，仿佛在说：队长，我们继续吗？"
+    }
+  ],
+  "challenge": {
+    "prompt": "你记得小雨是先在什么地方发现发光纸船的吗？",
+    "options": ["河边", "教室", "操场"],
+    "answerIndex": 0,
+    "successResponse": "毛毛点头：没错！你把关键细节记得很清楚。",
+    "retryResponse": "毛毛提醒：回想开头，小雨是在放学后去的哪里呀？",
+    "sourceBookTitle": "冒险主线故事",
+    "sourceChapterLabel": "第1章"
+  },
+  "aiCompanionLine": "毛毛偷偷说：你刚刚追光的时候，像个真正的小队长！",
+  "petFeedback": {
+    "emotion": "兴奋",
+    "animation": "tail_wag_fast",
+    "text": "毛毛开心得原地小跳，尾巴快摇成小风扇啦！"
+  },
+  "reward": {
+    "type": "item",
+    "id": "stardust",
+    "name": "星屑",
+    "amount": 5,
+    "text": "获得 星屑 x5，纸船亮度提升！"
+  },
+  "lightChoices": [
+    {
+      "id": "c1_choice_bridge",
+      "label": "先过桥去看看",
+      "nextChapterId": "chapter_2"
+    },
+    {
+      "id": "c1_choice_riverside",
+      "label": "先沿河找亮点",
+      "nextChapterId": "chapter_2"
+    }
+  ],
+  "nextButtonText": "去云上图书塔！"
+}

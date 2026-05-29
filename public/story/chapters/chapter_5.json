@@ -1,0 +1,60 @@
+{
+  "chapterId": "chapter_5",
+  "title": "星海列车站与迟到的一号车厢",
+  "theme": "期待下一程",
+  "targetAge": "小学2-4年级",
+  "estimatedMinutes": 5,
+  "sections": [
+    {
+      "id": "c5_s1",
+      "text": "小雨和毛毛来到星海列车站，站台像漂在夜空里的长桥。列车长递来两张见习车票，毛毛得意地把车票顶在鼻尖上。突然广播响起：一号车厢还没有到站，灯光都暗了一点点。"
+    },
+    {
+      "id": "c5_s2",
+      "text": "他们跑到轨道尽头，发现一号车厢卡在慢慢云里。毛毛跳上提示桩，小雨按亮三盏快快灯，果冻一样的慢慢云一点点融开。车厢咔哒一声滑回轨道，小乘客们在窗边挥手欢呼。"
+    },
+    {
+      "id": "c5_s3",
+      "text": "一个背小包的孩子小声说，他想把谢谢纸条送给月台尽头的奶奶。小雨和毛毛陪他一起走过闪光候车棚，把纸条交到奶奶手里。奶奶笑着送给毛毛一枚暖星扣，毛毛蹭了蹭小雨。"
+    },
+    {
+      "id": "c5_s4",
+      "text": "回到站台后，列车长把见习车票、快快灯徽章和暖星扣放上发车台。当的一声，整列星海列车一节节亮起。车门缓缓打开，广播说：下一站，彩虹洞洞桥。毛毛已经准备好击掌出发。"
+    }
+  ],
+  "challenge": {
+    "prompt": "一号车厢迟到时，小雨和毛毛用什么办法帮它回来？",
+    "options": ["点亮快快灯", "大声喊口号", "把车厢推回去"],
+    "answerIndex": 0,
+    "successResponse": "毛毛击掌：答对啦！你已经是超靠谱的小列车员。",
+    "retryResponse": "毛毛提醒：答案和“灯”有关，我们一起想想。",
+    "sourceBookTitle": "冒险主线故事",
+    "sourceChapterLabel": "第5章"
+  },
+  "aiCompanionLine": "毛毛超激动：我们是今天的小列车员！下一站也一起冲！",
+  "petFeedback": {
+    "emotion": "兴奋期待",
+    "animation": "highfive_invite",
+    "text": "毛毛连跳两下，伸出小爪子要和你击掌庆祝。"
+  },
+  "reward": {
+    "type": "item",
+    "id": "star_train_badge",
+    "name": "星海乘客章",
+    "amount": 1,
+    "text": "获得 星海乘客章 x1，列车正式鸣笛出发！"
+  },
+  "lightChoices": [
+    {
+      "id": "c5_choice_restart",
+      "label": "回到雾灯谷再来一轮",
+      "nextChapterId": "chapter_1"
+    },
+    {
+      "id": "c5_choice_preview",
+      "label": "先看看彩虹洞洞桥预告",
+      "nextChapterId": "chapter_1"
+    }
+  ],
+  "nextButtonText": "继续下一轮冒险！"
+}

@@ -1,75 +1,587 @@
 "use client"
 
-import { useState } from "react"
-import { useEffect } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import { UserHeader } from "@/components/game/user-header"
 import { AdventureBanner } from "@/components/game/adventure-banner"
 import { PetCompanionCard } from "@/components/game/pet-companion-card"
+import { PetDeathDialog } from "@/components/pets/pet-death-dialog"
 import { DailyMissions } from "@/components/game/daily-missions"
 import { ReadingLibrary } from "@/components/game/reading-library"
 import { PKChallenge } from "@/components/game/pk-challenge"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
+import { PlayerPageShell } from "@/components/layout/player-page-shell"
+import { StoryAdventurePanel } from "@/components/game/story-adventure-panel"
+import { loadChapter } from "@/lib/story/load-chapter"
+import { inferPetProfileCompleted } from "@/lib/auth/onboarding"
+import { mergePetProfile, parsePetRecord, readLocalPetProfilePatch } from "@/lib/pets/pet-profile"
+import {
+  getHomePetMood,
+  getPetLevelProgressPercent,
+  parsePetVitalsFromRecord,
+} from "@/lib/pets/state"
+import { useUserProfile } from "@/hooks/use-user-profile"
+import {
+  deriveHomeAdventureBanner,
+  fetchAdventureDashboard,
+  fetchAdventureProgress,
+  resolveAdventurerTitleLabel,
+  type AdventureProgressSnapshot,
+  type AdventureUserSnapshot,
+} from "@/lib/adventure/adventure-dashboard-client"
+import type { StoryChapter } from "@/lib/story/types"
 
 type NavItem = "home" | "library" | "adventure" | "pets" | "profile"
+
+type GenericRow = Record<string, unknown>
+const LAST_READ_STORAGE_KEY = "ak_last_read_context"
+
+interface LastReadContext {
+  bookId: string
+  sourceBookTitle: string
+  sourceChapterLabel: string
+}
+
+interface ReadingLibraryBook {
+  id: string
+  title: string
+  cover: string
+  progress?: number
+  isCurrentlyReading?: boolean
+  rarity?: "common" | "rare" | "epic"
+  completed?: boolean
+}
+
+interface DailyMissionItem {
+  id: string
+  title: string
+  description: string
+  icon: "book" | "question" | "challenge" | "pet"
+  xpReward: number
+  coinReward: number
+  petReward?: number
+  progress: number
+  maxProgress: number
+  completed: boolean
+  status: "incomplete" | "claimable" | "claimed"
+}
+
+interface ApiListResponse<T> {
+  ok?: boolean
+  data?: T[]
+  error?: {
+    message?: string
+  }
+}
+
+const DEFAULT_USER = {
+  username: "小冒险家",
+  level: 12,
+  coins: 2680,
+  energy: 45,
+  maxEnergy: 60,
+  dailyStreak: 0,
+  adventureLevel: 3,
+  worldProgress: 42,
+}
+
+const DEFAULT_PET = {
+  id: "",
+  name: "毛毛",
+  level: 12,
+  mood: "happy" as "happy" | "neutral" | "hungry",
+  emoji: "🐕",
+  happiness: 85,
+  energy: 70,
+  rarity: "epic" as "common" | "rare" | "epic" | "legendary",
+}
+
+const DEFAULT_CURRENT_BOOK: ReadingLibraryBook = {
+  id: "1",
+  title: "小王子",
+  cover: "📗",
+  progress: 45,
+  isCurrentlyReading: true,
+  rarity: "rare",
+}
+
+function getNumberValue(value: unknown, fallback: number) {
+  if (typeof value === "number" && Number.isFinite(value)) return value
+  if (typeof value === "string") {
+    const parsed = Number(value)
+    if (Number.isFinite(parsed)) return parsed
+  }
+  return fallback
+}
+
+function getStringValue(value: unknown, fallback: string) {
+  return typeof value === "string" && value.trim() ? value : fallback
+}
+
+function resolveField(row: GenericRow, candidates: string[]) {
+  return candidates.find((field) => field in row)
+}
+
+function parseApiErrorMessage(payload: unknown, fallback: string) {
+  if (!payload || typeof payload !== "object") return fallback
+  const maybeMessage = (payload as { error?: { message?: unknown } }).error?.message
+  return typeof maybeMessage === "string" && maybeMessage ? maybeMessage : fallback
+}
+
+function normalizeTaskStatus(rawStatus: unknown, progress: number, maxProgress: number, claimed: boolean) {
+  if (claimed) return "claimed" as const
+  if (typeof rawStatus === "string") {
+    const lower = rawStatus.toLowerCase()
+    if (["claimed", "done"].includes(lower)) return "claimed" as const
+    if (["claimable", "completed", "ready_to_claim"].includes(lower)) return "claimable" as const
+    if (["incomplete", "pending", "todo", "not_started"].includes(lower)) return "incomplete" as const
+  }
+  return progress >= maxProgress ? ("claimable" as const) : ("incomplete" as const)
+}
+
+function mapTaskIcon(row: GenericRow): "book" | "question" | "challenge" | "pet" {
+  const text = [
+    row[resolveField(row, ["task_type", "type", "category"]) ?? ""],
+    row[resolveField(row, ["title", "name"]) ?? ""],
+    row[resolveField(row, ["description", "task_description"]) ?? ""],
+  ]
+    .map((item) => (typeof item === "string" ? item.toLowerCase() : ""))
+    .join(" ")
+
+  if (["read", "book", "reading", "阅读", "章节"].some((key) => text.includes(key))) return "book"
+  if (["question", "quiz", "答题", "问答"].some((key) => text.includes(key))) return "question"
+  if (["battle", "pk", "challenge", "挑战"].some((key) => text.includes(key))) return "challenge"
+  return "pet"
+}
 
 export default function HomePage() {
   const [activeNav, setActiveNav] = useState<NavItem>("home")
   const [isLoadingData, setIsLoadingData] = useState(false)
+  const [isSubmittingReading, setIsSubmittingReading] = useState(false)
+  const [isClaimingTask, setIsClaimingTask] = useState(false)
+  const [isAuthChecking, setIsAuthChecking] = useState(true)
+  const [adventureProgressSnapshot, setAdventureProgressSnapshot] =
+    useState<AdventureProgressSnapshot | null>(null)
+  const [adventureUserSnapshot, setAdventureUserSnapshot] = useState<AdventureUserSnapshot | null>(null)
   const [dataError, setDataError] = useState<string | null>(null)
+  const [userRows, setUserRows] = useState<GenericRow[]>([])
+  const [petRows, setPetRows] = useState<GenericRow[]>([])
+  const [bookRows, setBookRows] = useState<GenericRow[]>([])
+  const [taskRows, setTaskRows] = useState<GenericRow[]>([])
+  const [isStoryOpen, setIsStoryOpen] = useState(false)
+  const [storyChapterId, setStoryChapterId] = useState("chapter_1")
+  const [storyChapter, setStoryChapter] = useState<StoryChapter | null>(null)
+  const [isStoryLoading, setIsStoryLoading] = useState(false)
+  const [storyError, setStoryError] = useState<string | null>(null)
+  const [storySourceBookTitle, setStorySourceBookTitle] = useState("")
+  const [storySourceChapterLabel, setStorySourceChapterLabel] = useState("")
   const router = useRouter()
+  const { profile: userProfile } = useUserProfile()
+
+  const fetchApiData = async <T,>(url: string) => {
+    const response = await fetch(url, { cache: "no-store" })
+    const payload = (await response.json()) as ApiListResponse<T>
+    if (!response.ok) {
+      if (response.status === 401) {
+        router.push("/auth")
+      }
+      throw new Error(parseApiErrorMessage(payload, `Request failed: ${url} (${response.status})`))
+    }
+    return Array.isArray(payload?.data) ? payload.data : []
+  }
+
+  const checkSession = async () => {
+    const response = await fetch("/api/auth/session", { cache: "no-store" })
+    const payload = await response.json()
+    if (!response.ok) {
+      router.push("/auth")
+      throw new Error(parseApiErrorMessage(payload, "用户未登录"))
+    }
+  }
+
+  const loadDashboardData = async (isMountedGuard = true) => {
+    if (isMountedGuard) {
+      setIsLoadingData(true)
+      setDataError(null)
+    }
+
+    try {
+      const [books, pets, users, tasks, adventureDashboard] = await Promise.all([
+        fetchApiData<GenericRow>("/api/books"),
+        fetchApiData<GenericRow>("/api/pets"),
+        fetchApiData<GenericRow>("/api/users"),
+        fetchApiData<GenericRow>("/api/tasks"),
+        fetchAdventureDashboard(),
+      ])
+      if (isMountedGuard && adventureDashboard) {
+        if (adventureDashboard.progress) {
+          setAdventureProgressSnapshot(adventureDashboard.progress)
+        }
+        if (adventureDashboard.user) {
+          setAdventureUserSnapshot(adventureDashboard.user)
+        }
+      }
+      if (isMountedGuard) {
+        setBookRows(books)
+        setPetRows(pets)
+        setUserRows(users)
+        setTaskRows(tasks)
+      }
+      return { books, pets, users, tasks }
+    } catch (error) {
+      if (isMountedGuard) {
+        setDataError(error instanceof Error ? error.message : "数据加载失败，已显示默认页面")
+      }
+      return null
+    } finally {
+      if (isMountedGuard) {
+        setIsLoadingData(false)
+      }
+    }
+  }
 
   useEffect(() => {
     let isMounted = true
 
-    const fetchApiData = async (url: string) => {
-      const response = await fetch(url)
-
-      if (!response.ok) {
-        throw new Error(`Request failed: ${url} (${response.status})`)
-      }
-
-      const result = await response.json()
-      return Array.isArray(result?.data) ? result.data : []
-    }
-
-    const testApiRoutes = async () => {
-      if (isMounted) {
-        setIsLoadingData(true)
-        setDataError(null)
-      }
-
+    ;(async () => {
       try {
-        const [books, pets, users, tasks] = await Promise.all([
-          fetchApiData("/api/books"),
-          fetchApiData("/api/pets"),
-          fetchApiData("/api/users"),
-          fetchApiData("/api/tasks"),
-        ])
-
-        console.log(books)
-        console.log(pets)
-        console.log(users)
-        console.log(tasks)
+        await checkSession()
+        try {
+          await fetch("/api/pets/daily-decay", { method: "POST" })
+        } catch {
+          // 每日饱食度衰减失败不阻塞首页
+        }
+        try {
+          await fetch("/api/users/daily-activity", { method: "POST" })
+        } catch {
+          // 连续天数记录失败不阻塞首页
+        }
+        await loadDashboardData(isMounted)
       } catch (error) {
-        const message = error instanceof Error ? error.message : "Unknown fetch error"
-        console.log("API data fetch error:", message)
         if (isMounted) {
-          setDataError("数据加载失败，已显示默认页面")
+          setDataError(error instanceof Error ? error.message : "用户鉴权失败")
         }
       } finally {
         if (isMounted) {
-          setIsLoadingData(false)
+          setIsAuthChecking(false)
         }
       }
-    }
-
-    testApiRoutes()
+    })()
 
     return () => {
       isMounted = false
     }
   }, [])
+
+  const currentUserRow = userRows[0] ?? {}
+  const currentPetRow = petRows[0] ?? {}
+  const userIdField = resolveField(currentUserRow, ["id", "user_id"])
+  const petIdField = resolveField(currentPetRow, ["id", "pet_id"])
+
+  const currentUser = {
+    id: userIdField ? getStringValue(currentUserRow[userIdField], "") : "",
+    username: userProfile.username || getStringValue(
+      currentUserRow[resolveField(currentUserRow, ["username", "name", "nickname"]) ?? ""],
+      DEFAULT_USER.username,
+    ),
+    avatarSrc: userProfile.avatarSrc,
+    level: getNumberValue(
+      currentUserRow[resolveField(currentUserRow, ["level", "user_level"]) ?? ""],
+      DEFAULT_USER.level,
+    ),
+    coins: getNumberValue(
+      currentUserRow[resolveField(currentUserRow, ["coins", "gold", "coin_balance"]) ?? ""],
+      DEFAULT_USER.coins,
+    ),
+    energy: getNumberValue(
+      currentUserRow[resolveField(currentUserRow, ["energy", "current_energy"]) ?? ""],
+      DEFAULT_USER.energy,
+    ),
+    maxEnergy: getNumberValue(
+      currentUserRow[resolveField(currentUserRow, ["max_energy", "energy_cap"]) ?? ""],
+      DEFAULT_USER.maxEnergy,
+    ),
+    dailyStreak: getNumberValue(
+      currentUserRow[resolveField(currentUserRow, ["daily_streak", "streak", "reading_streak"]) ?? ""],
+      DEFAULT_USER.dailyStreak,
+    ),
+    adventureLevel: getNumberValue(
+      currentUserRow[resolveField(currentUserRow, ["adventure_level", "chapter_level"]) ?? ""],
+      DEFAULT_USER.adventureLevel,
+    ),
+    worldProgress: getNumberValue(
+      currentUserRow[resolveField(currentUserRow, ["world_progress", "exploration_percent"]) ?? ""],
+      DEFAULT_USER.worldProgress,
+    ),
+  }
+
+  const petProfile = useMemo(() => {
+    const serverComplete = inferPetProfileCompleted(currentPetRow)
+    const localPatch = serverComplete ? null : readLocalPetProfilePatch()
+    return mergePetProfile(parsePetRecord(currentPetRow), localPatch, currentPetRow)
+  }, [currentPetRow])
+
+  const petVitals = useMemo(() => parsePetVitalsFromRecord(currentPetRow), [currentPetRow])
+  const petHomeMood = useMemo(() => getHomePetMood(petVitals), [petVitals])
+  const petLevelProgress = useMemo(() => getPetLevelProgressPercent(currentPetRow), [currentPetRow])
+  const companionDays = useMemo(() => {
+    const createdField = resolveField(currentPetRow, ["created_at", "pet_created_at"])
+    const createdRaw = createdField ? currentPetRow[createdField] : null
+    if (typeof createdRaw === "string") {
+      const createdAt = new Date(createdRaw)
+      if (!Number.isNaN(createdAt.getTime())) {
+        return Math.max(1, Math.floor((Date.now() - createdAt.getTime()) / 86_400_000))
+      }
+    }
+    return 28
+  }, [currentPetRow])
+
+  const currentPet = {
+    id: petIdField ? getStringValue(currentPetRow[petIdField], "") : "",
+    name: getStringValue(
+      currentPetRow[resolveField(currentPetRow, ["name", "pet_name"]) ?? ""],
+      DEFAULT_PET.name,
+    ),
+    level: getNumberValue(
+      currentPetRow[resolveField(currentPetRow, ["pet_level", "level"]) ?? ""],
+      DEFAULT_PET.level,
+    ),
+    mood: getStringValue(
+      currentPetRow[resolveField(currentPetRow, ["mood", "pet_mood"]) ?? ""],
+      DEFAULT_PET.mood,
+    ) as "happy" | "neutral" | "hungry",
+    emoji: getStringValue(
+      currentPetRow[resolveField(currentPetRow, ["emoji", "pet_emoji"]) ?? ""],
+      DEFAULT_PET.emoji,
+    ),
+    happiness: getNumberValue(
+      currentPetRow[resolveField(currentPetRow, ["happiness", "affection_level", "mood_score"]) ?? ""],
+      DEFAULT_PET.happiness,
+    ),
+    energy: getNumberValue(
+      currentPetRow[resolveField(currentPetRow, ["energy", "pet_energy"]) ?? ""],
+      DEFAULT_PET.energy,
+    ),
+    rarity: getStringValue(
+      currentPetRow[resolveField(currentPetRow, ["rarity", "pet_rarity"]) ?? ""],
+      DEFAULT_PET.rarity,
+    ) as "common" | "rare" | "epic" | "legendary",
+  }
+
+  const mappedBooks: ReadingLibraryBook[] = bookRows.map((row, index) => {
+    const idField = resolveField(row, ["id", "book_id"])
+    return {
+      id: getStringValue(idField ? row[idField] : "", String(index + 1)),
+      title: getStringValue(row[resolveField(row, ["title", "name", "book_title"]) ?? ""], "未命名书籍"),
+      cover: getStringValue(row[resolveField(row, ["cover", "emoji", "icon"]) ?? ""], "📘"),
+      progress: Math.min(
+        100,
+        Math.max(0, getNumberValue(row[resolveField(row, ["progress", "reading_progress"]) ?? ""], 0)),
+      ),
+      rarity: (getStringValue(
+        row[resolveField(row, ["rarity"]) ?? ""],
+        "common",
+      ) || "common") as "common" | "rare" | "epic",
+      completed: Boolean(row[resolveField(row, ["completed", "is_completed"]) ?? ""]),
+      isCurrentlyReading: Boolean(row[resolveField(row, ["is_currently_reading", "current"]) ?? ""]),
+    }
+  })
+
+  const currentBook =
+    mappedBooks.find((book) => book.isCurrentlyReading) ??
+    mappedBooks.find((book) => (book.progress ?? 0) > 0 && (book.progress ?? 0) < 100) ??
+    mappedBooks[0] ??
+    DEFAULT_CURRENT_BOOK
+
+  const homeAdventureBanner = useMemo(
+    () =>
+      deriveHomeAdventureBanner(adventureProgressSnapshot, {
+        currentBookTitle: currentBook.title,
+        readingProgressPercent: currentBook.progress,
+      }),
+    [adventureProgressSnapshot, currentBook.title, currentBook.progress],
+  )
+
+  const adventureTitleLabel = useMemo(() => {
+    const level =
+      adventureUserSnapshot?.adventureLevel ??
+      currentUser.adventureLevel ??
+      1
+    return resolveAdventurerTitleLabel(level)
+  }, [adventureUserSnapshot?.adventureLevel, currentUser.adventureLevel])
+
+  const recommendedBooks =
+    mappedBooks
+      .filter((book) => book.id !== currentBook.id)
+      .slice(0, 4)
+      .map((book) => ({ ...book, completed: (book.progress ?? 0) >= 100 })) ?? []
+
+  const missions: DailyMissionItem[] = taskRows.map((row, index) => {
+    const idField = resolveField(row, ["id", "task_id"])
+    const progress = Math.max(
+      0,
+      getNumberValue(row[resolveField(row, ["progress", "current_progress", "completed_count"]) ?? ""], 0),
+    )
+    const maxProgress = Math.max(
+      1,
+      getNumberValue(row[resolveField(row, ["max_progress", "target", "target_count"]) ?? ""], 1),
+    )
+    const claimed = Boolean(row[resolveField(row, ["claimed", "is_claimed"]) ?? ""])
+    const status = normalizeTaskStatus(
+      row[resolveField(row, ["status", "state"]) ?? ""],
+      progress,
+      maxProgress,
+      claimed,
+    )
+    return {
+      id: getStringValue(idField ? row[idField] : "", String(index + 1)),
+      title: getStringValue(row[resolveField(row, ["title", "name"]) ?? ""], `任务 ${index + 1}`),
+      description: getStringValue(row[resolveField(row, ["description", "task_description"]) ?? ""], "完成任务"),
+      icon: mapTaskIcon(row),
+      xpReward: getNumberValue(
+        row[resolveField(row, ["xp_reward", "experience_reward", "reward_exp"]) ?? ""],
+        0,
+      ),
+      coinReward: getNumberValue(
+        row[resolveField(row, ["coin_reward", "coins_reward", "gold_reward"]) ?? ""],
+        0,
+      ),
+      petReward: getNumberValue(
+        row[resolveField(row, ["pet_reward", "pet_exp_reward", "reward_pet_exp"]) ?? ""],
+        0,
+      ),
+      progress,
+      maxProgress,
+      completed: status !== "incomplete",
+      status,
+    }
+  })
+
+  const handleCompleteReading = async () => {
+    try {
+      setIsSubmittingReading(true)
+      setDataError(null)
+
+      const response = await fetch("/api/reading/complete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          petId: currentPet.id || undefined,
+          bookId: currentBook.id || undefined,
+          experienceGain: 20,
+          petExpGain: 12,
+          readingProgress: 100,
+        }),
+      })
+
+      const payload = await response.json()
+      if (!response.ok) {
+        throw new Error(parseApiErrorMessage(payload, "阅读记录写入失败"))
+      }
+
+      await loadDashboardData(true)
+      const dashboard = await fetchAdventureDashboard()
+      if (dashboard.progress) setAdventureProgressSnapshot(dashboard.progress)
+      if (dashboard.user) setAdventureUserSnapshot(dashboard.user)
+    } catch (error) {
+      setDataError(error instanceof Error ? error.message : "阅读记录写入失败")
+    } finally {
+      setIsSubmittingReading(false)
+    }
+  }
+
+  const loadStoryById = async (chapterId: string) => {
+    try {
+      setIsStoryLoading(true)
+      setStoryError(null)
+      const chapter = await loadChapter(chapterId)
+      setStoryChapter(chapter)
+      setStoryChapterId(chapterId)
+    } catch (error) {
+      setStoryError(error instanceof Error ? error.message : "章节加载失败")
+    } finally {
+      setIsStoryLoading(false)
+    }
+  }
+
+  const readLastReadContext = (): LastReadContext | null => {
+    if (typeof window === "undefined") return null
+    const raw = window.localStorage.getItem(LAST_READ_STORAGE_KEY)
+    if (!raw) return null
+    try {
+      const parsed = JSON.parse(raw) as Partial<LastReadContext>
+      if (!parsed.bookId || !parsed.sourceBookTitle || !parsed.sourceChapterLabel) return null
+      return {
+        bookId: parsed.bookId,
+        sourceBookTitle: parsed.sourceBookTitle,
+        sourceChapterLabel: parsed.sourceChapterLabel,
+      }
+    } catch {
+      return null
+    }
+  }
+
+  const openStoryChallengeFromRead = async () => {
+    const context = readLastReadContext()
+    if (!context) {
+      setDataError("请先在书架完成一个章节阅读，再解锁读后冒险挑战。")
+      return
+    }
+    setStorySourceBookTitle(context.sourceBookTitle)
+    setStorySourceChapterLabel(context.sourceChapterLabel)
+    setIsStoryOpen(true)
+    await loadStoryById(storyChapterId)
+  }
+
+  const handleStartReading = () => {
+    router.push(`/library/read/${currentBook.id || "1"}`)
+  }
+
+  const handleContinueAdventure = () => {
+    const regionId = homeAdventureBanner.activeRegionId
+    router.push(regionId ? `/adventure/${regionId}` : "/adventure")
+  }
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const url = new URL(window.location.href)
+    if (url.searchParams.get("openAdventure") !== "1") return
+    void openStoryChallengeFromRead()
+    url.searchParams.delete("openAdventure")
+    const next = `${url.pathname}${url.search}`
+    window.history.replaceState({}, "", next)
+  }, [])
+
+  const handleChooseNextChapter = async (nextChapterId: string) => {
+    await loadStoryById(nextChapterId)
+  }
+
+  const handleClaimReward = async (missionId: string) => {
+    try {
+      setIsClaimingTask(true)
+      setDataError(null)
+
+      const response = await fetch("/api/tasks/claim", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          missionId,
+          petId: currentPet.id || undefined,
+        }),
+      })
+
+      const payload = await response.json()
+      if (!response.ok) {
+        throw new Error(parseApiErrorMessage(payload, "任务奖励领取失败"))
+      }
+
+      await loadDashboardData(true)
+    } catch (error) {
+      setDataError(error instanceof Error ? error.message : "任务奖励领取失败")
+    } finally {
+      setIsClaimingTask(false)
+    }
+  }
 
   const handleNavigation = (item: NavItem) => {
     setActiveNav(item)
@@ -88,8 +600,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-28 relative overflow-hidden">
-      {/* Global ambient floating particles for living world feel */}
+    <PlayerPageShell bottomPad="nav-md" withGutter className="relative overflow-hidden bg-background">
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         {[...Array(15)].map((_, i) => (
           <div
@@ -112,34 +623,39 @@ export default function HomePage() {
         ))}
       </div>
       
-      {/* Main content */}
-      <div className="mx-auto max-w-md px-4 py-4 relative z-10">
+      <div className="relative z-10 py-4">
+        {isAuthChecking && <p className="text-xs text-muted-foreground">正在验证登录状态...</p>}
         <p className="text-xs text-muted-foreground">Supabase Connected</p>
         {isLoadingData && <p className="text-xs text-muted-foreground">Loading data...</p>}
+        {isSubmittingReading && (
+          <p className="text-xs text-muted-foreground">正在同步阅读记录...</p>
+        )}
+        {isClaimingTask && <p className="text-xs text-muted-foreground">正在领取任务奖励...</p>}
         {dataError && <p className="text-xs text-amber-600">{dataError}</p>}
 
         {/* User Header with progression */}
         <UserHeader
-          username="小冒险家"
-          level={12}
-          coins={2680}
-          energy={45}
-          maxEnergy={60}
-          dailyStreak={7}
-          adventureLevel={3}
-          worldProgress={42}
+          username={currentUser.username}
+          adventureLevel={
+            adventureUserSnapshot?.adventureLevel ?? currentUser.adventureLevel ?? 1
+          }
+          coins={currentUser.coins}
+          avatarUrl={currentUser.avatarSrc}
+          dailyStreak={currentUser.dailyStreak}
+          adventureTitle={adventureTitleLabel}
+          worldProgress={adventureProgressSnapshot?.worldProgress}
         />
 
         {/* Adventure Banner - world exploration portal */}
         <div className="mt-4">
           <AdventureBanner
-            currentChapter="第三章"
-            currentWorld="魔法森林"
-            progress={65}
-            explorationPercent={42}
-            discoveredRegions={3}
-            totalRegions={7}
-            onStartAdventure={() => router.push("/adventure")}
+            currentChapter={homeAdventureBanner.currentChapter}
+            currentWorld={homeAdventureBanner.currentWorld}
+            progress={homeAdventureBanner.regionProgressPercent}
+            worldProgressPercent={homeAdventureBanner.worldProgressPercent}
+            discoveredRegions={homeAdventureBanner.discoveredRegions}
+            totalRegions={homeAdventureBanner.totalRegions}
+            onStartAdventure={handleContinueAdventure}
           />
         </div>
 
@@ -147,26 +663,31 @@ export default function HomePage() {
         <div className="mt-4 grid gap-4">
           {/* Pet Companion Card - emotional companion */}
           <PetCompanionCard
-            petName="毛毛"
-            petLevel={12}
-            petMood="happy"
-            petEmoji="🐕"
-            happiness={85}
-            energy={70}
-            rarity="epic"
-            onFeed={() => console.log("Feed pet!")}
-            onTrain={() => console.log("Train pet!")}
-            onView={() => router.push("/pets")}
+            petName={petProfile.name}
+            petLevel={petProfile.level}
+            petMood={petHomeMood}
+            isDead={petVitals.isDead}
+            petEmoji={petProfile.emoji || currentPet.emoji}
+            petAvatarSrc={petProfile.avatarSrc}
+            satiety={petVitals.satiety}
+            bond={petVitals.bond}
+            spirit={petVitals.spirit}
+            levelProgress={petLevelProgress}
+            companionDays={companionDays}
+            onClick={() => router.push("/pets")}
           />
 
           {/* Daily Missions - achievement system */}
           <DailyMissions 
-            onClaimReward={(id) => console.log("Claim reward:", id)}
+            missions={missions}
+            onClaimReward={handleClaimReward}
           />
 
           {/* Reading Library - collectible archive */}
           <ReadingLibrary
-            onContinueReading={() => console.log("Continue reading!")}
+            currentBook={currentBook}
+            recommendedBooks={recommendedBooks}
+            onContinueReading={handleStartReading}
             onViewLibrary={() => router.push("/library")}
           />
 
@@ -177,7 +698,7 @@ export default function HomePage() {
             currentRank={15}
             winStreak={3}
             onChallenge={() => router.push("/battle")}
-            onViewRanking={() => router.push("/battle")}
+            onViewRanking={() => router.push("/leaderboard")}
           />
         </div>
       </div>
@@ -186,6 +707,18 @@ export default function HomePage() {
       <BottomNavigation
         activeItem={activeNav}
         onNavigate={handleNavigation}
+      />
+
+      <StoryAdventurePanel
+        open={isStoryOpen}
+        chapter={storyChapter}
+        loading={isStoryLoading}
+        error={storyError}
+        sourceBookTitle={storySourceBookTitle}
+        sourceChapterLabel={storySourceChapterLabel}
+        onClose={() => setIsStoryOpen(false)}
+        onCompleteChapter={handleCompleteReading}
+        onChooseNext={handleChooseNextChapter}
       />
       
       {/* Global animation styles */}
@@ -216,6 +749,12 @@ export default function HomePage() {
           animation: ambient-float linear infinite;
         }
       `}</style>
-    </div>
+
+      <PetDeathDialog
+        open={petVitals.isDead}
+        petName={petProfile.name || currentPet.name}
+        species={petProfile.species}
+      />
+    </PlayerPageShell>
   )
 }

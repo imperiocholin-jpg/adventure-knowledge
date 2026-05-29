@@ -1,143 +1,255 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { WorldMap } from "@/components/adventure/world-map"
-import { AdventurePath } from "@/components/adventure/adventure-path"
-import { ProgressSection } from "@/components/adventure/progress-section"
-import { MapPetCompanion } from "@/components/adventure/map-pet-companion"
-import { RewardDiscovery } from "@/components/adventure/reward-discovery"
+import { AdventureMapHeader } from "@/components/adventure/adventure-map-header"
+import {
+  fetchAdventureDashboard,
+  type AdventureProgressSnapshot,
+} from "@/lib/adventure/adventure-dashboard-client"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
-import { ChevronLeft, Settings, Bell, MapPin, Compass, Sparkles } from "lucide-react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { PlayerPageShell } from "@/components/layout/player-page-shell"
+import {
+  REGION_SHELF_CONFIG,
+  REGION_UNLOCK_ORDER,
+} from "@/lib/adventure/config"
+import { Sparkles, CheckCircle2, AlertTriangle, XCircle } from "lucide-react"
+import { useRouter, useSearchParams } from "next/navigation"
+import { usePetProfile } from "@/hooks/use-pet-profile"
+
+type AdventureProgressData = AdventureProgressSnapshot
+type NavItem = "home" | "library" | "adventure" | "pets" | "profile"
 
 export default function AdventurePage() {
+  const { profile: petProfile } = usePetProfile()
   const [selectedRegion, setSelectedRegion] = useState("magic-forest")
   const [playerPos, setPlayerPos] = useState({ x: 22, y: 72 })
   const [showWelcome, setShowWelcome] = useState(true)
+  const [dataError, setDataError] = useState<string | null>(null)
+  const [unlockHintText, setUnlockHintText] = useState<string | null>(null)
+  const [newUnlockedRegionText, setNewUnlockedRegionText] = useState<string | null>(null)
+  const [isProgressLoading, setIsProgressLoading] = useState(false)
+  const [adventureProgress, setAdventureProgress] = useState<AdventureProgressData>({
+    totalStars: 0,
+    worldProgress: 0,
+    regionProgress: {},
+  })
+  const previousRegionUnlockedRef = useRef<Record<string, boolean>>({})
+  const hasHydratedProgressRef = useRef(false)
+  const lastToastSignatureRef = useRef<string>("")
   const router = useRouter()
+  const searchParams = useSearchParams()
 
-  // Hide welcome message after delay
+  useEffect(() => {
+    const regionParam = searchParams.get("region")
+    if (regionParam && regionParam in REGION_SHELF_CONFIG) {
+      router.replace(`/adventure/${regionParam}`)
+    }
+  }, [searchParams, router])
+
   useEffect(() => {
     const timer = setTimeout(() => setShowWelcome(false), 3000)
     return () => clearTimeout(timer)
   }, [])
 
-  // Update player position based on selected region
+  const refreshAdventureProgress = async () => {
+    try {
+      setIsProgressLoading(true)
+      const dashboard = await fetchAdventureDashboard()
+      const data = dashboard.progress
+      if (!data) throw new Error("获取地图进度失败")
+
+      const nextProgress: AdventureProgressData = {
+        totalStars: data.totalStars,
+        worldProgress: data.worldProgress,
+        regionProgress: data.regionProgress,
+      }
+
+      const previousUnlockedMap = previousRegionUnlockedRef.current
+      const currentUnlockedMap: Record<string, boolean> = {}
+      let justUnlockedRegionName: string | null = null
+      Object.entries(REGION_SHELF_CONFIG).forEach(([regionId, region]) => {
+        const nextUnlocked = Boolean(nextProgress.regionProgress[regionId]?.unlocked)
+        currentUnlockedMap[regionId] = nextUnlocked
+        if (hasHydratedProgressRef.current && !previousUnlockedMap[regionId] && nextUnlocked && !justUnlockedRegionName) {
+          justUnlockedRegionName = region.name
+        }
+      })
+      previousRegionUnlockedRef.current = currentUnlockedMap
+      if (!hasHydratedProgressRef.current) {
+        hasHydratedProgressRef.current = true
+      } else if (justUnlockedRegionName) {
+        setNewUnlockedRegionText(`新区域已解锁：${justUnlockedRegionName}`)
+      }
+
+      setAdventureProgress(nextProgress)
+    } catch (error) {
+      setDataError(error instanceof Error ? error.message : "获取地图进度失败")
+    } finally {
+      setIsProgressLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    void refreshAdventureProgress()
+  }, [])
+
+  useEffect(() => {
+    if (!newUnlockedRegionText) return
+    const timer = window.setTimeout(() => setNewUnlockedRegionText(null), 2800)
+    return () => window.clearTimeout(timer)
+  }, [newUnlockedRegionText])
+
+  useEffect(() => {
+    if (!unlockHintText) return
+    const timer = window.setTimeout(() => setUnlockHintText(null), 2600)
+    return () => window.clearTimeout(timer)
+  }, [unlockHintText])
+
+  useEffect(() => {
+    if (!dataError) return
+    const timer = window.setTimeout(() => setDataError(null), 2600)
+    return () => window.clearTimeout(timer)
+  }, [dataError])
+
   useEffect(() => {
     const positions: Record<string, { x: number; y: number }> = {
       "magic-forest": { x: 22, y: 72 },
       "ice-mountain": { x: 75, y: 18 },
       "ancient-desert": { x: 78, y: 55 },
+      "ocean-ruins": { x: 22, y: 42 },
+      "sky-kingdom": { x: 28, y: 15 },
+      "dream-tower": { x: 52, y: 45 },
     }
     if (positions[selectedRegion]) {
       setPlayerPos(positions[selectedRegion])
     }
   }, [selectedRegion])
 
-  const handleNavigation = (item: string) => {
-    if (item === "home") {
-      router.push("/")
+  const isRegionUnlocked = (regionId: string) => {
+    const dynamicUnlocked = adventureProgress.regionProgress[regionId]?.unlocked
+    if (typeof dynamicUnlocked === "boolean") return dynamicUnlocked
+    return Boolean(REGION_SHELF_CONFIG[regionId]?.unlockedByDefault)
+  }
+
+  const buildRegionUnlockHint = (regionId: string) => {
+    if (isRegionUnlocked(regionId)) return null
+    const currentIndex = REGION_UNLOCK_ORDER.findIndex((candidate) => candidate === regionId)
+    if (currentIndex <= 0) return "该区域暂未解锁，请先完成前置区域挑战。"
+    const prevRegionId = REGION_UNLOCK_ORDER[currentIndex - 1]
+    const prevRegionName = prevRegionId ? REGION_SHELF_CONFIG[prevRegionId]?.name ?? "前一区域" : "前一区域"
+    const threshold = REGION_SHELF_CONFIG[regionId]?.unlockWhenPrevProgressAtLeast ?? 100
+    const prevProgress = prevRegionId ? adventureProgress.regionProgress[prevRegionId]?.progress ?? 0 : 0
+    return `解锁条件：${prevRegionName}进度达到 ${threshold}%（当前 ${prevProgress}%）`
+  }
+
+  const mobileToast = useMemo(() => {
+    if (dataError) return { text: dataError, tone: "error" as const }
+    if (unlockHintText) return { text: unlockHintText, tone: "warning" as const }
+    if (newUnlockedRegionText) return { text: newUnlockedRegionText, tone: "success" as const }
+    return null
+  }, [dataError, newUnlockedRegionText, unlockHintText])
+
+  useEffect(() => {
+    if (!mobileToast) {
+      lastToastSignatureRef.current = ""
+      return
     }
+    const signature = `${mobileToast.tone}:${mobileToast.text}`
+    if (lastToastSignatureRef.current === signature) return
+    lastToastSignatureRef.current = signature
+    if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
+      if (mobileToast.tone === "success") navigator.vibrate(20)
+      if (mobileToast.tone === "warning") navigator.vibrate([20, 30, 20])
+      if (mobileToast.tone === "error") navigator.vibrate([30, 40, 30])
+    }
+  }, [mobileToast])
+
+  const handleNavigation = (item: NavItem) => {
+    if (item === "home") router.push("/")
+    if (item === "library") router.push("/library")
+    if (item === "pets") router.push("/pets")
+    if (item === "profile") router.push("/profile")
+  }
+
+  const handleRegionSelect = (regionId: string) => {
+    if (!isRegionUnlocked(regionId)) {
+      setUnlockHintText(buildRegionUnlockHint(regionId))
+      return
+    }
+    setUnlockHintText(null)
+    setSelectedRegion(regionId)
+    router.push(`/adventure/${regionId}`)
+  }
+
+  const handleLockedRegionSelect = (regionId: string) => {
+    setUnlockHintText(buildRegionUnlockHint(regionId))
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-indigo-100/80 via-sky-50 to-emerald-50/50 pb-24">
-      {/* === HEADER === */}
-      <header className="sticky top-0 z-40 bg-white border-b border-border/30">
-        <div className="flex items-center justify-between px-4 py-3">
-          <Link 
-            href="/"
-            className="flex items-center justify-center w-9 h-9 rounded-xl bg-white/90 shadow-md border border-white/60 hover:scale-105 active:scale-95 transition-transform"
-          >
-            <ChevronLeft className="h-5 w-5 text-foreground" />
-          </Link>
-          
-          <div className="flex items-center gap-2">
-            <Compass className="h-4 w-4 text-primary" />
-            <h1 className="text-base font-bold text-foreground">冒险地图</h1>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <button className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-white/90 shadow-md border border-white/60 hover:scale-105 active:scale-95 transition-transform">
-              <Bell className="h-4 w-4 text-foreground" />
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-[9px] font-bold text-white flex items-center justify-center shadow-sm">
-                2
-              </span>
-            </button>
-            <button className="flex items-center justify-center w-9 h-9 rounded-xl bg-white/90 shadow-md border border-white/60 hover:scale-105 active:scale-95 transition-transform">
-              <Settings className="h-4 w-4 text-foreground" />
-            </button>
-          </div>
-        </div>
-        
-        {/* Player status bar */}
-        <div className="px-4 pb-2 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 px-2 py-1 bg-primary/10 rounded-full">
-              <MapPin className="h-3 w-3 text-primary" />
-              <span className="text-[10px] font-semibold text-primary">魔法森林</span>
-            </div>
-            <div className="flex items-center gap-1 px-2 py-1 bg-amber-500/10 rounded-full">
-              <Sparkles className="h-3 w-3 text-amber-500" />
-              <span className="text-[10px] font-semibold text-amber-600">探险中</span>
-            </div>
-          </div>
-          <span className="text-[10px] text-muted-foreground">今日探索: 45分钟</span>
-        </div>
-      </header>
+    <PlayerPageShell className="relative bg-gradient-to-b from-indigo-100/80 via-sky-50 to-emerald-50/50">
+      <AdventureMapHeader
+        totalStars={adventureProgress.totalStars}
+        worldProgress={adventureProgress.worldProgress}
+        isProgressLoading={isProgressLoading}
+      />
 
-      {/* === WELCOME TOAST === */}
       {showWelcome && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 animate-in fade-in-0 slide-in-from-top-4 duration-500">
-          <div className="px-4 py-2 bg-white rounded-2xl shadow-xl border border-border/50 flex items-center gap-2">
+        <div className="fixed top-28 left-1/2 z-50 -translate-x-1/2 animate-in fade-in-0 slide-in-from-top-4 duration-500">
+          <div className="flex items-center gap-2 rounded-2xl border border-white/60 bg-white/90 px-4 py-2 shadow-xl backdrop-blur-md">
             <Sparkles className="h-4 w-4 text-amber-500" />
-            <span className="text-sm font-medium text-foreground">欢迎回到冒险世界!</span>
+            <span className="text-sm font-medium text-foreground">欢迎回到冒险世界！</span>
           </div>
         </div>
       )}
 
-      {/* === MAIN CONTENT === */}
-      <main className="relative z-10">
-        {/* World Map Section */}
-        <section className="px-4 pt-4">
-          <div className="relative">
-            <WorldMap 
-              selectedRegion={selectedRegion}
-              onRegionSelect={setSelectedRegion}
-              playerPosition={playerPos}
-            />
-            
-            {/* Pet companion floating on map - matches home page pet */}
-            <div className="absolute bottom-4 right-4 z-20">
-              <MapPetCompanion 
-                petEmoji="🐕"
-                petName="毛毛"
-              />
-            </div>
-          </div>
-        </section>
+      <main className="relative z-10 px-4 pt-3 pb-4">
+        <WorldMap
+          selectedRegion={selectedRegion}
+          onRegionSelect={handleRegionSelect}
+          onLockedRegionSelect={handleLockedRegionSelect}
+          playerPosition={playerPos}
+          regionProgress={Object.fromEntries(
+            Object.entries(adventureProgress.regionProgress).map(([regionId, region]) => [
+              regionId,
+              {
+                progress: region.progress,
+                completedStages: region.completedStages,
+                unlocked: region.unlocked,
+              },
+            ]),
+          )}
+          companionPet={{
+            name: petProfile.name,
+            emoji: petProfile.emoji,
+            avatarSrc: petProfile.avatarSrc,
+          }}
+        />
 
-        {/* Progress Section */}
-        <section className="mt-5">
-          <ProgressSection onViewDetails={() => router.push("/adventure/progress")} />
-        </section>
-
-        {/* Adventure Path */}
-        <section className="mt-5">
-          <AdventurePath 
-            onStageSelect={(id) => console.log("Selected stage:", id)}
-          />
-        </section>
-
-        {/* Reward Discovery */}
-        <section className="mt-5 pb-4">
-          <RewardDiscovery onViewCollection={() => router.push("/adventure/collection")} />
-        </section>
+        <p className="mt-4 text-center text-[11px] text-muted-foreground">
+          点击已解锁区域，进入该区域的冒险之路
+        </p>
       </main>
 
-      {/* === BOTTOM NAVIGATION === */}
       <BottomNavigation activeItem="adventure" onNavigate={handleNavigation} />
-    </div>
+
+      {mobileToast && (
+        <div className="fixed bottom-24 left-1/2 z-[70] w-[88%] max-w-sm -translate-x-1/2 animate-in fade-in-0 slide-in-from-bottom-2 duration-200">
+          <div
+            className={[
+              "flex items-center gap-2 rounded-2xl px-4 py-2.5 text-xs font-medium shadow-xl backdrop-blur-md",
+              mobileToast.tone === "error" ? "bg-red-500/90 text-white" : "",
+              mobileToast.tone === "warning" ? "bg-amber-500/90 text-white" : "",
+              mobileToast.tone === "success" ? "bg-emerald-500/90 text-white" : "",
+            ].join(" ")}
+          >
+            {mobileToast.tone === "success" && <CheckCircle2 className="h-4 w-4 shrink-0" />}
+            {mobileToast.tone === "warning" && <AlertTriangle className="h-4 w-4 shrink-0" />}
+            {mobileToast.tone === "error" && <XCircle className="h-4 w-4 shrink-0" />}
+            <span className="flex-1 text-center">{mobileToast.text}</span>
+          </div>
+        </div>
+      )}
+    </PlayerPageShell>
   )
 }

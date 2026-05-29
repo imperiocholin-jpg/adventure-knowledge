@@ -16,7 +16,7 @@ interface Skill {
 }
 
 interface PetSkillsProps {
-  skills: Skill[]
+  skills?: Skill[]
   activeSkillId?: string
   onSkillSelect?: (skill: Skill) => void
   disabled?: boolean

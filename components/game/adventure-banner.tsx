@@ -7,7 +7,9 @@ interface AdventureBannerProps {
   currentChapter: string
   currentWorld: string
   progress: number
+  /** @deprecated 使用 worldProgressPercent */
   explorationPercent?: number
+  worldProgressPercent?: number
   discoveredRegions?: number
   totalRegions?: number
   onStartAdventure?: () => void
@@ -17,11 +19,14 @@ export function AdventureBanner({
   currentChapter = "第三章",
   currentWorld = "魔法森林",
   progress = 65,
-  explorationPercent = 42,
+  explorationPercent,
+  worldProgressPercent = 0,
   discoveredRegions = 3,
-  totalRegions = 7,
+  totalRegions = 6,
   onStartAdventure,
 }: AdventureBannerProps) {
+  const worldPercent = worldProgressPercent ?? explorationPercent ?? 0
+
   return (
     <div className="relative overflow-hidden rounded-3xl shadow-2xl">
       {/* Multi-layer fantasy background */}
@@ -98,13 +103,10 @@ export function AdventureBanner({
           </div>
         </div>
 
-        {/* Title with glow */}
-        <h1 className="mb-1 text-2xl font-bold text-white drop-shadow-lg">
-          继续冒险
-        </h1>
+        {/* Chapter descriptor */}
         <p className="mb-4 text-sm text-white/80 flex items-center gap-1">
           <Star className="h-3 w-3 text-amber-300 fill-amber-300" />
-          {currentChapter} · 探索未知领域
+          {currentChapter} · 继续你的冒险
         </p>
 
         {/* Enhanced progress section */}
@@ -115,8 +117,8 @@ export function AdventureBanner({
               <span className="text-xs font-bold text-white">{progress}%</span>
             </div>
             <div className="flex items-center gap-1">
-              <span className="text-[10px] text-amber-300/80">世界探索</span>
-              <span className="text-[10px] font-bold text-amber-300">{explorationPercent}%</span>
+              <span className="text-[10px] text-amber-300/80">世界进度</span>
+              <span className="text-[10px] font-bold text-amber-300">{worldPercent}%</span>
             </div>
           </div>
           
@@ -132,7 +134,7 @@ export function AdventureBanner({
           <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
             <div 
               className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-teal-300 transition-all duration-500"
-              style={{ width: `${explorationPercent}%` }}
+              style={{ width: `${worldPercent}%` }}
             />
           </div>
         </div>
@@ -147,7 +149,7 @@ export function AdventureBanner({
           
           <span className="relative flex items-center justify-center gap-2">
             <Sparkles className="h-5 w-5 animate-pulse" />
-            开始冒险
+            继续冒险
             <Play className="h-5 w-5 fill-current" />
           </span>
         </Button>

@@ -1,12 +1,16 @@
 {
-  "name": "my-project",
+  "name": "adventure-knowledge-app",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "seed:coins": "node scripts/seed-test-coins-vitals.mjs",
+    "seed:test": "node scripts/seed-test-resources.mjs",
+    "pets:recalc-levels": "node scripts/recalc-pet-levels.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -68,6 +72,9 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.184.1",
+    "dotenv": "^17.4.2",
+    "pg": "^8.21.0",
     "postcss": "^8.5",
     "tailwindcss": "^4.2.0",
     "tw-animate-css": "1.3.3",

@@ -1,45 +1,36 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { 
-  Star, 
-  Lock, 
-  Gift, 
-  Swords, 
+import {
+  Star,
+  Lock,
+  Gift,
+  Swords,
   BookOpen,
   Crown,
   Sparkles,
   Check,
   Eye,
   Gem,
-  Zap
+  Zap,
 } from "lucide-react"
+import {
+  buildPathStagesFromRegion,
+  type PathStage,
+  type PathStageType,
+} from "@/lib/adventure/build-path-stages"
+import type { BossChallengeSnapshot } from "@/lib/adventure/boss-eligibility"
 
-type StageType = "reading" | "boss" | "treasure" | "battle" | "checkpoint" | "mystery" | "elite"
-
-type Stage = {
-  id: number
-  type: StageType
-  title: string
-  status: "completed" | "current" | "locked"
-  stars?: number
-  reward?: string
-}
-
-const stages: Stage[] = [
-  { id: 1, type: "reading", title: "初入森林", status: "completed", stars: 3 },
-  { id: 2, type: "reading", title: "精灵之语", status: "completed", stars: 3 },
-  { id: 3, type: "treasure", title: "神秘宝箱", status: "completed", stars: 2, reward: "+50金币" },
-  { id: 4, type: "battle", title: "知识挑战", status: "completed", stars: 3 },
-  { id: 5, type: "elite", title: "精英守卫", status: "completed", stars: 2 },
-  { id: 6, type: "boss", title: "树精王", status: "current" },
-  { id: 7, type: "reading", title: "古老传说", status: "locked" },
-  { id: 8, type: "mystery", title: "迷雾深处", status: "locked" },
-  { id: 9, type: "treasure", title: "精灵宝藏", status: "locked" },
-  { id: 10, type: "boss", title: "森林之心", status: "locked" },
-]
-
-const stageConfig = {
+const stageConfig: Record<
+  PathStageType,
+  {
+    icon: typeof BookOpen
+    color: string
+    bgGradient: string
+    glowColor: string
+    size: "normal" | "medium" | "large"
+  }
+> = {
   reading: { 
     icon: BookOpen, 
     color: "emerald", 
@@ -92,12 +83,38 @@ const stageConfig = {
 }
 
 interface AdventurePathProps {
+  regionName?: string
+  totalStages?: number
+  completedStages?: number
+  regionStars?: number
+  bossSnapshot?: BossChallengeSnapshot | null
+  isBossLoading?: boolean
   onStageSelect?: (stageId: number) => void
+  onBossChallenge?: () => void
 }
 
-export function AdventurePath({ onStageSelect }: AdventurePathProps) {
-  const totalStars = stages.reduce((acc, s) => acc + (s.stars || 0), 0)
-  const maxStars = stages.length * 3
+export function AdventurePath({
+  regionName = "魔法森林",
+  totalStages = 12,
+  completedStages = 0,
+  regionStars = 0,
+  bossSnapshot,
+  isBossLoading = false,
+  onStageSelect,
+  onBossChallenge,
+}: AdventurePathProps) {
+  const boss = bossSnapshot?.boss ?? null
+  const bossStatus = bossSnapshot?.status ?? "locked"
+  const { stages, maxStars } = buildPathStagesFromRegion({
+    regionName,
+    totalStages,
+    completedStages,
+    regionStars,
+    bossName: boss?.name,
+    bossDefeated: bossSnapshot?.bossDefeated,
+    bossStatus,
+  })
+  const displayStars = regionStars
 
   return (
     <div className="relative px-4">
@@ -109,12 +126,14 @@ export function AdventurePath({ onStageSelect }: AdventurePathProps) {
           </div>
           <div>
             <h3 className="text-sm font-bold text-foreground">冒险之路</h3>
-            <p className="text-[10px] text-muted-foreground">魔法森林 · 第三章</p>
+            <p className="text-[10px] text-muted-foreground">
+              {regionName} · 第 {Math.min(completedStages + 1, totalStages)} / {totalStages} 关
+            </p>
           </div>
         </div>
         <div className="flex items-center gap-1.5 bg-amber-50 rounded-full px-2.5 py-1 border border-amber-200">
           <Star className="h-4 w-4 text-amber-500 fill-amber-500" />
-          <span className="text-sm font-bold text-amber-700">{totalStars}</span>
+          <span className="text-sm font-bold text-amber-700">{displayStars}</span>
           <span className="text-[10px] text-amber-500">/ {maxStars}</span>
         </div>
       </div>
@@ -122,7 +141,7 @@ export function AdventurePath({ onStageSelect }: AdventurePathProps) {
       {/* Scrollable path container */}
       <div className="relative overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4">
         <div className="flex items-center gap-0 min-w-max py-2">
-          {stages.map((stage, index) => {
+          {stages.map((stage: PathStage, index) => {
             const config = stageConfig[stage.type]
             const Icon = config.icon
             const isCompleted = stage.status === "completed"
@@ -276,43 +295,6 @@ export function AdventurePath({ onStageSelect }: AdventurePathProps) {
               </div>
             )
           })}
-        </div>
-      </div>
-      
-      {/* Current stage CTA - enhanced */}
-      <div className="mt-3 p-3 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 rounded-2xl border border-amber-400/30 relative overflow-hidden">
-        {/* Background shimmer */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shimmer_3s_ease-in-out_infinite]" />
-        
-        <div className="relative flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg">
-                <Crown className="h-6 w-6 text-white" />
-              </div>
-              {/* Danger indicator */}
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center border-2 border-white animate-pulse">
-                <span className="text-[8px] text-white font-bold">!</span>
-              </div>
-            </div>
-            <div>
-              <p className="text-[10px] text-amber-600 font-medium">BOSS战</p>
-              <p className="text-sm font-bold text-foreground">树精王</p>
-              <div className="flex items-center gap-1 mt-0.5">
-                <div className="flex">
-                  {[1,2,3,4,5].map(i => (
-                    <Star key={i} className={cn("h-2.5 w-2.5", i <= 4 ? "text-amber-400 fill-amber-400" : "text-gray-300")} />
-                  ))}
-                </div>
-                <span className="text-[9px] text-muted-foreground">难度</span>
-              </div>
-            </div>
-          </div>
-          <button className="relative px-5 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 overflow-hidden group">
-            <span className="relative z-10">挑战</span>
-            {/* Button shine effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-          </button>
         </div>
       </div>
       

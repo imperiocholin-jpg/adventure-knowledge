@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useState, useEffect, useMemo, useRef } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { 
   ChevronLeft, Bell, Settings, Sparkles, Trophy, Users, 
@@ -10,13 +10,53 @@ import {
 import { Button } from "@/components/ui/button"
 import { BattleArena } from "@/components/battle/battle-arena"
 import { QuestionPanel } from "@/components/battle/question-panel"
-import { PetSkills } from "@/components/battle/pet-skills"
 import { BattleRewards } from "@/components/battle/battle-rewards"
 import { MatchModes } from "@/components/battle/match-modes"
+import { BattleCostDialog } from "@/components/battle/battle-cost-dialog"
+import { BattleItemPicker } from "@/components/battle/battle-item-picker"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
+import { PlayerPageShell } from "@/components/layout/player-page-shell"
+import { PetDeathDialog } from "@/components/pets/pet-death-dialog"
+import { PetAvatar } from "@/components/pets/pet-avatar"
+import { battleConstants, calcBattleDamage, calcBattleStats, resolveBattleRewards, type BattleEquipmentBonus } from "@/lib/battle/rules"
+import {
+  createBattleItemRuntime,
+  getBattleItemConfig,
+  listOwnedBattleItems,
+  type BattleItemRuntimeState,
+} from "@/lib/pets/battle-items"
+import {
+  PET_EQUIPMENT_STORAGE_KEY,
+  getDefaultEquippedIds,
+  parseEquippedIds,
+  resolveBattleBonusesFromEquipment,
+} from "@/lib/pets/equipment"
+import { levelFromTotalExp } from "@/lib/pets/level-progress"
+import {
+  BATTLE_SATIETY_COST,
+  BATTLE_SPIRIT_COST,
+  canEnterBattle,
+  normalizeInventory,
+  normalizePetState,
+  type PetInventoryMap,
+  type PetVitalState,
+} from "@/lib/pets/state"
+import { buildPetProfile } from "@/lib/pets/pet-profile"
+import { usePetProfile } from "@/hooks/use-pet-profile"
+import { useUserProfile } from "@/hooks/use-user-profile"
+import { LeaderboardPreview } from "@/components/social/leaderboard-preview"
+import { resolveUserAvatarSrc } from "@/lib/user/avatar-catalog"
+import { getRegionBossConfig } from "@/lib/adventure/region-boss"
 
 type GameState = "lobby" | "matching" | "battle" | "result"
 type BattlePhase = "idle" | "question" | "skill" | "result"
+type BattleResult = "win" | "lose" | "draw" | null
+
+const MATCH_MODE_TITLES: Record<string, string> = {
+  friend: "好友挑战",
+  random: "随机匹配",
+  tournament: "赛季锦标赛",
+}
 
 // Sample questions for demo
 const sampleQuestions = [
@@ -39,41 +79,480 @@ const sampleQuestions = [
 
 export default function BattlePage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const bossRegionId = searchParams.get("boss")
+  const bossConfig = useMemo(() => (bossRegionId ? getRegionBossConfig(bossRegionId) : null), [bossRegionId])
+  const isBossBattle = Boolean(bossConfig)
+  const { profile: petProfile } = usePetProfile()
+  const { profile: userProfile } = useUserProfile()
   const [gameState, setGameState] = useState<GameState>("lobby")
   const [battlePhase, setBattlePhase] = useState<BattlePhase>("idle")
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const [playerHealth, setPlayerHealth] = useState(100)
-  const [opponentHealth, setOpponentHealth] = useState(100)
+  const [playerLevel, setPlayerLevel] = useState(12)
+  const [equippedEquipmentIds, setEquippedEquipmentIds] = useState<string[]>(() => getDefaultEquippedIds())
+  const [petVitals, setPetVitals] = useState<PetVitalState>(() => normalizePetState(null))
+  const [inventory, setInventory] = useState<PetInventoryMap>({})
+  const [selectedBattleItemIds, setSelectedBattleItemIds] = useState<string[]>([])
+  const [battleItemNotice, setBattleItemNotice] = useState<string | null>(null)
+  const [opponentLevel, setOpponentLevel] = useState(10)
+  const [opponentPetName, setOpponentPetName] = useState("咪咪")
+  const [opponentPetEmoji, setOpponentPetEmoji] = useState("🐱")
+  const [playerHealth, setPlayerHealth] = useState(336)
+  const [opponentHealth, setOpponentHealth] = useState(300)
   const [isPlayerTurn, setIsPlayerTurn] = useState(true)
+  const [turnCount, setTurnCount] = useState(1)
+  const [playerComboStreak, setPlayerComboStreak] = useState(0)
+  const [opponentComboStreak, setOpponentComboStreak] = useState(0)
+  const [battleResult, setBattleResult] = useState<BattleResult>(null)
+  const [firstWinBonusExp, setFirstWinBonusExp] = useState(0)
+  const [settlementError, setSettlementError] = useState<string | null>(null)
   const [showRewards, setShowRewards] = useState(false)
   const [lastSkillUsed, setLastSkillUsed] = useState<string>()
   const [skillTarget, setSkillTarget] = useState<"player" | "opponent">()
   const [score, setScore] = useState(0)
   const [matchingProgress, setMatchingProgress] = useState(0)
+  const [battleCostDialogOpen, setBattleCostDialogOpen] = useState(false)
+  const [pendingModeId, setPendingModeId] = useState<string | null>(null)
+  const [isEnteringBattle, setIsEnteringBattle] = useState(false)
+
+  const playerHealthRef = useRef(playerHealth)
+  const opponentHealthRef = useRef(opponentHealth)
+  const turnCountRef = useRef(turnCount)
+  const battleSettledRef = useRef(false)
+  const battleItemsRef = useRef<BattleItemRuntimeState[]>([])
+  const consumedItemIdsRef = useRef<string[]>([])
+  const vitalsDeductedForBattleRef = useRef(false)
+  const playerMaxHealthRef = useRef(336)
+
+  useEffect(() => {
+    playerHealthRef.current = playerHealth
+  }, [playerHealth])
+
+  useEffect(() => {
+    opponentHealthRef.current = opponentHealth
+  }, [opponentHealth])
+
+  useEffect(() => {
+    turnCountRef.current = turnCount
+  }, [turnCount])
+
+  const playerEquipmentBonuses = useMemo<BattleEquipmentBonus[]>(
+    () => resolveBattleBonusesFromEquipment(equippedEquipmentIds),
+    [equippedEquipmentIds],
+  )
+  const opponentEquipmentBonuses = useMemo<BattleEquipmentBonus[]>(
+    () => [
+      { slot: "accessory", atkPct: 0.04 },
+    ],
+    [],
+  )
+  const playerStats = useMemo(() => calcBattleStats(playerLevel, playerEquipmentBonuses), [playerLevel, playerEquipmentBonuses])
+  const opponentStats = useMemo(
+    () => calcBattleStats(opponentLevel, opponentEquipmentBonuses),
+    [opponentLevel, opponentEquipmentBonuses],
+  )
+  const activeQuestion = sampleQuestions[currentQuestionIndex] ?? sampleQuestions[0]
+  const battleGate = useMemo(() => canEnterBattle(petVitals), [petVitals])
+  const ownedBattleItems = useMemo(() => listOwnedBattleItems(inventory), [inventory])
+  const battleItemPickerOptions = useMemo(
+    () =>
+      ownedBattleItems.map((item) => ({
+        itemId: item.itemId,
+        name: item.shopItem.name,
+        icon: item.shopItem.icon,
+        owned: item.owned,
+        triggerHint: item.triggerHint,
+        battleHint: item.shopItem.battleHint,
+      })),
+    [ownedBattleItems],
+  )
+
+  useEffect(() => {
+    playerMaxHealthRef.current = playerStats.maxHealth
+  }, [playerStats.maxHealth])
+
+  useEffect(() => {
+    setSelectedBattleItemIds((prev) => prev.filter((id) => (inventory[id] ?? 0) > 0))
+  }, [inventory])
+
+  useEffect(() => {
+    if (petProfile.level > 0) {
+      setPlayerLevel(petProfile.level)
+    }
+  }, [petProfile.level])
+
+  useEffect(() => {
+    const rawEquipment = window.localStorage.getItem(PET_EQUIPMENT_STORAGE_KEY)
+    const localEquipmentIds = rawEquipment
+      ? (() => {
+          try {
+            return parseEquippedIds(JSON.parse(rawEquipment) as unknown)
+          } catch {
+            return getDefaultEquippedIds()
+          }
+        })()
+      : getDefaultEquippedIds()
+    setEquippedEquipmentIds(localEquipmentIds)
+
+    ;(async () => {
+      try {
+        const response = await fetch("/api/pets/equipment", { cache: "no-store" })
+        const payload = await response.json()
+        if (!response.ok || !payload?.ok || !payload?.data) return
+        const serverIds = parseEquippedIds(payload.data.equippedIds)
+        setEquippedEquipmentIds(serverIds)
+      } catch {
+        // keep local fallback
+      }
+    })()
+
+    ;(async () => {
+      try {
+        await fetch("/api/pets/daily-decay", { method: "POST" })
+      } catch {
+        // 忽略每日衰减失败
+      }
+      try {
+        const response = await fetch("/api/pets", { cache: "no-store" })
+        const payload = await response.json()
+        const pet = Array.isArray(payload?.data) ? payload.data[0] : null
+        if (!pet || typeof pet !== "object") return
+        if (payload?.summary?.state) {
+          setPetVitals(normalizePetState(payload.summary.state))
+        }
+        if (typeof payload.summary?.level === "number") {
+          setPlayerLevel(Math.max(1, Math.floor(payload.summary.level)))
+        } else if (typeof payload.summary?.petExp === "number") {
+          setPlayerLevel(levelFromTotalExp(payload.summary.petExp))
+        }
+        if (payload?.summary?.inventory) {
+          setInventory(normalizeInventory(payload.summary.inventory))
+        }
+      } catch {
+        // keep fallback values
+      }
+    })()
+  }, [])
 
   // Player and opponent data
+  const opponentPetProfile = useMemo(
+    () => buildPetProfile({ species: "cat", breed: "狸花", level: opponentLevel, name: opponentPetName, emoji: opponentPetEmoji }),
+    [opponentLevel, opponentPetName, opponentPetEmoji],
+  )
+
+  const opponentUserAvatarSrc = resolveUserAvatarSrc("girl-01")
+
   const playerData = {
-    name: "小冒险家",
-    avatar: "👦",
+    name: userProfile.username,
+    avatarSrc: userProfile.avatarSrc,
     pet: {
-      emoji: "🐕",
-      name: "毛毛",
-      level: 12,
+      emoji: petProfile.emoji,
+      avatarSrc: petProfile.avatarSrc,
+      name: petProfile.name,
+      level: playerStats.level,
+      attack: playerStats.attack,
       health: playerHealth,
-      maxHealth: 100,
+      maxHealth: playerStats.maxHealth,
     },
   }
 
   const opponentData = {
     name: "小书虫",
-    avatar: "👧",
+    avatarSrc: opponentUserAvatarSrc,
     pet: {
-      emoji: "🐱",
-      name: "咪咪",
-      level: 10,
+      emoji: opponentPetEmoji,
+      avatarSrc: opponentPetProfile.avatarSrc,
+      name: opponentPetName,
+      level: opponentStats.level,
+      attack: opponentStats.attack,
       health: opponentHealth,
-      maxHealth: 100,
+      maxHealth: opponentStats.maxHealth,
     },
+  }
+
+  const randomQuestionIndex = () => Math.floor(Math.random() * sampleQuestions.length)
+
+  const getTodayStamp = () => new Date().toISOString().slice(0, 10)
+
+  const consumeFirstWinBonusIfNeeded = () => {
+    const stamp = getTodayStamp()
+    const key = `ak_pet_battle_first_win_${stamp}`
+    const hasConsumed = window.localStorage.getItem(key) === "1"
+    if (hasConsumed) return 0
+    window.localStorage.setItem(key, "1")
+    return 10
+  }
+
+  const getPendingBattleItem = (effectType: BattleItemRuntimeState["effectType"]) =>
+    battleItemsRef.current.find((item) => item.effectType === effectType && !item.triggered) ?? null
+
+  const consumeBattleItem = (itemId: string, notice: string) => {
+    battleItemsRef.current = battleItemsRef.current.map((item) =>
+      item.itemId === itemId ? { ...item, triggered: true, consumed: true } : item,
+    )
+    if (!consumedItemIdsRef.current.includes(itemId)) {
+      consumedItemIdsRef.current.push(itemId)
+    }
+    setBattleItemNotice(notice)
+    setLastSkillUsed(notice)
+  }
+
+  const persistConsumedBattleItems = async () => {
+    const ids = [...consumedItemIdsRef.current]
+    if (ids.length === 0) return
+    try {
+      const response = await fetch("/api/battle/consume-items", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ itemIds: ids }),
+      })
+      const payload = await response.json()
+      if (response.ok && payload?.ok && payload.data?.inventory) {
+        setInventory(normalizeInventory(payload.data.inventory))
+      }
+    } catch {
+      // keep local battle result even if inventory sync fails
+    }
+  }
+
+  const resetBattleRuntime = () => {
+    setCurrentQuestionIndex(randomQuestionIndex())
+    setPlayerHealth(playerStats.maxHealth)
+    playerHealthRef.current = playerStats.maxHealth
+    setOpponentHealth(opponentStats.maxHealth)
+    opponentHealthRef.current = opponentStats.maxHealth
+    setTurnCount(1)
+    turnCountRef.current = 1
+    setPlayerComboStreak(0)
+    setOpponentComboStreak(0)
+    setScore(0)
+    setBattleResult(null)
+    setFirstWinBonusExp(0)
+    setSettlementError(null)
+    battleSettledRef.current = false
+    setLastSkillUsed(undefined)
+    setSkillTarget(undefined)
+    setIsPlayerTurn(true)
+    setBattleItemNotice(null)
+    battleItemsRef.current = createBattleItemRuntime(selectedBattleItemIds)
+    consumedItemIdsRef.current = []
+  }
+
+  const endBattle = (result: Exclude<BattleResult, null>) => {
+    if (battleSettledRef.current) return
+    battleSettledRef.current = true
+
+    setBattleResult(result)
+    let bonusExp = 0
+    if (result === "win") {
+      bonusExp = consumeFirstWinBonusIfNeeded()
+      setFirstWinBonusExp(bonusExp)
+    } else {
+      setFirstWinBonusExp(0)
+    }
+    const rewardSnapshot = resolveBattleRewards(result, bonusExp > 0)
+    const totalPetExpGain = rewardSnapshot.petExp + rewardSnapshot.firstWinBonusExp
+    const shouldUseBossComplete = isBossBattle && result === "win" && bossRegionId
+    void persistConsumedBattleItems()
+    ;(async () => {
+      try {
+        const response = await fetch("/api/battle/settle", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            result,
+            petExpGain: shouldUseBossComplete ? 0 : totalPetExpGain,
+            ownerCoinsGain: shouldUseBossComplete ? 0 : rewardSnapshot.ownerPoints,
+            hasFirstWinBonus: shouldUseBossComplete ? false : bonusExp > 0,
+            consumeSatiety: vitalsDeductedForBattleRef.current ? 0 : BATTLE_SATIETY_COST,
+            consumeSpirit: vitalsDeductedForBattleRef.current ? 0 : BATTLE_SPIRIT_COST,
+            skipVitalCost: vitalsDeductedForBattleRef.current,
+          }),
+        })
+        const payload = await response.json()
+        if (!response.ok || !payload?.ok) {
+          throw new Error(payload?.error?.message ?? "对战结算保存失败")
+        }
+        const applied = payload?.data?.applied
+        if (
+          applied?.satietyAfter !== undefined &&
+          applied?.satietyAfter !== null &&
+          applied?.spiritAfter !== undefined &&
+          applied?.spiritAfter !== null
+        ) {
+          setPetVitals(
+            normalizePetState({
+              ...petVitals,
+              satiety: Number(applied.satietyAfter),
+              spirit: Number(applied.spiritAfter),
+              isDead: Boolean(applied.isDeadAfter),
+            }),
+          )
+        }
+
+        if (shouldUseBossComplete) {
+          const bossResponse = await fetch("/api/adventure/boss/complete", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ regionId: bossRegionId, result: "win" }),
+          })
+          const bossPayload = await bossResponse.json()
+          if (!bossResponse.ok || !bossPayload?.ok) {
+            throw new Error(bossPayload?.error?.message ?? "BOSS 挑战结算失败")
+          }
+        }
+      } catch (error) {
+        setSettlementError(error instanceof Error ? error.message : "对战结算保存失败")
+      }
+    })()
+    setBattlePhase("result")
+    setGameState("result")
+    setShowRewards(true)
+  }
+
+  const proceedNextTurn = (nextIsPlayerTurn: boolean) => {
+    const limitReached = turnCountRef.current >= battleConstants.roundLimit
+    if (limitReached) {
+      const playerRemain = playerHealthRef.current
+      const opponentRemain = opponentHealthRef.current
+      if (playerRemain > opponentRemain) endBattle("win")
+      else if (playerRemain < opponentRemain) endBattle("lose")
+      else endBattle("draw")
+      return
+    }
+    setTurnCount((prev) => prev + 1)
+    turnCountRef.current += 1
+    setIsPlayerTurn(nextIsPlayerTurn)
+    setCurrentQuestionIndex(randomQuestionIndex())
+    setBattlePhase("question")
+  }
+
+  const resolveAttackTurn = (actor: "player" | "opponent", isCorrect: boolean, timeBonus = 0) => {
+    if (!isCorrect) {
+      if (actor === "player") {
+        setPlayerComboStreak(0)
+      } else {
+        setOpponentComboStreak(0)
+      }
+      setBattlePhase("idle")
+      setTimeout(() => proceedNextTurn(actor !== "player"), 550)
+      return
+    }
+
+    const nextCombo = actor === "player" ? playerComboStreak + 1 : opponentComboStreak + 1
+    if (actor === "player") {
+      setPlayerComboStreak(nextCombo)
+      setOpponentComboStreak(0)
+      setScore((prev) => prev + 100 + timeBonus)
+    } else {
+      setOpponentComboStreak(nextCombo)
+      setPlayerComboStreak(0)
+    }
+
+    const attackerStats = actor === "player" ? playerStats : opponentStats
+    const defenderStats = actor === "player" ? opponentStats : playerStats
+
+    let comboForCalc = nextCombo
+    let extraDamagePct = 0
+    let flatBonusDamage = 0
+
+    if (actor === "player") {
+      const comboItem = getPendingBattleItem("combo_boost")
+      if (comboItem) {
+        comboForCalc += 1
+        consumeBattleItem(comboItem.itemId, "连击推进器：连击 +1")
+      }
+      const pierceItem = getPendingBattleItem("armor_pierce")
+      if (pierceItem) {
+        const config = getBattleItemConfig(pierceItem.itemId)
+        extraDamagePct += config?.piercePct ?? 0.3
+        consumeBattleItem(pierceItem.itemId, "破甲符文：无视 30% 防护")
+      }
+      const atkItem = getPendingBattleItem("bonus_attack")
+      if (atkItem) {
+        const config = getBattleItemConfig(atkItem.itemId)
+        flatBonusDamage += config?.bonusAttack ?? 50
+        consumeBattleItem(atkItem.itemId, "强攻护符：攻击 +50")
+      }
+    }
+
+    const result = calcBattleDamage({
+      attackerAttack: attackerStats.attack,
+      attackerLevel: attackerStats.level,
+      defenderLevel: defenderStats.level,
+      comboStreak: comboForCalc,
+      extraDamagePct,
+    })
+    let finalDamage = result.damage + flatBonusDamage
+
+    setBattlePhase("skill")
+    setLastSkillUsed(actor === "player" ? "知识冲击" : "智慧反击")
+    setSkillTarget(actor === "player" ? "opponent" : "player")
+
+    setTimeout(() => {
+      if (actor === "player") {
+        const nextOpponentHealth = Math.max(0, opponentHealthRef.current - finalDamage)
+        setOpponentHealth(nextOpponentHealth)
+        opponentHealthRef.current = nextOpponentHealth
+        if (nextOpponentHealth <= 0) {
+          endBattle("win")
+          return
+        }
+        setBattlePhase("idle")
+        setTimeout(() => proceedNextTurn(false), 600)
+      } else {
+        const blockItem = getPendingBattleItem("block_hit")
+        if (blockItem && finalDamage > 0) {
+          finalDamage = 0
+          consumeBattleItem(blockItem.itemId, "守护护盾：抵挡本次攻击")
+        }
+
+        let reflectDamage = 0
+        const reflectItem = getPendingBattleItem("counter_reflect")
+        if (reflectItem && finalDamage > 0) {
+          const config = getBattleItemConfig(reflectItem.itemId)
+          reflectDamage = Math.max(1, Math.floor(finalDamage * (config?.reflectPct ?? 0.25)))
+          consumeBattleItem(reflectItem.itemId, "反击棱镜：反弹伤害")
+        }
+
+        const nextPlayerHealthRaw = Math.max(0, playerHealthRef.current - finalDamage)
+        let nextPlayerHealth = nextPlayerHealthRaw
+        setPlayerHealth(nextPlayerHealth)
+        playerHealthRef.current = nextPlayerHealth
+
+        if (reflectDamage > 0) {
+          const nextOpponentHealth = Math.max(0, opponentHealthRef.current - reflectDamage)
+          setOpponentHealth(nextOpponentHealth)
+          opponentHealthRef.current = nextOpponentHealth
+          if (nextOpponentHealth <= 0) {
+            endBattle("win")
+            return
+          }
+        }
+
+        const healItem = getPendingBattleItem("heal_instant")
+        const maxHp = playerMaxHealthRef.current
+        if (
+          healItem &&
+          nextPlayerHealth > 0 &&
+          nextPlayerHealth <= Math.floor(maxHp * 0.5)
+        ) {
+          const config = getBattleItemConfig(healItem.itemId)
+          const healAmount = config?.healAmount ?? 80
+          nextPlayerHealth = Math.min(maxHp, nextPlayerHealth + healAmount)
+          setPlayerHealth(nextPlayerHealth)
+          playerHealthRef.current = nextPlayerHealth
+          consumeBattleItem(healItem.itemId, `应急药剂：恢复 ${healAmount} 生命`)
+        }
+
+        if (nextPlayerHealth <= 0) {
+          endBattle("lose")
+          return
+        }
+        setBattlePhase("idle")
+        setTimeout(() => proceedNextTurn(true), 600)
+      }
+    }, 1200)
   }
 
   // Matching animation
@@ -84,6 +563,7 @@ export default function BattlePage() {
           if (prev >= 100) {
             clearInterval(interval)
             setTimeout(() => {
+              resetBattleRuntime()
               setGameState("battle")
               setBattlePhase("question")
             }, 500)
@@ -96,83 +576,104 @@ export default function BattlePage() {
     }
   }, [gameState])
 
-  const handleSelectMode = (modeId: string) => {
+  const beginMatching = () => {
+    if (bossConfig) {
+      setOpponentLevel(Math.max(5, playerLevel + bossConfig.levelOffset))
+      setOpponentPetName(bossConfig.name)
+      setOpponentPetEmoji(bossConfig.opponentEmoji)
+    } else {
+      const levelOffset = Math.floor(Math.random() * 7) - 3
+      const nextOpponentLevel = Math.max(1, playerLevel + levelOffset)
+      const opponentPool = [
+        { petName: "咪咪", emoji: "🐱" },
+        { petName: "团团", emoji: "🐰" },
+        { petName: "泡泡", emoji: "🐹" },
+        { petName: "啾啾", emoji: "🐦" },
+        { petName: "旺旺", emoji: "🐕" },
+      ]
+      const picked = opponentPool[Math.floor(Math.random() * opponentPool.length)]
+      setOpponentLevel(nextOpponentLevel)
+      setOpponentPetName(picked.petName)
+      setOpponentPetEmoji(picked.emoji)
+    }
     setMatchingProgress(0)
+    setSettlementError(null)
     setGameState("matching")
   }
 
-  const handleAnswer = (isCorrect: boolean, timeBonus: number) => {
-    if (isCorrect) {
-      // Player answers correctly - attack opponent
-      setBattlePhase("skill")
-      setLastSkillUsed("彩虹冲击")
-      setSkillTarget("opponent")
-      setScore(prev => prev + 100 + timeBonus)
-      
-      setTimeout(() => {
-        setOpponentHealth(prev => Math.max(0, prev - 25))
-        setBattlePhase("idle")
-        
-        // Check for win
-        if (opponentHealth - 25 <= 0) {
-          setTimeout(() => {
-            setGameState("result")
-            setShowRewards(true)
-          }, 500)
-        } else {
-          // Continue to next question
-          setTimeout(() => {
-            if (currentQuestionIndex < sampleQuestions.length - 1) {
-              setCurrentQuestionIndex(prev => prev + 1)
-              setBattlePhase("question")
-            } else {
-              // All questions answered - determine winner
-              setGameState("result")
-              setShowRewards(true)
-            }
-          }, 800)
-        }
-      }, 1500)
-    } else {
-      // Wrong answer - opponent attacks
-      setBattlePhase("skill")
-      setLastSkillUsed("星星跳跃")
-      setSkillTarget("player")
-      
-      setTimeout(() => {
-        setPlayerHealth(prev => Math.max(0, prev - 15))
-        setBattlePhase("idle")
-        
-        // Check for loss
-        if (playerHealth - 15 <= 0) {
-          setTimeout(() => {
-            setGameState("result")
-            setShowRewards(true)
-          }, 500)
-        } else {
-          // Continue to next question
-          setTimeout(() => {
-            if (currentQuestionIndex < sampleQuestions.length - 1) {
-              setCurrentQuestionIndex(prev => prev + 1)
-              setBattlePhase("question")
-            } else {
-              setGameState("result")
-              setShowRewards(true)
-            }
-          }, 800)
-        }
-      }, 1500)
+  const handleBossEnter = () => {
+    if (!battleGate.ok) {
+      setSettlementError(battleGate.reason)
+      return
     }
+    setPendingModeId(bossRegionId ? `boss:${bossRegionId}` : "boss")
+    setBattleCostDialogOpen(true)
+  }
+
+  const handleSelectMode = (modeId: string) => {
+    if (!battleGate.ok) {
+      setSettlementError(battleGate.reason)
+      return
+    }
+    setPendingModeId(modeId)
+    setBattleCostDialogOpen(true)
+  }
+
+  const handleConfirmBattleEnter = async () => {
+    if (!pendingModeId || !battleGate.ok) return
+    try {
+      setIsEnteringBattle(true)
+      setSettlementError(null)
+      const response = await fetch("/api/battle/enter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ modeId: pendingModeId }),
+      })
+      const payload = await response.json()
+      if (!response.ok || !payload?.ok) {
+        throw new Error(payload?.error?.message ?? "对战状态扣减失败，请重试")
+      }
+      const applied = payload?.data?.applied
+      if (applied?.satietyAfter !== undefined && applied?.spiritAfter !== undefined) {
+        setPetVitals(
+          normalizePetState({
+            ...petVitals,
+            satiety: Number(applied.satietyAfter),
+            spirit: Number(applied.spiritAfter),
+            bond: applied.bondAfter !== undefined ? Number(applied.bondAfter) : petVitals.bond,
+            isDead: Boolean(applied.isDeadAfter),
+          }),
+        )
+      }
+      vitalsDeductedForBattleRef.current = true
+      setBattleCostDialogOpen(false)
+      beginMatching()
+      setPendingModeId(null)
+    } catch (error) {
+      setSettlementError(error instanceof Error ? error.message : "对战状态扣减失败，请重试")
+    } finally {
+      setIsEnteringBattle(false)
+    }
+  }
+
+  const handleAnswer = (isCorrect: boolean, timeBonus: number) => {
+    if (gameState !== "battle" || battlePhase !== "question" || !isPlayerTurn) return
+    resolveAttackTurn("player", isCorrect, timeBonus)
   }
 
   const handleRewardsClose = () => {
     setShowRewards(false)
-    // Reset game
+    vitalsDeductedForBattleRef.current = false
+    resetBattleRuntime()
+    if (isBossBattle && bossRegionId) {
+      if (battleResult === "win") {
+        router.push(`/adventure/${encodeURIComponent(bossRegionId)}?bossVictory=${encodeURIComponent(bossRegionId)}`)
+      } else {
+        router.push("/adventure")
+      }
+      return
+    }
     setGameState("lobby")
-    setCurrentQuestionIndex(0)
-    setPlayerHealth(100)
-    setOpponentHealth(100)
-    setScore(0)
     setBattlePhase("idle")
   }
 
@@ -183,11 +684,35 @@ export default function BattlePage() {
     if (item === "pets") router.push("/pets")
   }
 
-  const isWinner = playerHealth > opponentHealth
+  useEffect(() => {
+    if (gameState !== "battle" || battlePhase !== "question" || isPlayerTurn) return
+    const timer = setTimeout(() => {
+      const baseCorrectRate = 0.56
+      const levelBias = Math.max(-0.12, Math.min(0.12, (opponentStats.level - playerStats.level) * 0.01))
+      const correctRate = Math.max(0.2, Math.min(0.9, baseCorrectRate + levelBias))
+      const aiIsCorrect = Math.random() < correctRate
+      resolveAttackTurn("opponent", aiIsCorrect)
+    }, 1100)
+    return () => clearTimeout(timer)
+  }, [gameState, battlePhase, isPlayerTurn, opponentStats.level, playerStats.level])
+
+  const isWinner = battleResult === "win"
+  const rewardResult = useMemo(() => {
+    const base = resolveBattleRewards(battleResult ?? "draw", firstWinBonusExp > 0)
+    if (isBossBattle && battleResult === "win" && bossConfig) {
+      return {
+        ...base,
+        petExp: bossConfig.petExpGain,
+        ownerPoints: bossConfig.ownerCoins,
+        firstWinBonusExp: 0,
+        bossStars: bossConfig.starsGain,
+      }
+    }
+    return { ...base, bossStars: 0 }
+  }, [battleResult, firstWinBonusExp, isBossBattle, bossConfig])
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-pink-50 to-background pb-24 relative overflow-hidden">
-      {/* Magical background particles */}
+    <PlayerPageShell bottomPad="nav" withGutter className="relative overflow-hidden bg-gradient-to-b from-purple-50 via-pink-50 to-background">
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         {[...Array(12)].map((_, i) => (
           <div
@@ -210,11 +735,18 @@ export default function BattlePage() {
         ))}
       </div>
 
-      <div className="relative z-10 mx-auto max-w-md px-4 py-4">
+      <div className="relative z-10 py-4">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <button 
-            onClick={() => gameState === "lobby" ? router.back() : setGameState("lobby")}
+            onClick={() => {
+              if (gameState === "lobby") {
+                if (isBossBattle) router.push("/adventure")
+                else router.back()
+              } else {
+                setGameState("lobby")
+              }
+            }}
             className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center hover:bg-white transition-colors"
           >
             <ChevronLeft className="w-5 h-5 text-foreground" />
@@ -222,7 +754,9 @@ export default function BattlePage() {
           
           <div className="flex items-center gap-2">
             <Swords className="w-5 h-5 text-rose-500" />
-            <h1 className="text-lg font-bold text-foreground">宠物知识大赛</h1>
+            <h1 className="text-lg font-bold text-foreground">
+              {isBossBattle ? "区域守护者挑战" : "宠物知识大赛"}
+            </h1>
           </div>
           
           <div className="flex items-center gap-2">
@@ -236,13 +770,24 @@ export default function BattlePage() {
         {/* Lobby State */}
         {gameState === "lobby" && (
           <div className="space-y-4 animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
+            {!battleGate.ok && (
+              <div className="rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-xs text-rose-700">
+                当前不可进入对战：{battleGate.reason}
+              </div>
+            )}
             {/* Stats card */}
             <div className="rounded-2xl bg-white/90 backdrop-blur-sm border border-white/50 shadow-lg p-4">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
                   <div className="relative">
-                    <span className="text-4xl">{playerData.pet.emoji}</span>
-                    <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center">
+                    <PetAvatar
+                      src={playerData.pet.avatarSrc}
+                      emoji={playerData.pet.emoji}
+                      alt={playerData.pet.name}
+                      size="lg"
+                      rounded="2xl"
+                    />
+                    <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center ring-2 ring-white">
                       <span className="text-[9px] font-bold text-white">{playerData.pet.level}</span>
                     </div>
                   </div>
@@ -254,76 +799,95 @@ export default function BattlePage() {
                 <div className="text-right">
                   <div className="flex items-center gap-1 justify-end">
                     <Trophy className="w-4 h-4 text-amber-500" />
-                    <span className="text-lg font-bold text-foreground">15</span>
+                    <span className="text-lg font-bold text-foreground">{score}</span>
                   </div>
-                  <span className="text-[10px] text-muted-foreground">当前排名</span>
+                  <span className="text-[10px] text-muted-foreground">当前积分</span>
                 </div>
               </div>
               
+              <div className="mb-3 grid grid-cols-3 gap-2">
+                <div className="rounded-xl border border-amber-100 bg-amber-50/80 px-2 py-1.5 text-center">
+                  <div className="text-sm font-bold text-amber-700">{petVitals.satiety}</div>
+                  <div className="text-[9px] text-muted-foreground">饱食度</div>
+                </div>
+                <div className="rounded-xl border border-sky-100 bg-sky-50/80 px-2 py-1.5 text-center">
+                  <div className="text-sm font-bold text-sky-700">{petVitals.spirit}</div>
+                  <div className="text-[9px] text-muted-foreground">精神值</div>
+                </div>
+                <div className="rounded-xl border border-rose-100 bg-rose-50/80 px-2 py-1.5 text-center">
+                  <div className="text-sm font-bold text-rose-700">{petVitals.bond}</div>
+                  <div className="text-[9px] text-muted-foreground">亲密值</div>
+                </div>
+              </div>
+
               {/* Quick stats */}
               <div className="grid grid-cols-3 gap-2">
                 <div className="p-2 rounded-xl bg-gradient-to-br from-amber-50 to-yellow-50 border border-amber-100 text-center">
                   <div className="flex items-center justify-center gap-1">
                     <Crown className="w-3 h-3 text-amber-500" />
-                    <span className="text-sm font-bold text-amber-600">12</span>
+                    <span className="text-sm font-bold text-amber-600">{playerStats.attack}</span>
                   </div>
-                  <span className="text-[9px] text-muted-foreground">胜场</span>
+                  <span className="text-[9px] text-muted-foreground">攻击力</span>
                 </div>
                 <div className="p-2 rounded-xl bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-100 text-center">
                   <div className="flex items-center justify-center gap-1">
                     <Zap className="w-3 h-3 text-emerald-500" />
-                    <span className="text-sm font-bold text-emerald-600">3</span>
+                    <span className="text-sm font-bold text-emerald-600">{playerHealth}</span>
                   </div>
-                  <span className="text-[9px] text-muted-foreground">连胜</span>
+                  <span className="text-[9px] text-muted-foreground">当前血量</span>
                 </div>
                 <div className="p-2 rounded-xl bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-100 text-center">
                   <div className="flex items-center justify-center gap-1">
                     <Star className="w-3 h-3 text-purple-500" />
-                    <span className="text-sm font-bold text-purple-600">2850</span>
+                    <span className="text-sm font-bold text-purple-600">{turnCount}/{battleConstants.roundLimit}</span>
                   </div>
-                  <span className="text-[9px] text-muted-foreground">积分</span>
+                  <span className="text-[9px] text-muted-foreground">回合</span>
                 </div>
               </div>
             </div>
 
-            {/* Match modes */}
-            <MatchModes onSelectMode={handleSelectMode} />
+            <BattleItemPicker
+              items={battleItemPickerOptions}
+              selectedIds={selectedBattleItemIds}
+              onChange={setSelectedBattleItemIds}
+            />
 
-            {/* Today's ranking preview */}
-            <div className="rounded-2xl bg-white/90 backdrop-blur-sm border border-white/50 shadow-lg p-4">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <Trophy className="w-4 h-4 text-amber-500" />
-                  <span className="text-sm font-bold text-foreground">今日排行榜</span>
-                </div>
-                <button className="text-xs text-primary font-medium">查看全部</button>
-              </div>
-              
-              <div className="space-y-2">
-                {[
-                  { rank: 1, name: "学霸小明", avatar: "🦁", score: 2850 },
-                  { rank: 2, name: "阅读达人", avatar: "🐼", score: 2720 },
-                  { rank: 3, name: "书虫小红", avatar: "🐰", score: 2680 },
-                ].map((user) => (
-                  <div 
-                    key={user.rank}
-                    className="flex items-center gap-3 p-2 rounded-xl bg-muted/30"
-                  >
-                    <div className={cn(
-                      "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white",
-                      user.rank === 1 && "bg-gradient-to-br from-amber-400 to-yellow-500",
-                      user.rank === 2 && "bg-gradient-to-br from-slate-300 to-slate-400",
-                      user.rank === 3 && "bg-gradient-to-br from-amber-600 to-orange-600"
-                    )}>
-                      {user.rank}
-                    </div>
-                    <span className="text-lg">{user.avatar}</span>
-                    <span className="flex-1 text-sm font-medium text-foreground">{user.name}</span>
-                    <span className="text-sm font-bold text-amber-600">{user.score}</span>
+            {isBossBattle && bossConfig ? (
+              <div className="rounded-2xl border border-amber-300/40 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 p-4 shadow-sm">
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-2xl shadow-lg">
+                    {bossConfig.opponentEmoji}
                   </div>
-                ))}
+                  <div>
+                    <p className="text-[10px] font-medium text-amber-600">BOSS战</p>
+                    <p className="text-base font-bold text-foreground">{bossConfig.name}</p>
+                    <p className="text-[11px] text-muted-foreground">{bossConfig.subtitle}</p>
+                  </div>
+                </div>
+                <p className="mb-3 text-[11px] leading-relaxed text-muted-foreground">
+                  击败守护者可获得 {bossConfig.starsGain} 颗星星、{bossConfig.ownerCoins} 金币和额外经验。本场将扣除饱食度与精神值。
+                </p>
+                <Button className="w-full" onClick={handleBossEnter} disabled={!battleGate.ok}>
+                  挑战守护者
+                </Button>
               </div>
-            </div>
+            ) : (
+              <>
+                <MatchModes onSelectMode={handleSelectMode} />
+                <p className="px-1 text-[11px] text-muted-foreground">
+                  进入任意模式前将提示并扣除：饱食度 -10（10%）、精神值 -10（10%）。
+                </p>
+              </>
+            )}
+
+            {!isBossBattle ? (
+              <div className="rounded-2xl bg-white/90 backdrop-blur-sm border border-white/50 shadow-lg p-4">
+                <LeaderboardPreview
+                  limit={3}
+                  onViewAll={() => router.push("/leaderboard")}
+                />
+              </div>
+            ) : null}
           </div>
         )}
 
@@ -336,7 +900,15 @@ export default function BattlePage() {
               
               {/* Pet in center */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-5xl animate-bounce-slow">{playerData.pet.emoji}</span>
+                <PetAvatar
+                  src={playerData.pet.avatarSrc}
+                  emoji={playerData.pet.emoji}
+                  alt={playerData.pet.name}
+                  size="2xl"
+                  rounded="full"
+                  animate
+                  className="animate-bounce-slow shadow-md"
+                />
               </div>
               
               {/* Sparkles */}
@@ -383,8 +955,8 @@ export default function BattlePage() {
             <BattleArena
               playerPet={playerData.pet}
               opponentPet={opponentData.pet}
-              playerAvatar={playerData.avatar}
-              opponentAvatar={opponentData.avatar}
+              playerAvatarSrc={playerData.avatarSrc}
+              opponentAvatarSrc={opponentData.avatarSrc}
               playerName={playerData.name}
               opponentName={opponentData.name}
               isPlayerTurn={isPlayerTurn}
@@ -393,18 +965,28 @@ export default function BattlePage() {
               skillTarget={skillTarget}
             />
 
-            {/* Pet Skills display */}
-            <PetSkills disabled={battlePhase !== "idle"} />
-
             {/* Question Panel */}
             {battlePhase === "question" && (
               <QuestionPanel
-                question={sampleQuestions[currentQuestionIndex].question}
-                options={sampleQuestions[currentQuestionIndex].options}
-                correctIndex={sampleQuestions[currentQuestionIndex].correctIndex}
-                timeLimit={15}
+                question={activeQuestion.question}
+                options={activeQuestion.options}
+                correctIndex={activeQuestion.correctIndex}
+                timeLimit={battleConstants.timeLimitSeconds}
                 onAnswer={handleAnswer}
+                disabled={!isPlayerTurn}
               />
+            )}
+
+            {battleItemNotice && battlePhase === "skill" && (
+              <div className="rounded-xl border border-violet-200 bg-violet-50/90 px-3 py-2 text-center text-xs font-medium text-violet-700">
+                道具触发：{battleItemNotice}
+              </div>
+            )}
+
+            {settlementError && (
+              <div className="rounded-xl border border-amber-200 bg-amber-50/90 px-3 py-2 text-xs text-amber-700">
+                结算提示：{settlementError}
+              </div>
             )}
 
             {/* Waiting message when not in question phase */}
@@ -413,7 +995,7 @@ export default function BattlePage() {
                 <div className="flex items-center justify-center gap-2">
                   <Sparkles className="w-4 h-4 text-purple-500 animate-pulse" />
                   <span className="text-sm font-medium text-muted-foreground">
-                    {battlePhase === "skill" ? "技能发动中..." : "准备下一题..."}
+                    {battlePhase === "skill" ? "技能发动中..." : isPlayerTurn ? "准备下一题..." : "对手答题中..."}
                   </span>
                 </div>
               </div>
@@ -427,9 +1009,14 @@ export default function BattlePage() {
         <BattleRewards
           isWinner={isWinner}
           rewards={[
-            { type: "coins", amount: isWinner ? 50 : 20, label: "金币" },
-            { type: "exp", amount: isWinner ? 100 : 40, label: "经验值" },
-            { type: "friendship", amount: 5, label: "友谊点" },
+            { type: "exp", amount: rewardResult.petExp, label: "宠物经验" },
+            { type: "coins", amount: rewardResult.ownerPoints, label: "主人金币" },
+            ...(rewardResult.bossStars > 0
+              ? [{ type: "item" as const, amount: rewardResult.bossStars, label: "区域星星" }]
+              : []),
+            ...(rewardResult.firstWinBonusExp > 0
+              ? [{ type: "item" as const, amount: rewardResult.firstWinBonusExp, label: "首胜经验加成" }]
+              : []),
           ]}
           onClose={handleRewardsClose}
         />
@@ -476,6 +1063,26 @@ export default function BattlePage() {
           animation: twinkle 1.5s ease-in-out infinite;
         }
       `}</style>
-    </div>
+
+      <BattleCostDialog
+        open={battleCostDialogOpen}
+        modeTitle={pendingModeId ? MATCH_MODE_TITLES[pendingModeId] : undefined}
+        vitals={petVitals}
+        isSubmitting={isEnteringBattle}
+        onOpenChange={(open) => {
+          if (!isEnteringBattle) {
+            setBattleCostDialogOpen(open)
+            if (!open) setPendingModeId(null)
+          }
+        }}
+        onConfirm={() => void handleConfirmBattleEnter()}
+      />
+
+      <PetDeathDialog
+        open={petVitals.isDead}
+        petName={petProfile.name || "小伙伴"}
+        species={petProfile.species}
+      />
+    </PlayerPageShell>
   )
 }

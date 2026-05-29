@@ -1,62 +1,100 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
-import { TrendingUp, Crown, ChevronRight } from "lucide-react"
+import { ChevronRight, Crown, Trophy } from "lucide-react"
+import { UserAvatar } from "@/components/user/user-avatar"
+import { resolveUserAvatarSrc } from "@/lib/user/avatar-catalog"
+import type { SocialUserCard } from "@/lib/social/types"
 
 interface SocialRankingProps {
-  myRank?: number
-  myScore?: number
-  topThree?: { name: string; avatar: string; score: number }[]
+  myRank?: number | null
   onViewAll?: () => void
 }
 
-export function SocialRanking({
-  myRank = 15,
-  myScore = 1560,
-  topThree = [
-    { name: "小明", avatar: "🦊", score: 2850 },
-    { name: "阅读达人", avatar: "🐰", score: 2720 },
-    { name: "书虫小红", avatar: "🐱", score: 2680 },
-  ],
-  onViewAll,
-}: SocialRankingProps) {
+const fallbackTopThree: SocialUserCard[] = [
+  {
+    userId: "demo-1",
+    username: "学霸小明",
+    avatarId: "boy-02",
+    avatarSrc: resolveUserAvatarSrc("boy-02"),
+    score: 0,
+    rank: 1,
+  },
+  {
+    userId: "demo-2",
+    username: "阅读达人",
+    avatarId: "girl-03",
+    avatarSrc: resolveUserAvatarSrc("girl-03"),
+    score: 0,
+    rank: 2,
+  },
+  {
+    userId: "demo-3",
+    username: "书虫小红",
+    avatarId: "girl-05",
+    avatarSrc: resolveUserAvatarSrc("girl-05"),
+    score: 0,
+    rank: 3,
+  },
+]
+
+export function SocialRanking({ myRank = null, onViewAll }: SocialRankingProps) {
+  const [topThree, setTopThree] = useState<SocialUserCard[]>(fallbackTopThree)
+
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const response = await fetch("/api/social/leaderboard?scope=global&limit=3", { cache: "no-store" })
+        const payload = await response.json()
+        if (response.ok && payload?.ok && Array.isArray(payload.data?.list) && payload.data.list.length > 0) {
+          setTopThree(payload.data.list as SocialUserCard[])
+        }
+      } catch {
+        // keep fallback avatars
+      }
+    })()
+  }, [])
+
   return (
-    <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-2xl p-4 border border-rose-100">
-      <div className="flex items-center justify-between">
-        {/* My rank - compact */}
+    <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-card p-4 shadow-sm">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/[0.04] to-emerald-500/[0.06]" />
+
+      <div className="relative flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">
-            <TrendingUp className="h-5 w-5 text-rose-500" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+            <Trophy className="h-5 w-5 text-primary" />
           </div>
           <div>
-            <div className="flex items-center gap-1">
-              <span className="text-lg font-bold text-rose-600">#{myRank}</span>
-              <span className="text-xs text-muted-foreground">{myScore}分</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-lg font-bold text-foreground">{myRank ? `#${myRank}` : "—"}</span>
+              <span className="text-[10px] text-muted-foreground">胜场排名</span>
             </div>
-            <p className="text-[10px] text-muted-foreground">本周排名</p>
+            <p className="text-[10px] text-muted-foreground">看看谁是知识之王</p>
           </div>
         </div>
-        
-        {/* Top 3 preview - compact avatars */}
+
         <div className="flex items-center gap-2">
           <div className="flex -space-x-2">
             {topThree.slice(0, 3).map((user, i) => (
-              <div 
-                key={i}
-                className={cn(
-                  "w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-sm shadow-sm",
-                  i === 0 ? "bg-amber-100" : "bg-white"
-                )}
-              >
-                {i === 0 && <Crown className="h-3 w-3 text-amber-500 absolute -top-1" />}
-                {user.avatar}
+              <div key={user.userId} className={cn("relative", i === 0 && "z-10")}>
+                {i === 0 ? (
+                  <Crown className="absolute -top-2 left-1/2 z-10 h-3 w-3 -translate-x-1/2 text-amber-500" />
+                ) : null}
+                <UserAvatar
+                  src={user.avatarSrc}
+                  alt={user.username}
+                  size="sm"
+                  className={cn("ring-2 ring-card", i === 0 && "ring-amber-200")}
+                />
               </div>
             ))}
           </div>
-          
-          <button 
+
+          <button
+            type="button"
             onClick={onViewAll}
-            className="text-xs text-rose-500 font-medium"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-muted/60 text-primary transition hover:bg-muted"
           >
             <ChevronRight className="h-4 w-4" />
           </button>

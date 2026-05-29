@@ -8,6 +8,7 @@ import {
   Users, BookOpen, Trophy, Filter
 } from "lucide-react"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
+import { PlayerPageShell } from "@/components/layout/player-page-shell"
 
 interface ReadingWorld {
   id: string
@@ -59,7 +60,7 @@ const allWorlds: ReadingWorld[] = [
   {
     id: "3",
     title: "海底王国",
-    subtitle: "深海探险等你来",
+    subtitle: "深海冒险等你来",
     cover: "🐚",
     theme: "神秘深海",
     gradient: "from-blue-500 via-cyan-500 to-teal-500",
@@ -172,7 +173,7 @@ export default function WorldsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-24">
+    <PlayerPageShell className="bg-background">
       {/* Header */}
       <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/50">
         <div className="flex items-center justify-between px-4 py-3">
@@ -342,6 +343,6 @@ export default function WorldsPage() {
 
       {/* Bottom Navigation */}
       <BottomNavigation activeItem="library" onNavigate={handleNavigation} />
-    </div>
+    </PlayerPageShell>
   )
 }

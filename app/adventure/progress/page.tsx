@@ -1,8 +1,13 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
+import {
+  buildRegionCards,
+  fetchAdventureDashboard,
+  type AdventureRegionCard,
+} from "@/lib/adventure/adventure-dashboard-client"
 import { 
   ChevronLeft, 
   Map,
@@ -20,102 +25,7 @@ import {
   ChevronRight
 } from "lucide-react"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
-
-const allRegions = [
-  { 
-    id: "magic-forest",
-    name: "魔法森林", 
-    icon: "🌲",
-    unlocked: true,
-    progress: 75, 
-    stages: 12,
-    completedStages: 9,
-    stars: 24,
-    maxStars: 36,
-    difficulty: "初级",
-    description: "神秘的精灵之地，适合初次冒险",
-    color: "from-emerald-400 to-emerald-600",
-    bgColor: "bg-emerald-500/10",
-  },
-  { 
-    id: "ice-mountain",
-    name: "冰雪之巅", 
-    icon: "❄️",
-    unlocked: true,
-    progress: 40, 
-    stages: 10,
-    completedStages: 4,
-    stars: 10,
-    maxStars: 30,
-    difficulty: "中级",
-    description: "永恒冰封的山脉，挑战更艰难",
-    color: "from-cyan-400 to-blue-500",
-    bgColor: "bg-cyan-500/10",
-  },
-  { 
-    id: "ancient-desert",
-    name: "远古沙漠", 
-    icon: "☀️",
-    unlocked: true,
-    progress: 20, 
-    stages: 8,
-    completedStages: 2,
-    stars: 4,
-    maxStars: 24,
-    difficulty: "中级",
-    description: "失落文明的遗迹，充满谜题",
-    color: "from-amber-400 to-orange-500",
-    bgColor: "bg-amber-500/10",
-  },
-  { 
-    id: "sky-kingdom",
-    name: "天空王国", 
-    icon: "☁️",
-    unlocked: false,
-    progress: 0, 
-    stages: 15,
-    completedStages: 0,
-    stars: 0,
-    maxStars: 45,
-    difficulty: "高级",
-    description: "云端之上的国度",
-    unlockCondition: "完成魔法森林",
-    color: "from-violet-400 to-purple-500",
-    bgColor: "bg-violet-500/10",
-  },
-  { 
-    id: "ocean-ruins",
-    name: "深海遗迹", 
-    icon: "🌊",
-    unlocked: false,
-    progress: 0, 
-    stages: 12,
-    completedStages: 0,
-    stars: 0,
-    maxStars: 36,
-    difficulty: "高级",
-    description: "沉没的海底文明",
-    unlockCondition: "冒险等级达到15级",
-    color: "from-blue-400 to-indigo-500",
-    bgColor: "bg-blue-500/10",
-  },
-  { 
-    id: "volcano-realm",
-    name: "炎龙火山", 
-    icon: "🔥",
-    unlocked: false,
-    progress: 0, 
-    stages: 10,
-    completedStages: 0,
-    stars: 0,
-    maxStars: 30,
-    difficulty: "极难",
-    description: "龙族的领地",
-    unlockCondition: "解锁全部区域",
-    color: "from-red-500 to-orange-600",
-    bgColor: "bg-red-500/10",
-  },
-]
+import { PlayerPageShell } from "@/components/layout/player-page-shell"
 
 const achievements = [
   { id: 1, name: "初出茅庐", description: "完成第一个关卡", completed: true, icon: "🎯" },
@@ -139,14 +49,41 @@ const weeklyStats = [
 export default function ProgressPage() {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<"regions" | "achievements" | "stats">("regions")
+  const [regionCards, setRegionCards] = useState<AdventureRegionCard[]>([])
+  const [totalStars, setTotalStars] = useState(0)
+  const [worldProgress, setWorldProgress] = useState(0)
+  const [adventureLevel, setAdventureLevel] = useState(1)
+  const [dailyStreak, setDailyStreak] = useState(0)
+  const [userExpInLevel, setUserExpInLevel] = useState(0)
+  const [userExpToNext, setUserExpToNext] = useState(100)
+  const [isLoading, setIsLoading] = useState(true)
 
-  const totalStars = allRegions.reduce((sum, r) => sum + r.stars, 0)
-  const maxStars = allRegions.reduce((sum, r) => sum + r.maxStars, 0)
-  const unlockedRegions = allRegions.filter(r => r.unlocked).length
-  const completedAchievements = achievements.filter(a => a.completed).length
+  useEffect(() => {
+    void (async () => {
+      setIsLoading(true)
+      const dashboard = await fetchAdventureDashboard()
+      if (dashboard.progress) {
+        setTotalStars(dashboard.progress.totalStars)
+        setWorldProgress(dashboard.progress.worldProgress)
+        setRegionCards(buildRegionCards(dashboard.progress.regionProgress))
+      }
+      if (dashboard.user) {
+        setAdventureLevel(dashboard.user.adventureLevel)
+        setDailyStreak(dashboard.user.dailyStreak)
+        setUserExpInLevel(dashboard.user.userExpInLevel)
+        setUserExpToNext(dashboard.user.userExpToNext)
+      }
+      setIsLoading(false)
+    })()
+  }, [])
+
+  const unlockedRegions = regionCards.filter((r) => r.unlocked).length
+  const completedAchievements = achievements.filter((a) => a.completed).length
+  const xpPercent =
+    userExpToNext > 0 ? Math.min(100, Math.round((userExpInLevel / userExpToNext) * 100)) : 0
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-50 via-cyan-50/50 to-background pb-24">
+    <PlayerPageShell className="bg-gradient-to-b from-emerald-50 via-cyan-50/50 to-background">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-white/40">
         <div className="flex items-center justify-between px-4 py-3">
@@ -180,13 +117,13 @@ export default function ProgressPage() {
                 </div>
                 <div>
                   <p className="text-white/80 text-xs">冒险等级</p>
-                  <p className="text-2xl font-bold">Lv.12</p>
+                  <p className="text-2xl font-bold">{isLoading ? "—" : `Lv.${adventureLevel}`}</p>
                 </div>
               </div>
               <div className="text-right">
                 <div className="flex items-center gap-1 text-amber-300">
                   <Flame className="h-4 w-4" />
-                  <span className="font-bold">5天</span>
+                  <span className="font-bold">{isLoading ? "—" : `${dailyStreak}天`}</span>
                 </div>
                 <p className="text-[10px] text-white/70">连续冒险</p>
               </div>
@@ -195,11 +132,16 @@ export default function ProgressPage() {
             {/* XP Progress */}
             <div className="mb-3">
               <div className="flex items-center justify-between text-xs mb-1">
-                <span className="text-white/80">经验值</span>
-                <span className="font-medium">680/1000 XP</span>
+                <span className="text-white/80">冒险进度</span>
+                <span className="font-medium">
+                  {isLoading ? "—" : `${userExpInLevel}/${userExpToNext}`}
+                </span>
               </div>
               <div className="h-2.5 bg-white/20 rounded-full overflow-hidden">
-                <div className="h-full w-[68%] bg-gradient-to-r from-amber-300 to-yellow-300 rounded-full" />
+                <div
+                  className="h-full bg-gradient-to-r from-amber-300 to-yellow-300 rounded-full transition-all"
+                  style={{ width: `${xpPercent}%` }}
+                />
               </div>
             </div>
             
@@ -207,12 +149,12 @@ export default function ProgressPage() {
             <div className="grid grid-cols-3 gap-2">
               <div className="bg-white/15 backdrop-blur-sm rounded-xl p-2 text-center">
                 <Compass className="h-4 w-4 mx-auto mb-1 text-white/80" />
-                <p className="text-lg font-bold">{unlockedRegions}/6</p>
-                <p className="text-[9px] text-white/70">解锁区域</p>
+                <p className="text-lg font-bold">{isLoading ? "—" : `${worldProgress}%`}</p>
+                <p className="text-[9px] text-white/70">世界进度</p>
               </div>
               <div className="bg-white/15 backdrop-blur-sm rounded-xl p-2 text-center">
                 <Star className="h-4 w-4 mx-auto mb-1 text-amber-300" />
-                <p className="text-lg font-bold">{totalStars}</p>
+                <p className="text-lg font-bold">{isLoading ? "—" : totalStars}</p>
                 <p className="text-[9px] text-white/70">收集星星</p>
               </div>
               <div className="bg-white/15 backdrop-blur-sm rounded-xl p-2 text-center">
@@ -256,7 +198,7 @@ export default function ProgressPage() {
       {/* Regions Tab */}
       {activeTab === "regions" && (
         <div className="px-4 space-y-3">
-          {allRegions.map((region) => (
+          {regionCards.map((region) => (
             <div
               key={region.id}
               className={cn(
@@ -296,7 +238,7 @@ export default function ProgressPage() {
                   </div>
                   
                   <p className="text-[11px] text-muted-foreground mb-2">
-                    {region.unlocked ? region.description : region.unlockCondition}
+                    {region.unlocked ? region.description : region.unlockHint}
                   </p>
                   
                   {region.unlocked ? (
@@ -471,6 +413,6 @@ export default function ProgressPage() {
         if (item === "pets") router.push("/pets")
         if (item === "profile") router.push("/profile")
       }} />
-    </div>
+    </PlayerPageShell>
   )
 }

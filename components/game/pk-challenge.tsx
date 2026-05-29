@@ -1,13 +1,20 @@
 "use client"
 
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { Swords, Trophy, ChevronRight, Flame, Zap, Crown, Medal } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { UserAvatar } from "@/components/user/user-avatar"
+import { resolveUserAvatarSrc } from "@/lib/user/avatar-catalog"
+import { navigateToUserProfile } from "@/hooks/use-follow-toggle"
 
 interface RankingUser {
   rank: number
   name: string
-  avatar: string
+  avatarSrc: string
   score: number
+  userId?: string
+  isSelf?: boolean
 }
 
 interface PKChallengeProps {
@@ -21,9 +28,9 @@ interface PKChallengeProps {
 }
 
 const defaultRankers: RankingUser[] = [
-  { rank: 1, name: "学霸小明", avatar: "🦁", score: 2850 },
-  { rank: 2, name: "阅读达人", avatar: "🐼", score: 2720 },
-  { rank: 3, name: "书虫小红", avatar: "🐰", score: 2680 },
+  { rank: 1, name: "学霸小明", avatarSrc: resolveUserAvatarSrc("boy-02"), score: 2850 },
+  { rank: 2, name: "阅读达人", avatarSrc: resolveUserAvatarSrc("girl-03"), score: 2720 },
+  { rank: 3, name: "书虫小红", avatarSrc: resolveUserAvatarSrc("girl-05"), score: 2680 },
 ]
 
 const rankStyles = {
@@ -37,11 +44,48 @@ export function PKChallenge({
   maxChallenges = 5,
   currentRank = 15,
   winStreak = 3,
-  topRankers = defaultRankers,
+  topRankers: topRankersProp,
   onChallenge,
   onViewRanking,
 }: PKChallengeProps) {
+  const router = useRouter()
+  const [topRankers, setTopRankers] = useState<RankingUser[]>(topRankersProp ?? defaultRankers)
   const hasRemainingChallenges = remainingChallenges > 0
+
+  useEffect(() => {
+    if (topRankersProp) {
+      setTopRankers(topRankersProp)
+      return
+    }
+    ;(async () => {
+      try {
+        const response = await fetch("/api/social/leaderboard?scope=global&limit=3", { cache: "no-store" })
+        const payload = await response.json()
+        if (!response.ok || !payload?.ok) return
+        const list = (payload.data?.list ?? []) as Array<{
+          rank: number
+          username: string
+          avatarSrc: string
+          score: number
+          userId: string
+          isSelf?: boolean
+        }>
+        if (list.length === 0) return
+        setTopRankers(
+          list.map((item) => ({
+            rank: item.rank,
+            name: item.username,
+            avatarSrc: item.avatarSrc,
+            score: item.score,
+            userId: item.userId,
+            isSelf: item.isSelf,
+          })),
+        )
+      } catch {
+        // keep defaults
+      }
+    })()
+  }, [topRankersProp])
 
   return (
     <div className="relative overflow-hidden rounded-2xl bg-card p-4 shadow-lg border border-border/50">
@@ -132,7 +176,7 @@ export function PKChallenge({
           <div className="mb-2.5 flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
               <Trophy className="h-4 w-4 text-amber-500" />
-              今日排行榜
+              对战排行榜
             </div>
             <button 
               onClick={onViewRanking}
@@ -150,7 +194,7 @@ export function PKChallenge({
               
               return (
                 <div 
-                  key={user.rank}
+                  key={user.userId ?? user.rank}
                   className="flex items-center gap-3 rounded-xl bg-muted/50 p-2.5 border border-border/30 hover:border-border/50 transition-colors"
                 >
                   {/* Rank badge */}
@@ -162,22 +206,35 @@ export function PKChallenge({
                     )}
                   </div>
 
-                  {/* Avatar */}
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-card to-muted text-xl border border-border/50">
-                    {user.avatar}
-                  </div>
-
-                  {/* Name */}
-                  <span className="flex-1 truncate text-sm font-semibold text-card-foreground">
-                    {user.name}
-                  </span>
+                  {user.userId ? (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        navigateToUserProfile(router, {
+                          userId: user.userId!,
+                          isSelf: user.isSelf,
+                        })
+                      }
+                      className="flex min-w-0 flex-1 items-center gap-3 text-left"
+                    >
+                      <UserAvatar src={user.avatarSrc} alt={user.name} size="sm" className="ring-1 ring-border/50" />
+                      <span className="truncate text-sm font-semibold text-card-foreground hover:text-primary">
+                        {user.name}
+                      </span>
+                    </button>
+                  ) : (
+                    <>
+                      <UserAvatar src={user.avatarSrc} alt={user.name} size="sm" className="ring-1 ring-border/50" />
+                      <span className="flex-1 truncate text-sm font-semibold text-card-foreground">{user.name}</span>
+                    </>
+                  )}
 
                   {/* Score */}
                   <div className="flex items-center gap-1">
                     <span className="text-sm font-bold text-amber-600">
                       {user.score.toLocaleString()}
                     </span>
-                    <span className="text-[10px] text-muted-foreground">分</span>
+                    <span className="text-[10px] text-muted-foreground">胜</span>
                   </div>
                 </div>
               )

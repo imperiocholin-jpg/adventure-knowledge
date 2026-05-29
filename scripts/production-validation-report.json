@@ -1,0 +1,163 @@
+﻿{
+    "baseUrl":  "http://localhost:3000",
+    "emailA":  "rls_a_20260525114938@qq.com",
+    "emailB":  "rls_b_20260525114938@qq.com",
+    "generatedAt":  "2026-05-25T11:49:44.0026236+08:00",
+    "summary":  {
+                    "total":  24,
+                    "passed":  4,
+                    "failed":  20,
+                    "passRate":  16.67,
+                    "maturity":  "demo"
+                },
+    "checks":  [
+                   {
+                       "name":  "auth.signup.A.admin-fallback",
+                       "passed":  false,
+                       "statusCode":  200,
+                       "detail":  "远程服务器返回错误: (401) 未经授权。"
+                   },
+                   {
+                       "name":  "auth.signup.A",
+                       "passed":  false,
+                       "statusCode":  400,
+                       "detail":  "{\"ok\":false,\"error\":{\"message\":\"email rate limit exceeded\"}}"
+                   },
+                   {
+                       "name":  "auth.signup.B.admin-fallback",
+                       "passed":  false,
+                       "statusCode":  200,
+                       "detail":  "远程服务器返回错误: (401) 未经授权。"
+                   },
+                   {
+                       "name":  "auth.signup.B",
+                       "passed":  false,
+                       "statusCode":  400,
+                       "detail":  "{\"ok\":false,\"error\":{\"message\":\"email rate limit exceeded\"}}"
+                   },
+                   {
+                       "name":  "auth.login.A",
+                       "passed":  false,
+                       "statusCode":  401,
+                       "detail":  "{\"ok\":false,\"error\":{\"message\":\"Invalid login credentials\"}}"
+                   },
+                   {
+                       "name":  "auth.login.B",
+                       "passed":  false,
+                       "statusCode":  401,
+                       "detail":  "{\"ok\":false,\"error\":{\"message\":\"Invalid login credentials\"}}"
+                   },
+                   {
+                       "name":  "auth.session.A",
+                       "passed":  false,
+                       "statusCode":  401,
+                       "detail":  "{\"ok\":false,\"source\":\"auth\",\"error\":{\"message\":\"User is not authenticated.\"}}"
+                   },
+                   {
+                       "name":  "auth.session.B",
+                       "passed":  false,
+                       "statusCode":  401,
+                       "detail":  "{\"ok\":false,\"source\":\"auth\",\"error\":{\"message\":\"User is not authenticated.\"}}"
+                   },
+                   {
+                       "name":  "api.users.A",
+                       "passed":  false,
+                       "statusCode":  307,
+                       "detail":  "/auth?redirect=%2Fapi%2Fusers"
+                   },
+                   {
+                       "name":  "api.users.B",
+                       "passed":  false,
+                       "statusCode":  307,
+                       "detail":  "/auth?redirect=%2Fapi%2Fusers"
+                   },
+                   {
+                       "name":  "api.pets.A",
+                       "passed":  false,
+                       "statusCode":  307,
+                       "detail":  "/auth?redirect=%2Fapi%2Fpets"
+                   },
+                   {
+                       "name":  "api.pets.B",
+                       "passed":  false,
+                       "statusCode":  307,
+                       "detail":  "/auth?redirect=%2Fapi%2Fpets"
+                   },
+                   {
+                       "name":  "api.tasks.A",
+                       "passed":  false,
+                       "statusCode":  307,
+                       "detail":  "/auth?redirect=%2Fapi%2Ftasks"
+                   },
+                   {
+                       "name":  "api.tasks.B",
+                       "passed":  false,
+                       "statusCode":  307,
+                       "detail":  "/auth?redirect=%2Fapi%2Ftasks"
+                   },
+                   {
+                       "name":  "api.books.A",
+                       "passed":  false,
+                       "statusCode":  307,
+                       "detail":  "/auth?redirect=%2Fapi%2Fbooks"
+                   },
+                   {
+                       "name":  "unauth.users",
+                       "passed":  true,
+                       "statusCode":  307,
+                       "detail":  "/auth?redirect=%2Fapi%2Fusers"
+                   },
+                   {
+                       "name":  "unauth.pets",
+                       "passed":  true,
+                       "statusCode":  307,
+                       "detail":  "/auth?redirect=%2Fapi%2Fpets"
+                   },
+                   {
+                       "name":  "unauth.tasks",
+                       "passed":  true,
+                       "statusCode":  307,
+                       "detail":  "/auth?redirect=%2Fapi%2Ftasks"
+                   },
+                   {
+                       "name":  "biz.reading.complete.A",
+                       "passed":  false,
+                       "statusCode":  0,
+                       "detail":  "Skipped: missing A pet or book id."
+                   },
+                   {
+                       "name":  "biz.tasks.claim.A.first",
+                       "passed":  false,
+                       "statusCode":  0,
+                       "detail":  "Skipped: missing A task or pet id."
+                   },
+                   {
+                       "name":  "biz.tasks.claim.A.idempotent",
+                       "passed":  false,
+                       "statusCode":  0,
+                       "detail":  "Skipped: missing A task or pet id."
+                   },
+                   {
+                       "name":  "rls.cross.reading.A-\u003eB",
+                       "passed":  false,
+                       "statusCode":  0,
+                       "detail":  "Skipped: missing B pet or book id."
+                   },
+                   {
+                       "name":  "rls.cross.claim.A-\u003eB",
+                       "passed":  false,
+                       "statusCode":  0,
+                       "detail":  "Skipped: missing B task or pet id."
+                   },
+                   {
+                       "name":  "auth.logout.A",
+                       "passed":  true,
+                       "statusCode":  200,
+                       "detail":  "{\"ok\":true}"
+                   }
+               ],
+    "meta":  {
+                 "followRedirect":  false,
+                 "useAdminOnRateLimit":  true
+             }
+}

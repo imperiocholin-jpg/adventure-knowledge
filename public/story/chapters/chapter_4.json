@@ -1,0 +1,60 @@
+{
+  "chapterId": "chapter_4",
+  "title": "回声峡谷与会回信的山风",
+  "theme": "被回应感",
+  "targetAge": "小学2-4年级",
+  "estimatedMinutes": 5,
+  "sections": [
+    {
+      "id": "c4_s1",
+      "text": "小雨和毛毛走进回声峡谷，轻轻说了一句你好呀。山谷马上回了同样的话，还多加了半句：今天也很棒。毛毛吓得耳朵竖起来，月灯笑着说：这里的风会把你的话写成回信。"
+    },
+    {
+      "id": "c4_s2",
+      "text": "小雨对着山谷喊：毛毛今天超可爱。片刻后，一片叶子飘来，上面写着：收到，毛毛害羞中。毛毛赶紧躲到小雨身后，只露出一只眼睛。可最后一片叶子是空白的，没有字。"
+    },
+    {
+      "id": "c4_s3",
+      "text": "空白叶带他们到石台前，台上有三枚小风铃：叮、铃、咚。小雨和毛毛配合按顺序碰响，石台亮起金线，一枚勇气音符从缝隙里跳出来。山风一下子有力起来，信叶重新排好队。"
+    },
+    {
+      "id": "c4_s4",
+      "text": "回声邮局门口的风匣发出亮光，小雨把勇气音符放进去，门咔哒打开。里面摆着今天夸夸信、晚安勇气信。毛毛激动得原地转圈，门后的路牌写着：星海列车站。"
+    }
+  ],
+  "challenge": {
+    "prompt": "回声邮局开门前，小雨和毛毛先找回了什么？",
+    "options": ["勇气音符", "金色钥匙", "彩虹车票"],
+    "answerIndex": 0,
+    "successResponse": "毛毛超开心：就是勇气音符！你太会冒险复盘了。",
+    "retryResponse": "毛毛眨眼：它是会发光、会唱歌的那个小道具。",
+    "sourceBookTitle": "冒险主线故事",
+    "sourceChapterLabel": "第4章"
+  },
+  "aiCompanionLine": "毛毛眼睛亮亮：山谷都在回你话，今天的你超有魔法！",
+  "petFeedback": {
+    "emotion": "惊喜骄傲",
+    "animation": "spin_star",
+    "text": "毛毛先害羞探头，再骄傲转圈，身边冒出亮晶晶小星星。"
+  },
+  "reward": {
+    "type": "item",
+    "id": "echo_stamp",
+    "name": "回声邮票",
+    "amount": 1,
+    "text": "获得 回声邮票 x1，回声邮局通行成功！"
+  },
+  "lightChoices": [
+    {
+      "id": "c4_choice_train_now",
+      "label": "去星海列车站",
+      "nextChapterId": "chapter_5"
+    },
+    {
+      "id": "c4_choice_write_letter",
+      "label": "先写一封夸夸信",
+      "nextChapterId": "chapter_5"
+    }
+  ],
+  "nextButtonText": "去星海列车站！"
+}

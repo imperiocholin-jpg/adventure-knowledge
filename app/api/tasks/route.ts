@@ -1,26 +1,41 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 
-import { getSupabaseServerClient } from "@/lib/supabase/server"
+import {
+  createSupabaseUserClient,
+  createSupabaseServiceClient,
+  getRequestSessionUser,
+  setAuthCookies,
+  unauthorizedResponse,
+} from "@/lib/auth/server"
+import { findExistingColumn } from "@/lib/data/schema-compat"
 
-export const revalidate = 60
+export const dynamic = "force-dynamic"
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const supabase = getSupabaseServerClient()
-    if (!supabase) {
-      return NextResponse.json(
-        {
-          ok: false,
-          source: "server",
-          table: "daily_tasks",
-          error: { message: "Missing Supabase server environment variables." },
-          data: [],
-        },
-        { status: 503 },
-      )
+    const sessionState = await getRequestSessionUser(request)
+    if (!sessionState.user || !sessionState.accessToken) return unauthorizedResponse("User is not authenticated.")
+
+    const supabase = createSupabaseUserClient(sessionState.accessToken)
+    const serviceClient = createSupabaseServiceClient()
+    const ownerField = await findExistingColumn(serviceClient, "daily_tasks", [
+      "user_id",
+      "uid",
+      "owner_id",
+      "auth_user_id",
+    ])
+    if (!ownerField) {
+      const response = NextResponse.json({ ok: true, data: [] })
+      if (sessionState.refreshedSession) {
+        setAuthCookies(response, sessionState.refreshedSession)
+      }
+      return response
     }
 
-    const { data, error } = await supabase.from("daily_tasks").select("*")
+    const { data, error } = await supabase
+      .from("daily_tasks")
+      .select("*")
+      .eq(ownerField, sessionState.user.id)
 
     if (error) {
       console.error(error)
@@ -41,7 +56,11 @@ export async function GET() {
       )
     }
 
-    return NextResponse.json({ ok: true, data: data ?? [] })
+    const response = NextResponse.json({ ok: true, data: data ?? [] })
+    if (sessionState.refreshedSession) {
+      setAuthCookies(response, sessionState.refreshedSession)
+    }
+    return response
   } catch (error) {
     console.error(error)
     return NextResponse.json(

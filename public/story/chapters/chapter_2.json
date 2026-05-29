@@ -1,0 +1,60 @@
+{
+  "chapterId": "chapter_2",
+  "title": "云上图书塔与会打喷嚏的风精灵",
+  "theme": "第一次小高潮",
+  "targetAge": "小学2-4年级",
+  "estimatedMinutes": 5,
+  "sections": [
+    {
+      "id": "c2_s1",
+      "text": "小雨和毛毛沿着发光小路来到云上图书塔。塔门前飘着淡淡白雾，一盏小灯忽明忽暗。纸船飞到灯下，灯啪地亮起，地上出现一张小地图，地图上画着一个会笑的石头。"
+    },
+    {
+      "id": "c2_s2",
+      "text": "这时，雾里传来一声大大的阿嚏。一团小旋风从门缝里滚出来，原来是风精灵卡卡。它红着脸说：对不起，我一打喷嚏，书页就会被吹跑。毛毛凑过去闻了闻，轻轻拍了拍它。"
+    },
+    {
+      "id": "c2_s3",
+      "text": "小雨从口袋里拿出软手帕递给卡卡。卡卡擦擦鼻子，终于不打喷嚏了。它开心地转了一圈，送给小雨一个风铃扣，说只要挂到书架上，乱飞的书页就会排好队。塔门咔哒开了一条缝。"
+    },
+    {
+      "id": "c2_s4",
+      "text": "门缝后面有暖暖灯光，像一座会呼吸的小屋。纸船在门口轻轻上下晃，像在催他们进去。毛毛抬头看小雨，眼神特别认真，仿佛在说：我们不是闯关，我们是在帮朋友。"
+    }
+  ],
+  "challenge": {
+    "prompt": "风精灵卡卡为什么会把书页吹乱？",
+    "options": ["它打喷嚏了", "它在生气", "它在睡觉"],
+    "answerIndex": 0,
+    "successResponse": "毛毛笑了：答对啦！你已经会抓住故事里的原因了。",
+    "retryResponse": "毛毛轻声说：想想卡卡刚见面时发出的声音。",
+    "sourceBookTitle": "冒险主线故事",
+    "sourceChapterLabel": "第2章"
+  },
+  "aiCompanionLine": "毛毛眨眨眼：你说话好温柔，连风精灵都愿意相信你！",
+  "petFeedback": {
+    "emotion": "骄傲开心",
+    "animation": "jump_spin",
+    "text": "毛毛转了个小圈圈，解锁新动作：原地小跳！"
+  },
+  "reward": {
+    "type": "item",
+    "id": "wind_chime_buckle",
+    "name": "风铃扣",
+    "amount": 1,
+    "text": "获得 风铃扣 x1，可用于点亮图书塔书架。"
+  },
+  "lightChoices": [
+    {
+      "id": "c2_choice_follow_map",
+      "label": "跟着地图进塔",
+      "nextChapterId": "chapter_3"
+    },
+    {
+      "id": "c2_choice_talk_kaka",
+      "label": "先和卡卡再聊一句",
+      "nextChapterId": "chapter_3"
+    }
+  ],
+  "nextButtonText": "去时间花园！"
+}

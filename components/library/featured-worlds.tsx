@@ -54,7 +54,7 @@ const featuredWorlds: FeaturedWorld[] = [
   {
     id: "3",
     title: "海底王国",
-    subtitle: "深海探险等你来",
+    subtitle: "深海冒险等你来",
     cover: "🐚",
     theme: "神秘深海",
     gradient: "from-blue-600 via-cyan-600 to-teal-500",
@@ -244,7 +244,7 @@ export function FeaturedWorlds({ onWorldSelect, onExploreMore }: FeaturedWorldsP
                             {world.theme}
                           </span>
                           <span className="text-[10px] text-white/70">
-                            {world.readers.toLocaleString()} 探险者
+                            {world.readers.toLocaleString()} 冒险者
                           </span>
                         </div>
                       </div>
