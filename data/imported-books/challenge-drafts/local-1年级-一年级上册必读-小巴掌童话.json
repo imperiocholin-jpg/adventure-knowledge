@@ -1,0 +1,210 @@
+{
+  "id": "local-1年级-一年级上册必读-小巴掌童话",
+  "title": "小巴掌童话",
+  "grade": 1,
+  "term": "上册",
+  "readingType": "必读",
+  "primaryRegionId": "magic-forest",
+  "sourceChapterPath": "data/imported-books/chapters/local-1年级-一年级上册必读-小巴掌童话.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-1年级-一年级上册必读-小巴掌童话-chapter-1",
+      "chapterTitle": "小巴掌童话 片段 1",
+      "charCount": 3041,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-1-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "来吧",
+            "每人五颗",
+            "不用"
+          ],
+          "answerIndex": 0,
+          "answerText": "来吧",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《小巴掌童话》·小巴掌童话 片段 1",
+          "sourceExcerpt": "他爱讲话，爱做小动作，还爱胡思乱想。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“来吧”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“来吧”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《小巴掌童话》·小巴掌童话 片段 1",
+          "sourceExcerpt": "月亮洒下银白色的光，把山坡照亮，把森林照亮，也把贪心鬼的小\n屋照亮。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“他说”说明故事变化",
+          "answerRubric": [
+            "提到“他说”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《小巴掌童话》·小巴掌童话 片段 1",
+          "sourceExcerpt": "”\n床没说话，却轻轻地哼唱起来：\n北风吹，北风吹，\n小鼹鼠在家吃吃又睡睡；\n雪花下，雪花下，\n飘不进鼹鼠温暖的家\n……\n这下小刺猬放心了，他说：\n“\n可是这会儿我肚子咕咕叫呢！",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-1年级-一年级上册必读-小巴掌童话-chapter-2",
+      "chapterTitle": "小巴掌童话 片段 2",
+      "charCount": 3193,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-2-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "喵呜",
+            "猫捉老鼠回旋曲",
+            "小老鼠尖嘴"
+          ],
+          "answerIndex": 0,
+          "answerText": "喵呜",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《小巴掌童话》·小巴掌童话 片段 2",
+          "sourceExcerpt": "过会儿睁眼瞧\n——\n你的床柜上\n会有栗子、枣\n……\n小刺猬闭上眼睛，过会儿再睁眼一瞧，他的床柜上真的又有栗子又\n有枣，栗子还是剥了壳的呢。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“袜子”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“袜子”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《小巴掌童话》·小巴掌童话 片段 2",
+          "sourceExcerpt": "这\n上面有两双袜子特别好看，很有艺术价值，给我做收藏品吧。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“猫捉老鼠回旋曲”说明故事变化",
+          "answerRubric": [
+            "提到“猫捉老鼠回旋曲”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《小巴掌童话》·小巴掌童话 片段 2",
+          "sourceExcerpt": "这只干了许多坏事的小老鼠，最后死于心脏病突发，而在他离开世\n界的最后一刻，耳边响的仍然是\n——\n《猫捉老鼠回旋曲》。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-1年级-一年级上册必读-小巴掌童话-chapter-3",
+      "chapterTitle": "小巴掌童话 片段 3",
+      "charCount": 2945,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-3-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "大嘴巴",
+            "胖墩儿",
+            "早上好朋友"
+          ],
+          "answerIndex": 0,
+          "answerText": "大嘴巴",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《小巴掌童话》·小巴掌童话 片段 3",
+          "sourceExcerpt": "8.\n锯成两半儿的月亮\n小青蛙蹲在荷叶上，他在数着池塘里的星星，一颗、两颗、三颗，\n数着数着，他打起了瞌睡。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“大嘴巴”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“大嘴巴”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《小巴掌童话》·小巴掌童话 片段 3",
+          "sourceExcerpt": "最后，豪猪大夫为蛤蟆先生开了一张药方。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“大嘴巴”说明故事变化",
+          "answerRubric": [
+            "提到“大嘴巴”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《小巴掌童话》·小巴掌童话 片段 3",
+          "sourceExcerpt": "过了好久好久，鼹鼠先生不说话，兔子先生也沉默不语，他不想打\n断鼹鼠先生的思索。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

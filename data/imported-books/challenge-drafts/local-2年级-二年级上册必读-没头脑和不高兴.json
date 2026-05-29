@@ -1,0 +1,210 @@
+{
+  "id": "local-2年级-二年级上册必读-没头脑和不高兴",
+  "title": "没头脑和不高兴",
+  "grade": 2,
+  "term": "上册",
+  "readingType": "必读",
+  "primaryRegionId": "magic-forest",
+  "sourceChapterPath": "data/imported-books/chapters/local-2年级-二年级上册必读-没头脑和不高兴.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-1",
+      "chapterTitle": "没头脑和不高兴 片段 1",
+      "charCount": 3055,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-1-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "注音版没头",
+            "脑和不高兴",
+            "任溶溶著浙"
+          ],
+          "answerIndex": 0,
+          "answerText": "注音版没头",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《没头脑和不高兴》·没头脑和不高兴 片段 1",
+          "sourceExcerpt": "注音版\n没头脑和不高兴\n任溶溶 著\n浙版数媒\n\n欢迎了。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“注音版没头”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“注音版没头”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《没头脑和不高兴》·没头脑和不高兴 片段 1",
+          "sourceExcerpt": "tā\n他\nzhǎo\n找\ndào\n到\nshū\n书\nbāo\n包\n，\nzǒu\n走\nle\n了\n。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“注音版没头”说明故事变化",
+          "answerRubric": [
+            "提到“注音版没头”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《没头脑和不高兴》·没头脑和不高兴 片段 1",
+          "sourceExcerpt": "méi\n没\ntóu\n头\nnǎo\n脑\nzuò\n坐\nxià\n下\nzuò\n做\nɡōnɡ\n功\nkè\n课\n，\nliàn\n练\nxí\n习\nběn\n本",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-2",
+      "chapterTitle": "没头脑和不高兴 片段 2",
+      "charCount": 3170,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-2-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "没头脑和不高兴",
+            "小路",
+            "星光"
+          ],
+          "answerIndex": 0,
+          "answerText": "没头脑和不高兴",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《没头脑和不高兴》·没头脑和不高兴 片段 2",
+          "sourceExcerpt": "zěn\n怎\nme\n么\nyě\n也\nzhǎo\n找\nbù\n不\nzháo\n着\n。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“没头脑和不高兴”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“没头脑和不高兴”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《没头脑和不高兴》·没头脑和不高兴 片段 2",
+          "sourceExcerpt": "kě\n可\nshì\n是\nkè\n课\nběn\n本\nne\n呢\n？",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“没头脑和不高兴”说明故事变化",
+          "answerRubric": [
+            "提到“没头脑和不高兴”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《没头脑和不高兴》·没头脑和不高兴 片段 2",
+          "sourceExcerpt": "”\ntā\n他\nyī\n一\nbù\n不\nɡāo\n高\nxìnɡ\n兴\n，\nɡōnɡ\n功\nkè\n课\nyě\n也\nbù\n不\nzuò\n做\nle\n了\n，\njiù\n就\nshànɡ\n上\nchuánɡ\n床\nqù\n去\nshuì\n睡\njiào\n觉\n。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-3",
+      "chapterTitle": "没头脑和不高兴 片段 3",
+      "charCount": 3308,
+      "estimatedMinutes": 7,
+      "questions": [
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-3-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "xìnɡ兴",
+            "小路",
+            "星光"
+          ],
+          "answerIndex": 0,
+          "answerText": "xìnɡ兴",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《没头脑和不高兴》·没头脑和不高兴 片段 3",
+          "sourceExcerpt": "méi\n没\ntóu\n头\nnǎo\n脑\ntǎnɡ\n躺\nzài\n在\nchuánɡ\n床\nshɑnɡ\n上\n，\nxīn\n心\nli\n里\nshuō\n说\n：\n“\nzhè\n这\ndiǎn\n点\nxiǎo\n小\nshì\n事\n，\nyě\n也\nfàn\n犯\nde\n得\nzháo\n着\ndí\n嘀\nɡu\n咕\nɡè\n个\nméi\n没\nwán\n完\n！",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“xìnɡ兴”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“xìnɡ兴”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《没头脑和不高兴》·没头脑和不高兴 片段 3",
+          "sourceExcerpt": "zhēn\n真\nbǎ\n把\nrén\n人\nfán\n烦\nsǐ\n死\nle\n了\n。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“xìnɡ兴”说明故事变化",
+          "answerRubric": [
+            "提到“xìnɡ兴”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《没头脑和不高兴》·没头脑和不高兴 片段 3",
+          "sourceExcerpt": "wǒ\n我\nkàn\n看\nnǐ\n你\nyɑ\n呀\n，\nshù\n竖\nméi\n眉\nmɑo\n毛\n，\ndènɡ\n瞪\nyǎn\n眼\njinɡ\n睛",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

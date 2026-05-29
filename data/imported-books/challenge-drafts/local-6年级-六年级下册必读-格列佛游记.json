@@ -1,0 +1,210 @@
+{
+  "id": "local-6年级-六年级下册必读-格列佛游记",
+  "title": "格列佛游记",
+  "grade": 6,
+  "term": "下册",
+  "readingType": "必读",
+  "primaryRegionId": "magic-forest",
+  "sourceChapterPath": "data/imported-books/chapters/local-6年级-六年级下册必读-格列佛游记.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-6年级-六年级下册必读-格列佛游记-chapter-1",
+      "chapterTitle": "0.56825（1）",
+      "charCount": 3196,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-1-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "赫够",
+            "海奇那",
+            "得古尔"
+          ],
+          "answerIndex": 0,
+          "answerText": "赫够",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《格列佛游记》·0.56825（1）",
+          "sourceExcerpt": "我在草地上\n\n躺下来，草很短，软绵绵的，一觉睡去，真是从未有过的酣畅香甜。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“赫够”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“赫够”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《格列佛游记》·0.56825（1）",
+          "sourceExcerpt": "离开大船到现在，已经十几个钟头没吃一点东西了，真是饥肠辘辘。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“赫够”说明故事变化",
+          "answerRubric": [
+            "提到“赫够”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《格列佛游记》·0.56825（1）",
+          "sourceExcerpt": "国\n\n王立刻召开会议，决定把我按前面叙述的方式绑起来（这是在我夜里睡\n\n着时干的），给我准备好充足的酒肉送来，并且预备了一种机械把我运\n\n到京城。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-6年级-六年级下册必读-格列佛游记-chapter-2",
+      "chapterTitle": "0.56825（2）",
+      "charCount": 3172,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-2-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "这一决定也",
+            "许太大胆和",
+            "危险了"
+          ],
+          "answerIndex": 0,
+          "answerText": "这一决定也",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《格列佛游记》·0.56825（2）",
+          "sourceExcerpt": "这一决定也许太大胆和危险了，我相信在同样的情形下，任何一位\n\n欧洲君主都不会效仿的。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“这一决定也”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“这一决定也”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《格列佛游记》·0.56825（2）",
+          "sourceExcerpt": "几个小时以来，我一直克制着自己想大便的冲动。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“这一决定也”说明故事变化",
+          "answerRubric": [
+            "提到“这一决定也”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《格列佛游记》·0.56825（2）",
+          "sourceExcerpt": "我把他们一起放在右手上，先把其中的五个放到大衣口袋里，又对",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-6年级-六年级下册必读-格列佛游记-chapter-3",
+      "chapterTitle": "0.56825（3）",
+      "charCount": 3185,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-3-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "兰弗罗",
+            "到地上",
+            "开来"
+          ],
+          "answerIndex": 0,
+          "answerText": "兰弗罗",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《格列佛游记》·0.56825（3）",
+          "sourceExcerpt": "第六个做出要活活吃了他的表情，吓得他哇哇大哭。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“兰弗罗”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“兰弗罗”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《格列佛游记》·0.56825（3）",
+          "sourceExcerpt": "国王说让我接受两个军官的搜查是国家法律规定的；他也知道\n\n如果没有我的同意和帮助是不可能的。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“兰弗罗”说明故事变化",
+          "answerRubric": [
+            "提到“兰弗罗”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《格列佛游记》·0.56825（3）",
+          "sourceExcerpt": "克莱弗伦\n\n·\n\n弗\n\n利\n\n罗克\n\n马尔\n\n西\n\n·\n\n弗\n\n利\n\n罗克\n\n这份清单给国王宣读之后，他虽然措辞极其委婉，还是命令我交出",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

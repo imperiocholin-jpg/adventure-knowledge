@@ -1,0 +1,186 @@
+{
+  "generatedAt": "2026-05-29T14:24:17.033Z",
+  "sourceChapterIndex": "data/imported-books/first-batch-chapters-index.json",
+  "maxQuestionsPerChapter": 3,
+  "totalBooks": 22,
+  "totalChapters": 66,
+  "totalQuestions": 198,
+  "books": [
+    {
+      "id": "local-1年级-一年级上册必读-365夜故事",
+      "title": "365夜故事",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-1年级-一年级上册必读-365夜故事.json"
+    },
+    {
+      "id": "local-1年级-一年级上册必读-小巴掌童话",
+      "title": "小巴掌童话",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-1年级-一年级上册必读-小巴掌童话.json"
+    },
+    {
+      "id": "local-2年级-二年级上册必读-没头脑和不高兴",
+      "title": "没头脑和不高兴",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-2年级-二年级上册必读-没头脑和不高兴.json"
+    },
+    {
+      "id": "local-2年级-二年级下册必读-安徒生童话",
+      "title": "安徒生童话",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-2年级-二年级下册必读-安徒生童话.json"
+    },
+    {
+      "id": "local-2年级-二年级下册必读-绿野仙踪",
+      "title": "绿野仙踪",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-2年级-二年级下册必读-绿野仙踪.json"
+    },
+    {
+      "id": "local-3年级-三年级上册必读-木偶奇遇记",
+      "title": "木偶奇遇记",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-3年级-三年级上册必读-木偶奇遇记.json"
+    },
+    {
+      "id": "local-3年级-三年级上册必读-格林童话",
+      "title": "格林童话",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-3年级-三年级上册必读-格林童话.json"
+    },
+    {
+      "id": "local-3年级-三年级上册必读-狐狸列那的故事",
+      "title": "狐狸列那的故事",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-3年级-三年级上册必读-狐狸列那的故事.json"
+    },
+    {
+      "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境",
+      "title": "爱丽丝漫游奇境",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-3年级-三年级下册必读-爱丽丝漫游奇境.json"
+    },
+    {
+      "id": "local-4年级-四年级上册必读-时代广场的蟋蟀",
+      "title": "时代广场的蟋蟀",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-4年级-四年级上册必读-时代广场的蟋蟀.json"
+    },
+    {
+      "id": "local-4年级-四年级下册必读-夏洛的网",
+      "title": "夏洛的网",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-4年级-四年级下册必读-夏洛的网.json"
+    },
+    {
+      "id": "local-4年级-四年级下册必读-海底两万里",
+      "title": "海底两万里",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-4年级-四年级下册必读-海底两万里.json"
+    },
+    {
+      "id": "local-4年级-四年级下册必读-草房子",
+      "title": "草房子",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-4年级-四年级下册必读-草房子.json"
+    },
+    {
+      "id": "local-5年级-五年级上册必读-昆虫记",
+      "title": "昆虫记",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-5年级-五年级上册必读-昆虫记.json"
+    },
+    {
+      "id": "local-5年级-五年级上册选读-小王子",
+      "title": "小王子",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-5年级-五年级上册选读-小王子.json"
+    },
+    {
+      "id": "local-5年级-五年级下册必读-西游记",
+      "title": "西游记",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-5年级-五年级下册必读-西游记.json"
+    },
+    {
+      "id": "local-6年级-六年级上册必读-汤姆-索亚历险记",
+      "title": "汤姆-索亚历险记",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-6年级-六年级上册必读-汤姆-索亚历险记.json"
+    },
+    {
+      "id": "local-6年级-六年级上册必读-鲁滨逊漂流记",
+      "title": "鲁滨逊漂流记",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-6年级-六年级上册必读-鲁滨逊漂流记.json"
+    },
+    {
+      "id": "local-6年级-六年级下册必读-格列佛游记",
+      "title": "格列佛游记",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-6年级-六年级下册必读-格列佛游记.json"
+    },
+    {
+      "id": "local-6年级-六年级下册必读-老人与海",
+      "title": "老人与海",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-6年级-六年级下册必读-老人与海.json"
+    },
+    {
+      "id": "local-6年级-六年级上册必读-三国演义",
+      "title": "三国演义",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-6年级-六年级上册必读-三国演义.json"
+    },
+    {
+      "id": "local-5年级-五年级上册必读-水浒传",
+      "title": "水浒传",
+      "chapterCount": 3,
+      "questionCount": 9,
+      "status": "draft",
+      "outputPath": "data/imported-books/challenge-drafts/local-5年级-五年级上册必读-水浒传.json"
+    }
+  ]
+}

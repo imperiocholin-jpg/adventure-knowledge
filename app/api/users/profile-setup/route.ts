@@ -8,6 +8,7 @@ import {
 } from "@/lib/auth/server"
 import { findExistingColumn, findExistingColumns } from "@/lib/data/schema-compat"
 import { isValidUserAvatarId } from "@/lib/user/avatar-catalog"
+import { emitWelcomeNotification } from "@/lib/notifications/emitters"
 import {
   normalizeAge,
   normalizeGradeClass,
@@ -104,6 +105,8 @@ export async function POST(request: NextRequest) {
     if (updateResult.error) {
       return NextResponse.json({ ok: false, error: { message: updateResult.error.message } }, { status: 502 })
     }
+
+    await emitWelcomeNotification(supabase, sessionState.user.id)
 
     const response = NextResponse.json({ ok: true, data: updateResult.data?.[0] ?? null })
     if (sessionState.refreshedSession) setAuthCookies(response, sessionState.refreshedSession)

@@ -11,6 +11,10 @@ import { findExistingColumn } from "@/lib/data/schema-compat"
 import { levelFromTotalExp, resolveLifeStageFromLevel } from "@/lib/pets/level-progress"
 import { syncUserTreasuresAfterActivity } from "@/lib/treasures/server"
 import { recordUserDailyActivity } from "@/lib/user/daily-streak-server"
+import {
+  emitDailyEngagementNotifications,
+  emitTaskRewardNotification,
+} from "@/lib/notifications/emitters"
 
 type GenericRecord = Record<string, unknown>
 type TaskStatus = "incomplete" | "claimable" | "claimed"
@@ -33,6 +37,10 @@ function getNumericValue(value: unknown, fallback = 0) {
 
 function toIdString(value: unknown) {
   return typeof value === "string" || typeof value === "number" ? String(value) : null
+}
+
+function getStringValue(value: unknown, fallback = "") {
+  return typeof value === "string" && value.trim() ? value.trim() : fallback
 }
 
 function resolveFieldName(record: GenericRecord, candidates: string[]) {
@@ -448,6 +456,21 @@ export async function POST(request: NextRequest) {
       supabase,
       serviceClient,
       userId,
+    })
+
+    const taskTitle = getStringValue(
+      taskRow[resolveFieldName(taskRow, ["title", "name"]) ?? ""],
+      "每日任务",
+    )
+    await emitTaskRewardNotification(serviceClient, userId, {
+      taskTitle,
+      taskId: taskId ?? undefined,
+      coins: coinReward,
+      xp: xpReward,
+    })
+    await emitDailyEngagementNotifications(serviceClient, userId, {
+      streak: streakResult.dailyStreak,
+      streakApplied: streakResult.applied,
     })
 
     const response = NextResponse.json({

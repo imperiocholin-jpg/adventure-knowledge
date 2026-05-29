@@ -19,6 +19,13 @@ import { resolveReadingRewardGrant } from "@/lib/economy/reward-policy"
 import { levelFromTotalExp, resolveLifeStageFromLevel } from "@/lib/pets/level-progress"
 import { syncUserTreasuresAfterActivity } from "@/lib/treasures/server"
 import { recordUserDailyActivity } from "@/lib/user/daily-streak-server"
+import {
+  emitDailyEngagementNotifications,
+  emitReadingRewardNotification,
+  emitRegionProgressReminders,
+  emitRegionUnlockNotifications,
+  resolveBookTitleFromRow,
+} from "@/lib/notifications/emitters"
 
 const USER_EXP_STEP = 100
 
@@ -463,6 +470,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const progressBeforeResult = await fetchUserAdventureProgress({
+      supabase,
+      serviceClient,
+      userId,
+    })
+
     if (entryMode === "direct") {
       const directChallengeCountResult = await countTodayDirectChallenges({
         supabase,
@@ -720,6 +733,20 @@ export async function POST(request: NextRequest) {
       supabase,
       serviceClient,
       userId,
+    })
+
+    const bookTitle = resolveBookTitleFromRow(bookResult.row)
+    await emitReadingRewardNotification(serviceClient, userId, { bookTitle, starsGain })
+    await emitRegionUnlockNotifications(
+      serviceClient,
+      userId,
+      progressBeforeResult.data,
+      adventureProgressResult.data,
+    )
+    await emitRegionProgressReminders(serviceClient, userId, adventureProgressResult.data)
+    await emitDailyEngagementNotifications(serviceClient, userId, {
+      streak: streakResult.dailyStreak,
+      streakApplied: streakResult.applied,
     })
 
     const response = NextResponse.json({

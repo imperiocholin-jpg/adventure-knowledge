@@ -18,6 +18,11 @@ import {
   resolvePetVitalColumns,
 } from "@/lib/pets/battle-vitals-server"
 import { BATTLE_SATIETY_COST, BATTLE_SPIRIT_COST, parsePetVitalsFromRecord } from "@/lib/pets/state"
+import {
+  emitPetCareNotifications,
+  emitPetDeathNotification,
+  resolvePetNameFromRow,
+} from "@/lib/notifications/emitters"
 
 interface BattleSettlePayload {
   result?: "win" | "lose" | "draw"
@@ -189,6 +194,15 @@ export async function POST(request: NextRequest) {
           await supabase.from("users").update(userUpdate).eq(userIdField, sessionState.user.id)
         }
       }
+    }
+
+    const updatedPetRow = (updateResult.data?.[0] ?? row) as Record<string, unknown>
+    const petName = resolvePetNameFromRow(updatedPetRow)
+    const petIdValue = idField ? String(row[idField]) : undefined
+    if (afterBattle.isDead && !vitals.isDead) {
+      await emitPetDeathNotification(serviceClient, sessionState.user.id, petName, petIdValue)
+    } else if (!skipVitalCost) {
+      await emitPetCareNotifications(serviceClient, sessionState.user.id, afterBattle, petName)
     }
 
     const response = NextResponse.json({

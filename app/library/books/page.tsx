@@ -2,11 +2,13 @@
 
 import { useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
+import { BookCoverThumb } from "@/components/library/book-cover-thumb"
 import { cn } from "@/lib/utils"
-import { BookOpen, ChevronLeft, Lock, Search, SlidersHorizontal, X } from "lucide-react"
+import { BookOpen, ChevronLeft, Search, SlidersHorizontal, X } from "lucide-react"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
 import { PlayerPageShell, PlayerStickyHeader } from "@/components/layout/player-page-shell"
 import { READING_LEVEL_FILTERS } from "@/components/library/search-filter"
+import { bookReadPath } from "@/lib/library/book-id-route"
 import { buildLibraryDisplayBooks, getCatalogStats } from "@/lib/library/library-books"
 import type { GradeBand } from "@/lib/library/moe-catalog-2020"
 
@@ -43,7 +45,7 @@ export default function BooksPage() {
           </button>
           <div className="flex items-center gap-2">
             <BookOpen className="h-5 w-5 text-primary" />
-            <h1 className="text-lg font-bold">教育部推荐书目</h1>
+            <h1 className="text-lg font-bold">我的书架</h1>
           </div>
           <div className="w-10" />
         </div>
@@ -105,7 +107,7 @@ export default function BooksPage() {
 
       <div className="px-4 py-3">
         <p className="text-center text-xs text-muted-foreground">
-          共 {stats.total} 种 · 已上架 {stats.available} 种 · 年级仅筛选，不限制区域闯关
+          共 {stats.total} 本 · 可阅读 {stats.available} 本 · 年级仅筛选，不限制区域闯关
         </p>
       </div>
 
@@ -113,23 +115,32 @@ export default function BooksPage() {
         <div className="grid grid-cols-3 gap-3">
           {books.map((book) => (
             <button
-              key={book.moeId}
+              key={book.id}
               type="button"
-              onClick={() => book.contentAvailable && router.push(`/library/read/${book.id}`)}
+              onClick={() => book.contentAvailable && router.push(bookReadPath(book.id))}
               className={cn(
                 "relative flex flex-col items-center rounded-xl border-2 border-border/50 bg-card p-2.5 transition-all",
-                !book.contentAvailable && "opacity-75",
                 book.contentAvailable && "hover:scale-[1.02] active:scale-[0.98]",
+                !book.contentAvailable && "cursor-default",
               )}
             >
-              <div className="relative mb-1.5 flex aspect-[3/4] w-full items-center justify-center rounded-lg bg-muted/30 text-3xl">
-                {!book.contentAvailable ? (
-                  <div className="flex flex-col items-center gap-1 px-1 text-center">
-                    <Lock className="h-5 w-5 text-muted-foreground" />
-                    <span className="text-[8px] font-medium text-amber-700">即将上架</span>
+              <div className="relative mb-1.5 w-full">
+                <BookCoverThumb
+                  bookId={book.id}
+                  title={book.title}
+                  emoji={book.cover}
+                  imageSrc={book.coverImageSrc}
+                  className="aspect-[3/4] w-full"
+                  sizes="120px"
+                />
+                {book.contentAvailable ? (
+                  <div className="absolute -right-1 -top-1 rounded-full bg-emerald-500 px-1 py-0.5 text-[7px] font-bold text-white">
+                    可读
                   </div>
                 ) : (
-                  <span>{book.cover}</span>
+                  <div className="absolute -right-1 -top-1 rounded-full bg-slate-400/90 px-1 py-0.5 text-[7px] font-bold text-white">
+                    待上线
+                  </div>
                 )}
               </div>
               <p className="mb-1 line-clamp-2 w-full text-center text-[10px] font-bold leading-tight">{book.title}</p>

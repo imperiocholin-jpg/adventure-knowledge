@@ -1,0 +1,210 @@
+{
+  "id": "local-1年级-一年级上册必读-365夜故事",
+  "title": "365夜故事",
+  "grade": 1,
+  "term": "上册",
+  "readingType": "必读",
+  "primaryRegionId": "magic-forest",
+  "sourceChapterPath": "data/imported-books/chapters/local-1年级-一年级上册必读-365夜故事.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-1年级-一年级上册必读-365夜故事-chapter-1",
+      "chapterTitle": "02.雪孩子",
+      "charCount": 1364,
+      "estimatedMinutes": 3,
+      "questions": [
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-1-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "妈妈我也去我也去",
+            "不你不能去",
+            "不我要去我要去"
+          ],
+          "answerIndex": 0,
+          "answerText": "妈妈我也去我也去",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《365夜故事》·02.雪孩子",
+          "sourceExcerpt": "雪花把树枝盖得满满的，压得弯弯的，地面上粉白\n一片，小木屋的屋顶上像铺了一条厚厚的绒被子。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“妈妈我也去我也去”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“妈妈我也去我也去”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《365夜故事》·02.雪孩子",
+          "sourceExcerpt": "一起跳舞又唱歌，\n身上真暖和，心里也快活……\n雪孩子正高兴着呢，忽然看见小木屋的窗口里，呼呼地冒出烟来，\n不一会儿，又冒出火光来。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“妈妈我也去我也去”说明故事变化",
+          "answerRubric": [
+            "提到“妈妈我也去我也去”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《365夜故事》·02.雪孩子",
+          "sourceExcerpt": "这朵白云跟雪孩子一模一样，还笑着向小白兔招手呢。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-1年级-一年级上册必读-365夜故事-chapter-2",
+      "chapterTitle": "04.星星树",
+      "charCount": 1238,
+      "estimatedMinutes": 3,
+      "questions": [
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-2-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "星星",
+            "傻星星",
+            "我就送你走"
+          ],
+          "answerIndex": 0,
+          "answerText": "星星",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《365夜故事》·04.星星树",
+          "sourceExcerpt": "〔美〕托比·斯皮德著　白冰译\n很久很久以前，当星星们最初在天上编织出图案时，它们不时地到\n处游历。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“星星”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“星星”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《365夜故事》·04.星星树",
+          "sourceExcerpt": "刹那间，公主跳了起来，把两半苹果往一起一拍，\n扣住了小星星。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“星星”说明故事变化",
+          "answerRubric": [
+            "提到“星星”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《365夜故事》·04.星星树",
+          "sourceExcerpt": "在\n它飞走之前，它在所有的苹果中，都留下了星星的印迹。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-1年级-一年级上册必读-365夜故事-chapter-3",
+      "chapterTitle": "09.糖猫",
+      "charCount": 1223,
+      "estimatedMinutes": 3,
+      "questions": [
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-3-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "糖猫",
+            "胆大的老鼠",
+            "猫大王你会捉老鼠吗"
+          ],
+          "answerIndex": 0,
+          "answerText": "糖猫",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《365夜故事》·09.糖猫",
+          "sourceExcerpt": "根据钟子芒同名童话改编\n你见过糖猫吗？",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“糖猫”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“糖猫”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《365夜故事》·09.糖猫",
+          "sourceExcerpt": "”\n三只老鼠看见糖猫没有来追他们，又叫他们自己走过去，觉得很奇\n怪，心想：这只猫大概没有学过捉老鼠的本领吧。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“糖猫”说明故事变化",
+          "answerRubric": [
+            "提到“糖猫”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《365夜故事》·09.糖猫",
+          "sourceExcerpt": "糖猫急了，想逃，可是他\n的四只脚已经被老鼠吃掉了，他跑不了啦。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

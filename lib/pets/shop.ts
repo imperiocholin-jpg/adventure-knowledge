@@ -313,10 +313,16 @@ export const SHOP_ACTION_REQUIREMENTS: Record<PetInteractAction, PetShopCategory
 
 const itemById = new Map(PET_SHOP_ITEMS.map((item) => [item.id, item]))
 
+export const DEFAULT_PET_SHOP_ITEMS: PetShopItem[] = PET_SHOP_ITEMS
+
 export function findShopItem(itemId: string) {
   return itemById.get(itemId) ?? null
 }
 
-export function listItemsByCategory(category: PetShopCategory) {
-  return PET_SHOP_ITEMS.filter((item) => item.category === category)
+export function listItemsByCategory(category: PetShopCategory, items: PetShopItem[] = PET_SHOP_ITEMS) {
+  return items.filter((item) => item.category === category)
+}
+
+export function findShopItemIn(items: PetShopItem[], itemId: string) {
+  return items.find((item) => item.id === itemId) ?? null
 }

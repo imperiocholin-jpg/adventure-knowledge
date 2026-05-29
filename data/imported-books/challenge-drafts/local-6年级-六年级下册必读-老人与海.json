@@ -1,0 +1,210 @@
+{
+  "id": "local-6年级-六年级下册必读-老人与海",
+  "title": "老人与海",
+  "grade": 6,
+  "term": "下册",
+  "readingType": "必读",
+  "primaryRegionId": "ocean-ruins",
+  "sourceChapterPath": "data/imported-books/chapters/local-6年级-六年级下册必读-老人与海.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-6年级-六年级下册必读-老人与海-chapter-1",
+      "chapterTitle": "第一章都是打鱼人",
+      "charCount": 2630,
+      "estimatedMinutes": 5,
+      "questions": [
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-1-q1",
+          "type": "memory",
+          "prompt": "海底探路员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "倒了血霉",
+            "那就一条吧",
+            "两条"
+          ],
+          "answerIndex": 0,
+          "answerText": "倒了血霉",
+          "successResponse": "海底探路员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "海底探路员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《老人与海》·第一章都是打鱼人",
+          "sourceExcerpt": "圣地亚哥是个在科希马尔海港附近独自驾驶小船捕鱼的老人。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "海底探路员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“倒了血霉”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“倒了血霉”这条线索继续找",
+          "successResponse": "海底探路员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "海底探路员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《老人与海》·第一章都是打鱼人",
+          "sourceExcerpt": "”\n“\n那我也想法叫船主人驶到远方，这样的话，如果你钓到了大鱼，\n我们就可以赶过去帮忙。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "海底探路员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“倒了血霉”说明故事变化",
+          "answerRubric": [
+            "提到“倒了血霉”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "海底探路员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "海底探路员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《老人与海》·第一章都是打鱼人",
+          "sourceExcerpt": "老人\n看着远去的小小身影，脸上浮现出一丝温情的笑。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-6年级-六年级下册必读-老人与海-chapter-2",
+      "chapterTitle": "第二章祝你好运",
+      "charCount": 1972,
+      "estimatedMinutes": 4,
+      "questions": [
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-2-q1",
+          "type": "memory",
+          "prompt": "海底探路员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "对不起",
+            "嘿嘿",
+            "也祝你好运"
+          ],
+          "answerIndex": 0,
+          "answerText": "对不起",
+          "successResponse": "海底探路员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "海底探路员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《老人与海》·第二章祝你好运",
+          "sourceExcerpt": "他的脑袋向前耷拉着，整个\n脸上就见不着丝毫生气。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "海底探路员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“对不起”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“对不起”这条线索继续找",
+          "successResponse": "海底探路员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "海底探路员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《老人与海》·第二章祝你好运",
+          "sourceExcerpt": "我\n也许不像以前那样强壮，可还是懂得不少捕鱼的窍门，而且有着坚强的\n决心和毅力。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "海底探路员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“对不起”说明故事变化",
+          "answerRubric": [
+            "提到“对不起”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "海底探路员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "海底探路员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《老人与海》·第二章祝你好运",
+          "sourceExcerpt": "此时，月亮已没入山背后，这是黎明前最黑暗的一\n刻，圣地亚哥知道自己将要驶向远方，他把陆地的气息统统抛在后方，\n只带了男孩的祝福，缓缓划进清晨海洋的清新气息中。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-6年级-六年级下册必读-老人与海-chapter-3",
+      "chapterTitle": "第三章军舰鸟与金枪鱼",
+      "charCount": 3017,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-3-q1",
+          "type": "memory",
+          "prompt": "海底探路员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "鲯鳅",
+            "大鲯鳅",
+            "它肯定是发现什么啦"
+          ],
+          "answerIndex": 0,
+          "answerText": "鲯鳅",
+          "successResponse": "海底探路员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "海底探路员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《老人与海》·第三章军舰鸟与金枪鱼",
+          "sourceExcerpt": "老人划船出海不多会儿，就能听\n见飞鱼出水时的颤抖声，还有它们凌空飞翔时平展双翅发出的咝咝声。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "海底探路员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“鲯鳅”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“鲯鳅”这条线索继续找",
+          "successResponse": "海底探路员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "海底探路员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《老人与海》·第三章军舰鸟与金枪鱼",
+          "sourceExcerpt": "军舰鸟显然不是飞鱼的对手，接连十几次飞鱼都逃脱了它的布控。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "海底探路员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“鲯鳅”说明故事变化",
+          "answerRubric": [
+            "提到“鲯鳅”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "海底探路员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "海底探路员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《老人与海》·第三章军舰鸟与金枪鱼",
+          "sourceExcerpt": "阳光经过海水的折射，幻化成七色彩虹，直直透\n入深海中，还能看清那几根笔直垂入水中一英寻深的钓索，金枪鱼群已\n经完全无迹可寻了。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

@@ -160,7 +160,7 @@ export default function AdminUsersPage() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="text-xl font-semibold">用户</h2>
+          <h2 className="text-xl font-semibold">用户管理</h2>
           <p className="text-sm text-slate-500">共 {total} 个账号 · 可新增测试马甲</p>
         </div>
         <div className="flex flex-wrap gap-2">

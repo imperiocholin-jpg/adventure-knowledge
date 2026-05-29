@@ -1,0 +1,210 @@
+{
+  "id": "local-3年级-三年级上册必读-木偶奇遇记",
+  "title": "木偶奇遇记",
+  "grade": 3,
+  "term": "上册",
+  "readingType": "必读",
+  "primaryRegionId": "magic-forest",
+  "sourceChapterPath": "data/imported-books/chapters/local-3年级-三年级上册必读-木偶奇遇记.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-3年级-三年级上册必读-木偶奇遇记-chapter-1",
+      "chapterTitle": "木偶奇遇记 片段 1",
+      "charCount": 2802,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-1-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "波伦迪那",
+            "我明白了",
+            "一个皇帝"
+          ],
+          "answerIndex": 0,
+          "answerText": "波伦迪那",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《木偶奇遇记》·木偶奇遇记 片段 1",
+          "sourceExcerpt": "事中的皮诺乔已经成为全球一代又一代孩子们心中的童话大明星。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“波伦迪那”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“波伦迪那”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《木偶奇遇记》·木偶奇遇记 片段 1",
+          "sourceExcerpt": "等到他终\n于睁开眼睛的时候，发现自己坐在地板上。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“波伦迪那”说明故事变化",
+          "answerRubric": [
+            "提到“波伦迪那”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《木偶奇遇记》·木偶奇遇记 片段 1",
+          "sourceExcerpt": "[2]\n\n狒狒，多产于非洲的一种哺乳动物，身体形状像猴子，头部像狗，四肢粗壮，尾巴细\n长。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-3年级-三年级上册必读-木偶奇遇记-chapter-2",
+      "chapterTitle": "木偶奇遇记 片段 2",
+      "charCount": 2777,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-2-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "不许笑",
+            "我活该",
+            "可怜的木偶"
+          ],
+          "answerIndex": 0,
+          "answerText": "不许笑",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《木偶奇遇记》·木偶奇遇记 片段 2",
+          "sourceExcerpt": "★\n杰佩托住的是底层的一个小房间，没有窗户，完全靠从楼梯那儿射\n进来的一点儿光线。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“不许笑”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“不许笑”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《木偶奇遇记》·木偶奇遇记 片段 2",
+          "sourceExcerpt": "皮诺乔老远就看见那个警察拦断了一条街，他便想出其不意地从他\n的胯下溜过去。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“不许笑”说明故事变化",
+          "answerRubric": [
+            "提到“不许笑”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《木偶奇遇记》·木偶奇遇记 片段 2",
+          "sourceExcerpt": "可是蟋蟀既有耐心又镇静，他非但不因为这句无礼的话而生气，还",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-3年级-三年级上册必读-木偶奇遇记-chapter-3",
+      "chapterTitle": "木偶奇遇记 片段 3",
+      "charCount": 2998,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-3-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "一般说来",
+            "谁呀",
+            "是我"
+          ],
+          "answerIndex": 0,
+          "answerText": "一般说来",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《木偶奇遇记》·木偶奇遇记 片段 3",
+          "sourceExcerpt": "继续用同样的口气说：\n“\n但是如果你不喜欢上学，那么至少也该学一门手艺呀，光为了老\n老实实地挣一口饭吃，也该这么做的！",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“一般说来”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“一般说来”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《木偶奇遇记》·木偶奇遇记 片段 3",
+          "sourceExcerpt": "”\n说着他张开翅膀，朝开着的窗户猛冲出去，一下子便飞得无影无踪\n了。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“一般说来”说明故事变化",
+          "answerRubric": [
+            "提到“一般说来”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《木偶奇遇记》·木偶奇遇记 片段 3",
+          "sourceExcerpt": "大颗大颗的泪珠流下双颊，他哭\n着问道：",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

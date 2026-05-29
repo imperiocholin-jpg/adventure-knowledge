@@ -6,13 +6,15 @@ import { getHomePetMood, mapHomeMoodToSceneMood } from "@/lib/pets/state"
 import { PetMoodChip } from "@/components/pets/pet-mood-chip"
 import { Sparkles, Volume2, VolumeX, Utensils, Gamepad2, Moon, Dumbbell } from "lucide-react"
 import { PetAvatar } from "./pet-avatar"
+import { ProfileNameSkeleton } from "@/components/profile/profile-name-skeleton"
 import { Pet2DScene } from "./pet-2d-scene"
 import { PetFloatingHint } from "./pet-floating-hint"
 import type { PetImageAction } from "@/lib/pets/avatar-registry"
 
 interface PetShowcaseProps {
   petEmoji: string
-  petName: string
+  petName?: string
+  isPetNameLoading?: boolean
   level: number
   rarity?: "common" | "rare" | "epic" | "legendary"
   mood: "happy" | "cute" | "excited" | "sleepy" | "hungry" | "sad" | "listless"
@@ -46,7 +48,8 @@ interface PetShowcaseProps {
 
 export function PetShowcase({
   petEmoji = "🐕",
-  petName = "毛毛",
+  petName,
+  isPetNameLoading = false,
   level = 12,
   rarity = "common",
   mood = "happy",
@@ -152,13 +155,17 @@ export function PetShowcase({
               <PetAvatar
                 src={petAvatarSrc}
                 emoji={petEmoji}
-                alt={`${petName}头像`}
+                alt={petName ? `${petName}头像` : "宠物头像"}
                 size="sm"
                 rounded="full"
               />
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-1.5">
-                  <h2 className="text-lg font-bold text-foreground">{petName}</h2>
+                  {isPetNameLoading ? (
+                    <ProfileNameSkeleton className="h-5 w-24" />
+                  ) : (
+                    <h2 className="text-lg font-bold text-foreground">{petName}</h2>
+                  )}
                   <PetMoodChip mood={displayMood} deceased={isDead} size="sm" />
                 </div>
                 <p className="text-xs text-muted-foreground">
@@ -179,9 +186,9 @@ export function PetShowcase({
         </div>
 
         {/* 2D 动态宠物舞台（图片+动画） */}
-        <div className="relative">
+        <div className="relative h-[23rem]">
           <div
-            className="relative h-[23rem] cursor-pointer px-1 pt-16"
+            className="relative h-full cursor-pointer px-1 pt-16"
             onClick={handleTap}
           >
             <Pet2DScene
@@ -201,74 +208,74 @@ export function PetShowcase({
             />
           </div>
 
-          {/* 互动按钮：置于视频下方，不遮挡画面 */}
-          <div className="z-20 flex items-center justify-center gap-4 px-2 py-1.5">
+          {/* 互动按钮：浮于宠物画面左侧 */}
+          <div className="pointer-events-none absolute bottom-0 left-5 top-16 z-20 flex flex-col items-center justify-center gap-2.5">
             <button
               aria-label="喂食"
               onClick={(e) => { e.stopPropagation(); handleAction("feed", onFeed) }}
               className={cn(
-                "flex items-center justify-center rounded-2xl transition-all duration-200",
+                "pointer-events-auto flex items-center justify-center rounded-2xl transition-all duration-200",
                 canFeed ? (activeAction === "feed" ? "scale-95" : "hover:scale-105 active:scale-95") : "opacity-55",
               )}
             >
               <div
                 className={cn(
-                  "h-12 w-12 rounded-2xl flex items-center justify-center text-white shadow-lg",
+                  "flex h-11 w-11 items-center justify-center rounded-2xl text-white shadow-lg ring-2 ring-white/60",
                   canFeed ? "bg-gradient-to-br from-orange-400 to-amber-400" : "bg-slate-300",
                 )}
               >
-                <Utensils className="h-6 w-6" />
+                <Utensils className="h-5 w-5" />
               </div>
             </button>
             <button
               aria-label="玩耍"
               onClick={(e) => { e.stopPropagation(); handleAction("play", onPlay) }}
               className={cn(
-                "flex items-center justify-center rounded-2xl transition-all duration-200",
+                "pointer-events-auto flex items-center justify-center rounded-2xl transition-all duration-200",
                 canPlay ? (activeAction === "play" ? "scale-95" : "hover:scale-105 active:scale-95") : "opacity-55",
               )}
             >
               <div
                 className={cn(
-                  "h-12 w-12 rounded-2xl flex items-center justify-center text-white shadow-lg",
+                  "flex h-11 w-11 items-center justify-center rounded-2xl text-white shadow-lg ring-2 ring-white/60",
                   canPlay ? "bg-gradient-to-br from-pink-400 to-rose-400" : "bg-slate-300",
                 )}
               >
-                <Gamepad2 className="h-6 w-6" />
+                <Gamepad2 className="h-5 w-5" />
               </div>
             </button>
             <button
               aria-label="休息"
               onClick={(e) => { e.stopPropagation(); handleAction("sleep", onSleep) }}
               className={cn(
-                "flex items-center justify-center rounded-2xl transition-all duration-200",
+                "pointer-events-auto flex items-center justify-center rounded-2xl transition-all duration-200",
                 canSleep ? (activeAction === "sleep" ? "scale-95" : "hover:scale-105 active:scale-95") : "opacity-55",
               )}
             >
               <div
                 className={cn(
-                  "h-12 w-12 rounded-2xl flex items-center justify-center text-white shadow-lg",
+                  "flex h-11 w-11 items-center justify-center rounded-2xl text-white shadow-lg ring-2 ring-white/60",
                   canSleep ? "bg-gradient-to-br from-blue-400 to-indigo-400" : "bg-slate-300",
                 )}
               >
-                <Moon className="h-6 w-6" />
+                <Moon className="h-5 w-5" />
               </div>
             </button>
             <button
               aria-label="训练"
               onClick={(e) => { e.stopPropagation(); handleAction("train", onTrain) }}
               className={cn(
-                "flex items-center justify-center rounded-2xl transition-all duration-200",
+                "pointer-events-auto flex items-center justify-center rounded-2xl transition-all duration-200",
                 canTrain ? (activeAction === "train" ? "scale-95" : "hover:scale-105 active:scale-95") : "opacity-55",
               )}
             >
               <div
                 className={cn(
-                  "h-12 w-12 rounded-2xl flex items-center justify-center text-white shadow-lg",
+                  "flex h-11 w-11 items-center justify-center rounded-2xl text-white shadow-lg ring-2 ring-white/60",
                   canTrain ? "bg-gradient-to-br from-emerald-400 to-green-400" : "bg-slate-300",
                 )}
               >
-                <Dumbbell className="h-6 w-6" />
+                <Dumbbell className="h-5 w-5" />
               </div>
             </button>
           </div>

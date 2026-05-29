@@ -1,7 +1,8 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { BookOpen, ChevronRight, Lock, Sparkles, Star, Trophy, Zap } from "lucide-react"
+import { BookOpen, ChevronRight } from "lucide-react"
+import { BookCoverThumb } from "@/components/library/book-cover-thumb"
 import { cn } from "@/lib/utils"
 import { buildLibraryDisplayBooks, getCatalogStats, type LibraryDisplayBook } from "@/lib/library/library-books"
 import type { GradeBand } from "@/lib/library/moe-catalog-2020"
@@ -42,9 +43,9 @@ export function BookCollection({
             <BookOpen className="h-4 w-4 text-white" />
           </div>
           <div>
-            <h2 className="text-base font-bold text-foreground">教育部推荐书目</h2>
+            <h2 className="text-base font-bold text-foreground">我的书架</h2>
             <p className="text-[10px] text-muted-foreground">
-              目录 {stats.total} 种 · 已上架 {stats.available} 种
+              共 {stats.total} 本 · 可阅读 {stats.available} 本
             </p>
           </div>
         </div>
@@ -62,28 +63,31 @@ export function BookCollection({
           const isSelected = selectedBook === book.id
           return (
             <button
-              key={book.moeId}
+              key={book.id}
               type="button"
               onClick={() => handleBookClick(book)}
               className={cn(
                 "relative flex flex-col items-center rounded-xl border-2 border-border/50 bg-card p-2.5 transition-all",
-                !book.contentAvailable && "opacity-80",
                 isSelected && "ring-2 ring-primary ring-offset-2",
                 book.contentAvailable ? "hover:scale-[1.02] active:scale-[0.98]" : "cursor-default",
               )}
             >
-              <div className="relative mb-1.5 flex aspect-[3/4] w-full items-center justify-center rounded-lg border border-border/40 bg-muted/30 text-3xl">
-                {!book.contentAvailable ? (
-                  <div className="flex flex-col items-center gap-1 px-1">
-                    <Lock className="h-5 w-5 text-muted-foreground" />
-                    <span className="text-center text-[8px] leading-tight text-amber-700">即将上架</span>
-                  </div>
-                ) : (
-                  <span>{book.cover}</span>
-                )}
-                {book.contentAvailable && (
+              <div className="relative mb-1.5 w-full">
+                <BookCoverThumb
+                  bookId={book.id}
+                  title={book.title}
+                  emoji={book.cover}
+                  imageSrc={book.coverImageSrc}
+                  className="aspect-[3/4] w-full"
+                  sizes="120px"
+                />
+                {book.contentAvailable ? (
                   <div className="absolute -right-1 -top-1 rounded-full bg-emerald-500 px-1 py-0.5 text-[7px] font-bold text-white">
                     可读
+                  </div>
+                ) : (
+                  <div className="absolute -right-1 -top-1 rounded-full bg-slate-400/90 px-1 py-0.5 text-[7px] font-bold text-white">
+                    待上线
                   </div>
                 )}
               </div>
@@ -106,23 +110,10 @@ export function BookCollection({
         <p className="rounded-xl border border-dashed p-4 text-center text-xs text-muted-foreground">没有匹配的书籍</p>
       )}
 
-      <div className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-purple-200/50 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-purple-500/10 p-3">
-        <div className="flex -space-x-2">
-          {[...Array(3)].map((_, index) => (
-            <div
-              key={index}
-              className="flex h-6 w-6 items-center justify-center rounded-lg border-2 border-white bg-gray-200 text-[10px]"
-            >
-              ?
-            </div>
-          ))}
-        </div>
-        <div className="flex-1">
-          <p className="text-[10px] font-semibold text-purple-700">
-            还有 {Math.max(0, stats.total - limit)} 本在目录中等待解锁电子版
-          </p>
-        </div>
-        <Zap className="h-4 w-4 text-purple-500" />
+      <div className="mt-4 rounded-xl border border-border/50 bg-muted/30 p-3 text-center">
+        <p className="text-[10px] text-muted-foreground">
+          书架展示 book 目录全部 {stats.total} 本书 · 按年级归入六个冒险区域
+        </p>
       </div>
     </div>
   )

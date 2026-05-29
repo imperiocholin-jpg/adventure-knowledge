@@ -70,6 +70,15 @@ function getNumberField(row: Record<string, unknown>, fields: string[], fallback
   return fallback
 }
 
+/** 全站统一的冒险家等级解析（与书架/个人页一致） */
+export function resolveAdventureLevelFromRow(row: Record<string, unknown> | null | undefined): number {
+  if (!row) return DEFAULT_USER_PROFILE.adventureLevel
+  return Math.max(
+    1,
+    Math.floor(getNumberField(row, ["adventure_level", "chapter_level", "level", "user_level"], 1)),
+  )
+}
+
 function resolveAvatarIdFromRow(row: Record<string, unknown>): string {
   const raw = row.avatar_id ?? row.user_avatar_id ?? row.avatarId
   if (isValidUserAvatarId(raw)) return raw
@@ -82,7 +91,7 @@ export function parseUserRecord(row: Record<string, unknown> | null): UserProfil
   const avatarId = resolveAvatarIdFromRow(row)
   const expRaw = getNumberField(row, ["experience", "user_exp", "exp"], 0)
   const expParts = resolveUserExpInLevel(expRaw)
-  const adventureLevel = getNumberField(row, ["adventure_level", "chapter_level", "level", "user_level"], 1)
+  const adventureLevel = resolveAdventureLevelFromRow(row)
   const ageRaw = row.age
   const age =
     typeof ageRaw === "number" && ageRaw >= 5 && ageRaw <= 18
@@ -108,6 +117,13 @@ export function parseUserRecord(row: Record<string, unknown> | null): UserProfil
     userExpToNext: expParts.userExpToNext,
     battleWins: getNumberField(row, ["battle_wins"], 0),
   }
+}
+
+export function clearLocalUserProfilePatch() {
+  if (typeof window === "undefined") return
+  if (!window.localStorage.getItem(USER_PROFILE_STORAGE_KEY)) return
+  window.localStorage.removeItem(USER_PROFILE_STORAGE_KEY)
+  window.dispatchEvent(new CustomEvent(USER_PROFILE_UPDATED_EVENT))
 }
 
 export function readLocalUserProfilePatch(): UserProfilePatch | null {

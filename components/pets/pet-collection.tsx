@@ -19,7 +19,7 @@ interface PetCollectionProps {
 }
 
 export function PetCollection({
-  petName = "毛毛",
+  petName,
   petEmoji = "🐕",
   petAvatarSrc = null,
   petBreed = "柯基",
@@ -63,12 +63,12 @@ export function PetCollection({
               <PetAvatar
                 src={petAvatarSrc}
                 emoji={petEmoji}
-                alt={`${petName}头像`}
+                alt={petName ? `${petName}头像` : "宠物头像"}
                 size="xs"
                 rounded="full"
                 className="border-white/70"
               />
-              <p className="text-sm font-semibold text-foreground">{petName}</p>
+              <p className="text-sm font-semibold text-foreground">{petName ?? "—"}</p>
             </div>
           </div>
           <div>

@@ -1,0 +1,210 @@
+{
+  "id": "local-5年级-五年级上册选读-小王子",
+  "title": "小王子",
+  "grade": 5,
+  "term": "上册",
+  "readingType": "选读",
+  "primaryRegionId": "sky-kingdom",
+  "sourceChapterPath": "data/imported-books/chapters/local-5年级-五年级上册选读-小王子.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-5年级-五年级上册选读-小王子-chapter-1",
+      "chapterTitle": "小王子 片段 1",
+      "charCount": 3099,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-1-q1",
+          "type": "memory",
+          "prompt": "云端信使轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "真实的故事",
+            "问这干吗",
+            "是的"
+          ],
+          "answerIndex": 0,
+          "answerText": "真实的故事",
+          "successResponse": "云端信使点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "云端信使提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《小王子》·小王子 片段 1",
+          "sourceExcerpt": "圣埃克絮佩里\n（\nAntoine De Saint-Exupéry 1900-1944\n）\n\n◆\n◆\n◆\n我六岁那年，在一本描写原始森林的名叫《真实的故事》的书上，\n看见过一幅精彩的插图，画的是一条蟒蛇在吞吃一头猛兽。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "云端信使摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“问这干吗”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“问这干吗”这条线索继续找",
+          "successResponse": "云端信使露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "云端信使指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《小王子》·小王子 片段 1",
+          "sourceExcerpt": "等我总算说得出话时，我对他说：\n“\n可是\n……\n你在这儿干吗？",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "云端信使说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“问这干吗”说明故事变化",
+          "answerRubric": [
+            "提到“问这干吗”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "云端信使把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "云端信使温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《小王子》·小王子 片段 1",
+          "sourceExcerpt": "比如说，他把它叫作\n“3251\n号小行星\n”\n。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-5年级-五年级上册选读-小王子-chapter-2",
+      "chapterTitle": "小王子 片段 2",
+      "charCount": 2951,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-2-q1",
+          "type": "memory",
+          "prompt": "云端信使轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "等什么",
+            "多漂亮的房子",
+            "绵羊当真吃灌木吗"
+          ],
+          "answerIndex": 0,
+          "answerText": "等什么",
+          "successResponse": "云端信使点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "云端信使提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《小王子》·小王子 片段 2",
+          "sourceExcerpt": "我有很可靠的理由，足以相信小王子原先住的那个星球，就是\nB612\n号小行星。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "云端信使摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“等什么”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“等什么”这条线索继续找",
+          "successResponse": "云端信使露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "云端信使指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《小王子》·小王子 片段 2",
+          "sourceExcerpt": "可你为什么想让绵羊去吃小猴面包树呢？",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "云端信使说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“等什么”说明故事变化",
+          "answerRubric": [
+            "提到“等什么”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "云端信使把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "云端信使温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《小王子》·小王子 片段 2",
+          "sourceExcerpt": "”\n过了一会儿，你又说：\n\n“\n你知道\n……\n一个人感到非常忧伤的时候，他就喜欢看日落\n……”\n“\n这么说，看四十三次的那天，你感到非常忧伤？",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-5年级-五年级上册选读-小王子-chapter-3",
+      "chapterTitle": "小王子 片段 3",
+      "charCount": 3073,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-3-q1",
+          "type": "memory",
+          "prompt": "云端信使轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "再见啦",
+            "那么刺有什么用呢",
+            "正事"
+          ],
+          "answerIndex": 0,
+          "answerText": "再见啦",
+          "successResponse": "云端信使点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "云端信使提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《小王子》·小王子 片段 3",
+          "sourceExcerpt": "◆\n◆\n◆\n第五天，还是羊的事情，把小王子生活的秘密向我揭开了。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "云端信使摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“再见啦”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“再见啦”这条线索继续找",
+          "successResponse": "云端信使露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "云端信使指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《小王子》·小王子 片段 3",
+          "sourceExcerpt": "她不愿像虞美\n人\n[1]\n那样一亮相就是满脸皱纹。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "云端信使说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“再见啦”说明故事变化",
+          "answerRubric": [
+            "提到“再见啦”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "云端信使把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "云端信使温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《小王子》·小王子 片段 3",
+          "sourceExcerpt": "他举着罩子，茫然不知所措\n地站在那儿。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

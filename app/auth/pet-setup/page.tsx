@@ -1,12 +1,10 @@
 "use client"
 
 import Image from "next/image"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 
 import {
-  PET_BREEDS,
-  PET_SPECIES_EMOJI,
   PET_SPECIES_LABEL,
   resolvePetEmoji,
   type PetSpecies,
@@ -15,27 +13,65 @@ import { resolvePetAvatarSrc, resolvePetVideoAssets } from "@/lib/pets/avatar-re
 import { PlayerPageShell } from "@/components/layout/player-page-shell"
 import { useOnboardingPageGuard } from "@/hooks/use-onboarding-page-guard"
 
+interface EnabledSpeciesOption {
+  id: PetSpecies
+  label: string
+  emoji: string
+  breeds: string[]
+}
+
 export default function PetSetupPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const isReadopt = searchParams.get("readopt") === "1"
   useOnboardingPageGuard("pet-setup", { skip: isReadopt })
 
+  const [enabledSpecies, setEnabledSpecies] = useState<EnabledSpeciesOption[]>([])
+  const [isLoadingTypes, setIsLoadingTypes] = useState(true)
   const [petName, setPetName] = useState("毛毛")
   const [species, setSpecies] = useState<PetSpecies>("dog")
-  const [breed, setBreed] = useState(PET_BREEDS.dog[0])
+  const [breed, setBreed] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const speciesList = useMemo(
-    () =>
-      (Object.keys(PET_SPECIES_LABEL) as PetSpecies[]).map((id) => ({
-        id,
-        label: PET_SPECIES_LABEL[id],
-        emoji: PET_SPECIES_EMOJI[id],
-      })),
-    [],
-  )
+  useEffect(() => {
+    let cancelled = false
+    async function loadEnabledTypes() {
+      setIsLoadingTypes(true)
+      try {
+        const response = await fetch("/api/pets/types", { cache: "no-store" })
+        const payload = await response.json()
+        if (!response.ok || !payload?.ok) {
+          throw new Error(payload?.error?.message ?? "无法加载可选宠物")
+        }
+        const nextSpecies = Array.isArray(payload.species) ? (payload.species as EnabledSpeciesOption[]) : []
+        if (!cancelled) {
+          setEnabledSpecies(nextSpecies)
+          if (nextSpecies.length > 0) {
+            const first = nextSpecies[0]
+            setSpecies(first.id)
+            setBreed(first.breeds[0] ?? "")
+          }
+        }
+      } catch (loadError) {
+        if (!cancelled) {
+          setError(loadError instanceof Error ? loadError.message : "无法加载可选宠物")
+        }
+      } finally {
+        if (!cancelled) setIsLoadingTypes(false)
+      }
+    }
+    void loadEnabledTypes()
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const currentBreeds = useMemo(() => {
+    return enabledSpecies.find((item) => item.id === species)?.breeds ?? []
+  }, [enabledSpecies, species])
+
+  const speciesList = useMemo(() => enabledSpecies, [enabledSpecies])
 
   const cubAvatarSrc = useMemo(
     () => resolvePetAvatarSrc({ species, breed, lifeStage: "幼崽" }),
@@ -49,7 +85,8 @@ export default function PetSetupPage() {
 
   const handleSelectSpecies = (nextSpecies: PetSpecies) => {
     setSpecies(nextSpecies)
-    setBreed(PET_BREEDS[nextSpecies][0])
+    const nextBreeds = enabledSpecies.find((item) => item.id === nextSpecies)?.breeds ?? []
+    setBreed(nextBreeds[0] ?? "")
   }
 
   const submitSetup = async () => {
@@ -107,28 +144,34 @@ export default function PetSetupPage() {
 
           <div>
             <p className="mb-2 text-xs text-muted-foreground">大类</p>
-            <div className="flex flex-wrap gap-2">
-              {speciesList.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => handleSelectSpecies(item.id)}
-                  className={`rounded-full border px-3 py-1.5 text-xs ${
-                    species === item.id
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-background border-border/60"
-                  }`}
-                >
-                  {item.emoji} {item.label}
-                </button>
-              ))}
-            </div>
+            {isLoadingTypes ? (
+              <p className="text-xs text-muted-foreground">加载可选宠物中...</p>
+            ) : speciesList.length === 0 ? (
+              <p className="text-xs text-rose-600">暂无可选宠物，请联系管理员。</p>
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                {speciesList.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => handleSelectSpecies(item.id)}
+                    className={`rounded-full border px-3 py-1.5 text-xs ${
+                      species === item.id
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-background border-border/60"
+                    }`}
+                  >
+                    {item.emoji} {item.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <div>
             <p className="mb-2 text-xs text-muted-foreground">子品种</p>
             <div className="flex flex-wrap gap-2">
-              {PET_BREEDS[species].map((item) => (
+              {currentBreeds.map((item) => (
                 <button
                   key={item}
                   type="button"
@@ -186,7 +229,7 @@ export default function PetSetupPage() {
           type="button"
           className="mt-5 w-full rounded-xl bg-gradient-to-r from-primary to-emerald-500 py-2.5 text-sm font-semibold text-white disabled:opacity-60"
           onClick={submitSetup}
-          disabled={isSubmitting}
+          disabled={isSubmitting || isLoadingTypes || speciesList.length === 0 || !breed}
         >
           {isSubmitting ? "保存中..." : isReadopt ? "重新领养宠物" : "开始冒险"}
         </button>

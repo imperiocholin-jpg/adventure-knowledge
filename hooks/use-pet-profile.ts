@@ -14,6 +14,10 @@ import {
   type PetProfile,
 } from "@/lib/pets/pet-profile"
 import { parsePetVitalsFromRecord } from "@/lib/pets/state"
+import {
+  readCachedPetProfile,
+  writeCachedPetProfile,
+} from "@/lib/profile/session-cache"
 
 export interface PetProfileMeta {
   bond: number
@@ -22,13 +26,24 @@ export interface PetProfileMeta {
 
 const DEFAULT_PET_META: PetProfileMeta = { bond: 0, createdAt: null }
 
+function createInitialState(): {
+  profile: PetProfile
+  meta: PetProfileMeta
+  isLoading: boolean
+  hasCache: boolean
+} {
+  const cached = readCachedPetProfile()
+  if (cached) {
+    return { profile: cached, meta: DEFAULT_PET_META, isLoading: true, hasCache: true }
+  }
+  return { profile: DEFAULT_PET_PROFILE, meta: DEFAULT_PET_META, isLoading: true, hasCache: false }
+}
+
 export function usePetProfile() {
-  const [profile, setProfile] = useState<PetProfile>(DEFAULT_PET_PROFILE)
-  const [meta, setMeta] = useState<PetProfileMeta>(DEFAULT_PET_META)
-  const [isLoading, setIsLoading] = useState(true)
+  const [state, setState] = useState(createInitialState)
 
   const refresh = useCallback(async () => {
-    setIsLoading(true)
+    setState((prev) => ({ ...prev, isLoading: true }))
     try {
       const response = await fetch("/api/pets", { cache: "no-store" })
       const payload = await response.json()
@@ -37,22 +52,32 @@ export function usePetProfile() {
       if (serverComplete) clearLocalPetProfilePatch()
       const localPatch = serverComplete ? null : readLocalPetProfilePatch()
       const parsed = parsePetRecord(row)
-      setProfile(mergePetProfile(parsed, localPatch, row))
+      const profile = mergePetProfile(parsed, localPatch, row)
+      writeCachedPetProfile(profile)
       if (row) {
         const vitals = parsePetVitalsFromRecord(row)
-        setMeta({
-          bond: vitals.bond,
-          createdAt: typeof row.created_at === "string" ? row.created_at : null,
+        setState({
+          profile,
+          meta: {
+            bond: vitals.bond,
+            createdAt: typeof row.created_at === "string" ? row.created_at : null,
+          },
+          isLoading: false,
+          hasCache: true,
         })
       } else {
-        setMeta(DEFAULT_PET_META)
+        setState({ profile, meta: DEFAULT_PET_META, isLoading: false, hasCache: true })
       }
     } catch {
+      const cached = readCachedPetProfile()
       const localPatch = readLocalPetProfilePatch()
-      setProfile(mergePetProfile(DEFAULT_PET_PROFILE, localPatch))
-      setMeta(DEFAULT_PET_META)
-    } finally {
-      setIsLoading(false)
+      const profile = mergePetProfile(cached ?? DEFAULT_PET_PROFILE, localPatch)
+      setState({
+        profile,
+        meta: DEFAULT_PET_META,
+        isLoading: false,
+        hasCache: Boolean(cached),
+      })
     }
   }, [])
 
@@ -77,5 +102,13 @@ export function usePetProfile() {
     }
   }, [refresh])
 
-  return { profile, meta, isLoading, refresh }
+  const isDisplayReady = !state.isLoading || state.hasCache
+
+  return {
+    profile: state.profile,
+    meta: state.meta,
+    isLoading: state.isLoading,
+    isDisplayReady,
+    refresh,
+  }
 }

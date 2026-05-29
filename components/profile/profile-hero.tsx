@@ -5,6 +5,7 @@ import { Coins, Flame, MapPin, Sparkles, Swords } from "lucide-react"
 
 import { profileRankConfig } from "@/lib/profile/profile-rank-config"
 import type { ProfileRankBadge } from "@/lib/profile/rank-badge"
+import { ProfileNameSkeleton } from "@/components/profile/profile-name-skeleton"
 
 export interface ProfileHeroMetrics {
   coins?: number
@@ -14,7 +15,8 @@ export interface ProfileHeroMetrics {
 
 interface ProfileHeroProps {
   avatar?: string
-  username: string
+  username?: string
+  isUsernameLoading?: boolean
   adventureTitle: string
   level: number
   rankBadge: ProfileRankBadge
@@ -35,6 +37,7 @@ interface ProfileHeroProps {
 export function ProfileHero({
   avatar,
   username,
+  isUsernameLoading = false,
   adventureTitle,
   level,
   rankBadge,
@@ -88,7 +91,7 @@ export function ProfileHero({
               <div className="h-14 w-14 rounded-full bg-gradient-to-br from-primary via-emerald-500 to-teal-400 p-0.5 shadow-sm">
                 <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-card">
                   {avatar ? (
-                    <img src={avatar} alt={username} className="h-full w-full object-cover object-center" />
+                    <img src={avatar} alt={username ?? "用户头像"} className="h-full w-full object-cover object-center" />
                   ) : (
                     <span className="text-2xl">👦</span>
                   )}
@@ -100,7 +103,11 @@ export function ProfileHero({
             </div>
 
             <div className="min-w-0 flex-1 space-y-1">
-              <h1 className="truncate text-base font-bold leading-tight text-foreground">{username}</h1>
+              {isUsernameLoading ? (
+                <ProfileNameSkeleton className="h-5 w-28" />
+              ) : (
+                <h1 className="truncate text-base font-bold leading-tight text-foreground">{username}</h1>
+              )}
 
               <div className="flex flex-wrap items-center gap-1">
                 <span className="inline-flex max-w-full items-center gap-0.5 truncate rounded-full border border-primary/15 bg-primary/10 px-2 py-0.5 text-[10px] font-medium leading-none text-primary">

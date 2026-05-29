@@ -210,6 +210,7 @@ export const PET_PROFILE_UPDATED_EVENT = "ak-pet-profile-updated"
 
 export function clearLocalPetProfilePatch() {
   if (typeof window === "undefined") return
+  if (!window.localStorage.getItem(PET_PROFILE_STORAGE_KEY)) return
   window.localStorage.removeItem(PET_PROFILE_STORAGE_KEY)
   window.dispatchEvent(new CustomEvent(PET_PROFILE_UPDATED_EVENT))
 }

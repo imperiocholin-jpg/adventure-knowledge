@@ -13,6 +13,7 @@ import { BottomNavigation } from "@/components/game/bottom-navigation"
 import { PlayerPageShell } from "@/components/layout/player-page-shell"
 import { StoryAdventurePanel } from "@/components/game/story-adventure-panel"
 import { loadChapter } from "@/lib/story/load-chapter"
+import { bookReadPath } from "@/lib/library/book-id-route"
 import { inferPetProfileCompleted } from "@/lib/auth/onboarding"
 import { mergePetProfile, parsePetRecord, readLocalPetProfilePatch } from "@/lib/pets/pet-profile"
 import {
@@ -21,6 +22,8 @@ import {
   parsePetVitalsFromRecord,
 } from "@/lib/pets/state"
 import { useUserProfile } from "@/hooks/use-user-profile"
+import { resolveAdventureLevelFromRow } from "@/lib/user/user-profile"
+import { readCachedPetProfile, writeCachedPetProfile } from "@/lib/profile/session-cache"
 import {
   deriveHomeAdventureBanner,
   fetchAdventureDashboard,
@@ -81,7 +84,7 @@ const DEFAULT_USER = {
   energy: 45,
   maxEnergy: 60,
   dailyStreak: 0,
-  adventureLevel: 3,
+  adventureLevel: 1,
   worldProgress: 42,
 }
 
@@ -176,7 +179,8 @@ export default function HomePage() {
   const [storySourceBookTitle, setStorySourceBookTitle] = useState("")
   const [storySourceChapterLabel, setStorySourceChapterLabel] = useState("")
   const router = useRouter()
-  const { profile: userProfile } = useUserProfile()
+  const { profile: userProfile, isDisplayReady: isUserDisplayReady } = useUserProfile()
+  const cachedPetProfile = useMemo(() => readCachedPetProfile(), [])
 
   const fetchApiData = async <T,>(url: string) => {
     const response = await fetch(url, { cache: "no-store" })
@@ -280,10 +284,13 @@ export default function HomePage() {
 
   const currentUser = {
     id: userIdField ? getStringValue(currentUserRow[userIdField], "") : "",
-    username: userProfile.username || getStringValue(
-      currentUserRow[resolveField(currentUserRow, ["username", "name", "nickname"]) ?? ""],
-      DEFAULT_USER.username,
-    ),
+    username: isUserDisplayReady
+      ? userProfile.username ||
+        getStringValue(
+          currentUserRow[resolveField(currentUserRow, ["username", "name", "nickname"]) ?? ""],
+          "",
+        )
+      : "",
     avatarSrc: userProfile.avatarSrc,
     level: getNumberValue(
       currentUserRow[resolveField(currentUserRow, ["level", "user_level"]) ?? ""],
@@ -305,10 +312,7 @@ export default function HomePage() {
       currentUserRow[resolveField(currentUserRow, ["daily_streak", "streak", "reading_streak"]) ?? ""],
       DEFAULT_USER.dailyStreak,
     ),
-    adventureLevel: getNumberValue(
-      currentUserRow[resolveField(currentUserRow, ["adventure_level", "chapter_level"]) ?? ""],
-      DEFAULT_USER.adventureLevel,
-    ),
+    adventureLevel: resolveAdventureLevelFromRow(userRows.length ? currentUserRow : null),
     worldProgress: getNumberValue(
       currentUserRow[resolveField(currentUserRow, ["world_progress", "exploration_percent"]) ?? ""],
       DEFAULT_USER.worldProgress,
@@ -318,8 +322,18 @@ export default function HomePage() {
   const petProfile = useMemo(() => {
     const serverComplete = inferPetProfileCompleted(currentPetRow)
     const localPatch = serverComplete ? null : readLocalPetProfilePatch()
-    return mergePetProfile(parsePetRecord(currentPetRow), localPatch, currentPetRow)
-  }, [currentPetRow])
+    const parsed = parsePetRecord(currentPetRow)
+    if (!petRows.length && cachedPetProfile) return cachedPetProfile
+    return mergePetProfile(parsed, localPatch, currentPetRow)
+  }, [currentPetRow, petRows.length, cachedPetProfile])
+
+  const isPetDisplayReady = (!isLoadingData && petRows.length > 0) || Boolean(cachedPetProfile)
+
+  useEffect(() => {
+    if (isPetDisplayReady && petProfile.name) {
+      writeCachedPetProfile(petProfile)
+    }
+  }, [isPetDisplayReady, petProfile])
 
   const petVitals = useMemo(() => parsePetVitalsFromRecord(currentPetRow), [currentPetRow])
   const petHomeMood = useMemo(() => getHomePetMood(petVitals), [petVitals])
@@ -534,7 +548,7 @@ export default function HomePage() {
   }
 
   const handleStartReading = () => {
-    router.push(`/library/read/${currentBook.id || "1"}`)
+    router.push(bookReadPath(currentBook.id || "1"))
   }
 
   const handleContinueAdventure = () => {
@@ -636,6 +650,7 @@ export default function HomePage() {
         {/* User Header with progression */}
         <UserHeader
           username={currentUser.username}
+          isUsernameLoading={!isUserDisplayReady}
           adventureLevel={
             adventureUserSnapshot?.adventureLevel ?? currentUser.adventureLevel ?? 1
           }
@@ -663,7 +678,8 @@ export default function HomePage() {
         <div className="mt-4 grid gap-4">
           {/* Pet Companion Card - emotional companion */}
           <PetCompanionCard
-            petName={petProfile.name}
+            petName={isPetDisplayReady ? petProfile.name : undefined}
+            isPetNameLoading={!isPetDisplayReady}
             petLevel={petProfile.level}
             petMood={petHomeMood}
             isDead={petVitals.isDead}

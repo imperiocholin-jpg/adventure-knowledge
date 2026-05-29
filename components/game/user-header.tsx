@@ -1,9 +1,11 @@
 "use client"
 
 import { Coins, Flame, Trophy } from "lucide-react"
+import { ProfileNameSkeleton } from "@/components/profile/profile-name-skeleton"
 
 interface UserHeaderProps {
-  username: string
+  username?: string
+  isUsernameLoading?: boolean
   /** 冒险家等级（头像角标） */
   adventureLevel: number
   coins: number
@@ -17,7 +19,8 @@ interface UserHeaderProps {
 }
 
 export function UserHeader({
-  username = "小冒险家",
+  username,
+  isUsernameLoading = false,
   adventureLevel = 1,
   coins = 0,
   avatarUrl,
@@ -42,7 +45,7 @@ export function UserHeader({
               {avatarUrl ? (
                 <img
                   src={avatarUrl}
-                  alt={username}
+                  alt={username ?? "用户头像"}
                   className="h-full w-full object-cover object-center"
                 />
               ) : (
@@ -60,7 +63,11 @@ export function UserHeader({
           {/* 第一行：昵称 / 称号 / 金币 */}
           <div className="flex items-center gap-2 min-w-0">
             <div className="flex-1 min-w-0 flex items-center gap-1.5">
-              <span className="truncate text-sm font-bold text-foreground">{username}</span>
+              {isUsernameLoading ? (
+                <ProfileNameSkeleton className="h-4 w-24" />
+              ) : (
+                <span className="truncate text-sm font-bold text-foreground">{username}</span>
+              )}
               <span className="shrink-0 max-w-[4.75rem] truncate rounded-full bg-violet-500/10 px-1.5 py-0.5 text-[9px] font-medium text-violet-700 border border-violet-500/15">
                 {adventureTitle}
               </span>

@@ -1,0 +1,210 @@
+{
+  "id": "local-5年级-五年级上册必读-水浒传",
+  "title": "水浒传",
+  "grade": 5,
+  "term": "上册",
+  "readingType": "必读",
+  "primaryRegionId": "ancient-desert",
+  "sourceChapterPath": "data/imported-books/chapters/local-5年级-五年级上册必读-水浒传.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-5年级-五年级上册必读-水浒传-chapter-1",
+      "chapterTitle": "水浒传 片段 1",
+      "charCount": 2318,
+      "estimatedMinutes": 5,
+      "questions": [
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-1-q1",
+          "type": "memory",
+          "prompt": "沙漠记录员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "中州",
+            "造武德舞",
+            "四百州"
+          ],
+          "answerIndex": 0,
+          "answerText": "中州",
+          "successResponse": "沙漠记录员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "沙漠记录员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《水浒传》·水浒传 片段 1",
+          "sourceExcerpt": "引首\n词曰：\n试看书林隐处\n，几多俊逸儒流\n。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "沙漠记录员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“中州”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“中州”这条线索继续找",
+          "successResponse": "沙漠记录员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "沙漠记录员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《水浒传》·水浒传 片段 1",
+          "sourceExcerpt": "自皇祐四年至嘉祐二年\n，这九年\n田禾大熟，谓之三登。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "沙漠记录员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“中州”说明故事变化",
+          "answerRubric": [
+            "提到“中州”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "沙漠记录员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "沙漠记录员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《水浒传》·水浒传 片段 1",
+          "sourceExcerpt": "19\n.\n九朝八帝——指北宋和南宋共三百壹拾九年的赵氏帝王，即：太祖(赵匡胤)、太宗",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-5年级-五年级上册必读-水浒传-chapter-2",
+      "chapterTitle": "水浒传 片段 2",
+      "charCount": 2349,
+      "estimatedMinutes": 5,
+      "questions": [
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-2-q1",
+          "type": "memory",
+          "prompt": "沙漠记录员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "赤脚仙人",
+            "宋史",
+            "八帝"
+          ],
+          "answerIndex": 0,
+          "answerText": "赤脚仙人",
+          "successResponse": "沙漠记录员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "沙漠记录员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《水浒传》·水浒传 片段 2",
+          "sourceExcerpt": "(炅，又名光义)、真宗(恒)、仁宗(祯)、英宗(曙)、神宗(顼)、哲宗(煦)、徽宗(佶)、\n钦宗(桓)，谓北宋九朝；高宗(构)、孝宗(昚)、光宗(惇)、宁宗(扩)、理宗(昀)、度宗\n(禥)、恭宗(\n)、端宗(昰)、帝昺(昺)，谓南宋九帝。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "沙漠记录员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“赤脚仙人”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“赤脚仙人”这条线索继续找",
+          "successResponse": "沙漠记录员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "沙漠记录员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《水浒传》·水浒传 片段 2",
+          "sourceExcerpt": "34\n.\n天圣元年——公元1023年，乃仁宗登基之始。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "沙漠记录员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“赤脚仙人”说明故事变化",
+          "answerRubric": [
+            "提到“赤脚仙人”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "沙漠记录员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "沙漠记录员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《水浒传》·水浒传 片段 2",
+          "sourceExcerpt": "以臣愚意，要禳此灾，可宣嗣汉天师星夜临朝，就京\n师禁院修设三千六百分罗天大醮\n，奏闻上帝，可以禳保民间瘟疫。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-5年级-五年级上册必读-水浒传-chapter-3",
+      "chapterTitle": "水浒传 片段 3",
+      "charCount": 3129,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-3-q1",
+          "type": "memory",
+          "prompt": "沙漠记录员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "你不要说谎",
+            "天师今在何处",
+            "目今天子宣诏如何得见"
+          ],
+          "answerIndex": 0,
+          "answerText": "你不要说谎",
+          "successResponse": "沙漠记录员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "沙漠记录员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《水浒传》·水浒传 片段 3",
+          "sourceExcerpt": "仁宗天子准奏，急令翰林学士草诏一道，天子御笔亲书，并降御香\n一炷，钦差内外提点殿前太尉洪信为天使\n，前往江西信州龙虎山\n，\n宣请嗣汉天师张真人星夜临朝\n，祈禳瘟疫。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "沙漠记录员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“你不要说谎”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“你不要说谎”这条线索继续找",
+          "successResponse": "沙漠记录员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "沙漠记录员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《水浒传》·水浒传 片段 3",
+          "sourceExcerpt": "锥尖像小，崎峻似峭，悬空似险，削躐如平。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "沙漠记录员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“你不要说谎”说明故事变化",
+          "answerRubric": [
+            "提到“你不要说谎”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "沙漠记录员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "沙漠记录员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《水浒传》·水浒传 片段 3",
+          "sourceExcerpt": "”欲待再上山去，方才惊唬的苦，\n争些儿送了性命\n，不如下山去罢。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

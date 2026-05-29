@@ -11,6 +11,7 @@ import { findExistingColumn } from "@/lib/data/schema-compat"
 import { fetchPrimaryPetRow } from "@/lib/pets/fetch-primary-pet"
 import { parsePetRecord, DEFAULT_PET_PROFILE, mergePetProfile, type PetProfile } from "@/lib/pets/pet-profile"
 import { parsePetVitalsFromRecord } from "@/lib/pets/state"
+import { resolveAdventureLevelFromRow } from "@/lib/user/user-profile"
 import {
   buildProfileBadges,
   buildProfileJournal,
@@ -110,14 +111,12 @@ function countTreasuresUnlocked(
 
 function buildAdventureUserFromRow(row: GenericRecord | null): AdventureUserSnapshot | null {
   if (!row) return null
-  const levelRaw = row.adventure_level ?? row.chapter_level ?? row.level ?? row.user_level
   const streakRaw = row.daily_streak ?? row.streak ?? row.reading_streak
   const expRaw = row.experience ?? row.user_exp ?? row.exp ?? 0
   const expParts = resolveUserExpInLevel(getNumber(expRaw, 0))
-  const level = getNumber(levelRaw, 1)
 
   return {
-    adventureLevel: Math.max(1, Math.floor(level)),
+    adventureLevel: resolveAdventureLevelFromRow(row),
     dailyStreak: Math.max(0, Math.floor(getNumber(streakRaw, 0))),
     ...expParts,
   }

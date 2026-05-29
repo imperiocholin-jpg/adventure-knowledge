@@ -9,6 +9,8 @@ import {
 } from "@/lib/auth/server"
 import { syncUserTreasuresAfterActivity } from "@/lib/treasures/server"
 import { recordUserDailyActivity } from "@/lib/user/daily-streak-server"
+import { findExistingColumn } from "@/lib/data/schema-compat"
+import { emitDailyEngagementNotifications } from "@/lib/notifications/emitters"
 
 export const dynamic = "force-dynamic"
 
@@ -39,6 +41,28 @@ export async function POST(request: NextRequest) {
       supabase,
       serviceClient,
       userId: sessionState.user.id,
+    })
+
+    const readingOwnerField = await findExistingColumn(serviceClient, "reading_records", [
+      "user_id",
+      "uid",
+      "owner_id",
+      "auth_user_id",
+    ])
+    let readingRows: Record<string, unknown>[] = []
+    if (readingOwnerField) {
+      const readingResult = await supabase
+        .from("reading_records")
+        .select("*")
+        .eq(readingOwnerField, sessionState.user.id)
+        .limit(200)
+      readingRows = (readingResult.data ?? []) as Record<string, unknown>[]
+    }
+
+    await emitDailyEngagementNotifications(serviceClient, sessionState.user.id, {
+      streak: result.dailyStreak,
+      streakApplied: result.applied,
+      readingRows,
     })
 
     const response = NextResponse.json({

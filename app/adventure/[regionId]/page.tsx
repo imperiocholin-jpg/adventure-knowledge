@@ -15,7 +15,7 @@ import { StoryAdventurePanel } from "@/components/game/story-adventure-panel"
 import { Button } from "@/components/ui/button"
 import { loadChapter } from "@/lib/story/load-chapter"
 import type { StoryChapter } from "@/lib/story/types"
-import { getReaderBookById } from "@/lib/library/book-catalog"
+import { bookReadPath } from "@/lib/library/book-id-route"
 import { buildRegionAdventureBooks } from "@/lib/library/library-books"
 import type { AdventureRegionId } from "@/lib/library/adventure-regions"
 import { GRADE_BAND_LABEL } from "@/lib/library/moe-catalog-2020"
@@ -288,11 +288,7 @@ export default function RegionAdventurePage() {
       setDataError("该书电子版即将上架，可先选择已上架图书阅读。")
       return
     }
-    if (!getReaderBookById(bookId)) {
-      setDataError("该书电子版即将上架，请先阅读其他已上架图书。")
-      return
-    }
-    router.push(`/library/read/${bookId}`)
+    router.push(bookReadPath(bookId))
   }
 
   const handleDirectChallenge = async (

@@ -1,0 +1,210 @@
+{
+  "id": "local-3年级-三年级上册必读-狐狸列那的故事",
+  "title": "狐狸列那的故事",
+  "grade": 3,
+  "term": "上册",
+  "readingType": "必读",
+  "primaryRegionId": "magic-forest",
+  "sourceChapterPath": "data/imported-books/chapters/local-3年级-三年级上册必读-狐狸列那的故事.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-1",
+      "chapterTitle": "第十五章　列那如何跟杜弗雷斯纳王爷合作，最终把森林中的狼群彻（1）",
+      "charCount": 3181,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-1-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "狐狸",
+            "狐媚",
+            "舅舅"
+          ],
+          "answerIndex": 0,
+          "answerText": "狐狸",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《狐狸列那的故事》·第十五章　列那如何跟杜弗雷斯纳王爷合作，最终把森林中的狼群彻（1）",
+          "sourceExcerpt": "底消灭\n\n译本前言\n\n有关狐狸列那的故事，在法国家喻户晓。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“快抓住那头狐狸”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“快抓住那头狐狸”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《狐狸列那的故事》·第十五章　列那如何跟杜弗雷斯纳王爷合作，最终把森林中的狼群彻（1）",
+          "sourceExcerpt": "”\n\n队长边喊边蹬马刺，\n\n“\n\n快抓住那头狐狸！",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“狐媚”说明故事变化",
+          "answerRubric": [
+            "提到“狐媚”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《狐狸列那的故事》·第十五章　列那如何跟杜弗雷斯纳王爷合作，最终把森林中的狼群彻（1）",
+          "sourceExcerpt": "沿着通向塔楼的台阶，另一半人马来到塔楼之间的护墙上。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-2",
+      "chapterTitle": "第十五章　列那如何跟杜弗雷斯纳王爷合作，最终把森林中的狼群彻（2）",
+      "charCount": 2668,
+      "estimatedMinutes": 5,
+      "questions": [
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-2-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "该死的狐狸",
+            "这不可能",
+            "真见鬼"
+          ],
+          "answerIndex": 0,
+          "answerText": "该死的狐狸",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《狐狸列那的故事》·第十五章　列那如何跟杜弗雷斯纳王爷合作，最终把森林中的狼群彻（2）",
+          "sourceExcerpt": "啦的木鞋声在圆形通道上响个不停，听起来真使人毛骨悚然，仿佛地狱\n\n中的魔鬼现在全数集中到王爷府！",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“该死的狐狸”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“该死的狐狸”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《狐狸列那的故事》·第十五章　列那如何跟杜弗雷斯纳王爷合作，最终把森林中的狼群彻（2）",
+          "sourceExcerpt": "但是列那很机灵，东跳西\n\n窜，谁都抓不着。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“该死的狐狸”说明故事变化",
+          "answerRubric": [
+            "提到“该死的狐狸”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《狐狸列那的故事》·第十五章　列那如何跟杜弗雷斯纳王爷合作，最终把森林中的狼群彻（2）",
+          "sourceExcerpt": "他露面也好，不露面也好，暂\n\n且先不管，今天下午父王和我的王爷兄弟们要来城堡，我们要好好迎接\n\n招待\n\n……”",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-3",
+      "chapterTitle": "第二章",
+      "charCount": 4485,
+      "estimatedMinutes": 9,
+      "questions": [
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-3-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "什么也没有",
+            "狐皮",
+            "时机到了"
+          ],
+          "answerIndex": 0,
+          "answerText": "什么也没有",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《狐狸列那的故事》·第二章",
+          "sourceExcerpt": "列那错失一顿盛宴和设计谋害鹭鸶潘萨尔以及自己差点淹死\n时辰一到，王爷率领仪仗队伍出城前去恭候父王光临。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“什么也没有”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“什么也没有”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《狐狸列那的故事》·第二章",
+          "sourceExcerpt": "我得动些脑筋：本来嘛，不劳者，不得\n食。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“什么也没有”说明故事变化",
+          "answerRubric": [
+            "提到“什么也没有”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《狐狸列那的故事》·第二章",
+          "sourceExcerpt": "我发誓，\n不把食柜装得满满的，就不是我\n……”",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

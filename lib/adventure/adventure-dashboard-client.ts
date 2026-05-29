@@ -1,4 +1,5 @@
 import { REGION_SHELF_CONFIG } from "@/lib/adventure/config"
+import { resolveAdventureLevelFromRow } from "@/lib/user/user-profile"
 import {
   ADVENTURE_REGION_META,
   ADVENTURE_REGION_UNLOCK_ORDER,
@@ -156,15 +157,12 @@ export async function fetchAdventureUserSnapshot(): Promise<AdventureUserSnapsho
     const payload = await response.json()
     if (!response.ok || !Array.isArray(payload?.data) || payload.data.length === 0) return null
     const row = payload.data[0] as Record<string, unknown>
-    const levelRaw =
-      row.adventure_level ?? row.chapter_level ?? row.level ?? row.user_level
     const streakRaw = row.daily_streak ?? row.streak ?? row.reading_streak
     const expRaw = row.experience ?? row.user_exp ?? row.exp ?? 0
     const expParts = resolveUserExpInLevel(getNumeric(expRaw, 0))
-    const level = getNumeric(levelRaw, 1)
 
     return {
-      adventureLevel: Math.max(1, Math.floor(level)),
+      adventureLevel: resolveAdventureLevelFromRow(row),
       dailyStreak: Math.max(0, Math.floor(getNumeric(streakRaw, 0))),
       ...expParts,
     }
@@ -202,7 +200,7 @@ const DEFAULT_BANNER: HomeAdventureBannerSnapshot = {
   activeRegionId: "magic-forest",
 }
 
-function pickActiveRegionId(
+export function pickActiveRegionId(
   regionProgress: AdventureProgressSnapshot["regionProgress"],
 ): AdventureRegionId | null {
   const unlocked = ADVENTURE_REGION_UNLOCK_ORDER.filter(

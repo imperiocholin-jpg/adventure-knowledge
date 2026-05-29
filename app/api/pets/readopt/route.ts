@@ -7,7 +7,8 @@ import {
   unauthorizedResponse,
 } from "@/lib/auth/server"
 import { findExistingColumn, findExistingColumns } from "@/lib/data/schema-compat"
-import { PET_BREEDS, PET_SPECIES_EMOJI, type PetSpecies } from "@/lib/pets/catalog"
+import { getEnabledPetBreedsBySpecies } from "@/lib/admin/pet-type-store"
+import { PET_SPECIES_EMOJI, type PetSpecies } from "@/lib/pets/catalog"
 import { DEFAULT_PET_VITAL, normalizeInventory, normalizePetState, writeVitalFieldsToPayload } from "@/lib/pets/state"
 
 type GenericRecord = Record<string, unknown>
@@ -28,8 +29,8 @@ function normalizeName(value: unknown) {
   return trimmed ? trimmed.slice(0, 12) : "毛毛"
 }
 
-function normalizeBreed(species: PetSpecies, value: unknown) {
-  const candidates = PET_BREEDS[species]
+function normalizeBreed(value: unknown, candidates: string[]) {
+  if (candidates.length === 0) return null
   if (typeof value === "string" && candidates.includes(value)) return value
   return candidates[0]
 }
@@ -42,13 +43,19 @@ export async function POST(request: NextRequest) {
     if (!sessionState.user || !sessionState.accessToken) return unauthorizedResponse("User is not authenticated.")
 
     const body = (await request.json()) as ReadoptPayload
-    if (!isValidSpecies(body.species)) {
+    const enabledBreeds = await getEnabledPetBreedsBySpecies()
+    const speciesCandidates = Object.keys(enabledBreeds) as PetSpecies[]
+    if (!isValidSpecies(body.species) || !speciesCandidates.includes(body.species)) {
       return NextResponse.json({ ok: false, error: { message: "请选择宠物类型。" } }, { status: 400 })
     }
 
     const petName = normalizeName(body.petName)
     const species = body.species
-    const breed = normalizeBreed(species, body.breed)
+    const breedCandidates = enabledBreeds[species] ?? []
+    const breed = normalizeBreed(body.breed, breedCandidates)
+    if (!breed) {
+      return NextResponse.json({ ok: false, error: { message: "该宠物品种暂不可选。" } }, { status: 400 })
+    }
     const emoji = PET_SPECIES_EMOJI[species]
 
     const serviceClient = createSupabaseServiceClient()

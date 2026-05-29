@@ -6,7 +6,8 @@ import { ProfileHero, type ProfileHeroMetrics } from "@/components/profile/profi
 
 interface AdventurerHeroProps {
   avatar?: string
-  username: string
+  username?: string
+  isUsernameLoading?: boolean
   adventureTitle: string
   level: number
   currentWorld: string
@@ -24,7 +25,8 @@ interface AdventurerHeroProps {
 
 export function AdventurerHero({
   avatar,
-  username = "小冒险家",
+  username,
+  isUsernameLoading = false,
   adventureTitle = "森林守护者",
   level = 12,
   currentWorld = "魔法森林",
@@ -43,6 +45,7 @@ export function AdventurerHero({
     <ProfileHero
       avatar={avatar}
       username={username}
+      isUsernameLoading={isUsernameLoading}
       adventureTitle={adventureTitle}
       level={level}
       rankBadge={rankBadge}

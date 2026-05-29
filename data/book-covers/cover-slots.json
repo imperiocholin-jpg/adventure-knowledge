@@ -1,0 +1,2274 @@
+{
+  "generatedAt": "2026-05-29T11:53:36.893Z",
+  "total": 189,
+  "slots": [
+    {
+      "id": "local-1年级-一年级上册必读-365夜故事",
+      "title": "365夜故事",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册必读-365夜故事.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册必读-365夜故事.png",
+        "local-1年级-一年级上册必读-365夜故事.jpg",
+        "local-1年级-一年级上册必读-365夜故事.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册必读-猜猜我有多爱你-作者-【英】山姆-麦克布雷尼",
+      "title": "猜猜我有多爱你",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册必读-猜猜我有多爱你-作者-【英】山姆-麦克布雷尼.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册必读-猜猜我有多爱你-作者-【英】山姆-麦克布雷尼.png",
+        "local-1年级-一年级上册必读-猜猜我有多爱你-作者-【英】山姆-麦克布雷尼.jpg",
+        "local-1年级-一年级上册必读-猜猜我有多爱你-作者-【英】山姆-麦克布雷尼.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册必读-哪吒闹海",
+      "title": "哪吒闹海",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册必读-哪吒闹海.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册必读-哪吒闹海.png",
+        "local-1年级-一年级上册必读-哪吒闹海.jpg",
+        "local-1年级-一年级上册必读-哪吒闹海.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册必读-团圆",
+      "title": "团圆",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册必读-团圆.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册必读-团圆.png",
+        "local-1年级-一年级上册必读-团圆.jpg",
+        "local-1年级-一年级上册必读-团圆.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册必读-小巴掌童话",
+      "title": "小巴掌童话",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册必读-小巴掌童话.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册必读-小巴掌童话.png",
+        "local-1年级-一年级上册必读-小巴掌童话.jpg",
+        "local-1年级-一年级上册必读-小巴掌童话.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-百岁童谣-大槐树-作者-山曼",
+      "title": "百岁童谣-大槐树",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-百岁童谣-大槐树-作者-山曼.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-百岁童谣-大槐树-作者-山曼.png",
+        "local-1年级-一年级上册选读-百岁童谣-大槐树-作者-山曼.jpg",
+        "local-1年级-一年级上册选读-百岁童谣-大槐树-作者-山曼.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-百岁童谣-花巴掌-作者-山曼",
+      "title": "百岁童谣-花巴掌",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-百岁童谣-花巴掌-作者-山曼.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-百岁童谣-花巴掌-作者-山曼.png",
+        "local-1年级-一年级上册选读-百岁童谣-花巴掌-作者-山曼.jpg",
+        "local-1年级-一年级上册选读-百岁童谣-花巴掌-作者-山曼.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-百岁童谣-外婆桥-作者-山曼",
+      "title": "百岁童谣-外婆桥",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-百岁童谣-外婆桥-作者-山曼.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-百岁童谣-外婆桥-作者-山曼.png",
+        "local-1年级-一年级上册选读-百岁童谣-外婆桥-作者-山曼.jpg",
+        "local-1年级-一年级上册选读-百岁童谣-外婆桥-作者-山曼.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-百岁童谣-小巴狗-作者-山曼",
+      "title": "百岁童谣-小巴狗",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-百岁童谣-小巴狗-作者-山曼.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-百岁童谣-小巴狗-作者-山曼.png",
+        "local-1年级-一年级上册选读-百岁童谣-小巴狗-作者-山曼.jpg",
+        "local-1年级-一年级上册选读-百岁童谣-小巴狗-作者-山曼.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-百岁童谣-正月正-作者-山曼",
+      "title": "百岁童谣-正月正",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-百岁童谣-正月正-作者-山曼.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-百岁童谣-正月正-作者-山曼.png",
+        "local-1年级-一年级上册选读-百岁童谣-正月正-作者-山曼.jpg",
+        "local-1年级-一年级上册选读-百岁童谣-正月正-作者-山曼.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-大脚丫跳芭蕾-作者-【美】埃米-扬",
+      "title": "大脚丫跳芭蕾",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-大脚丫跳芭蕾-作者-【美】埃米-扬.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-大脚丫跳芭蕾-作者-【美】埃米-扬.png",
+        "local-1年级-一年级上册选读-大脚丫跳芭蕾-作者-【美】埃米-扬.jpg",
+        "local-1年级-一年级上册选读-大脚丫跳芭蕾-作者-【美】埃米-扬.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-大卫上学去-作者-【美】大卫-香农",
+      "title": "大卫上学去",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-大卫上学去-作者-【美】大卫-香农.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-大卫上学去-作者-【美】大卫-香农.png",
+        "local-1年级-一年级上册选读-大卫上学去-作者-【美】大卫-香农.jpg",
+        "local-1年级-一年级上册选读-大卫上学去-作者-【美】大卫-香农.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-蝴蝶-豌豆花",
+      "title": "蝴蝶-豌豆花",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-蝴蝶-豌豆花.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-蝴蝶-豌豆花.png",
+        "local-1年级-一年级上册选读-蝴蝶-豌豆花.jpg",
+        "local-1年级-一年级上册选读-蝴蝶-豌豆花.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-落叶跳舞-作者-【日】伊东宽",
+      "title": "落叶跳舞",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-落叶跳舞-作者-【日】伊东宽.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-落叶跳舞-作者-【日】伊东宽.png",
+        "local-1年级-一年级上册选读-落叶跳舞-作者-【日】伊东宽.jpg",
+        "local-1年级-一年级上册选读-落叶跳舞-作者-【日】伊东宽.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-蚯蚓的日记-作者-【美】朵琳-克罗宁",
+      "title": "蚯蚓的日记",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-蚯蚓的日记-作者-【美】朵琳-克罗宁.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-蚯蚓的日记-作者-【美】朵琳-克罗宁.png",
+        "local-1年级-一年级上册选读-蚯蚓的日记-作者-【美】朵琳-克罗宁.jpg",
+        "local-1年级-一年级上册选读-蚯蚓的日记-作者-【美】朵琳-克罗宁.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-小蓝和小黄-作者-【美】李欧-李奥尼",
+      "title": "小蓝和小黄",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-小蓝和小黄-作者-【美】李欧-李奥尼.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-小蓝和小黄-作者-【美】李欧-李奥尼.png",
+        "local-1年级-一年级上册选读-小蓝和小黄-作者-【美】李欧-李奥尼.jpg",
+        "local-1年级-一年级上册选读-小蓝和小黄-作者-【美】李欧-李奥尼.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-要是你给老鼠吃饼干-作者-【美】劳拉-乔菲-努梅罗夫",
+      "title": "要是你给老鼠吃饼干",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-要是你给老鼠吃饼干-作者-【美】劳拉-乔菲-努梅罗夫.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-要是你给老鼠吃饼干-作者-【美】劳拉-乔菲-努梅罗夫.png",
+        "local-1年级-一年级上册选读-要是你给老鼠吃饼干-作者-【美】劳拉-乔菲-努梅罗夫.jpg",
+        "local-1年级-一年级上册选读-要是你给老鼠吃饼干-作者-【美】劳拉-乔菲-努梅罗夫.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册选读-中国神话故事",
+      "title": "中国神话故事",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级上册选读-中国神话故事.webp",
+      "alsoSupported": [
+        "local-1年级-一年级上册选读-中国神话故事.png",
+        "local-1年级-一年级上册选读-中国神话故事.jpg",
+        "local-1年级-一年级上册选读-中国神话故事.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册必读-声律启蒙",
+      "title": "声律启蒙",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册必读-声律启蒙.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册必读-声律启蒙.png",
+        "local-1年级-一年级下册必读-声律启蒙.jpg",
+        "local-1年级-一年级下册必读-声律启蒙.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册必读-逃家小兔作者-【美】玛格丽特-怀兹-布朗",
+      "title": "逃家小兔",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册必读-逃家小兔作者-【美】玛格丽特-怀兹-布朗.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册必读-逃家小兔作者-【美】玛格丽特-怀兹-布朗.png",
+        "local-1年级-一年级下册必读-逃家小兔作者-【美】玛格丽特-怀兹-布朗.jpg",
+        "local-1年级-一年级下册必读-逃家小兔作者-【美】玛格丽特-怀兹-布朗.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册必读-小老虎历险记-作者-汤素兰",
+      "title": "小老虎历险记",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册必读-小老虎历险记-作者-汤素兰.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册必读-小老虎历险记-作者-汤素兰.png",
+        "local-1年级-一年级下册必读-小老虎历险记-作者-汤素兰.jpg",
+        "local-1年级-一年级下册必读-小老虎历险记-作者-汤素兰.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册必读-爷爷一定有办法作者-【加拿大】菲比-吉尔曼",
+      "title": "爷爷一定有办法",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册必读-爷爷一定有办法作者-【加拿大】菲比-吉尔曼.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册必读-爷爷一定有办法作者-【加拿大】菲比-吉尔曼.png",
+        "local-1年级-一年级下册必读-爷爷一定有办法作者-【加拿大】菲比-吉尔曼.jpg",
+        "local-1年级-一年级下册必读-爷爷一定有办法作者-【加拿大】菲比-吉尔曼.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册必读-中华歌谣100首",
+      "title": "中华歌谣100首",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册必读-中华歌谣100首.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册必读-中华歌谣100首.png",
+        "local-1年级-一年级下册必读-中华歌谣100首.jpg",
+        "local-1年级-一年级下册必读-中华歌谣100首.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册选读-365夜儿歌精选-作者-许海琼",
+      "title": "365夜儿歌精选",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册选读-365夜儿歌精选-作者-许海琼.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册选读-365夜儿歌精选-作者-许海琼.png",
+        "local-1年级-一年级下册选读-365夜儿歌精选-作者-许海琼.jpg",
+        "local-1年级-一年级下册选读-365夜儿歌精选-作者-许海琼.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册选读-爱心树-作者-【美】谢尔-希尔弗斯坦",
+      "title": "爱心树",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册选读-爱心树-作者-【美】谢尔-希尔弗斯坦.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册选读-爱心树-作者-【美】谢尔-希尔弗斯坦.png",
+        "local-1年级-一年级下册选读-爱心树-作者-【美】谢尔-希尔弗斯坦.jpg",
+        "local-1年级-一年级下册选读-爱心树-作者-【美】谢尔-希尔弗斯坦.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册选读-鳄鱼爱上长颈鹿-作者-【德】达妮拉-库洛特",
+      "title": "鳄鱼爱上长颈鹿",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册选读-鳄鱼爱上长颈鹿-作者-【德】达妮拉-库洛特.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册选读-鳄鱼爱上长颈鹿-作者-【德】达妮拉-库洛特.png",
+        "local-1年级-一年级下册选读-鳄鱼爱上长颈鹿-作者-【德】达妮拉-库洛特.jpg",
+        "local-1年级-一年级下册选读-鳄鱼爱上长颈鹿-作者-【德】达妮拉-库洛特.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册选读-花格子大象艾玛",
+      "title": "花格子大象艾玛",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册选读-花格子大象艾玛.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册选读-花格子大象艾玛.png",
+        "local-1年级-一年级下册选读-花格子大象艾玛.jpg",
+        "local-1年级-一年级下册选读-花格子大象艾玛.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册选读-花婆婆-作者-【美】芭芭拉-库尼",
+      "title": "花婆婆",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册选读-花婆婆-作者-【美】芭芭拉-库尼.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册选读-花婆婆-作者-【美】芭芭拉-库尼.png",
+        "local-1年级-一年级下册选读-花婆婆-作者-【美】芭芭拉-库尼.jpg",
+        "local-1年级-一年级下册选读-花婆婆-作者-【美】芭芭拉-库尼.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册选读-我爸爸作者-安东尼·布朗",
+      "title": "我爸爸",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册选读-我爸爸作者-安东尼·布朗.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册选读-我爸爸作者-安东尼·布朗.png",
+        "local-1年级-一年级下册选读-我爸爸作者-安东尼·布朗.jpg",
+        "local-1年级-一年级下册选读-我爸爸作者-安东尼·布朗.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册选读-我妈妈作者-安东尼·布朗",
+      "title": "我妈妈",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册选读-我妈妈作者-安东尼·布朗.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册选读-我妈妈作者-安东尼·布朗.png",
+        "local-1年级-一年级下册选读-我妈妈作者-安东尼·布朗.jpg",
+        "local-1年级-一年级下册选读-我妈妈作者-安东尼·布朗.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册选读-小黑鱼-作者-【美】李欧-李奥尼",
+      "title": "小黑鱼",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册选读-小黑鱼-作者-【美】李欧-李奥尼.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册选读-小黑鱼-作者-【美】李欧-李奥尼.png",
+        "local-1年级-一年级下册选读-小黑鱼-作者-【美】李欧-李奥尼.jpg",
+        "local-1年级-一年级下册选读-小黑鱼-作者-【美】李欧-李奥尼.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册选读-小猪唏哩呼噜",
+      "title": "小猪唏哩呼噜",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册选读-小猪唏哩呼噜.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册选读-小猪唏哩呼噜.png",
+        "local-1年级-一年级下册选读-小猪唏哩呼噜.jpg",
+        "local-1年级-一年级下册选读-小猪唏哩呼噜.jpeg"
+      ]
+    },
+    {
+      "id": "local-1年级-一年级下册选读-中华民俗知识全知道",
+      "title": "中华民俗知识全知道",
+      "grade": 1,
+      "regionId": "magic-forest",
+      "recommendedFile": "local-1年级-一年级下册选读-中华民俗知识全知道.webp",
+      "alsoSupported": [
+        "local-1年级-一年级下册选读-中华民俗知识全知道.png",
+        "local-1年级-一年级下册选读-中华民俗知识全知道.jpg",
+        "local-1年级-一年级下册选读-中华民俗知识全知道.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册必读-没头脑和不高兴",
+      "title": "没头脑和不高兴",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册必读-没头脑和不高兴.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册必读-没头脑和不高兴.png",
+        "local-2年级-二年级上册必读-没头脑和不高兴.jpg",
+        "local-2年级-二年级上册必读-没头脑和不高兴.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册必读-三毛流浪记",
+      "title": "三毛流浪记",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册必读-三毛流浪记.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册必读-三毛流浪记.png",
+        "local-2年级-二年级上册必读-三毛流浪记.jpg",
+        "local-2年级-二年级上册必读-三毛流浪记.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册必读-三只小猪-作者-【美】大卫-威斯纳",
+      "title": "三只小猪",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册必读-三只小猪-作者-【美】大卫-威斯纳.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册必读-三只小猪-作者-【美】大卫-威斯纳.png",
+        "local-2年级-二年级上册必读-三只小猪-作者-【美】大卫-威斯纳.jpg",
+        "local-2年级-二年级上册必读-三只小猪-作者-【美】大卫-威斯纳.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-01我想去看海",
+      "title": "不一样的卡梅拉 01我想去看海",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-01我想去看海.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-01我想去看海.png",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-01我想去看海.jpg",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-01我想去看海.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-02我想有颗星星",
+      "title": "不一样的卡梅拉 02我想有颗星星",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-02我想有颗星星.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-02我想有颗星星.png",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-02我想有颗星星.jpg",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-02我想有颗星星.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-03我想有个弟弟",
+      "title": "不一样的卡梅拉 03我想有个弟弟",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-03我想有个弟弟.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-03我想有个弟弟.png",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-03我想有个弟弟.jpg",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-03我想有个弟弟.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-04之我要找回太阳",
+      "title": "不一样的卡梅拉 04之我要找回太阳",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-04之我要找回太阳.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-04之我要找回太阳.png",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-04之我要找回太阳.jpg",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-04之我要找回太阳.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-05我爱小黑猫",
+      "title": "不一样的卡梅拉 05我爱小黑猫",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-05我爱小黑猫.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-05我爱小黑猫.png",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-05我爱小黑猫.jpg",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-05我爱小黑猫.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-06我能打败怪兽",
+      "title": "不一样的卡梅拉 06我能打败怪兽",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-06我能打败怪兽.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-06我能打败怪兽.png",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-06我能打败怪兽.jpg",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-06我能打败怪兽.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-07我要找到朗朗",
+      "title": "不一样的卡梅拉 07我要找到朗朗",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-07我要找到朗朗.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-07我要找到朗朗.png",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-07我要找到朗朗.jpg",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-07我要找到朗朗.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-08我不要被吃掉",
+      "title": "不一样的卡梅拉 08我不要被吃掉",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-08我不要被吃掉.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-08我不要被吃掉.png",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-08我不要被吃掉.jpg",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-08我不要被吃掉.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-09我好喜欢她",
+      "title": "不一样的卡梅拉 09我好喜欢她",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-09我好喜欢她.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-09我好喜欢她.png",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-09我好喜欢她.jpg",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-09我好喜欢她.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-10我要救出贝里奥",
+      "title": "不一样的卡梅拉 10我要救出贝里奥",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-10我要救出贝里奥.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-10我要救出贝里奥.png",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-10我要救出贝里奥.jpg",
+        "local-2年级-二年级上册选读-不一样的卡梅拉系列-不一样的卡梅拉-10我要救出贝里奥.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-成语故事",
+      "title": "成语故事",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-成语故事.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-成语故事.png",
+        "local-2年级-二年级上册选读-成语故事.jpg",
+        "local-2年级-二年级上册选读-成语故事.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-大个子老鼠小个子猫",
+      "title": "大个子老鼠小个子猫",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-大个子老鼠小个子猫.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-大个子老鼠小个子猫.png",
+        "local-2年级-二年级上册选读-大个子老鼠小个子猫.jpg",
+        "local-2年级-二年级上册选读-大个子老鼠小个子猫.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-弟子规",
+      "title": "弟子规",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-弟子规.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-弟子规.png",
+        "local-2年级-二年级上册选读-弟子规.jpg",
+        "local-2年级-二年级上册选读-弟子规.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-风到哪里去了-作者-【美】夏洛特-左罗托夫",
+      "title": "风到哪里去了",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-风到哪里去了-作者-【美】夏洛特-左罗托夫.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-风到哪里去了-作者-【美】夏洛特-左罗托夫.png",
+        "local-2年级-二年级上册选读-风到哪里去了-作者-【美】夏洛特-左罗托夫.jpg",
+        "local-2年级-二年级上册选读-风到哪里去了-作者-【美】夏洛特-左罗托夫.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-了不起的狐狸爸爸",
+      "title": "了不起的狐狸爸爸",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-了不起的狐狸爸爸.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-了不起的狐狸爸爸.png",
+        "local-2年级-二年级上册选读-了不起的狐狸爸爸.jpg",
+        "local-2年级-二年级上册选读-了不起的狐狸爸爸.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-妹妹的红雨鞋",
+      "title": "妹妹的红雨鞋",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-妹妹的红雨鞋.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-妹妹的红雨鞋.png",
+        "local-2年级-二年级上册选读-妹妹的红雨鞋.jpg",
+        "local-2年级-二年级上册选读-妹妹的红雨鞋.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-书本里的小蚂蚁",
+      "title": "书本里的小蚂蚁",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-书本里的小蚂蚁.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-书本里的小蚂蚁.png",
+        "local-2年级-二年级上册选读-书本里的小蚂蚁.jpg",
+        "local-2年级-二年级上册选读-书本里的小蚂蚁.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-我的野生动物朋友",
+      "title": "我的野生动物朋友",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-我的野生动物朋友.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-我的野生动物朋友.png",
+        "local-2年级-二年级上册选读-我的野生动物朋友.jpg",
+        "local-2年级-二年级上册选读-我的野生动物朋友.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-1-猪小锅很爱锅-注音版",
+      "title": "猪小锅和狼小怪 1 猪小锅很爱锅 注音版",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-1-猪小锅很爱锅-注音版.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-1-猪小锅很爱锅-注音版.png",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-1-猪小锅很爱锅-注音版.jpg",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-1-猪小锅很爱锅-注音版.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-10-卖猫耳朵的猫舅舅-注音版",
+      "title": "猪小锅和狼小怪 10 卖猫耳朵的猫舅舅 注音版",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-10-卖猫耳朵的猫舅舅-注音版.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-10-卖猫耳朵的猫舅舅-注音版.png",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-10-卖猫耳朵的猫舅舅-注音版.jpg",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-10-卖猫耳朵的猫舅舅-注音版.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-2-狼小怪的发明-注音版",
+      "title": "猪小锅和狼小怪 2 狼小怪的发明 注音版",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-2-狼小怪的发明-注音版.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-2-狼小怪的发明-注音版.png",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-2-狼小怪的发明-注音版.jpg",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-2-狼小怪的发明-注音版.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-3-鸡小皮的鸡毛梦-注音版",
+      "title": "猪小锅和狼小怪 3 鸡小皮的鸡毛梦 注音版",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-3-鸡小皮的鸡毛梦-注音版.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-3-鸡小皮的鸡毛梦-注音版.png",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-3-鸡小皮的鸡毛梦-注音版.jpg",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-3-鸡小皮的鸡毛梦-注音版.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-5-莫名其妙的计划-注音版",
+      "title": "猪小锅和狼小怪 5 莫名其妙的计划 注音版",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-5-莫名其妙的计划-注音版.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-5-莫名其妙的计划-注音版.png",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-5-莫名其妙的计划-注音版.jpg",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-5-莫名其妙的计划-注音版.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-6-真是搞笑的比赛-注音版",
+      "title": "猪小锅和狼小怪 6 真是搞笑的比赛 注音版",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-6-真是搞笑的比赛-注音版.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-6-真是搞笑的比赛-注音版.png",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-6-真是搞笑的比赛-注音版.jpg",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-6-真是搞笑的比赛-注音版.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-7-彩色谷里的色彩节-注音版",
+      "title": "猪小锅和狼小怪 7 彩色谷里的色彩节 注音版",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-7-彩色谷里的色彩节-注音版.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-7-彩色谷里的色彩节-注音版.png",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-7-彩色谷里的色彩节-注音版.jpg",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-7-彩色谷里的色彩节-注音版.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-8-一场风波-注音版",
+      "title": "猪小锅和狼小怪 8 一场风波 注音版",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-8-一场风波-注音版.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-8-一场风波-注音版.png",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-8-一场风波-注音版.jpg",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-8-一场风波-注音版.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-9-鸡大腿的诗歌集-注音版",
+      "title": "猪小锅和狼小怪 9 鸡大腿的诗歌集 注音版",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-9-鸡大腿的诗歌集-注音版.webp",
+      "alsoSupported": [
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-9-鸡大腿的诗歌集-注音版.png",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-9-鸡大腿的诗歌集-注音版.jpg",
+        "local-2年级-二年级上册选读-猪小锅和狼小怪系列-猪小锅和狼小怪-9-鸡大腿的诗歌集-注音版.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册必读-安徒生童话",
+      "title": "安徒生童话",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册必读-安徒生童话.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册必读-安徒生童话.png",
+        "local-2年级-二年级下册必读-安徒生童话.jpg",
+        "local-2年级-二年级下册必读-安徒生童话.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册必读-戴小桥和他的哥们儿1",
+      "title": "戴小桥和他的哥们儿1",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册必读-戴小桥和他的哥们儿1.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册必读-戴小桥和他的哥们儿1.png",
+        "local-2年级-二年级下册必读-戴小桥和他的哥们儿1.jpg",
+        "local-2年级-二年级下册必读-戴小桥和他的哥们儿1.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册必读-戴小桥和他的哥们儿2",
+      "title": "戴小桥和他的哥们儿2",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册必读-戴小桥和他的哥们儿2.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册必读-戴小桥和他的哥们儿2.png",
+        "local-2年级-二年级下册必读-戴小桥和他的哥们儿2.jpg",
+        "local-2年级-二年级下册必读-戴小桥和他的哥们儿2.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册必读-犟龟",
+      "title": "犟龟",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册必读-犟龟.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册必读-犟龟.png",
+        "local-2年级-二年级下册必读-犟龟.jpg",
+        "local-2年级-二年级下册必读-犟龟.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册必读-绿野仙踪",
+      "title": "绿野仙踪",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册必读-绿野仙踪.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册必读-绿野仙踪.png",
+        "local-2年级-二年级下册必读-绿野仙踪.jpg",
+        "local-2年级-二年级下册必读-绿野仙踪.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册必读-我的爸爸叫焦尼",
+      "title": "我的爸爸叫焦尼",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册必读-我的爸爸叫焦尼.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册必读-我的爸爸叫焦尼.png",
+        "local-2年级-二年级下册必读-我的爸爸叫焦尼.jpg",
+        "local-2年级-二年级下册必读-我的爸爸叫焦尼.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册选读-大战火星人",
+      "title": "大战火星人",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册选读-大战火星人.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册选读-大战火星人.png",
+        "local-2年级-二年级下册选读-大战火星人.jpg",
+        "local-2年级-二年级下册选读-大战火星人.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册选读-地心游记",
+      "title": "地心游记",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册选读-地心游记.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册选读-地心游记.png",
+        "local-2年级-二年级下册选读-地心游记.jpg",
+        "local-2年级-二年级下册选读-地心游记.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册选读-会飞的教室",
+      "title": "会飞的教室",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册选读-会飞的教室.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册选读-会飞的教室.png",
+        "local-2年级-二年级下册选读-会飞的教室.jpg",
+        "local-2年级-二年级下册选读-会飞的教室.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册选读-泡泡儿去旅行",
+      "title": "泡泡儿去旅行",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册选读-泡泡儿去旅行.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册选读-泡泡儿去旅行.png",
+        "local-2年级-二年级下册选读-泡泡儿去旅行.jpg",
+        "local-2年级-二年级下册选读-泡泡儿去旅行.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册选读-让孩子着迷的77×2个经典科学游戏",
+      "title": "让孩子着迷的77×2个经典科学游戏",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册选读-让孩子着迷的77×2个经典科学游戏.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册选读-让孩子着迷的77×2个经典科学游戏.png",
+        "local-2年级-二年级下册选读-让孩子着迷的77×2个经典科学游戏.jpg",
+        "local-2年级-二年级下册选读-让孩子着迷的77×2个经典科学游戏.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册选读-三字经",
+      "title": "三字经",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册选读-三字经.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册选读-三字经.png",
+        "local-2年级-二年级下册选读-三字经.jpg",
+        "local-2年级-二年级下册选读-三字经.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册选读-神奇校车",
+      "title": "神奇校车",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册选读-神奇校车.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册选读-神奇校车.png",
+        "local-2年级-二年级下册选读-神奇校车.jpg",
+        "local-2年级-二年级下册选读-神奇校车.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册选读-失落的一角",
+      "title": "失落的一角",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册选读-失落的一角.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册选读-失落的一角.png",
+        "local-2年级-二年级下册选读-失落的一角.jpg",
+        "local-2年级-二年级下册选读-失落的一角.jpeg"
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册选读-月亮的味道",
+      "title": "月亮的味道",
+      "grade": 2,
+      "regionId": "ice-mountain",
+      "recommendedFile": "local-2年级-二年级下册选读-月亮的味道.webp",
+      "alsoSupported": [
+        "local-2年级-二年级下册选读-月亮的味道.png",
+        "local-2年级-二年级下册选读-月亮的味道.jpg",
+        "local-2年级-二年级下册选读-月亮的味道.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册必读-格林童话",
+      "title": "格林童话",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册必读-格林童话.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册必读-格林童话.png",
+        "local-3年级-三年级上册必读-格林童话.jpg",
+        "local-3年级-三年级上册必读-格林童话.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册必读-怪老头儿",
+      "title": "怪老头儿",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册必读-怪老头儿.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册必读-怪老头儿.png",
+        "local-3年级-三年级上册必读-怪老头儿.jpg",
+        "local-3年级-三年级上册必读-怪老头儿.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册必读-狐狸列那的故事",
+      "title": "狐狸列那的故事",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册必读-狐狸列那的故事.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册必读-狐狸列那的故事.png",
+        "local-3年级-三年级上册必读-狐狸列那的故事.jpg",
+        "local-3年级-三年级上册必读-狐狸列那的故事.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册必读-木偶奇遇记",
+      "title": "木偶奇遇记",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册必读-木偶奇遇记.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册必读-木偶奇遇记.png",
+        "local-3年级-三年级上册必读-木偶奇遇记.jpg",
+        "local-3年级-三年级上册必读-木偶奇遇记.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册必读-皮皮鲁传",
+      "title": "皮皮鲁传",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册必读-皮皮鲁传.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册必读-皮皮鲁传.png",
+        "local-3年级-三年级上册必读-皮皮鲁传.jpg",
+        "local-3年级-三年级上册必读-皮皮鲁传.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-01-亚马孙探险",
+      "title": "01 亚马孙探险",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-01-亚马孙探险.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-01-亚马孙探险.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-01-亚马孙探险.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-01-亚马孙探险.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-02-恶战杀人鲸",
+      "title": "02 恶战杀人鲸",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-02-恶战杀人鲸.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-02-恶战杀人鲸.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-02-恶战杀人鲸.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-02-恶战杀人鲸.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-03-南海奇遇",
+      "title": "03 南海奇遇",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-03-南海奇遇.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-03-南海奇遇.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-03-南海奇遇.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-03-南海奇遇.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-04-海底寻宝",
+      "title": "04 海底寻宝",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-04-海底寻宝.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-04-海底寻宝.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-04-海底寻宝.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-04-海底寻宝.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-05-勇探火山口",
+      "title": "05 勇探火山口",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-05-勇探火山口.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-05-勇探火山口.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-05-勇探火山口.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-05-勇探火山口.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-06-非洲历险",
+      "title": "06 非洲历险",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-06-非洲历险.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-06-非洲历险.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-06-非洲历险.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-06-非洲历险.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-07-巧捕白象",
+      "title": "07 巧捕白象",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-07-巧捕白象.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-07-巧捕白象.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-07-巧捕白象.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-07-巧捕白象.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-08-猎场剿匪",
+      "title": "08 猎场剿匪",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-08-猎场剿匪.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-08-猎场剿匪.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-08-猎场剿匪.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-08-猎场剿匪.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-09-追踪食人狮",
+      "title": "09 追踪食人狮",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-09-追踪食人狮.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-09-追踪食人狮.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-09-追踪食人狮.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-09-追踪食人狮.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-10-智擒大猩猩",
+      "title": "10 智擒大猩猩",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-10-智擒大猩猩.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-10-智擒大猩猩.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-10-智擒大猩猩.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-10-智擒大猩猩.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-11-神秘海底城",
+      "title": "11 神秘海底城",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-11-神秘海底城.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-11-神秘海底城.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-11-神秘海底城.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-11-神秘海底城.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-12-闯入食人国",
+      "title": "12 闯入食人国",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-12-闯入食人国.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-12-闯入食人国.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-12-闯入食人国.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-12-闯入食人国.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-13-智斗猛兽",
+      "title": "13 智斗猛兽",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-13-智斗猛兽.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-13-智斗猛兽.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-13-智斗猛兽.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-13-智斗猛兽.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-14-北极探险",
+      "title": "14 北极探险",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-14-北极探险.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-14-北极探险.png",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-14-北极探险.jpg",
+        "local-3年级-三年级上册选读-亚马逊探险--哈尔罗杰历险记-14-北极探险.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-阿凡提的故事",
+      "title": "阿凡提的故事",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-阿凡提的故事.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-阿凡提的故事.png",
+        "local-3年级-三年级上册选读-阿凡提的故事.jpg",
+        "local-3年级-三年级上册选读-阿凡提的故事.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-鲁西西传",
+      "title": "鲁西西传",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-鲁西西传.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-鲁西西传.png",
+        "local-3年级-三年级上册选读-鲁西西传.jpg",
+        "local-3年级-三年级上册选读-鲁西西传.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-苹果树上的外婆",
+      "title": "苹果树上的外婆",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-苹果树上的外婆.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-苹果树上的外婆.png",
+        "local-3年级-三年级上册选读-苹果树上的外婆.jpg",
+        "local-3年级-三年级上册选读-苹果树上的外婆.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-神笔马良",
+      "title": "神笔马良",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-神笔马良.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-神笔马良.png",
+        "local-3年级-三年级上册选读-神笔马良.jpg",
+        "local-3年级-三年级上册选读-神笔马良.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-特别女生撒哈拉",
+      "title": "特别女生撒哈拉",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-特别女生撒哈拉.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-特别女生撒哈拉.png",
+        "local-3年级-三年级上册选读-特别女生撒哈拉.jpg",
+        "local-3年级-三年级上册选读-特别女生撒哈拉.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-我有友情要出租",
+      "title": "我有友情要出租",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-我有友情要出租.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-我有友情要出租.png",
+        "local-3年级-三年级上册选读-我有友情要出租.jpg",
+        "local-3年级-三年级上册选读-我有友情要出租.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-小飞侠彼得-潘",
+      "title": "小飞侠彼得-潘",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-小飞侠彼得-潘.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-小飞侠彼得-潘.png",
+        "local-3年级-三年级上册选读-小飞侠彼得-潘.jpg",
+        "local-3年级-三年级上册选读-小飞侠彼得-潘.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册选读-游戏中的科学",
+      "title": "游戏中的科学",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级上册选读-游戏中的科学.webp",
+      "alsoSupported": [
+        "local-3年级-三年级上册选读-游戏中的科学.png",
+        "local-3年级-三年级上册选读-游戏中的科学.jpg",
+        "local-3年级-三年级上册选读-游戏中的科学.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境",
+      "title": "爱丽丝漫游奇境",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级下册必读-爱丽丝漫游奇境.webp",
+      "alsoSupported": [
+        "local-3年级-三年级下册必读-爱丽丝漫游奇境.png",
+        "local-3年级-三年级下册必读-爱丽丝漫游奇境.jpg",
+        "local-3年级-三年级下册必读-爱丽丝漫游奇境.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册必读-吹牛大王历险记",
+      "title": "吹牛大王历险记",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级下册必读-吹牛大王历险记.webp",
+      "alsoSupported": [
+        "local-3年级-三年级下册必读-吹牛大王历险记.png",
+        "local-3年级-三年级下册必读-吹牛大王历险记.jpg",
+        "local-3年级-三年级下册必读-吹牛大王历险记.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册必读-女生贾梅·男生贾里",
+      "title": "女生贾梅·男生贾里",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级下册必读-女生贾梅·男生贾里.webp",
+      "alsoSupported": [
+        "local-3年级-三年级下册必读-女生贾梅·男生贾里.png",
+        "local-3年级-三年级下册必读-女生贾梅·男生贾里.jpg",
+        "local-3年级-三年级下册必读-女生贾梅·男生贾里.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册必读-小鹿班比",
+      "title": "小鹿班比",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级下册必读-小鹿班比.webp",
+      "alsoSupported": [
+        "local-3年级-三年级下册必读-小鹿班比.png",
+        "local-3年级-三年级下册必读-小鹿班比.jpg",
+        "local-3年级-三年级下册必读-小鹿班比.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册选读-丛林之书",
+      "title": "丛林之书",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级下册选读-丛林之书.webp",
+      "alsoSupported": [
+        "local-3年级-三年级下册选读-丛林之书.png",
+        "local-3年级-三年级下册选读-丛林之书.jpg",
+        "local-3年级-三年级下册选读-丛林之书.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册选读-风到哪里去了",
+      "title": "风到哪里去了",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级下册选读-风到哪里去了.webp",
+      "alsoSupported": [
+        "local-3年级-三年级下册选读-风到哪里去了.png",
+        "local-3年级-三年级下册选读-风到哪里去了.jpg",
+        "local-3年级-三年级下册选读-风到哪里去了.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-1-首都身边的华北区-山海关外的东北区-第3版_11466767",
+      "title": "讲给孩子的中国地理 1 首都身边的华北区 山海关外的东北区 第3版_11466767",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-1-首都身边的华北区-山海关外的东北区-第3版_11466767.webp",
+      "alsoSupported": [
+        "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-1-首都身边的华北区-山海关外的东北区-第3版_11466767.png",
+        "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-1-首都身边的华北区-山海关外的东北区-第3版_11466767.jpg",
+        "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-1-首都身边的华北区-山海关外的东北区-第3版_11466767.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-2-大陆腹心的西北区-千山万岭的西南区-第3版_11466768",
+      "title": "讲给孩子的中国地理 2 大陆腹心的西北区 千山万岭的西南区 第3版_11466768",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-2-大陆腹心的西北区-千山万岭的西南区-第3版_11466768.webp",
+      "alsoSupported": [
+        "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-2-大陆腹心的西北区-千山万岭的西南区-第3版_11466768.png",
+        "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-2-大陆腹心的西北区-千山万岭的西南区-第3版_11466768.jpg",
+        "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-2-大陆腹心的西北区-千山万岭的西南区-第3版_11466768.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-3-面向太平洋的华东区-地贯南北的中南区-第3版_11466769",
+      "title": "讲给孩子的中国地理 3 面向太平洋的华东区 地贯南北的中南区 第3版_11466769",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-3-面向太平洋的华东区-地贯南北的中南区-第3版_11466769.webp",
+      "alsoSupported": [
+        "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-3-面向太平洋的华东区-地贯南北的中南区-第3版_11466769.png",
+        "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-3-面向太平洋的华东区-地贯南北的中南区-第3版_11466769.jpg",
+        "local-3年级-三年级下册选读-讲给孩子的中国地理-讲给孩子的中国地理-3-面向太平洋的华东区-地贯南北的中南区-第3版_11466769.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册选读-魔法师的帽子",
+      "title": "魔法师的帽子",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级下册选读-魔法师的帽子.webp",
+      "alsoSupported": [
+        "local-3年级-三年级下册选读-魔法师的帽子.png",
+        "local-3年级-三年级下册选读-魔法师的帽子.jpg",
+        "local-3年级-三年级下册选读-魔法师的帽子.jpeg"
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册选读-十万个为什么",
+      "title": "十万个为什么",
+      "grade": 3,
+      "regionId": "ancient-desert",
+      "recommendedFile": "local-3年级-三年级下册选读-十万个为什么.webp",
+      "alsoSupported": [
+        "local-3年级-三年级下册选读-十万个为什么.png",
+        "local-3年级-三年级下册选读-十万个为什么.jpg",
+        "local-3年级-三年级下册选读-十万个为什么.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册必读-狼王梦",
+      "title": "狼王梦",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级上册必读-狼王梦.webp",
+      "alsoSupported": [
+        "local-4年级-四年级上册必读-狼王梦.png",
+        "local-4年级-四年级上册必读-狼王梦.jpg",
+        "local-4年级-四年级上册必读-狼王梦.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册必读-亲爱的汉修先生",
+      "title": "亲爱的汉修先生",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级上册必读-亲爱的汉修先生.webp",
+      "alsoSupported": [
+        "local-4年级-四年级上册必读-亲爱的汉修先生.png",
+        "local-4年级-四年级上册必读-亲爱的汉修先生.jpg",
+        "local-4年级-四年级上册必读-亲爱的汉修先生.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册必读-时代广场的蟋蟀",
+      "title": "时代广场的蟋蟀",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级上册必读-时代广场的蟋蟀.webp",
+      "alsoSupported": [
+        "local-4年级-四年级上册必读-时代广场的蟋蟀.png",
+        "local-4年级-四年级上册必读-时代广场的蟋蟀.jpg",
+        "local-4年级-四年级上册必读-时代广场的蟋蟀.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册必读-我要做好孩子",
+      "title": "我要做好孩子",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级上册必读-我要做好孩子.webp",
+      "alsoSupported": [
+        "local-4年级-四年级上册必读-我要做好孩子.png",
+        "local-4年级-四年级上册必读-我要做好孩子.jpg",
+        "local-4年级-四年级上册必读-我要做好孩子.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册必读-一百条裙子",
+      "title": "一百条裙子",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级上册必读-一百条裙子.webp",
+      "alsoSupported": [
+        "local-4年级-四年级上册必读-一百条裙子.png",
+        "local-4年级-四年级上册必读-一百条裙子.jpg",
+        "local-4年级-四年级上册必读-一百条裙子.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册选读-女巫",
+      "title": "女巫",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级上册选读-女巫.webp",
+      "alsoSupported": [
+        "local-4年级-四年级上册选读-女巫.png",
+        "local-4年级-四年级上册选读-女巫.jpg",
+        "local-4年级-四年级上册选读-女巫.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册选读-水孩子",
+      "title": "水孩子",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级上册选读-水孩子.webp",
+      "alsoSupported": [
+        "local-4年级-四年级上册选读-水孩子.png",
+        "local-4年级-四年级上册选读-水孩子.jpg",
+        "local-4年级-四年级上册选读-水孩子.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册选读-淘气包马小跳系列",
+      "title": "淘气包马小跳系列",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级上册选读-淘气包马小跳系列.webp",
+      "alsoSupported": [
+        "local-4年级-四年级上册选读-淘气包马小跳系列.png",
+        "local-4年级-四年级上册选读-淘气包马小跳系列.jpg",
+        "local-4年级-四年级上册选读-淘气包马小跳系列.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册选读-歇后语-谚语大全",
+      "title": "歇后语 谚语大全",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级上册选读-歇后语-谚语大全.webp",
+      "alsoSupported": [
+        "local-4年级-四年级上册选读-歇后语-谚语大全.png",
+        "local-4年级-四年级上册选读-歇后语-谚语大全.jpg",
+        "local-4年级-四年级上册选读-歇后语-谚语大全.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册选读-一千零一夜",
+      "title": "一千零一夜",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级上册选读-一千零一夜.webp",
+      "alsoSupported": [
+        "local-4年级-四年级上册选读-一千零一夜.png",
+        "local-4年级-四年级上册选读-一千零一夜.jpg",
+        "local-4年级-四年级上册选读-一千零一夜.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册选读-装在口袋里的爸爸",
+      "title": "装在口袋里的爸爸",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级上册选读-装在口袋里的爸爸.webp",
+      "alsoSupported": [
+        "local-4年级-四年级上册选读-装在口袋里的爸爸.png",
+        "local-4年级-四年级上册选读-装在口袋里的爸爸.jpg",
+        "local-4年级-四年级上册选读-装在口袋里的爸爸.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册必读-草房子",
+      "title": "草房子",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册必读-草房子.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册必读-草房子.png",
+        "local-4年级-四年级下册必读-草房子.jpg",
+        "local-4年级-四年级下册必读-草房子.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册必读-窗边的小豆豆",
+      "title": "窗边的小豆豆",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册必读-窗边的小豆豆.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册必读-窗边的小豆豆.png",
+        "local-4年级-四年级下册必读-窗边的小豆豆.jpg",
+        "local-4年级-四年级下册必读-窗边的小豆豆.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册必读-海底两万里",
+      "title": "海底两万里",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册必读-海底两万里.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册必读-海底两万里.png",
+        "local-4年级-四年级下册必读-海底两万里.jpg",
+        "local-4年级-四年级下册必读-海底两万里.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册必读-金银岛",
+      "title": "金银岛",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册必读-金银岛.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册必读-金银岛.png",
+        "local-4年级-四年级下册必读-金银岛.jpg",
+        "local-4年级-四年级下册必读-金银岛.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册必读-夏洛的网",
+      "title": "夏洛的网",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册必读-夏洛的网.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册必读-夏洛的网.png",
+        "local-4年级-四年级下册必读-夏洛的网.jpg",
+        "local-4年级-四年级下册必读-夏洛的网.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册选读-班长下台",
+      "title": "班长下台",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册选读-班长下台.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册选读-班长下台.png",
+        "local-4年级-四年级下册选读-班长下台.jpg",
+        "local-4年级-四年级下册选读-班长下台.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册选读-浪漫鼠得佩罗",
+      "title": "浪漫鼠得佩罗",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册选读-浪漫鼠得佩罗.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册选读-浪漫鼠得佩罗.png",
+        "local-4年级-四年级下册选读-浪漫鼠得佩罗.jpg",
+        "local-4年级-四年级下册选读-浪漫鼠得佩罗.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册选读-柳林风声",
+      "title": "柳林风声",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册选读-柳林风声.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册选读-柳林风声.png",
+        "local-4年级-四年级下册选读-柳林风声.jpg",
+        "local-4年级-四年级下册选读-柳林风声.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册选读-幼学琼林",
+      "title": "幼学琼林",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册选读-幼学琼林.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册选读-幼学琼林.png",
+        "local-4年级-四年级下册选读-幼学琼林.jpg",
+        "local-4年级-四年级下册选读-幼学琼林.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册选读-长袜子皮皮",
+      "title": "长袜子皮皮",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册选读-长袜子皮皮.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册选读-长袜子皮皮.png",
+        "local-4年级-四年级下册选读-长袜子皮皮.jpg",
+        "local-4年级-四年级下册选读-长袜子皮皮.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册选读-芝麻开门",
+      "title": "芝麻开门",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册选读-芝麻开门.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册选读-芝麻开门.png",
+        "local-4年级-四年级下册选读-芝麻开门.jpg",
+        "local-4年级-四年级下册选读-芝麻开门.jpeg"
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册选读-中外名人故事",
+      "title": "中外名人故事",
+      "grade": 4,
+      "regionId": "ocean-ruins",
+      "recommendedFile": "local-4年级-四年级下册选读-中外名人故事.webp",
+      "alsoSupported": [
+        "local-4年级-四年级下册选读-中外名人故事.png",
+        "local-4年级-四年级下册选读-中外名人故事.jpg",
+        "local-4年级-四年级下册选读-中外名人故事.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册必读-爱的教育",
+      "title": "爱的教育",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册必读-爱的教育.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册必读-爱的教育.png",
+        "local-5年级-五年级上册必读-爱的教育.jpg",
+        "local-5年级-五年级上册必读-爱的教育.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册必读-昆虫记",
+      "title": "昆虫记",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册必读-昆虫记.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册必读-昆虫记.png",
+        "local-5年级-五年级上册必读-昆虫记.jpg",
+        "local-5年级-五年级上册必读-昆虫记.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册必读-青铜葵花",
+      "title": "青铜葵花",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册必读-青铜葵花.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册必读-青铜葵花.png",
+        "local-5年级-五年级上册必读-青铜葵花.jpg",
+        "local-5年级-五年级上册必读-青铜葵花.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册必读-水浒传",
+      "title": "水浒传",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册必读-水浒传.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册必读-水浒传.png",
+        "local-5年级-五年级上册必读-水浒传.jpg",
+        "local-5年级-五年级上册必读-水浒传.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册必读-伊索寓言",
+      "title": "伊索寓言",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册必读-伊索寓言.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册必读-伊索寓言.png",
+        "local-5年级-五年级上册必读-伊索寓言.jpg",
+        "local-5年级-五年级上册必读-伊索寓言.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册选读-寄小读者",
+      "title": "寄小读者",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册选读-寄小读者.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册选读-寄小读者.png",
+        "local-5年级-五年级上册选读-寄小读者.jpg",
+        "local-5年级-五年级上册选读-寄小读者.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册选读-蓝鲸的眼睛",
+      "title": "蓝鲸的眼睛",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册选读-蓝鲸的眼睛.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册选读-蓝鲸的眼睛.png",
+        "local-5年级-五年级上册选读-蓝鲸的眼睛.jpg",
+        "local-5年级-五年级上册选读-蓝鲸的眼睛.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册选读-麦琪的礼物",
+      "title": "麦琪的礼物",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册选读-麦琪的礼物.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册选读-麦琪的礼物.png",
+        "local-5年级-五年级上册选读-麦琪的礼物.jpg",
+        "local-5年级-五年级上册选读-麦琪的礼物.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册选读-秘密花园",
+      "title": "秘密花园",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册选读-秘密花园.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册选读-秘密花园.png",
+        "local-5年级-五年级上册选读-秘密花园.jpg",
+        "local-5年级-五年级上册选读-秘密花园.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册选读-我们的母亲叫中国",
+      "title": "我们的母亲叫中国",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册选读-我们的母亲叫中国.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册选读-我们的母亲叫中国.png",
+        "local-5年级-五年级上册选读-我们的母亲叫中国.jpg",
+        "local-5年级-五年级上册选读-我们的母亲叫中国.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册选读-希腊神话",
+      "title": "希腊神话",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册选读-希腊神话.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册选读-希腊神话.png",
+        "local-5年级-五年级上册选读-希腊神话.jpg",
+        "local-5年级-五年级上册选读-希腊神话.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册选读-小王子",
+      "title": "小王子",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级上册选读-小王子.webp",
+      "alsoSupported": [
+        "local-5年级-五年级上册选读-小王子.png",
+        "local-5年级-五年级上册选读-小王子.jpg",
+        "local-5年级-五年级上册选读-小王子.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册必读-呼兰河传",
+      "title": "呼兰河传",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册必读-呼兰河传.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册必读-呼兰河传.png",
+        "local-5年级-五年级下册必读-呼兰河传.jpg",
+        "local-5年级-五年级下册必读-呼兰河传.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册必读-假如给我三天光明",
+      "title": "假如给我三天光明",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册必读-假如给我三天光明.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册必读-假如给我三天光明.png",
+        "local-5年级-五年级下册必读-假如给我三天光明.jpg",
+        "local-5年级-五年级下册必读-假如给我三天光明.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册必读-论语",
+      "title": "论语",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册必读-论语.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册必读-论语.png",
+        "local-5年级-五年级下册必读-论语.jpg",
+        "local-5年级-五年级下册必读-论语.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册必读-尼尔斯骑鹅旅行记",
+      "title": "尼尔斯骑鹅旅行记",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册必读-尼尔斯骑鹅旅行记.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册必读-尼尔斯骑鹅旅行记.png",
+        "local-5年级-五年级下册必读-尼尔斯骑鹅旅行记.jpg",
+        "local-5年级-五年级下册必读-尼尔斯骑鹅旅行记.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册必读-西游记",
+      "title": "西游记",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册必读-西游记.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册必读-西游记.png",
+        "local-5年级-五年级下册必读-西游记.jpg",
+        "local-5年级-五年级下册必读-西游记.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册选读-风与树的歌",
+      "title": "风与树的歌",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册选读-风与树的歌.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册选读-风与树的歌.png",
+        "local-5年级-五年级下册选读-风与树的歌.jpg",
+        "local-5年级-五年级下册选读-风与树的歌.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册选读-活了一百万次的猫",
+      "title": "活了一百万次的猫",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册选读-活了一百万次的猫.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册选读-活了一百万次的猫.png",
+        "local-5年级-五年级下册选读-活了一百万次的猫.jpg",
+        "local-5年级-五年级下册选读-活了一百万次的猫.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册选读-苦儿流浪记",
+      "title": "苦儿流浪记",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册选读-苦儿流浪记.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册选读-苦儿流浪记.png",
+        "local-5年级-五年级下册选读-苦儿流浪记.jpg",
+        "local-5年级-五年级下册选读-苦儿流浪记.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册选读-蓝色的海豚岛",
+      "title": "蓝色的海豚岛",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册选读-蓝色的海豚岛.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册选读-蓝色的海豚岛.png",
+        "local-5年级-五年级下册选读-蓝色的海豚岛.jpg",
+        "local-5年级-五年级下册选读-蓝色的海豚岛.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册选读-女儿的故事",
+      "title": "女儿的故事",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册选读-女儿的故事.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册选读-女儿的故事.png",
+        "local-5年级-五年级下册选读-女儿的故事.jpg",
+        "local-5年级-五年级下册选读-女儿的故事.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册选读-上下五千年",
+      "title": "上下五千年",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册选读-上下五千年.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册选读-上下五千年.png",
+        "local-5年级-五年级下册选读-上下五千年.jpg",
+        "local-5年级-五年级下册选读-上下五千年.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册选读-神秘岛",
+      "title": "神秘岛",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册选读-神秘岛.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册选读-神秘岛.png",
+        "local-5年级-五年级下册选读-神秘岛.jpg",
+        "local-5年级-五年级下册选读-神秘岛.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册选读-屋顶上的小孩",
+      "title": "屋顶上的小孩",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册选读-屋顶上的小孩.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册选读-屋顶上的小孩.png",
+        "local-5年级-五年级下册选读-屋顶上的小孩.jpg",
+        "local-5年级-五年级下册选读-屋顶上的小孩.jpeg"
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册选读-永远讲不完的故事",
+      "title": "永远讲不完的故事",
+      "grade": 5,
+      "regionId": "sky-kingdom",
+      "recommendedFile": "local-5年级-五年级下册选读-永远讲不完的故事.webp",
+      "alsoSupported": [
+        "local-5年级-五年级下册选读-永远讲不完的故事.png",
+        "local-5年级-五年级下册选读-永远讲不完的故事.jpg",
+        "local-5年级-五年级下册选读-永远讲不完的故事.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册必读-城南旧事",
+      "title": "城南旧事",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级上册必读-城南旧事.webp",
+      "alsoSupported": [
+        "local-6年级-六年级上册必读-城南旧事.png",
+        "local-6年级-六年级上册必读-城南旧事.jpg",
+        "local-6年级-六年级上册必读-城南旧事.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册必读-鲁滨逊漂流记",
+      "title": "鲁滨逊漂流记",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级上册必读-鲁滨逊漂流记.webp",
+      "alsoSupported": [
+        "local-6年级-六年级上册必读-鲁滨逊漂流记.png",
+        "local-6年级-六年级上册必读-鲁滨逊漂流记.jpg",
+        "local-6年级-六年级上册必读-鲁滨逊漂流记.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册必读-三国演义",
+      "title": "三国演义",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级上册必读-三国演义.webp",
+      "alsoSupported": [
+        "local-6年级-六年级上册必读-三国演义.png",
+        "local-6年级-六年级上册必读-三国演义.jpg",
+        "local-6年级-六年级上册必读-三国演义.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册必读-汤姆-索亚历险记",
+      "title": "汤姆-索亚历险记",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级上册必读-汤姆-索亚历险记.webp",
+      "alsoSupported": [
+        "local-6年级-六年级上册必读-汤姆-索亚历险记.png",
+        "local-6年级-六年级上册必读-汤姆-索亚历险记.jpg",
+        "local-6年级-六年级上册必读-汤姆-索亚历险记.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册选读-第三军团",
+      "title": "第三军团",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级上册选读-第三军团.webp",
+      "alsoSupported": [
+        "local-6年级-六年级上册选读-第三军团.png",
+        "local-6年级-六年级上册选读-第三军团.jpg",
+        "local-6年级-六年级上册选读-第三军团.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册选读-福尔摩斯探案集",
+      "title": "福尔摩斯探案集",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级上册选读-福尔摩斯探案集.webp",
+      "alsoSupported": [
+        "local-6年级-六年级上册选读-福尔摩斯探案集.png",
+        "local-6年级-六年级上册选读-福尔摩斯探案集.jpg",
+        "local-6年级-六年级上册选读-福尔摩斯探案集.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册选读-哈利波特集",
+      "title": "哈利波特集",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级上册选读-哈利波特集.webp",
+      "alsoSupported": [
+        "local-6年级-六年级上册选读-哈利波特集.png",
+        "local-6年级-六年级上册选读-哈利波特集.jpg",
+        "local-6年级-六年级上册选读-哈利波特集.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册选读-克雷洛夫寓言",
+      "title": "克雷洛夫寓言",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级上册选读-克雷洛夫寓言.webp",
+      "alsoSupported": [
+        "local-6年级-六年级上册选读-克雷洛夫寓言.png",
+        "local-6年级-六年级上册选读-克雷洛夫寓言.jpg",
+        "local-6年级-六年级上册选读-克雷洛夫寓言.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册选读-狼图腾",
+      "title": "狼图腾",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级上册选读-狼图腾.webp",
+      "alsoSupported": [
+        "local-6年级-六年级上册选读-狼图腾.png",
+        "local-6年级-六年级上册选读-狼图腾.jpg",
+        "local-6年级-六年级上册选读-狼图腾.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册选读-叶永烈讲述科学家故事100个",
+      "title": "叶永烈讲述科学家故事100个",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级上册选读-叶永烈讲述科学家故事100个.webp",
+      "alsoSupported": [
+        "local-6年级-六年级上册选读-叶永烈讲述科学家故事100个.png",
+        "local-6年级-六年级上册选读-叶永烈讲述科学家故事100个.jpg",
+        "local-6年级-六年级上册选读-叶永烈讲述科学家故事100个.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册选读-追风筝的人",
+      "title": "追风筝的人",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级上册选读-追风筝的人.webp",
+      "alsoSupported": [
+        "local-6年级-六年级上册选读-追风筝的人.png",
+        "local-6年级-六年级上册选读-追风筝的人.jpg",
+        "local-6年级-六年级上册选读-追风筝的人.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册必读-格列佛游记",
+      "title": "格列佛游记",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册必读-格列佛游记.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册必读-格列佛游记.png",
+        "local-6年级-六年级下册必读-格列佛游记.jpg",
+        "local-6年级-六年级下册必读-格列佛游记.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册必读-今天我是升旗手",
+      "title": "今天我是升旗手",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册必读-今天我是升旗手.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册必读-今天我是升旗手.png",
+        "local-6年级-六年级下册必读-今天我是升旗手.jpg",
+        "local-6年级-六年级下册必读-今天我是升旗手.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册必读-老人与海",
+      "title": "老人与海",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册必读-老人与海.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册必读-老人与海.png",
+        "local-6年级-六年级下册必读-老人与海.jpg",
+        "local-6年级-六年级下册必读-老人与海.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册必读-宋词三百首",
+      "title": "宋词三百首",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册必读-宋词三百首.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册必读-宋词三百首.png",
+        "local-6年级-六年级下册必读-宋词三百首.jpg",
+        "local-6年级-六年级下册必读-宋词三百首.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册必读-唐诗三百首",
+      "title": "唐诗三百首",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册必读-唐诗三百首.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册必读-唐诗三百首.png",
+        "local-6年级-六年级下册必读-唐诗三百首.jpg",
+        "local-6年级-六年级下册必读-唐诗三百首.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册选读-阁楼上的光",
+      "title": "阁楼上的光",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册选读-阁楼上的光.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册选读-阁楼上的光.png",
+        "local-6年级-六年级下册选读-阁楼上的光.jpg",
+        "local-6年级-六年级下册选读-阁楼上的光.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册选读-居里夫人自传",
+      "title": "居里夫人自传",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册选读-居里夫人自传.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册选读-居里夫人自传.png",
+        "local-6年级-六年级下册选读-居里夫人自传.jpg",
+        "local-6年级-六年级下册选读-居里夫人自传.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册选读-绿山墙的安妮",
+      "title": "绿山墙的安妮",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册选读-绿山墙的安妮.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册选读-绿山墙的安妮.png",
+        "local-6年级-六年级下册选读-绿山墙的安妮.jpg",
+        "local-6年级-六年级下册选读-绿山墙的安妮.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册选读-诺贝尔奖获得者与儿童对话",
+      "title": "诺贝尔奖获得者与儿童对话",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册选读-诺贝尔奖获得者与儿童对话.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册选读-诺贝尔奖获得者与儿童对话.png",
+        "local-6年级-六年级下册选读-诺贝尔奖获得者与儿童对话.jpg",
+        "local-6年级-六年级下册选读-诺贝尔奖获得者与儿童对话.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册选读-热爱生命",
+      "title": "热爱生命",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册选读-热爱生命.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册选读-热爱生命.png",
+        "local-6年级-六年级下册选读-热爱生命.jpg",
+        "local-6年级-六年级下册选读-热爱生命.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册选读-谁动了我的奶酪",
+      "title": "谁动了我的奶酪",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册选读-谁动了我的奶酪.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册选读-谁动了我的奶酪.png",
+        "local-6年级-六年级下册选读-谁动了我的奶酪.jpg",
+        "local-6年级-六年级下册选读-谁动了我的奶酪.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册选读-希利尔讲艺术史",
+      "title": "希利尔讲艺术史",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册选读-希利尔讲艺术史.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册选读-希利尔讲艺术史.png",
+        "local-6年级-六年级下册选读-希利尔讲艺术史.jpg",
+        "local-6年级-六年级下册选读-希利尔讲艺术史.jpeg"
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册选读-写给孩子的哲学启蒙书",
+      "title": "写给孩子的哲学启蒙书",
+      "grade": 6,
+      "regionId": "dream-tower",
+      "recommendedFile": "local-6年级-六年级下册选读-写给孩子的哲学启蒙书.webp",
+      "alsoSupported": [
+        "local-6年级-六年级下册选读-写给孩子的哲学启蒙书.png",
+        "local-6年级-六年级下册选读-写给孩子的哲学启蒙书.jpg",
+        "local-6年级-六年级下册选读-写给孩子的哲学启蒙书.jpeg"
+      ]
+    }
+  ]
+}

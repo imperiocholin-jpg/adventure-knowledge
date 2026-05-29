@@ -1,0 +1,210 @@
+{
+  "id": "local-5年级-五年级上册必读-昆虫记",
+  "title": "昆虫记",
+  "grade": 5,
+  "term": "上册",
+  "readingType": "必读",
+  "primaryRegionId": "ocean-ruins",
+  "sourceChapterPath": "data/imported-books/chapters/local-5年级-五年级上册必读-昆虫记.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-5年级-五年级上册必读-昆虫记-chapter-1",
+      "chapterTitle": "昆虫记 片段 1",
+      "charCount": 2834,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-1-q1",
+          "type": "memory",
+          "prompt": "海底探路员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "人生",
+            "虫性",
+            "讲昆虫故事"
+          ],
+          "answerIndex": 0,
+          "answerText": "人生",
+          "successResponse": "海底探路员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "海底探路员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《昆虫记》·昆虫记 片段 1",
+          "sourceExcerpt": "跟随法布尔的脚步，进入一个生动有趣的昆虫世界；追随法布尔的\n精神，探索自然永恒的奥秘。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "海底探路员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“人生”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“人生”这条线索继续找",
+          "successResponse": "海底探路员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "海底探路员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《昆虫记》·昆虫记 片段 1",
+          "sourceExcerpt": "因为那原本开阔敞亮无遮拦的视野，现今已经变得\n十分局促。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "海底探路员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“人生”说明故事变化",
+          "answerRubric": [
+            "提到“人生”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "海底探路员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "海底探路员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《昆虫记》·昆虫记 片段 1",
+          "sourceExcerpt": "到了春天，如果碰巧下点雨，这里也会长出一些青\n草，吸引牧羊人赶来他们的羊群。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-5年级-五年级上册必读-昆虫记-chapter-2",
+      "chapterTitle": "昆虫记 片段 2",
+      "charCount": 2874,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-2-q1",
+          "type": "memory",
+          "prompt": "海底探路员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "我的荒石园",
+            "伊甸园",
+            "当然"
+          ],
+          "answerIndex": 0,
+          "answerText": "我的荒石园",
+          "successResponse": "海底探路员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "海底探路员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《昆虫记》·昆虫记 片段 2",
+          "sourceExcerpt": "我的荒石园里有一些掺着石子的红土，据说曾经被人耕种过，长过\n一些葡萄。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "海底探路员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“伊甸园”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“伊甸园”这条线索继续找",
+          "successResponse": "海底探路员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "海底探路员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《昆虫记》·昆虫记 片段 2",
+          "sourceExcerpt": "我对这些可爱的小邻居的离开感到十分惋惜，但对那\n个凶悍的蜥蜴，则没有丝毫的惋惜之情。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "海底探路员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“实验室”说明故事变化",
+          "answerRubric": [
+            "提到“实验室”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "海底探路员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "海底探路员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《昆虫记》·昆虫记 片段 2",
+          "sourceExcerpt": "毕竟我的实验室天然自足，不需花费纳税人一分\n钱。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-5年级-五年级上册必读-昆虫记-chapter-3",
+      "chapterTitle": "昆虫记 片段 3",
+      "charCount": 2971,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-3-q1",
+          "type": "memory",
+          "prompt": "海底探路员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "白面螽斯的",
+            "蒂克",
+            "蒂克——蒂克"
+          ],
+          "answerIndex": 0,
+          "answerText": "白面螽斯的",
+          "successResponse": "海底探路员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "海底探路员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《昆虫记》·昆虫记 片段 3",
+          "sourceExcerpt": "白面螽斯的习惯\n在昆虫中，白面螽斯的歌喉和仪表是首屈一指的。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "海底探路员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“蒂克”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“蒂克”这条线索继续找",
+          "successResponse": "海底探路员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "海底探路员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《昆虫记》·昆虫记 片段 3",
+          "sourceExcerpt": "令人恼火的\n是，我们已经无法从化石上考证，但幸运的是可以从石炭纪昆虫的后代\n身上得到一些线索。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "海底探路员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“现在”说明故事变化",
+          "answerRubric": [
+            "提到“现在”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "海底探路员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "海底探路员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《昆虫记》·昆虫记 片段 3",
+          "sourceExcerpt": "现在，袋子瘪\n了，只剩空袋子和唯一的部件\n——\n乳液塞子。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

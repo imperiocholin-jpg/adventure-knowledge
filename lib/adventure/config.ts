@@ -4,7 +4,7 @@ import {
   ADVENTURE_REGION_UNLOCK_ORDER,
   type AdventureRegionId,
 } from "@/lib/library/adventure-regions"
-import { getMoeCatalogByRegion } from "@/lib/library/moe-catalog-2020"
+import { getLocalBooksByRegion } from "@/lib/library/local-book-catalog"
 
 export type StoryEntryMode = "post_read" | "direct"
 
@@ -33,10 +33,10 @@ export interface ChallengeRewardPolicy {
 }
 
 function buildRegionBooks(regionId: AdventureRegionId): RegionBookConfig[] {
-  return getMoeCatalogByRegion(regionId).map((entry) => ({
-    bookId: entry.legacyReaderBookId ?? entry.id,
-    moeId: entry.id,
-    challengeChapterId: entry.challengeChapterId ?? `chapter_${entry.catalogSeq}`,
+  return getLocalBooksByRegion(regionId).map((book) => ({
+    bookId: book.id,
+    moeId: book.id,
+    challengeChapterId: `chapter_${book.id}`,
   }))
 }
 

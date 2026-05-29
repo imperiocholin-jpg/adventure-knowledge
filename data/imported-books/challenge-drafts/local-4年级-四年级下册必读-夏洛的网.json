@@ -1,0 +1,210 @@
+{
+  "id": "local-4年级-四年级下册必读-夏洛的网",
+  "title": "夏洛的网",
+  "grade": 4,
+  "term": "下册",
+  "readingType": "必读",
+  "primaryRegionId": "magic-forest",
+  "sourceChapterPath": "data/imported-books/chapters/local-4年级-四年级下册必读-夏洛的网.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-4年级-四年级下册必读-夏洛的网-chapter-1",
+      "chapterTitle": "1. 早餐之前",
+      "charCount": 2058,
+      "estimatedMinutes": 4,
+      "questions": [
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-1-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "威伯",
+            "去猪圈了",
+            "她的母亲说"
+          ],
+          "answerIndex": 0,
+          "answerText": "威伯",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《夏洛的网》·1. 早餐之前",
+          "sourceExcerpt": "\"在他们收拾桌子准备吃早饭时， 芬问\n她的母亲。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“威伯”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“威伯”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《夏洛的网》·1. 早餐之前",
+          "sourceExcerpt": "当她走近\n她的椅子， 纸板盒开始晃动起来， 里面传出了抓搔声。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“威伯”说明故事变化",
+          "answerRubric": [
+            "提到“威伯”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《夏洛的网》·1. 早餐之前",
+          "sourceExcerpt": "***\n夏洛的网\n（美）E.B.White 著\nGarth Williams 插图\n肖毛翻译",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-4年级-四年级下册必读-夏洛的网-chapter-2",
+      "chapterTitle": "2.威伯（1）",
+      "charCount": 3183,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-2-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "她的父亲说",
+            "母鹅说",
+            "不会的"
+          ],
+          "answerIndex": 0,
+          "answerText": "她的父亲说",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《夏洛的网》·2.威伯（1）",
+          "sourceExcerpt": "她喜欢抚摩着他，喂他，抱他上床睡觉。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“她的父亲说”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“她的父亲说”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《夏洛的网》·2.威伯（1）",
+          "sourceExcerpt": "告诉你霍默舅舅，\n\n你有一头小猪，只卖他六美元，看他有什么意见。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“母鹅说”说明故事变化",
+          "answerRubric": [
+            "提到“母鹅说”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《夏洛的网》·2.威伯（1）",
+          "sourceExcerpt": "威伯走到栅栏旁， 发现母鹅说得对——真的有一块木板松了。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-4年级-四年级下册必读-夏洛的网-chapter-3",
+      "chapterTitle": "2.威伯（2）",
+      "charCount": 3183,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-3-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "母鹅说",
+            "威伯想",
+            "迂回前进"
+          ],
+          "answerIndex": 0,
+          "answerText": "母鹅说",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《夏洛的网》·2.威伯（2）",
+          "sourceExcerpt": "\"\n\n实际上， 当威伯站在栅栏外， 望着这个与自己毫无阻隔的大大的\n\n世界的时候，他只有种梦幻般的，说不清的感觉。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“迂回前进”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“迂回前进”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《夏洛的网》·2.威伯（2）",
+          "sourceExcerpt": "他本想试着听从朋友们给他的建议， 可他不能同时既往上\n\n坡跑，又往下坡跑，而且，他也不能一边蹦起来一边迂回前进，更何\n\n况他哭喊得这么厉害， 几乎弄不清周围都发生了什么事。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“母鹅说”说明故事变化",
+          "answerRubric": [
+            "提到“母鹅说”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《夏洛的网》·2.威伯（2）",
+          "sourceExcerpt": "九点到十一点， 他打算挖一个洞， 或者一条小沟也行， 没准儿还\n\n能从脏土里翻出什么好吃的呢。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

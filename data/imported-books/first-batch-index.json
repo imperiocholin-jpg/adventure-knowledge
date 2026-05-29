@@ -1,0 +1,226 @@
+{
+  "generatedAt": "2026-05-29T14:23:51.478Z",
+  "total": 22,
+  "books": [
+    {
+      "id": "local-1年级-一年级上册必读-365夜故事",
+      "title": "365夜故事",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 833,
+      "extractedPageCount": 80,
+      "textChars": 42138,
+      "rawTextPath": "data/imported-books/raw-text/local-1年级-一年级上册必读-365夜故事.json"
+    },
+    {
+      "id": "local-1年级-一年级上册必读-小巴掌童话",
+      "title": "小巴掌童话",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 390,
+      "extractedPageCount": 80,
+      "textChars": 24476,
+      "rawTextPath": "data/imported-books/raw-text/local-1年级-一年级上册必读-小巴掌童话.json"
+    },
+    {
+      "id": "local-2年级-二年级上册必读-没头脑和不高兴",
+      "title": "没头脑和不高兴",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 73,
+      "extractedPageCount": 73,
+      "textChars": 136309,
+      "rawTextPath": "data/imported-books/raw-text/local-2年级-二年级上册必读-没头脑和不高兴.json"
+    },
+    {
+      "id": "local-2年级-二年级下册必读-安徒生童话",
+      "title": "安徒生童话",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 1103,
+      "extractedPageCount": 80,
+      "textChars": 53623,
+      "rawTextPath": "data/imported-books/raw-text/local-2年级-二年级下册必读-安徒生童话.json"
+    },
+    {
+      "id": "local-2年级-二年级下册必读-绿野仙踪",
+      "title": "绿野仙踪",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 3104,
+      "extractedPageCount": 80,
+      "textChars": 24915,
+      "rawTextPath": "data/imported-books/raw-text/local-2年级-二年级下册必读-绿野仙踪.json"
+    },
+    {
+      "id": "local-3年级-三年级上册必读-木偶奇遇记",
+      "title": "木偶奇遇记",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 211,
+      "extractedPageCount": 80,
+      "textChars": 23818,
+      "rawTextPath": "data/imported-books/raw-text/local-3年级-三年级上册必读-木偶奇遇记.json"
+    },
+    {
+      "id": "local-3年级-三年级上册必读-格林童话",
+      "title": "格林童话",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 223,
+      "extractedPageCount": 80,
+      "textChars": 42426,
+      "rawTextPath": "data/imported-books/raw-text/local-3年级-三年级上册必读-格林童话.json"
+    },
+    {
+      "id": "local-3年级-三年级上册必读-狐狸列那的故事",
+      "title": "狐狸列那的故事",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 165,
+      "extractedPageCount": 80,
+      "textChars": 38860,
+      "rawTextPath": "data/imported-books/raw-text/local-3年级-三年级上册必读-狐狸列那的故事.json"
+    },
+    {
+      "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境",
+      "title": "爱丽丝漫游奇境",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 204,
+      "extractedPageCount": 80,
+      "textChars": 15718,
+      "rawTextPath": "data/imported-books/raw-text/local-3年级-三年级下册必读-爱丽丝漫游奇境.json"
+    },
+    {
+      "id": "local-4年级-四年级上册必读-时代广场的蟋蟀",
+      "title": "时代广场的蟋蟀",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 141,
+      "extractedPageCount": 80,
+      "textChars": 31778,
+      "rawTextPath": "data/imported-books/raw-text/local-4年级-四年级上册必读-时代广场的蟋蟀.json"
+    },
+    {
+      "id": "local-4年级-四年级下册必读-夏洛的网",
+      "title": "夏洛的网",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 195,
+      "extractedPageCount": 80,
+      "textChars": 30617,
+      "rawTextPath": "data/imported-books/raw-text/local-4年级-四年级下册必读-夏洛的网.json"
+    },
+    {
+      "id": "local-4年级-四年级下册必读-海底两万里",
+      "title": "海底两万里",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 595,
+      "extractedPageCount": 80,
+      "textChars": 40582,
+      "rawTextPath": "data/imported-books/raw-text/local-4年级-四年级下册必读-海底两万里.json"
+    },
+    {
+      "id": "local-4年级-四年级下册必读-草房子",
+      "title": "草房子",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 308,
+      "extractedPageCount": 80,
+      "textChars": 41827,
+      "rawTextPath": "data/imported-books/raw-text/local-4年级-四年级下册必读-草房子.json"
+    },
+    {
+      "id": "local-5年级-五年级上册必读-昆虫记",
+      "title": "昆虫记",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 247,
+      "extractedPageCount": 80,
+      "textChars": 39220,
+      "rawTextPath": "data/imported-books/raw-text/local-5年级-五年级上册必读-昆虫记.json"
+    },
+    {
+      "id": "local-5年级-五年级上册选读-小王子",
+      "title": "小王子",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 123,
+      "extractedPageCount": 80,
+      "textChars": 17963,
+      "rawTextPath": "data/imported-books/raw-text/local-5年级-五年级上册选读-小王子.json"
+    },
+    {
+      "id": "local-5年级-五年级下册必读-西游记",
+      "title": "西游记",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 1316,
+      "extractedPageCount": 80,
+      "textChars": 59452,
+      "rawTextPath": "data/imported-books/raw-text/local-5年级-五年级下册必读-西游记.json"
+    },
+    {
+      "id": "local-6年级-六年级上册必读-汤姆-索亚历险记",
+      "title": "汤姆-索亚历险记",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 246,
+      "extractedPageCount": 80,
+      "textChars": 43956,
+      "rawTextPath": "data/imported-books/raw-text/local-6年级-六年级上册必读-汤姆-索亚历险记.json"
+    },
+    {
+      "id": "local-6年级-六年级上册必读-鲁滨逊漂流记",
+      "title": "鲁滨逊漂流记",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 242,
+      "extractedPageCount": 80,
+      "textChars": 47699,
+      "rawTextPath": "data/imported-books/raw-text/local-6年级-六年级上册必读-鲁滨逊漂流记.json"
+    },
+    {
+      "id": "local-6年级-六年级下册必读-格列佛游记",
+      "title": "格列佛游记",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 140,
+      "extractedPageCount": 80,
+      "textChars": 44017,
+      "rawTextPath": "data/imported-books/raw-text/local-6年级-六年级下册必读-格列佛游记.json"
+    },
+    {
+      "id": "local-6年级-六年级下册必读-老人与海",
+      "title": "老人与海",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 263,
+      "extractedPageCount": 80,
+      "textChars": 39924,
+      "rawTextPath": "data/imported-books/raw-text/local-6年级-六年级下册必读-老人与海.json"
+    },
+    {
+      "id": "local-6年级-六年级上册必读-三国演义",
+      "title": "三国演义",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 1081,
+      "extractedPageCount": 80,
+      "textChars": 75621,
+      "rawTextPath": "data/imported-books/raw-text/local-6年级-六年级上册必读-三国演义.json"
+    },
+    {
+      "id": "local-5年级-五年级上册必读-水浒传",
+      "title": "水浒传",
+      "ok": true,
+      "engine": "pypdf",
+      "sourcePageCount": 1459,
+      "extractedPageCount": 80,
+      "textChars": 60610,
+      "rawTextPath": "data/imported-books/raw-text/local-5年级-五年级上册必读-水浒传.json"
+    }
+  ]
+}

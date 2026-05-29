@@ -1,27 +1,32 @@
 import type { AdventureRegionId } from "@/lib/library/adventure-regions"
-import { getAdventureRegionName } from "@/lib/library/adventure-regions"
+
+import type { GradeBand, MoeCatalogEntry } from "@/lib/library/moe-catalog-2020"
+
 import {
-  GRADE_BAND_LABEL,
-  MOE_CATEGORY_LABEL,
-  type GradeBand,
-  type MoeCatalogEntry,
-  getMoeCatalogByGradeBand,
-  getMoeCatalogByRegion,
-  isCatalogContentAvailable,
-  MOE_CATALOG_2020,
-} from "@/lib/library/moe-catalog-2020"
+  getLocalBookStats,
+  getLocalBooksByRegion,
+  isLocalBookContentAvailable,
+  LOCAL_BOOKS,
+  resolveLocalBookGradeLabel,
+  resolveRegionNameForLocalBook,
+  type LocalBookEntry,
+} from "@/lib/library/local-book-catalog"
+import { resolveBookCoverEmoji } from "@/lib/library/book-cover"
 import { READER_BOOKS, getReaderBookById, type ReaderBook } from "@/lib/library/book-catalog"
 
 export interface LibraryDisplayBook {
-  /** 阅读器路由用；无正文时为 moe-xxx */
   id: string
   moeId: string
   catalogSeq: number
   title: string
   author: string
   cover: string
+  coverImageSrc: string | null
+  grade: number | null
   gradeBand: GradeBand
   gradeBandLabel: string
+  term: string | null
+  readingType: string | null
   category: MoeCatalogEntry["category"]
   categoryLabel: string
   primaryRegionId: AdventureRegionId
@@ -32,127 +37,213 @@ export interface LibraryDisplayBook {
   chapters?: string[]
 }
 
+
+
 export interface RegionAdventureBook {
+
   bookId: string
+
   moeId: string
+
   challengeChapterId: string
+
   title: string
+
   author: string
+
   cover: string
+
   gradeBand: GradeBand
+
   book: ReaderBook | LibraryDisplayBook
+
   contentAvailable: boolean
+
 }
 
-function mergeCatalogWithReader(entry: MoeCatalogEntry): LibraryDisplayBook {
-  const reader = entry.legacyReaderBookId ? getReaderBookById(entry.legacyReaderBookId) : null
-  const contentAvailable = Boolean(reader) || isCatalogContentAvailable(entry)
+
+
+function localBookToDisplay(book: LocalBookEntry, index: number): LibraryDisplayBook {
+
+  const legacyReader = getReaderBookById(book.id)
+
+  const contentAvailable = isLocalBookContentAvailable(book.id) || Boolean(legacyReader)
+
+
+
   return {
-    id: reader?.id ?? entry.id,
-    moeId: entry.id,
-    catalogSeq: entry.catalogSeq,
-    title: entry.title,
-    author: entry.author,
-    cover: reader?.cover ?? entry.coverEmoji,
-    gradeBand: entry.gradeBand,
-    gradeBandLabel: GRADE_BAND_LABEL[entry.gradeBand],
-    category: entry.category,
-    categoryLabel: MOE_CATEGORY_LABEL[entry.category],
-    primaryRegionId: entry.primaryRegionId,
-    regionName: getAdventureRegionName(entry.primaryRegionId),
+
+    id: book.id,
+
+    moeId: book.id,
+
+    catalogSeq: index + 1,
+
+    title: book.title,
+
+    author: book.author || legacyReader?.author || "",
+
+    cover: legacyReader?.cover ?? resolveBookCoverEmoji(book.primaryRegionId),
+    coverImageSrc: null,
+
+    grade: book.grade,
+
+    gradeBand: book.gradeBand,
+
+    gradeBandLabel: resolveLocalBookGradeLabel(book),
+
+    term: book.term,
+
+    readingType: book.readingType,
+
+    category: legacyReader?.category ?? "literature",
+
+    categoryLabel: book.readingType ?? "推荐书目",
+
+    primaryRegionId: book.primaryRegionId,
+
+    regionName: resolveRegionNameForLocalBook(book),
+
     contentAvailable,
-    contentPhase: entry.contentPhase,
-    challengeChapterId: entry.challengeChapterId ?? reader?.challengeChapterId,
-    chapters: reader?.chapters,
+
+    contentPhase: contentAvailable ? "p1" : "p2",
+
+    challengeChapterId: legacyReader?.challengeChapterId ?? `chapter_${book.id}`,
+
+    chapters: legacyReader?.chapters,
+
   }
+
 }
 
-/** 书架展示：110 种目录 + 演示扩展书 */
+
+
+/** 书架展示：book 目录全部 PDF（189 本） */
+
 export function buildLibraryDisplayBooks(options?: {
+
   gradeBand?: GradeBand | ""
+
   regionId?: AdventureRegionId | ""
+
   query?: string
+
 }): LibraryDisplayBook[] {
+
   const gradeBand = options?.gradeBand ?? ""
+
   const regionId = options?.regionId ?? ""
+
   const query = options?.query?.trim().toLowerCase() ?? ""
 
-  let list = MOE_CATALOG_2020.map(mergeCatalogWithReader)
 
-  const bonusReaders = READER_BOOKS.filter((book) => !book.moeId)
-  for (const reader of bonusReaders) {
-    list.push({
-      id: reader.id,
-      moeId: reader.id,
-      catalogSeq: reader.catalogSeq ?? 0,
-      title: reader.title,
-      author: reader.author,
-      cover: reader.cover,
-      gradeBand: reader.gradeBand ?? "3-4",
-      gradeBandLabel: GRADE_BAND_LABEL[reader.gradeBand ?? "3-4"],
-      category: reader.category ?? "literature",
-      categoryLabel: MOE_CATEGORY_LABEL[reader.category ?? "literature"],
-      primaryRegionId: reader.primaryRegionId ?? "sky-kingdom",
-      regionName: getAdventureRegionName(reader.primaryRegionId ?? "sky-kingdom"),
-      contentAvailable: true,
-      contentPhase: "p1",
-      challengeChapterId: reader.challengeChapterId,
-      chapters: reader.chapters,
-    })
-  }
+
+  let list = LOCAL_BOOKS.map(localBookToDisplay)
+
+
 
   if (gradeBand) {
+
     list = list.filter((book) => book.gradeBand === gradeBand)
+
   }
+
   if (regionId) {
+
     list = list.filter((book) => book.primaryRegionId === regionId)
+
   }
+
   if (query) {
+
     list = list.filter(
+
       (book) =>
+
         book.title.toLowerCase().includes(query) ||
+
         book.author.toLowerCase().includes(query) ||
-        book.regionName.includes(query),
+
+        book.regionName.includes(query) ||
+
+        (book.gradeBandLabel && book.gradeBandLabel.includes(query)),
+
     )
+
   }
+
+
 
   return list.sort((a, b) => {
+
     if (a.contentAvailable !== b.contentAvailable) return a.contentAvailable ? -1 : 1
-    return a.catalogSeq - b.catalogSeq
+
+    if ((a.grade ?? 0) !== (b.grade ?? 0)) return (a.grade ?? 0) - (b.grade ?? 0)
+
+    if ((a.term ?? "") !== (b.term ?? "")) return String(a.term ?? "").localeCompare(String(b.term ?? ""), "zh-Hans-CN")
+
+    return a.title.localeCompare(b.title, "zh-Hans-CN")
+
   })
+
 }
+
+
 
 export function buildRegionAdventureBooks(regionId: AdventureRegionId): RegionAdventureBook[] {
-  return getMoeCatalogByRegion(regionId).map((entry) => {
-    const display = mergeCatalogWithReader(entry)
-    const reader = entry.legacyReaderBookId ? getReaderBookById(entry.legacyReaderBookId) : null
+
+  return getLocalBooksByRegion(regionId).map((book, index) => {
+
+    const display = localBookToDisplay(book, index)
+
+    const reader = getReaderBookById(book.id)
+
     return {
+
       bookId: display.id,
-      moeId: entry.id,
-      challengeChapterId: entry.challengeChapterId ?? `chapter_${entry.catalogSeq}`,
+
+      moeId: book.id,
+
+      challengeChapterId: display.challengeChapterId ?? `chapter_${book.id}`,
+
       title: display.title,
+
       author: display.author,
+
       cover: display.cover,
+
       gradeBand: display.gradeBand,
+
       book: reader ?? display,
+
       contentAvailable: display.contentAvailable,
+
     }
+
   })
+
 }
+
+
 
 export function getCatalogStats() {
-  const byRegion = Object.fromEntries(
-    (["magic-forest", "ice-mountain", "ancient-desert", "ocean-ruins", "sky-kingdom", "dream-tower"] as const).map(
-      (id) => [id, getMoeCatalogByRegion(id).length],
-    ),
-  ) as Record<AdventureRegionId, number>
-  const moeAvailable = MOE_CATALOG_2020.filter(isCatalogContentAvailable).length
-  const bonusAvailable = READER_BOOKS.filter((book) => !book.moeId).length
+
+  const stats = getLocalBookStats()
+
   return {
-    total: MOE_CATALOG_2020.length,
-    available: moeAvailable + bonusAvailable,
-    byRegion,
+
+    total: stats.total,
+
+    available: stats.available,
+
+    byRegion: stats.byRegion,
+
   }
+
 }
 
-export { getMoeCatalogByGradeBand, GRADE_BAND_LABEL }
+
+
+export { GRADE_BAND_LABEL } from "@/lib/library/moe-catalog-2020"
+
+

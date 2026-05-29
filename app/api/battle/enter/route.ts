@@ -14,6 +14,11 @@ import {
   resolvePetVitalColumns,
 } from "@/lib/pets/battle-vitals-server"
 import { BATTLE_SATIETY_COST, BATTLE_SPIRIT_COST, parsePetVitalsFromRecord } from "@/lib/pets/state"
+import {
+  emitPetCareNotifications,
+  emitPetDeathNotification,
+  resolvePetNameFromRow,
+} from "@/lib/notifications/emitters"
 
 interface BattleEnterPayload {
   modeId?: string
@@ -69,6 +74,15 @@ export async function POST(request: NextRequest) {
 
     if (updateResult.error) {
       return NextResponse.json({ ok: false, error: { message: updateResult.error.message } }, { status: 502 })
+    }
+
+    const updatedRow = (updateResult.data?.[0] ?? row) as Record<string, unknown>
+    const petName = resolvePetNameFromRow(updatedRow)
+    const petIdValue = String(row[columns.idField])
+    if (afterBattle.isDead && !vitals.isDead) {
+      await emitPetDeathNotification(serviceClient, sessionState.user.id, petName, petIdValue)
+    } else {
+      await emitPetCareNotifications(serviceClient, sessionState.user.id, afterBattle, petName)
     }
 
     const response = NextResponse.json({

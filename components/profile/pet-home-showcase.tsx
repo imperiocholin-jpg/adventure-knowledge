@@ -4,11 +4,13 @@ import { cn } from "@/lib/utils"
 import { Calendar, ChevronRight, Heart, PawPrint } from "lucide-react"
 
 import { PetAvatar } from "@/components/pets/pet-avatar"
+import { ProfileNameSkeleton } from "@/components/profile/profile-name-skeleton"
 
 interface PetHomeShowcaseProps {
   petEmoji: string
   petAvatarSrc?: string | null
-  petName: string
+  petName?: string
+  isPetNameLoading?: boolean
   affectionLevel: number
   companionDays: number
   favoriteMemory?: string
@@ -18,7 +20,8 @@ interface PetHomeShowcaseProps {
 export function PetHomeShowcase({
   petEmoji = "🐕",
   petAvatarSrc = null,
-  petName = "毛毛",
+  petName,
+  isPetNameLoading = false,
   affectionLevel = 85,
   companionDays = 28,
   favoriteMemory = "一起完成了《小王子》",
@@ -49,7 +52,7 @@ export function PetHomeShowcase({
             <PetAvatar
               src={petAvatarSrc}
               emoji={petEmoji}
-              alt={`${petName}头像`}
+              alt={petName ? `${petName}头像` : "宠物头像"}
               size="lg"
               rounded="full"
               className="relative border-2 border-primary/20 shadow-sm"
@@ -57,7 +60,11 @@ export function PetHomeShowcase({
           </div>
 
           <div className="min-w-0 flex-1">
-            <h4 className="text-base font-bold text-foreground">{petName}</h4>
+            {isPetNameLoading ? (
+              <ProfileNameSkeleton className="h-5 w-24" />
+            ) : (
+              <h4 className="text-base font-bold text-foreground">{petName}</h4>
+            )}
 
             <div className="mt-2 flex items-center gap-2">
               <Heart className="h-3 w-3 fill-rose-400 text-rose-400" />

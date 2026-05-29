@@ -1,0 +1,210 @@
+{
+  "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境",
+  "title": "爱丽丝漫游奇境",
+  "grade": 3,
+  "term": "下册",
+  "readingType": "必读",
+  "primaryRegionId": "sky-kingdom",
+  "sourceChapterPath": "data/imported-books/chapters/local-3年级-三年级下册必读-爱丽丝漫游奇境.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-1",
+      "chapterTitle": "第一章 钻进兔子洞（1）",
+      "charCount": 3185,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-1-q1",
+          "type": "memory",
+          "prompt": "云端信使轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "喝我",
+            "那不行",
+            "橙子玛玛酱"
+          ],
+          "answerIndex": 0,
+          "answerText": "喝我",
+          "successResponse": "云端信使点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "云端信使提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《爱丽丝漫游奇境》·第一章 钻进兔子洞（1）",
+          "sourceExcerpt": "钻进兔子洞\n\n阿\n\n丽思陪着她姊姊闲坐在河边上没有事做，坐得好不耐烦。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "云端信使摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“喝我”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“喝我”这条线索继续找",
+          "successResponse": "云端信使露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "云端信使指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《爱丽丝漫游奇境》·第一章 钻进兔子洞（1）",
+          "sourceExcerpt": "泼里寺、麻\n\n达姆\n\n，这是新西兰啊，还是澳大利亚啊？",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "云端信使说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“喝我”说明故事变化",
+          "answerRubric": [
+            "提到“喝我”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "云端信使把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "云端信使温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《爱丽丝漫游奇境》·第一章 钻进兔子洞（1）",
+          "sourceExcerpt": "但是那个聪明的小阿\n\n丽思决不会这样地冒失。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-2",
+      "chapterTitle": "第一章 钻进兔子洞（2）",
+      "charCount": 2873,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-2-q1",
+          "type": "memory",
+          "prompt": "云端信使轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "毒药",
+            "吃我",
+            "意义"
+          ],
+          "answerIndex": 0,
+          "answerText": "毒药",
+          "successResponse": "云端信使点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "云端信使提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《爱丽丝漫游奇境》·第一章 钻进兔子洞（2）",
+          "sourceExcerpt": "然而这一回瓶子上并没有“毒药”的字样在上，所以阿丽思就大\n\n着胆尝他一尝，那味儿到很好吃（有点像樱桃饼，又有点像鸡蛋糕，\n\n有点像菠萝蜜，又有点像烤火鸡，有点像冰淇淋，又有点像芝麻\n\n酱），所以一会儿工夫就唏哩呼噜地喝完了。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "云端信使摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“毒药”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“毒药”这条线索继续找",
+          "successResponse": "云端信使露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "云端信使指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《爱丽丝漫游奇境》·第一章 钻进兔子洞（2）",
+          "sourceExcerpt": "内右鞋一只送呈\n\n炉挡左近地毯上\n\n阿丽思的右脚查收\n\n（阿丽思顺致爱的问候）\n\n嗳唷！",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "云端信使说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“毒药”说明故事变化",
+          "answerRubric": [
+            "提到“毒药”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "云端信使把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "云端信使温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《爱丽丝漫游奇境》·第一章 钻进兔子洞（2）",
+          "sourceExcerpt": "“那么我到底是变了媚步儿嘞，那么我岂不是要得上她那\n\n又冷静又气闷的小房子里去住，差不多连什么玩意儿都没得玩儿，还\n\n有，嗳唷！",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-3",
+      "chapterTitle": "爱丽丝漫游奇境 片段 1",
+      "charCount": 3174,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-3-q1",
+          "type": "memory",
+          "prompt": "云端信使轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "爱丽丝",
+            "彩色插画作",
+            "致献"
+          ],
+          "answerIndex": 0,
+          "answerText": "爱丽丝",
+          "successResponse": "云端信使点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "云端信使提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《爱丽丝漫游奇境》·爱丽丝漫游奇境 片段 1",
+          "sourceExcerpt": "制作信息\n本书是应\n@halking1980\n的要求，历经千辛万苦制作制作而成（其实就是\n懒）。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "云端信使摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“爱丽丝”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“爱丽丝”这条线索继续找",
+          "successResponse": "云端信使露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "云端信使指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《爱丽丝漫游奇境》·爱丽丝漫游奇境 片段 1",
+          "sourceExcerpt": "他\n是美国哈佛大学哲学博士，又是数学家、物理学家、音乐家和语言学\n家，后专攻语言学，有“汉语言学之父”的美誉，曾与梁启超、王国\n维、陈寅恪一起被聘为清华学校国学研究院导师，他为刘半农诗《教\n我如何不想他》谱写的歌曲也是风行一时，脍炙人口。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "云端信使说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“致献”说明故事变化",
+          "answerRubric": [
+            "提到“致献”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "云端信使把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "云端信使温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《爱丽丝漫游奇境》·爱丽丝漫游奇境 片段 1",
+          "sourceExcerpt": "我译这书，致献给一个鼓励我译它，\n和鼓励我做无论什么书的人。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

@@ -3,6 +3,7 @@
 import { Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { PetAvatar } from "@/components/pets/pet-avatar"
+import { ProfileNameSkeleton } from "@/components/profile/profile-name-skeleton"
 import { PetMoodChip } from "@/components/pets/pet-mood-chip"
 import {
   PET_CORE_VITAL_ROWS,
@@ -12,7 +13,8 @@ import {
 import type { HomePetMood } from "@/lib/pets/state"
 
 interface PetCompanionCardProps {
-  petName: string
+  petName?: string
+  isPetNameLoading?: boolean
   petLevel?: number
   petMood: HomePetMood
   isDead?: boolean
@@ -30,7 +32,8 @@ const footerBadgeClass =
   "inline-flex h-6 items-center gap-1 rounded-full border px-2.5 text-[10px] font-semibold leading-none shadow-sm"
 
 export function PetCompanionCard({
-  petName = "毛毛",
+  petName,
+  isPetNameLoading = false,
   petLevel = 1,
   petMood = "happy",
   isDead = false,
@@ -75,7 +78,7 @@ export function PetCompanionCard({
         <PetAvatar
           src={petAvatarSrc}
           emoji={petEmoji}
-          alt={`${petName}头像`}
+          alt={petName ? `${petName}头像` : "宠物头像"}
           rounded="2xl"
           animate
           className="col-start-1 row-start-1 row-span-3 h-full w-[5.75rem] self-stretch border-2 border-white shadow-sm"
@@ -92,7 +95,11 @@ export function PetCompanionCard({
         ))}
 
         <div className="col-start-1 row-start-4 flex w-[5.75rem] min-w-0 items-baseline justify-center gap-1 px-0.5">
-          <span className="truncate text-sm font-bold text-foreground">{petName}</span>
+          {isPetNameLoading ? (
+            <ProfileNameSkeleton className="h-4 w-20" />
+          ) : (
+            <span className="truncate text-sm font-bold text-foreground">{petName}</span>
+          )}
           <span className="shrink-0 text-[10px] font-semibold text-muted-foreground">Lv.{petLevel}</span>
         </div>
 

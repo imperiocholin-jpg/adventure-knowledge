@@ -14,12 +14,15 @@ import { BottomNavigation } from "@/components/game/bottom-navigation"
 import { PlayerPageShell } from "@/components/layout/player-page-shell"
 import { useProfileOverview } from "@/hooks/use-profile-overview"
 import { resolveAdventurerTitleLabel, resolveRankBadge } from "@/lib/profile/rank-badge"
+import { clearProfileSessionCache } from "@/lib/profile/session-cache"
+import { clearLocalUserProfilePatch } from "@/lib/user/user-profile"
+import { clearLocalPetProfilePatch } from "@/lib/pets/pet-profile"
 
 type NavItem = "home" | "library" | "adventure" | "pets" | "profile"
 
 export default function ProfilePage() {
   const router = useRouter()
-  const { user, pet, social, dashboard, refresh } = useProfileOverview()
+  const { user, pet, social, dashboard, isDisplayReady, refresh } = useProfileOverview()
 
   useEffect(() => {
     void (async () => {
@@ -73,6 +76,9 @@ export default function ProfilePage() {
 
   const handleLogout = async () => {
     if (!window.confirm("确定要退出登录吗？")) return
+    clearProfileSessionCache()
+    clearLocalUserProfilePatch()
+    clearLocalPetProfilePatch()
     await fetch("/api/auth/logout", { method: "POST" })
     router.push("/auth")
     router.refresh()
@@ -85,6 +91,7 @@ export default function ProfilePage() {
       <AdventurerHero
         avatar={user.avatarSrc}
         username={user.username}
+        isUsernameLoading={!isDisplayReady}
         adventureTitle={adventureTitle}
         level={adventureLevel}
         currentWorld={dashboard.currentWorld}
@@ -118,6 +125,7 @@ export default function ProfilePage() {
           petEmoji={pet.emoji}
           petAvatarSrc={pet.avatarSrc}
           petName={pet.name}
+          isPetNameLoading={!isDisplayReady}
           affectionLevel={dashboard.petBond}
           companionDays={dashboard.companionDays}
           favoriteMemory={favoriteMemory}

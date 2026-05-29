@@ -4,8 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { 
-  ChevronLeft, Bell, Settings, Heart, LogOut, CheckCircle2,
-  BookOpen, Crown, Swords, Trophy, ChevronRight, Coins, Package
+  Settings, Heart, CheckCircle2,
+  BookOpen, Crown, Swords, Trophy, ChevronRight, Coins, Package, PawPrint
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -20,11 +20,12 @@ import { PetShowcase } from "@/components/pets/pet-showcase"
 import { PetEquipment } from "@/components/pets/pet-equipment"
 import { PetCollection } from "@/components/pets/pet-collection"
 import { BottomNavigation } from "@/components/game/bottom-navigation"
-import { PlayerPageShell, PlayerStickyHeader } from "@/components/layout/player-page-shell"
+import { PlayerPageShell } from "@/components/layout/player-page-shell"
+import { PlayerPageHeader } from "@/components/layout/player-page-header"
 import { PET_SPECIES_EMOJI } from "@/lib/pets/catalog"
 import { resolvePetMediaAssets, type PetImageAction } from "@/lib/pets/avatar-registry"
 import { calcBattleStats } from "@/lib/battle/rules"
-import { findShopItem, listItemsByCategory, PET_SHOP_ITEMS, SHOP_ACTION_REQUIREMENTS, type PetInteractAction } from "@/lib/pets/shop"
+import { findShopItemIn, listItemsByCategory, PET_SHOP_ITEMS, SHOP_ACTION_REQUIREMENTS, type PetInteractAction, type PetShopItem } from "@/lib/pets/shop"
 import { PetDeathDialog } from "@/components/pets/pet-death-dialog"
 import { PetInventoryPickerDialog } from "@/components/pets/pet-inventory-picker-dialog"
 import { levelFromTotalExp, progressInLevel } from "@/lib/pets/level-progress"
@@ -52,7 +53,7 @@ type PurchaseSuccessInfo = {
 
 export default function PetsPage() {
   const router = useRouter()
-  const { profile: syncedPetProfile, refresh: refreshPetProfile } = usePetProfile()
+  const { profile: syncedPetProfile, isDisplayReady: isPetDisplayReady, refresh: refreshPetProfile } = usePetProfile()
   const actionTimersRef = useRef<Array<ReturnType<typeof setTimeout>>>([])
   const [activeTab, setActiveTab] = useState<"home" | "equipment" | "collection">("home")
   const [showReward, setShowReward] = useState<{ type: string; amount: number } | null>(null)
@@ -65,6 +66,7 @@ export default function PetsPage() {
   const [petExp, setPetExp] = useState(25)
   const [shopPoints, setShopPoints] = useState(0)
   const [inventory, setInventory] = useState<PetInventoryMap>({})
+  const [shopCatalog, setShopCatalog] = useState<PetShopItem[]>(PET_SHOP_ITEMS)
   const [petVitals, setPetVitals] = useState<PetVitalState>(() => normalizePetState(null))
   const [shopHint, setShopHint] = useState<string | null>(null)
   const [purchaseSuccess, setPurchaseSuccess] = useState<PurchaseSuccessInfo | null>(null)
@@ -83,17 +85,23 @@ export default function PetsPage() {
     setTimeout(() => setShopHint(null), durationMs)
   }
 
-  const handleLogout = async () => {
-    try {
-      await fetch("/api/auth/logout", { method: "POST" })
-    } finally {
-      router.push("/auth")
-    }
-  }
-
   useEffect(() => {
     setPetLevel(syncedPetProfile.level)
   }, [syncedPetProfile.level])
+
+  useEffect(() => {
+    void (async () => {
+      try {
+        const response = await fetch("/api/pets/shop/items", { cache: "no-store" })
+        const payload = await response.json()
+        if (response.ok && Array.isArray(payload?.data?.items)) {
+          setShopCatalog(payload.data.items as PetShopItem[])
+        }
+      } catch {
+        // 保持默认商城配置
+      }
+    })()
+  }, [])
 
   useEffect(() => {
     const onVisible = () => {
@@ -260,11 +268,11 @@ export default function PetsPage() {
   const petBattleStats = useMemo(() => calcBattleStats(petLevel, []), [petLevel])
   const shopItems = useMemo(
     () =>
-      PET_SHOP_ITEMS.map((item) => ({
+      shopCatalog.map((item) => ({
         ...item,
         owned: inventory[item.id] ?? 0,
       })),
-    [inventory],
+    [inventory, shopCatalog],
   )
   const lifeStage = petBattleStats.lifeStage
   const petMediaAssets = useMemo(
@@ -283,23 +291,23 @@ export default function PetsPage() {
   const battleGate = useMemo(() => canEnterBattle(petVitals), [petVitals])
   const categoryStock = useMemo(() => {
     const hasAny = (category: "food" | "training" | "rest" | "toy") =>
-      PET_SHOP_ITEMS.some((item) => item.category === category && (inventory[item.id] ?? 0) > 0)
+      shopCatalog.some((item) => item.category === category && (inventory[item.id] ?? 0) > 0)
     return {
       food: hasAny("food"),
       training: hasAny("training"),
       rest: hasAny("rest"),
       toy: hasAny("toy"),
     }
-  }, [inventory])
+  }, [inventory, shopCatalog])
   const inventorySummary = useMemo(
     () =>
-      PET_SHOP_ITEMS.filter((item) => (inventory[item.id] ?? 0) > 0).map((item) => ({
+      shopCatalog.filter((item) => (inventory[item.id] ?? 0) > 0).map((item) => ({
         id: item.id,
         icon: item.icon,
         name: item.name,
         count: inventory[item.id] ?? 0,
       })),
-    [inventory],
+    [inventory, shopCatalog],
   )
   const floatingHintText = useMemo(() => {
     if (shopHint) return shopHint
@@ -372,7 +380,7 @@ export default function PetsPage() {
       return
     }
     if (isPurchasing) return
-    const shopItem = findShopItem(itemId)
+    const shopItem = findShopItemIn(shopCatalog, itemId)
     setIsPurchasing(true)
     try {
       const response = await fetch("/api/pets/shop/purchase", {
@@ -470,7 +478,7 @@ export default function PetsPage() {
 
   const beginInteract = (action: PetInteractAction) => {
     const category = SHOP_ACTION_REQUIREMENTS[action]
-    const owned = listItemsByCategory(category).filter((item) => (inventory[item.id] ?? 0) > 0)
+    const owned = listItemsByCategory(category, shopCatalog).filter((item) => (inventory[item.id] ?? 0) > 0)
     if (owned.length === 0) {
       flashHint(
         action === "feed"
@@ -545,45 +553,17 @@ export default function PetsPage() {
 
   return (
     <PlayerPageShell bottomPad="nav-lg" className="relative overflow-hidden bg-background">
-      <PlayerStickyHeader className="border-b border-border/30 bg-background">
-        <div className="flex items-center justify-between px-4 py-3">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="rounded-full"
-            onClick={() => router.push("/")}
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </Button>
-          
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-foreground">我的伙伴</span>
-          </div>
-          
-          <div className="flex items-center gap-1">
-            <Button variant="ghost" size="icon" className="rounded-full relative">
-              <Bell className="h-5 w-5" />
-              <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full"
-              title="退出登录"
-              aria-label="退出登录"
-              onClick={handleLogout}
-            >
-              <LogOut className="h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      </PlayerStickyHeader>
+      <PlayerPageHeader
+        title="我的伙伴"
+        icon={<PawPrint className="h-5 w-5 text-primary" />}
+      />
 
       <main className="relative z-10 space-y-4 px-4 py-4">
         {/* Pet showcase - large and immersive */}
         <PetShowcase
           petEmoji={petEmojiMap[petType] ?? PET_SPECIES_EMOJI[petSpecies]}
-          petName={petName || "毛毛"}
+          petName={isPetDisplayReady ? petName : undefined}
+          isPetNameLoading={!isPetDisplayReady}
           level={petLevel}
           mood={petMood}
           petType={petType}
@@ -699,7 +679,7 @@ export default function PetsPage() {
                         宠物知识大赛
                         <Trophy className="h-4 w-4 text-amber-200" />
                       </h3>
-                      <p className="text-xs text-white/80">和{petName || "毛毛"}一起参加答题挑战!</p>
+                      <p className="text-xs text-white/80">和{isPetDisplayReady ? petName : "伙伴"}一起参加答题挑战!</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-1 bg-white/20 rounded-full px-3 py-1.5">
@@ -736,7 +716,7 @@ export default function PetsPage() {
                     </div>
                     <div>
                       <p className="text-sm font-bold text-foreground">今日阅读</p>
-                      <p className="text-xs text-muted-foreground">和{petName || "毛毛"}一起读书吧</p>
+                      <p className="text-xs text-muted-foreground">和{isPetDisplayReady ? petName : "伙伴"}一起读书吧</p>
                     </div>
                   </div>
                   <div className="text-right">
@@ -750,7 +730,7 @@ export default function PetsPage() {
                   </div>
                   <span className="text-xs text-muted-foreground">3/5</span>
                 </div>
-                <p className="text-[10px] text-muted-foreground mt-1">再读2篇，{petName || "毛毛"}可以获得特别奖励!</p>
+                <p className="text-[10px] text-muted-foreground mt-1">再读2篇，{isPetDisplayReady ? petName : "伙伴"}可以获得特别奖励!</p>
               </div>
             </div>
           )}
@@ -765,7 +745,7 @@ export default function PetsPage() {
 
           {activeTab === "collection" && (
             <PetCollection
-              petName={petName || "毛毛"}
+              petName={isPetDisplayReady ? petName : undefined}
               petEmoji={petEmojiMap[petType] ?? PET_SPECIES_EMOJI[petSpecies]}
               petAvatarSrc={petAvatarSrc}
               petBreed={petBreed}
@@ -878,7 +858,7 @@ export default function PetsPage() {
         <PetInventoryPickerDialog
           open={Boolean(pickerAction)}
           action={pickerAction}
-          items={listItemsByCategory(SHOP_ACTION_REQUIREMENTS[pickerAction])}
+          items={listItemsByCategory(SHOP_ACTION_REQUIREMENTS[pickerAction], shopCatalog)}
           inventory={inventory}
           onClose={() => setPickerAction(null)}
           onSelect={(itemId) => void handlePickerSelect(itemId)}

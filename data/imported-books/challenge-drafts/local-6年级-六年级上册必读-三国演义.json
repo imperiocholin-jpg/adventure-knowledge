@@ -1,0 +1,210 @@
+{
+  "id": "local-6年级-六年级上册必读-三国演义",
+  "title": "三国演义",
+  "grade": 6,
+  "term": "上册",
+  "readingType": "必读",
+  "primaryRegionId": "ancient-desert",
+  "sourceChapterPath": "data/imported-books/chapters/local-6年级-六年级上册必读-三国演义.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-6年级-六年级上册必读-三国演义-chapter-1",
+      "chapterTitle": "一、作者问题",
+      "charCount": 2592,
+      "estimatedMinutes": 5,
+      "questions": [
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-1-q1",
+          "type": "memory",
+          "prompt": "沙漠记录员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "演义",
+            "三国志演义",
+            "嘉靖本"
+          ],
+          "answerIndex": 0,
+          "answerText": "演义",
+          "successResponse": "沙漠记录员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "沙漠记录员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《三国演义》·一、作者问题",
+          "sourceExcerpt": "《三国演义》的作者本来不成问题，学界一致认定罗贯中就是它的\n作者。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "沙漠记录员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“三国志演义”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“三国志演义”这条线索继续找",
+          "successResponse": "沙漠记录员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "沙漠记录员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《三国演义》·一、作者问题",
+          "sourceExcerpt": "然而有些学者不以为然，他们认为只有《三国志演义》才是该书书\n名的最佳选择，其他书名都要不得。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "沙漠记录员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“演义”说明故事变化",
+          "answerRubric": [
+            "提到“演义”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "沙漠记录员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "沙漠记录员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《三国演义》·一、作者问题",
+          "sourceExcerpt": "总而言之，《三国演义》一名既然早在明代已有，如今又已通行，\n而且文从字顺，简捷明了，朗朗上口，因此我们没有任何理由将它废\n除。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-6年级-六年级上册必读-三国演义-chapter-2",
+      "chapterTitle": "三、校勘问题",
+      "charCount": 3598,
+      "estimatedMinutes": 7,
+      "questions": [
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-2-q1",
+          "type": "memory",
+          "prompt": "沙漠记录员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "嘉靖本",
+            "毛本",
+            "衷甲"
+          ],
+          "answerIndex": 0,
+          "answerText": "嘉靖本",
+          "successResponse": "沙漠记录员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "沙漠记录员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《三国演义》·三、校勘问题",
+          "sourceExcerpt": "前面已经说过，现存明、清两代的《三国演义》版本多达三十馀\n种。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "沙漠记录员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“衷甲”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“衷甲”这条线索继续找",
+          "successResponse": "沙漠记录员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "沙漠记录员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《三国演义》·三、校勘问题",
+          "sourceExcerpt": "可见\n“\n裏甲\n”\n或\n“\n裏甲\n”\n皆因形似\n“\n衷甲\n”\n而致误，故从\n“\n衷甲\n”\n。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "沙漠记录员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“嘉靖本”说明故事变化",
+          "answerRubric": [
+            "提到“嘉靖本”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "沙漠记录员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "沙漠记录员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《三国演义》·三、校勘问题",
+          "sourceExcerpt": "其他个别文字改动者，不胜枚举，不再一一赘述。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-6年级-六年级上册必读-三国演义-chapter-3",
+      "chapterTitle": "四、注释问题（1）",
+      "charCount": 3199,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-3-q1",
+          "type": "memory",
+          "prompt": "沙漠记录员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "御衣黄",
+            "斩白蛇起义",
+            "姚魏御衣"
+          ],
+          "answerIndex": 0,
+          "answerText": "御衣黄",
+          "successResponse": "沙漠记录员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "沙漠记录员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《三国演义》·四、注释问题（1）",
+          "sourceExcerpt": "由于我国历史悠久，古今语言差别很大，这为后人阅读前人的著作\n\n造成很大困难。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "沙漠记录员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“御衣黄”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“御衣黄”这条线索继续找",
+          "successResponse": "沙漠记录员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "沙漠记录员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《三国演义》·四、注释问题（1）",
+          "sourceExcerpt": "这一错误在再版时虽然作了修正，但仍\n\n有其他断句的错误。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "沙漠记录员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“御衣黄”说明故事变化",
+          "answerRubric": [
+            "提到“御衣黄”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "沙漠记录员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "沙漠记录员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《三国演义》·四、注释问题（1）",
+          "sourceExcerpt": "张角闻知事露，星夜举兵，自称\n\n“\n\n天公将军\n\n”\n\n，张宝称",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

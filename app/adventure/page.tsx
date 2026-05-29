@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { WorldMap } from "@/components/adventure/world-map"
+import { WorldMapImage } from "@/components/adventure/world-map-image"
 import { AdventureMapHeader } from "@/components/adventure/adventure-map-header"
+import { AdventureMapStatsBar } from "@/components/adventure/adventure-map-stats-bar"
 import {
   fetchAdventureDashboard,
   type AdventureProgressSnapshot,
@@ -22,8 +23,6 @@ type NavItem = "home" | "library" | "adventure" | "pets" | "profile"
 
 export default function AdventurePage() {
   const { profile: petProfile } = usePetProfile()
-  const [selectedRegion, setSelectedRegion] = useState("magic-forest")
-  const [playerPos, setPlayerPos] = useState({ x: 22, y: 72 })
   const [showWelcome, setShowWelcome] = useState(true)
   const [dataError, setDataError] = useState<string | null>(null)
   const [unlockHintText, setUnlockHintText] = useState<string | null>(null)
@@ -112,24 +111,23 @@ export default function AdventurePage() {
     return () => window.clearTimeout(timer)
   }, [dataError])
 
-  useEffect(() => {
-    const positions: Record<string, { x: number; y: number }> = {
-      "magic-forest": { x: 22, y: 72 },
-      "ice-mountain": { x: 75, y: 18 },
-      "ancient-desert": { x: 78, y: 55 },
-      "ocean-ruins": { x: 22, y: 42 },
-      "sky-kingdom": { x: 28, y: 15 },
-      "dream-tower": { x: 52, y: 45 },
-    }
-    if (positions[selectedRegion]) {
-      setPlayerPos(positions[selectedRegion])
-    }
-  }, [selectedRegion])
-
   const isRegionUnlocked = (regionId: string) => {
     const dynamicUnlocked = adventureProgress.regionProgress[regionId]?.unlocked
     if (typeof dynamicUnlocked === "boolean") return dynamicUnlocked
     return Boolean(REGION_SHELF_CONFIG[regionId]?.unlockedByDefault)
+  }
+
+  const handleRegionSelect = (regionId: string) => {
+    if (!isRegionUnlocked(regionId)) {
+      setUnlockHintText(buildRegionUnlockHint(regionId))
+      return
+    }
+    setUnlockHintText(null)
+    router.push(`/adventure/${regionId}`)
+  }
+
+  const handleLockedRegionSelect = (regionId: string) => {
+    setUnlockHintText(buildRegionUnlockHint(regionId))
   }
 
   const buildRegionUnlockHint = (regionId: string) => {
@@ -172,43 +170,24 @@ export default function AdventurePage() {
     if (item === "profile") router.push("/profile")
   }
 
-  const handleRegionSelect = (regionId: string) => {
-    if (!isRegionUnlocked(regionId)) {
-      setUnlockHintText(buildRegionUnlockHint(regionId))
-      return
-    }
-    setUnlockHintText(null)
-    setSelectedRegion(regionId)
-    router.push(`/adventure/${regionId}`)
-  }
-
-  const handleLockedRegionSelect = (regionId: string) => {
-    setUnlockHintText(buildRegionUnlockHint(regionId))
-  }
-
   return (
-    <PlayerPageShell className="relative bg-gradient-to-b from-indigo-100/80 via-sky-50 to-emerald-50/50">
-      <AdventureMapHeader
-        totalStars={adventureProgress.totalStars}
-        worldProgress={adventureProgress.worldProgress}
-        isProgressLoading={isProgressLoading}
-      />
+    <PlayerPageShell
+      bottomPad="none"
+      className="flex h-[100dvh] flex-col overflow-hidden bg-background [&>div]:flex [&>div]:h-full [&>div]:min-h-0 [&>div]:flex-1 [&>div]:flex-col"
+    >
+      <div className="relative z-40 shrink-0">
+        <AdventureMapHeader />
+        <AdventureMapStatsBar
+          totalStars={adventureProgress.totalStars}
+          worldProgress={adventureProgress.worldProgress}
+          isProgressLoading={isProgressLoading}
+        />
+      </div>
 
-      {showWelcome && (
-        <div className="fixed top-28 left-1/2 z-50 -translate-x-1/2 animate-in fade-in-0 slide-in-from-top-4 duration-500">
-          <div className="flex items-center gap-2 rounded-2xl border border-white/60 bg-white/90 px-4 py-2 shadow-xl backdrop-blur-md">
-            <Sparkles className="h-4 w-4 text-amber-500" />
-            <span className="text-sm font-medium text-foreground">欢迎回到冒险世界！</span>
-          </div>
-        </div>
-      )}
-
-      <main className="relative z-10 px-4 pt-3 pb-4">
-        <WorldMap
-          selectedRegion={selectedRegion}
+      <main className="relative min-h-0 flex-1 overflow-hidden">
+        <WorldMapImage
           onRegionSelect={handleRegionSelect}
           onLockedRegionSelect={handleLockedRegionSelect}
-          playerPosition={playerPos}
           regionProgress={Object.fromEntries(
             Object.entries(adventureProgress.regionProgress).map(([regionId, region]) => [
               regionId,
@@ -225,16 +204,21 @@ export default function AdventurePage() {
             avatarSrc: petProfile.avatarSrc,
           }}
         />
-
-        <p className="mt-4 text-center text-[11px] text-muted-foreground">
-          点击已解锁区域，进入该区域的冒险之路
-        </p>
       </main>
+
+      {showWelcome && (
+        <div className="fixed left-1/2 top-[calc(10.5rem+env(safe-area-inset-top))] z-[60] -translate-x-1/2 animate-in fade-in-0 slide-in-from-top-4 duration-500">
+          <div className="flex items-center gap-2 rounded-2xl border border-white/20 bg-slate-900/85 px-4 py-2 shadow-xl backdrop-blur-md">
+            <Sparkles className="h-4 w-4 text-amber-400" />
+            <span className="text-sm font-medium text-white">欢迎回到冒险世界！</span>
+          </div>
+        </div>
+      )}
 
       <BottomNavigation activeItem="adventure" onNavigate={handleNavigation} />
 
       {mobileToast && (
-        <div className="fixed bottom-24 left-1/2 z-[70] w-[88%] max-w-sm -translate-x-1/2 animate-in fade-in-0 slide-in-from-bottom-2 duration-200">
+        <div className="fixed bottom-[calc(6.5rem+env(safe-area-inset-bottom))] left-1/2 z-[70] w-[88%] max-w-sm -translate-x-1/2 animate-in fade-in-0 slide-in-from-bottom-2 duration-200">
           <div
             className={[
               "flex items-center gap-2 rounded-2xl px-4 py-2.5 text-xs font-medium shadow-xl backdrop-blur-md",

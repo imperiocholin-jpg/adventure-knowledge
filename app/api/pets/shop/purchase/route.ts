@@ -7,7 +7,7 @@ import {
   unauthorizedResponse,
 } from "@/lib/auth/server"
 import { findExistingColumn, findExistingColumns } from "@/lib/data/schema-compat"
-import { findShopItem } from "@/lib/pets/shop"
+import { findShopItemById, loadShopItems } from "@/lib/admin/shop-store"
 import { normalizeInventory, parsePetVitalsFromRecord } from "@/lib/pets/state"
 
 type GenericRecord = Record<string, unknown>
@@ -20,14 +20,16 @@ interface PurchasePayload {
 const INVENTORY_FIELDS = ["pet_inventory", "inventory", "pet_loadout", "pet_equipment_ids", "equipment_ids"]
 
 export const dynamic = "force-dynamic"
+export const runtime = "nodejs"
 
 export async function POST(request: NextRequest) {
   try {
     const sessionState = await getRequestSessionUser(request)
     if (!sessionState.user || !sessionState.accessToken) return unauthorizedResponse("User is not authenticated.")
 
+    const shopItems = await loadShopItems()
     const body = (await request.json()) as PurchasePayload
-    const item = body.itemId ? findShopItem(body.itemId) : null
+    const item = body.itemId ? findShopItemById(shopItems, body.itemId) : null
     if (!item) {
       return NextResponse.json({ ok: false, error: { message: "无效商品。" } }, { status: 400 })
     }

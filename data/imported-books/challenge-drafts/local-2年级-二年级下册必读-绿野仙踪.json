@@ -1,0 +1,210 @@
+{
+  "id": "local-2年级-二年级下册必读-绿野仙踪",
+  "title": "绿野仙踪",
+  "grade": 2,
+  "term": "下册",
+  "readingType": "必读",
+  "primaryRegionId": "sky-kingdom",
+  "sourceChapterPath": "data/imported-books/chapters/local-2年级-二年级下册必读-绿野仙踪.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-2年级-二年级下册必读-绿野仙踪-chapter-1",
+      "chapterTitle": "第一章　遭遇龙卷风",
+      "charCount": 2388,
+      "estimatedMinutes": 5,
+      "questions": [
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-1-q1",
+          "type": "memory",
+          "prompt": "云端信使轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "龙卷风避难穴",
+            "龙卷风要来了艾姆",
+            "我去看看牲口"
+          ],
+          "answerIndex": 0,
+          "answerText": "龙卷风避难穴",
+          "successResponse": "云端信使点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "云端信使提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《绿野仙踪》·第一章　遭遇龙卷风",
+          "sourceExcerpt": "多萝茜和亨利叔叔、艾姆婶婶一起住在一望无垠的堪萨斯大草原\n上，一家人靠农牧为生。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "云端信使摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“龙卷风避难穴”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“龙卷风避难穴”这条线索继续找",
+          "successResponse": "云端信使露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "云端信使指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《绿野仙踪》·第一章　遭遇龙卷风",
+          "sourceExcerpt": "多\n萝茜抱着淘淘站在门里，也仰头望着天空。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "云端信使说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“龙卷风避难穴”说明故事变化",
+          "answerRubric": [
+            "提到“龙卷风避难穴”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "云端信使把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "云端信使温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《绿野仙踪》·第一章　遭遇龙卷风",
+          "sourceExcerpt": "房子仍在摇晃不止，风也仍在狂吼乱叫，多萝茜轻轻地闭上眼睛，\n不一会儿便进入了沉沉的梦乡。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-2年级-二年级下册必读-绿野仙踪-chapter-2",
+      "chapterTitle": "第二章　遇见芒奇金人",
+      "charCount": 4360,
+      "estimatedMinutes": 8,
+      "questions": [
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-2-q1",
+          "type": "memory",
+          "prompt": "云端信使轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "女魔法师",
+            "是的",
+            "北方好女巫"
+          ],
+          "answerIndex": 0,
+          "answerText": "女魔法师",
+          "successResponse": "云端信使点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "云端信使提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《绿野仙踪》·第二章　遇见芒奇金人",
+          "sourceExcerpt": "多萝茜正甜甜地睡着，突然，猛烈的震动让她一下子惊醒过来。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "云端信使摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“女魔法师”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“女魔法师”这条线索继续找",
+          "successResponse": "云端信使露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "云端信使指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《绿野仙踪》·第二章　遇见芒奇金人",
+          "sourceExcerpt": "”\n“\n可是，\n”\n多萝茜想了一下，说，\n“\n艾姆婶婶曾经告诉过我，很多很\n多年以前，女巫们就已经死了。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "云端信使说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“女魔法师”说明故事变化",
+          "answerRubric": [
+            "提到“女魔法师”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "云端信使把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "云端信使温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《绿野仙踪》·第二章　遇见芒奇金人",
+          "sourceExcerpt": "但是，多萝茜却一点儿都没感到吃惊，在知道小个子老女人是一个\n女巫之后，她早就料到她会像刚才那样消失不见。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-2年级-二年级下册必读-绿野仙踪-chapter-3",
+      "chapterTitle": "第三章　搭救稻草人",
+      "charCount": 4047,
+      "estimatedMinutes": 8,
+      "questions": [
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-3-q1",
+          "type": "memory",
+          "prompt": "云端信使轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "谢谢你",
+            "我不清楚",
+            "你好啊"
+          ],
+          "answerIndex": 0,
+          "answerText": "谢谢你",
+          "successResponse": "云端信使点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "云端信使提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《绿野仙踪》·第三章　搭救稻草人",
+          "sourceExcerpt": "只剩下多萝茜一个人了，她的肚子开始咕咕叫。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "云端信使摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“谢谢你”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“谢谢你”这条线索继续找",
+          "successResponse": "云端信使露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "云端信使指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《绿野仙踪》·第三章　搭救稻草人",
+          "sourceExcerpt": "起床后，多萝茜吃了一顿丰盛的早餐，又饶有兴趣地看着一个芒奇\n金小宝宝和淘淘一起玩耍。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "云端信使说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“谢谢你”说明故事变化",
+          "answerRubric": [
+            "提到“谢谢你”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "云端信使把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "云端信使温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《绿野仙踪》·第三章　搭救稻草人",
+          "sourceExcerpt": "”\n“\n不是，\n”\n稻草人回答说，\n“\n是划着的火柴。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

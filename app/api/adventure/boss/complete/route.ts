@@ -16,6 +16,11 @@ import { fetchPrimaryPetRow } from "@/lib/pets/fetch-primary-pet"
 import { levelFromTotalExp, resolveLifeStageFromLevel } from "@/lib/pets/level-progress"
 import { syncUserTreasuresAfterActivity } from "@/lib/treasures/server"
 import { ADVENTURE_REGION_IDS } from "@/lib/library/adventure-regions"
+import {
+  emitBossVictoryNotification,
+  emitRegionProgressReminders,
+  emitRegionUnlockNotifications,
+} from "@/lib/notifications/emitters"
 
 export const dynamic = "force-dynamic"
 
@@ -54,6 +59,8 @@ export async function POST(request: NextRequest) {
     const supabase = createSupabaseUserClient(sessionState.accessToken)
     const serviceClient = createSupabaseServiceClient()
     const userId = sessionState.user.id
+
+    const progressBeforeResult = await fetchUserAdventureProgress({ supabase, serviceClient, userId })
 
     const [readingRows, progressResult, petResult] = await Promise.all([
       fetchUserReadingRows({ supabase, serviceClient, userId }),
@@ -201,6 +208,15 @@ export async function POST(request: NextRequest) {
 
     const treasureResult = await syncUserTreasuresAfterActivity({ supabase, serviceClient, userId })
     const latestProgress = await fetchUserAdventureProgress({ supabase, serviceClient, userId })
+
+    await emitBossVictoryNotification(serviceClient, userId, regionId, boss.name)
+    await emitRegionUnlockNotifications(
+      serviceClient,
+      userId,
+      progressBeforeResult.data,
+      latestProgress.data,
+    )
+    await emitRegionProgressReminders(serviceClient, userId, latestProgress.data)
 
     const response = NextResponse.json({
       ok: true,

@@ -1,0 +1,210 @@
+{
+  "id": "local-4年级-四年级上册必读-时代广场的蟋蟀",
+  "title": "时代广场的蟋蟀",
+  "grade": 4,
+  "term": "上册",
+  "readingType": "必读",
+  "primaryRegionId": "magic-forest",
+  "sourceChapterPath": "data/imported-books/chapters/local-4年级-四年级上册必读-时代广场的蟋蟀.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-1",
+      "chapterTitle": "第一章　塔克",
+      "charCount": 2512,
+      "estimatedMinutes": 5,
+      "questions": [
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-1-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "搜索",
+            "真可怜哪",
+            "最新的报纸"
+          ],
+          "answerIndex": 0,
+          "answerText": "搜索",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《时代广场的蟋蟀》·第一章　塔克",
+          "sourceExcerpt": "老鼠的名字叫塔克，它正坐在美国纽约市时代广场地铁车站\n一个废弃的排水管出口上。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“搜索”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“搜索”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《时代广场的蟋蟀》·第一章　塔克",
+          "sourceExcerpt": "列车发出刺耳的声音，在报摊旁边停了下来，只有八九个人下车。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“搜索”说明故事变化",
+          "answerRubric": [
+            "提到“搜索”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《时代广场的蟋蟀》·第一章　塔克",
+          "sourceExcerpt": "但是\n这一生，就算再加上它那许多次横越这个世界最伟大城市的旅程的经\n历，塔克也从来没听过这种声音。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-2",
+      "chapterTitle": "第二章　玛利欧",
+      "charCount": 3375,
+      "estimatedMinutes": 7,
+      "questions": [
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-2-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "是蟋蟀",
+            "买报纸",
+            "买杂志"
+          ],
+          "answerIndex": 0,
+          "answerText": "是蟋蟀",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《时代广场的蟋蟀》·第二章　玛利欧",
+          "sourceExcerpt": "班车\n隆隆的声音渐远，已经听不到了；只剩下上面街道传来的、隐约\n可闻的夜归人稀落的车声。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“是蟋蟀”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“是蟋蟀”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《时代广场的蟋蟀》·第二章　玛利欧",
+          "sourceExcerpt": "妈妈把这只小小的黑色家伙仔细地审视了一番。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“是蟋蟀”说明故事变化",
+          "answerRubric": [
+            "提到“是蟋蟀”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《时代广场的蟋蟀》·第二章　玛利欧",
+          "sourceExcerpt": "他几乎可以感觉到，黑暗中，那只蟋蟀正静静地蜷伏\n在它的火柴盒子里呢！",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-3",
+      "chapterTitle": "第三章　柴斯特",
+      "charCount": 3577,
+      "estimatedMinutes": 7,
+      "questions": [
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-3-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "是啊",
+            "柴斯特说",
+            "是我"
+          ],
+          "answerIndex": 0,
+          "answerText": "是啊",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《时代广场的蟋蟀》·第三章　柴斯特",
+          "sourceExcerpt": "克老鼠一直在注视着白利尼一家，留心听着他们的谈话。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“是啊”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“是啊”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《时代广场的蟋蟀》·第三章　柴斯特",
+          "sourceExcerpt": "”\n“\n原来，那股香味是从一个野餐篮里散发出来的。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“是啊”说明故事变化",
+          "answerRubric": [
+            "提到“是啊”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《时代广场的蟋蟀》·第三章　柴斯特",
+          "sourceExcerpt": "这时，不知怎么的\n——\n也\n许是听到了一点儿微弱的声音吧，那声音就像是长了肉垫的脚爪，正轻\n手轻脚地走过地板\n——\n它刚巧低头看了看，只见一个原来一直静静蜷缩\n在下面黑暗里的阴影，忽然纵身一跳，正好不偏不倚地落到了塔克和柴\n斯特的旁边。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

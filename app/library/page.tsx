@@ -14,6 +14,7 @@ import {
   fetchAdventureDashboard,
   resolveAdventurerTitleLabel,
 } from "@/lib/adventure/adventure-dashboard-client"
+import { bookReadPath } from "@/lib/library/book-id-route"
 import { getCatalogStats } from "@/lib/library/library-books"
 import type { GradeBand } from "@/lib/library/moe-catalog-2020"
 
@@ -49,13 +50,13 @@ export default function LibraryPage() {
 
   const handleBookSelect = (bookId: string, available: boolean) => {
     if (!available) return
-    router.push(`/library/read/${bookId}`)
+    router.push(bookReadPath(bookId))
   }
 
   return (
     <PlayerPageShell className="bg-background">
       <div className="relative z-10">
-        <LibraryHeader onBack={() => router.push("/")} notificationCount={3} />
+        <LibraryHeader />
 
         <div className="space-y-5 pt-2">
           <SearchFilter onSearch={setSearchQuery} onLevelChange={setGradeBand} />
@@ -81,6 +82,7 @@ export default function LibraryPage() {
             gradeBand={gradeBand}
             searchQuery={searchQuery}
             onBookSelect={handleBookSelect}
+            onViewAll={() => router.push("/library/books")}
           />
 
           <UnlockableRewards onViewAll={() => router.push("/library/treasures")} />

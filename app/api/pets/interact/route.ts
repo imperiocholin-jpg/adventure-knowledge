@@ -7,7 +7,8 @@ import {
   unauthorizedResponse,
 } from "@/lib/auth/server"
 import { findExistingColumn, findExistingColumns } from "@/lib/data/schema-compat"
-import { findShopItem, PET_SHOP_ITEMS, SHOP_ACTION_REQUIREMENTS, type PetInteractAction } from "@/lib/pets/shop"
+import { findShopItemById, loadShopItems } from "@/lib/admin/shop-store"
+import { SHOP_ACTION_REQUIREMENTS, type PetInteractAction } from "@/lib/pets/shop"
 import {
   applyInteractEffects,
   getRequiredItemNotice,
@@ -15,6 +16,11 @@ import {
   parsePetVitalsFromRecord,
   writeVitalFieldsToPayload,
 } from "@/lib/pets/state"
+import {
+  emitPetCareNotifications,
+  emitPetDeathNotification,
+  resolvePetNameFromRow,
+} from "@/lib/notifications/emitters"
 
 type GenericRecord = Record<string, unknown>
 
@@ -38,11 +44,14 @@ const actionHints: Record<PetInteractAction, string> = {
 }
 
 export const dynamic = "force-dynamic"
+export const runtime = "nodejs"
 
 export async function POST(request: NextRequest) {
   try {
     const sessionState = await getRequestSessionUser(request)
     if (!sessionState.user || !sessionState.accessToken) return unauthorizedResponse("User is not authenticated.")
+
+    const shopItems = await loadShopItems()
 
     const body = (await request.json()) as InteractPayload
     const action = body.action
@@ -90,14 +99,14 @@ export async function POST(request: NextRequest) {
 
     const petRow = petResult.data as GenericRecord
     const inventory = normalizeInventory(petRow[inventoryField])
-    const ownedInCategory = PET_SHOP_ITEMS.filter(
+    const ownedInCategory = shopItems.filter(
       (item) => item.category === requiredCategory && (inventory[item.id] ?? 0) > 0,
     )
     if (ownedInCategory.length === 0) {
       return NextResponse.json({ ok: false, error: { message: getRequiredItemNotice(action) } }, { status: 422 })
     }
 
-    const pickedById = bodyItemId ? findShopItem(bodyItemId) : null
+    const pickedById = bodyItemId ? findShopItemById(shopItems, bodyItemId) : null
     if (bodyItemId && (!pickedById || pickedById.category !== requiredCategory)) {
       return NextResponse.json({ ok: false, error: { message: "所选道具无效或不属于当前互动类型。" } }, { status: 400 })
     }
@@ -141,6 +150,15 @@ export async function POST(request: NextRequest) {
     }
     if (updateResult.error) {
       return NextResponse.json({ ok: false, error: { message: updateResult.error.message } }, { status: 502 })
+    }
+
+    const updatedRow = (updateResult.data?.[0] ?? petRow) as GenericRecord
+    const petName = resolvePetNameFromRow(updatedRow)
+    const petIdValue = idField ? String(petRow[idField]) : undefined
+    if (nextState.isDead && !state.isDead) {
+      await emitPetDeathNotification(serviceClient, sessionState.user.id, petName, petIdValue)
+    } else {
+      await emitPetCareNotifications(serviceClient, sessionState.user.id, nextState, petName)
     }
 
     const response = NextResponse.json({

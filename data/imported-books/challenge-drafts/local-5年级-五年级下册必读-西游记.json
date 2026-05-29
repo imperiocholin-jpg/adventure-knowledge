@@ -1,0 +1,210 @@
+{
+  "id": "local-5年级-五年级下册必读-西游记",
+  "title": "西游记",
+  "grade": 5,
+  "term": "下册",
+  "readingType": "必读",
+  "primaryRegionId": "ancient-desert",
+  "sourceChapterPath": "data/imported-books/chapters/local-5年级-五年级下册必读-西游记.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-5年级-五年级下册必读-西游记-chapter-1",
+      "chapterTitle": "第二回 悟彻菩提真妙理（1）",
+      "charCount": 3200,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-1-q1",
+          "type": "memory",
+          "prompt": "沙漠记录员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "祖师道",
+            "悟空道",
+            "似这般可得长生么"
+          ],
+          "answerIndex": 0,
+          "answerText": "祖师道",
+          "successResponse": "沙漠记录员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "沙漠记录员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《西游记》·第二回 悟彻菩提真妙理（1）",
+          "sourceExcerpt": "悟彻菩提真妙理\n\n断魔归本合元神\n\n话表美猴王得了姓名，怡然踊跃，对菩提前作礼启谢。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "沙漠记录员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“祖师道”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“祖师道”这条线索继续找",
+          "successResponse": "沙漠记录员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "沙漠记录员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《西游记》·第二回 悟彻菩提真妙理（1）",
+          "sourceExcerpt": "祖师打他三下者，教他三更时分存心，倒背着手走入里\n\n面；将中门关上者，教他从后门进步，秘处传他道也。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "沙漠记录员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“悟空道”说明故事变化",
+          "answerRubric": [
+            "提到“悟空道”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "沙漠记录员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "沙漠记录员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《西游记》·第二回 悟彻菩提真妙理（1）",
+          "sourceExcerpt": "”悟空道：“我也头圆顶天，足方履地，一般",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-5年级-五年级下册必读-西游记-chapter-2",
+      "chapterTitle": "第二回 悟彻菩提真妙理（2）",
+      "charCount": 3198,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-2-q1",
+          "type": "memory",
+          "prompt": "沙漠记录员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "祖师道",
+            "你等起去",
+            "有甚祸事"
+          ],
+          "answerIndex": 0,
+          "answerText": "祖师道",
+          "successResponse": "沙漠记录员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "沙漠记录员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《西游记》·第二回 悟彻菩提真妙理（2）",
+          "sourceExcerpt": "有九窍四肢，五脏六腑，何以比人不同？",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "沙漠记录员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“祖师道”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“祖师道”这条线索继续找",
+          "successResponse": "沙漠记录员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "沙漠记录员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《西游记》·第二回 悟彻菩提真妙理（2）",
+          "sourceExcerpt": "”祖师\n\n道：“我也不罪你，但只是你去罢。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "沙漠记录员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“祖师道”说明故事变化",
+          "answerRubric": [
+            "提到“祖师道”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "沙漠记录员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "沙漠记录员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《西游记》·第二回 悟彻菩提真妙理（2）",
+          "sourceExcerpt": "”魔王见了，笑\n\n道：“你身不满四尺，年不过三旬，手内又无兵器，怎么大胆猖狂，要\n\n寻我见甚么上下？",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-5年级-五年级下册必读-西游记-chapter-3",
+      "chapterTitle": "第二回 悟彻菩提真妙理（3）",
+      "charCount": 3194,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-3-q1",
+          "type": "memory",
+          "prompt": "沙漠记录员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "元神",
+            "三元",
+            "八极"
+          ],
+          "answerIndex": 0,
+          "answerText": "元神",
+          "successResponse": "沙漠记录员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "沙漠记录员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《西游记》·第二回 悟彻菩提真妙理（3）",
+          "sourceExcerpt": "你量我无兵器，我两只手够着天边月哩！",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "沙漠记录员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“地涌金莲”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“地涌金莲”这条线索继续找",
+          "successResponse": "沙漠记录员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "沙漠记录员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《西游记》·第二回 悟彻菩提真妙理（3）",
+          "sourceExcerpt": "“地涌金莲”也\n\n比喻说法透彻，说得天上坠花，地下涌出莲花。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "沙漠记录员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“元神”说明故事变化",
+          "answerRubric": [
+            "提到“元神”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "沙漠记录员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "沙漠记录员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《西游记》·第二回 悟彻菩提真妙理（3）",
+          "sourceExcerpt": "又，《史\n\n记》卷一百二十八《龟策传》：“孔子闻之曰：‘神龟知吉凶，而骨直空枯；日为德而",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

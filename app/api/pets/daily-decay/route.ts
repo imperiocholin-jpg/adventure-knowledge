@@ -8,6 +8,11 @@ import {
 } from "@/lib/auth/server"
 import { findExistingColumn, findExistingColumns } from "@/lib/data/schema-compat"
 import { applyDailyVitalDecay, parsePetVitalsFromRecord, writeVitalFieldsToPayload } from "@/lib/pets/state"
+import {
+  emitPetCareNotifications,
+  emitPetDeathNotification,
+  resolvePetNameFromRow,
+} from "@/lib/notifications/emitters"
 
 type GenericRecord = Record<string, unknown>
 
@@ -119,6 +124,15 @@ export async function POST(request: NextRequest) {
 
     if (updateResult.error) {
       return NextResponse.json({ ok: false, error: { message: updateResult.error.message } }, { status: 502 })
+    }
+
+    const updatedRow = (updateResult.data?.[0] ?? null) as GenericRecord | null
+    const petName = resolvePetNameFromRow(updatedRow ?? petRow)
+    const petIdValue = idField ? String(petRow[idField]) : undefined
+    if (nextState.isDead && !currentState.isDead) {
+      await emitPetDeathNotification(serviceClient, sessionState.user.id, petName, petIdValue)
+    } else {
+      await emitPetCareNotifications(serviceClient, sessionState.user.id, nextState, petName)
     }
 
     const response = NextResponse.json({

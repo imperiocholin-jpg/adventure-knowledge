@@ -1,5 +1,5 @@
-import { fetchUserAdventureProgress } from "@/lib/adventure/server-progress"
 import { findExistingColumn } from "@/lib/data/schema-compat"
+import { emitTreasureUnlockNotifications } from "@/lib/notifications/emitters"
 import { TREASURE_DEFINITIONS } from "@/lib/treasures/definitions"
 import { evaluateTreasureDefinition } from "@/lib/treasures/evaluate"
 import {
@@ -190,6 +190,15 @@ export async function syncUserTreasures(params: {
         unlocked,
         unlockedAt: unlockedMap.get(definition.id) ?? (unlocked ? new Date().toISOString() : null),
       })
+    }
+
+    if (newlyUnlocked.length > 0) {
+      await emitTreasureUnlockNotifications(
+        params.serviceClient,
+        params.userId,
+        newlyUnlocked,
+        definitions,
+      )
     }
 
     return { ok: true, items, newlyUnlocked }

@@ -1,0 +1,210 @@
+{
+  "id": "local-4年级-四年级下册必读-海底两万里",
+  "title": "海底两万里",
+  "grade": 4,
+  "term": "下册",
+  "readingType": "必读",
+  "primaryRegionId": "ocean-ruins",
+  "sourceChapterPath": "data/imported-books/chapters/local-4年级-四年级下册必读-海底两万里.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-4年级-四年级下册必读-海底两万里-chapter-1",
+      "chapterTitle": "第一章　游动的暗礁（1）",
+      "charCount": 3200,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-1-q1",
+          "type": "memory",
+          "prompt": "海底探路员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "希金森总督",
+            "哥伦布",
+            "庞然大物"
+          ],
+          "answerIndex": 0,
+          "answerText": "希金森总督",
+          "successResponse": "海底探路员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "海底探路员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《海底两万里》·第一章　游动的暗礁（1）",
+          "sourceExcerpt": "1866\n\n年，发生了一起非同寻常的事件，那真是一种神秘而又无法解\n\n释的现象。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "海底探路员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“希金森总督”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“希金森总督”这条线索继续找",
+          "successResponse": "海底探路员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "海底探路员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《海底两万里》·第一章　游动的暗礁（1）",
+          "sourceExcerpt": "当时，那些经常出没于阿留申群岛\n\n(6)\n\n的克兰马克岛和翁格里克岛附\n\n近海域的鲸鱼，如果它们足够大，最大的身长也不会超过\n\n60\n\n码\n\n(7)\n\n。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "海底探路员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“希金森总督”说明故事变化",
+          "answerRubric": [
+            "提到“希金森总督”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "海底探路员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "海底探路员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《海底两万里》·第一章　游动的暗礁（1）",
+          "sourceExcerpt": "目前的问题已经不再是一个科学问题需要人们解",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-4年级-四年级下册必读-海底两万里-chapter-2",
+      "chapterTitle": "第一章　游动的暗礁（2）",
+      "charCount": 2426,
+      "estimatedMinutes": 5,
+      "questions": [
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-2-q1",
+          "type": "memory",
+          "prompt": "海底探路员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "斯格提亚",
+            "摩拉维亚",
+            "阿拉伯"
+          ],
+          "answerIndex": 0,
+          "answerText": "斯格提亚",
+          "successResponse": "海底探路员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "海底探路员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《海底两万里》·第一章　游动的暗礁（2）",
+          "sourceExcerpt": "释，而是一个真正的危险需要人们认真对待并设法避免。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "海底探路员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“大东方”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“大东方”这条线索继续找",
+          "successResponse": "海底探路员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "海底探路员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《海底两万里》·第一章　游动的暗礁（2）",
+          "sourceExcerpt": "这些轮船都是设备最先进的快船，而且是除了\n\n“\n\n大东方\n\n”\n\n号之外载\n\n客量最大的邮轮，因此在国际航运中具有无与伦比的地位。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "海底探路员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“斯格提亚”说明故事变化",
+          "answerRubric": [
+            "提到“斯格提亚”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "海底探路员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "海底探路员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《海底两万里》·第一章　游动的暗礁（2）",
+          "sourceExcerpt": "待修的\n\n“\n\n斯格提亚\n\n”\n\n号被架了起来，当工程师们检查这艘被撞船只的\n\n时候，他们简直不能相信眼前的事实，只见在船身的吃水线下",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-4年级-四年级下册必读-海底两万里-chapter-3",
+      "chapterTitle": "2.5",
+      "charCount": 1245,
+      "estimatedMinutes": 3,
+      "questions": [
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-3-q1",
+          "type": "memory",
+          "prompt": "海底探路员轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "码处",
+            "海怪问题",
+            "白鲸"
+          ],
+          "answerIndex": 0,
+          "answerText": "码处",
+          "successResponse": "海底探路员点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "海底探路员提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《海底两万里》·2.5",
+          "sourceExcerpt": "码\n处，出现了一个规则的等边三角形缺口。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "海底探路员摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“海怪问题”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“海怪问题”这条线索继续找",
+          "successResponse": "海底探路员露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "海底探路员指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《海底两万里》·2.5",
+          "sourceExcerpt": "(6)\n阿留申群岛，位于太平洋北部海域，为分隔白令海和太平洋的火山群岛。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "海底探路员说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“海怪问题”说明故事变化",
+          "answerRubric": [
+            "提到“海怪问题”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "海底探路员把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "海底探路员温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《海底两万里》·2.5",
+          "sourceExcerpt": "(18)\n哈利法克斯，加拿大一个港口城市，为世界第二大自然良港，仅次于悉尼。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

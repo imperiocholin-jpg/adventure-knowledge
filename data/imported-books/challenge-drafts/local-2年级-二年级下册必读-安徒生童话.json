@@ -1,0 +1,210 @@
+{
+  "id": "local-2年级-二年级下册必读-安徒生童话",
+  "title": "安徒生童话",
+  "grade": 2,
+  "term": "下册",
+  "readingType": "必读",
+  "primaryRegionId": "magic-forest",
+  "sourceChapterPath": "data/imported-books/chapters/local-2年级-二年级下册必读-安徒生童话.json",
+  "status": "draft",
+  "chapters": [
+    {
+      "chapterId": "local-2年级-二年级下册必读-安徒生童话-chapter-1",
+      "chapterTitle": "安徒生童话 片段 1",
+      "charCount": 2433,
+      "estimatedMinutes": 5,
+      "questions": [
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-1-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "打火匣",
+            "拿钱",
+            "这倒挺好"
+          ],
+          "answerIndex": 0,
+          "answerText": "打火匣",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《安徒生童话》·安徒生童话 片段 1",
+          "sourceExcerpt": "安徒生的父亲是一名贫穷的鞋匠，\n母亲则出外帮人洗衣贴补家用。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-1-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“打火匣”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“打火匣”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《安徒生童话》·安徒生童话 片段 1",
+          "sourceExcerpt": "你一点也不用怕它，只需要把它\n放在我的围裙上，它就不会伤害你了，你可以从那口箱子里取金币，想\n拿多少就拿多少。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-1-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“打火匣”说明故事变化",
+          "answerRubric": [
+            "提到“打火匣”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《安徒生童话》·安徒生童话 片段 1",
+          "sourceExcerpt": "”\n士兵说道，\n“\n赶紧告诉我，你要它做什么用。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-2年级-二年级下册必读-安徒生童话-chapter-2",
+      "chapterTitle": "安徒生童话 片段 2",
+      "charCount": 3012,
+      "estimatedMinutes": 6,
+      "questions": [
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-2-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "怎么回事",
+            "在这里",
+            "你去哪儿都看不到她"
+          ],
+          "answerIndex": 0,
+          "answerText": "怎么回事",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《安徒生童话》·安徒生童话 片段 2",
+          "sourceExcerpt": "士兵把所有的\n金币都用巫婆的围裙包了起来背在肩膀上，又把打火匣放在了口袋里，\n然后向着城市进发。",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-2-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“怎么回事”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“怎么回事”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《安徒生童话》·安徒生童话 片段 2",
+          "sourceExcerpt": "士兵太思念那位可爱的公主了，还想再见见她。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-2-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“怎么回事”说明故事变化",
+          "answerRubric": [
+            "提到“怎么回事”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《安徒生童话》·安徒生童话 片段 2",
+          "sourceExcerpt": "”\n国王苦苦哀求，可是狗还是把他和王后一起叼",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    },
+    {
+      "chapterId": "local-2年级-二年级下册必读-安徒生童话-chapter-3",
+      "chapterTitle": "安徒生童话 片段 3",
+      "charCount": 2619,
+      "estimatedMinutes": 5,
+      "questions": [
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-3-q1",
+          "type": "memory",
+          "prompt": "林间守护者轻声问：刚才这段里，哪个线索最值得记住？",
+          "options": [
+            "万岁",
+            "问候",
+            "当然没问题"
+          ],
+          "answerIndex": 0,
+          "answerText": "万岁",
+          "successResponse": "林间守护者点点头：对，就是这个线索。你已经抓住故事里的关键了。",
+          "retryResponse": "林间守护者提醒你：回到刚才读过的片段，找一找反复出现或推动情节的词。",
+          "sourceLabel": "《安徒生童话》·安徒生童话 片段 3",
+          "sourceExcerpt": "士兵们也害怕了，然后人们喊了起来：\n“\n年轻的士\n兵，你来做我们的国王吧，和我们美丽的公主结婚！",
+          "difficulty": 1,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-3-q2",
+          "type": "plot_choice",
+          "prompt": "林间守护者摊开地图：如果要继续冒险，下面哪个行动最像这一段故事接下来会发生的事？",
+          "options": [
+            "沿着“万岁”这条线索继续找",
+            "先离开故事去做别的事",
+            "假装什么都没有发生"
+          ],
+          "answerIndex": 0,
+          "answerText": "沿着“万岁”这条线索继续找",
+          "successResponse": "林间守护者露出笑容：没错，真正的冒险者会顺着故事线索往前走。",
+          "retryResponse": "林间守护者指了指书页：想一想，这一段里什么事情让故事继续前进？",
+          "sourceLabel": "《安徒生童话》·安徒生童话 片段 3",
+          "sourceExcerpt": "小克劳斯爬到上面躺了下来，翻了个身找到一个舒服的姿势。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        },
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-3-q3",
+          "type": "npc_dialogue",
+          "prompt": "林间守护者说：请用一句话告诉我，这段故事里发生了什么重要变化？",
+          "options": [],
+          "answerIndex": null,
+          "answerText": "围绕“万岁”说明故事变化",
+          "answerRubric": [
+            "提到“万岁”或同义线索",
+            "能说明人物、事件或情绪的变化",
+            "不是只抄一句无关原文"
+          ],
+          "successResponse": "林间守护者把这条线索记进冒险日志：说得好，我们可以继续前进了。",
+          "retryResponse": "林间守护者温和地说：可以再具体一点，说说谁做了什么，或者发生了什么变化。",
+          "sourceLabel": "《安徒生童话》·安徒生童话 片段 3",
+          "sourceExcerpt": "此时，小克劳斯\n又开始踩他的袋子，弄得吱吱作响。",
+          "difficulty": 2,
+          "status": "draft",
+          "reviewNotes": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,718 @@
+{
+  "generatedAt": "2026-05-29T14:24:04.286Z",
+  "maxChaptersPerBook": 3,
+  "totalBooks": 22,
+  "totalChapters": 66,
+  "books": [
+    {
+      "id": "local-1年级-一年级上册必读-365夜故事",
+      "title": "365夜故事",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading"
+      ],
+      "outputPath": "data/imported-books/chapters/local-1年级-一年级上册必读-365夜故事.json",
+      "chapters": [
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-1",
+          "title": "02.雪孩子",
+          "charCount": 1364,
+          "estimatedMinutes": 3,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-2",
+          "title": "04.星星树",
+          "charCount": 1238,
+          "estimatedMinutes": 3,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-1年级-一年级上册必读-365夜故事-chapter-3",
+          "title": "09.糖猫",
+          "charCount": 1223,
+          "estimatedMinutes": 3,
+          "splitMethod": "heading"
+        }
+      ]
+    },
+    {
+      "id": "local-1年级-一年级上册必读-小巴掌童话",
+      "title": "小巴掌童话",
+      "chapterCount": 3,
+      "splitMethods": [
+        "chunk"
+      ],
+      "outputPath": "data/imported-books/chapters/local-1年级-一年级上册必读-小巴掌童话.json",
+      "chapters": [
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-1",
+          "title": "小巴掌童话 片段 1",
+          "charCount": 3041,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-2",
+          "title": "小巴掌童话 片段 2",
+          "charCount": 3193,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-1年级-一年级上册必读-小巴掌童话-chapter-3",
+          "title": "小巴掌童话 片段 3",
+          "charCount": 2945,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        }
+      ]
+    },
+    {
+      "id": "local-2年级-二年级上册必读-没头脑和不高兴",
+      "title": "没头脑和不高兴",
+      "chapterCount": 3,
+      "splitMethods": [
+        "chunk"
+      ],
+      "outputPath": "data/imported-books/chapters/local-2年级-二年级上册必读-没头脑和不高兴.json",
+      "chapters": [
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-1",
+          "title": "没头脑和不高兴 片段 1",
+          "charCount": 3055,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-2",
+          "title": "没头脑和不高兴 片段 2",
+          "charCount": 3170,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-2年级-二年级上册必读-没头脑和不高兴-chapter-3",
+          "title": "没头脑和不高兴 片段 3",
+          "charCount": 3308,
+          "estimatedMinutes": 7,
+          "splitMethod": "chunk"
+        }
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册必读-安徒生童话",
+      "title": "安徒生童话",
+      "chapterCount": 3,
+      "splitMethods": [
+        "chunk"
+      ],
+      "outputPath": "data/imported-books/chapters/local-2年级-二年级下册必读-安徒生童话.json",
+      "chapters": [
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-1",
+          "title": "安徒生童话 片段 1",
+          "charCount": 2433,
+          "estimatedMinutes": 5,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-2",
+          "title": "安徒生童话 片段 2",
+          "charCount": 3012,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-2年级-二年级下册必读-安徒生童话-chapter-3",
+          "title": "安徒生童话 片段 3",
+          "charCount": 2619,
+          "estimatedMinutes": 5,
+          "splitMethod": "chunk"
+        }
+      ]
+    },
+    {
+      "id": "local-2年级-二年级下册必读-绿野仙踪",
+      "title": "绿野仙踪",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading"
+      ],
+      "outputPath": "data/imported-books/chapters/local-2年级-二年级下册必读-绿野仙踪.json",
+      "chapters": [
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-1",
+          "title": "第一章　遭遇龙卷风",
+          "charCount": 2388,
+          "estimatedMinutes": 5,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-2",
+          "title": "第二章　遇见芒奇金人",
+          "charCount": 4360,
+          "estimatedMinutes": 8,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-2年级-二年级下册必读-绿野仙踪-chapter-3",
+          "title": "第三章　搭救稻草人",
+          "charCount": 4047,
+          "estimatedMinutes": 8,
+          "splitMethod": "heading"
+        }
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册必读-木偶奇遇记",
+      "title": "木偶奇遇记",
+      "chapterCount": 3,
+      "splitMethods": [
+        "chunk"
+      ],
+      "outputPath": "data/imported-books/chapters/local-3年级-三年级上册必读-木偶奇遇记.json",
+      "chapters": [
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-1",
+          "title": "木偶奇遇记 片段 1",
+          "charCount": 2802,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-2",
+          "title": "木偶奇遇记 片段 2",
+          "charCount": 2777,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-3年级-三年级上册必读-木偶奇遇记-chapter-3",
+          "title": "木偶奇遇记 片段 3",
+          "charCount": 2998,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        }
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册必读-格林童话",
+      "title": "格林童话",
+      "chapterCount": 3,
+      "splitMethods": [
+        "chunk"
+      ],
+      "outputPath": "data/imported-books/chapters/local-3年级-三年级上册必读-格林童话.json",
+      "chapters": [
+        {
+          "id": "local-3年级-三年级上册必读-格林童话-chapter-1",
+          "title": "格林童话 片段 1",
+          "charCount": 2646,
+          "estimatedMinutes": 5,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-3年级-三年级上册必读-格林童话-chapter-2",
+          "title": "格林童话 片段 2",
+          "charCount": 3004,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-3年级-三年级上册必读-格林童话-chapter-3",
+          "title": "格林童话 片段 3",
+          "charCount": 2674,
+          "estimatedMinutes": 5,
+          "splitMethod": "chunk"
+        }
+      ]
+    },
+    {
+      "id": "local-3年级-三年级上册必读-狐狸列那的故事",
+      "title": "狐狸列那的故事",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading-segment",
+        "heading"
+      ],
+      "outputPath": "data/imported-books/chapters/local-3年级-三年级上册必读-狐狸列那的故事.json",
+      "chapters": [
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-1",
+          "title": "第十五章　列那如何跟杜弗雷斯纳王爷合作，最终把森林中的狼群彻（1）",
+          "charCount": 3181,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-2",
+          "title": "第十五章　列那如何跟杜弗雷斯纳王爷合作，最终把森林中的狼群彻（2）",
+          "charCount": 2668,
+          "estimatedMinutes": 5,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-3年级-三年级上册必读-狐狸列那的故事-chapter-3",
+          "title": "第二章",
+          "charCount": 4485,
+          "estimatedMinutes": 9,
+          "splitMethod": "heading"
+        }
+      ]
+    },
+    {
+      "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境",
+      "title": "爱丽丝漫游奇境",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading-segment",
+        "chunk"
+      ],
+      "outputPath": "data/imported-books/chapters/local-3年级-三年级下册必读-爱丽丝漫游奇境.json",
+      "chapters": [
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-1",
+          "title": "第一章 钻进兔子洞（1）",
+          "charCount": 3185,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-2",
+          "title": "第一章 钻进兔子洞（2）",
+          "charCount": 2873,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-3年级-三年级下册必读-爱丽丝漫游奇境-chapter-3",
+          "title": "爱丽丝漫游奇境 片段 1",
+          "charCount": 3174,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        }
+      ]
+    },
+    {
+      "id": "local-4年级-四年级上册必读-时代广场的蟋蟀",
+      "title": "时代广场的蟋蟀",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading"
+      ],
+      "outputPath": "data/imported-books/chapters/local-4年级-四年级上册必读-时代广场的蟋蟀.json",
+      "chapters": [
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-1",
+          "title": "第一章　塔克",
+          "charCount": 2512,
+          "estimatedMinutes": 5,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-2",
+          "title": "第二章　玛利欧",
+          "charCount": 3375,
+          "estimatedMinutes": 7,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-4年级-四年级上册必读-时代广场的蟋蟀-chapter-3",
+          "title": "第三章　柴斯特",
+          "charCount": 3577,
+          "estimatedMinutes": 7,
+          "splitMethod": "heading"
+        }
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册必读-夏洛的网",
+      "title": "夏洛的网",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading",
+        "heading-segment"
+      ],
+      "outputPath": "data/imported-books/chapters/local-4年级-四年级下册必读-夏洛的网.json",
+      "chapters": [
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-1",
+          "title": "1. 早餐之前",
+          "charCount": 2058,
+          "estimatedMinutes": 4,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-2",
+          "title": "2.威伯（1）",
+          "charCount": 3183,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-4年级-四年级下册必读-夏洛的网-chapter-3",
+          "title": "2.威伯（2）",
+          "charCount": 3183,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        }
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册必读-海底两万里",
+      "title": "海底两万里",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading-segment",
+        "heading"
+      ],
+      "outputPath": "data/imported-books/chapters/local-4年级-四年级下册必读-海底两万里.json",
+      "chapters": [
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-1",
+          "title": "第一章　游动的暗礁（1）",
+          "charCount": 3200,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-2",
+          "title": "第一章　游动的暗礁（2）",
+          "charCount": 2426,
+          "estimatedMinutes": 5,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-4年级-四年级下册必读-海底两万里-chapter-3",
+          "title": "2.5",
+          "charCount": 1245,
+          "estimatedMinutes": 3,
+          "splitMethod": "heading"
+        }
+      ]
+    },
+    {
+      "id": "local-4年级-四年级下册必读-草房子",
+      "title": "草房子",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading-segment"
+      ],
+      "outputPath": "data/imported-books/chapters/local-4年级-四年级下册必读-草房子.json",
+      "chapters": [
+        {
+          "id": "local-4年级-四年级下册必读-草房子-chapter-1",
+          "title": "第一章 秃鹤（1）",
+          "charCount": 3174,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-4年级-四年级下册必读-草房子-chapter-2",
+          "title": "第一章 秃鹤（2）",
+          "charCount": 3182,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-4年级-四年级下册必读-草房子-chapter-3",
+          "title": "第一章 秃鹤（3）",
+          "charCount": 3183,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        }
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册必读-昆虫记",
+      "title": "昆虫记",
+      "chapterCount": 3,
+      "splitMethods": [
+        "chunk"
+      ],
+      "outputPath": "data/imported-books/chapters/local-5年级-五年级上册必读-昆虫记.json",
+      "chapters": [
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-1",
+          "title": "昆虫记 片段 1",
+          "charCount": 2834,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-2",
+          "title": "昆虫记 片段 2",
+          "charCount": 2874,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-5年级-五年级上册必读-昆虫记-chapter-3",
+          "title": "昆虫记 片段 3",
+          "charCount": 2971,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        }
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册选读-小王子",
+      "title": "小王子",
+      "chapterCount": 3,
+      "splitMethods": [
+        "chunk"
+      ],
+      "outputPath": "data/imported-books/chapters/local-5年级-五年级上册选读-小王子.json",
+      "chapters": [
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-1",
+          "title": "小王子 片段 1",
+          "charCount": 3099,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-2",
+          "title": "小王子 片段 2",
+          "charCount": 2951,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-5年级-五年级上册选读-小王子-chapter-3",
+          "title": "小王子 片段 3",
+          "charCount": 3073,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        }
+      ]
+    },
+    {
+      "id": "local-5年级-五年级下册必读-西游记",
+      "title": "西游记",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading-segment"
+      ],
+      "outputPath": "data/imported-books/chapters/local-5年级-五年级下册必读-西游记.json",
+      "chapters": [
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-1",
+          "title": "第二回 悟彻菩提真妙理（1）",
+          "charCount": 3200,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-2",
+          "title": "第二回 悟彻菩提真妙理（2）",
+          "charCount": 3198,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-5年级-五年级下册必读-西游记-chapter-3",
+          "title": "第二回 悟彻菩提真妙理（3）",
+          "charCount": 3194,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        }
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册必读-汤姆-索亚历险记",
+      "title": "汤姆-索亚历险记",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading",
+        "heading-segment"
+      ],
+      "outputPath": "data/imported-books/chapters/local-6年级-六年级上册必读-汤姆-索亚历险记.json",
+      "chapters": [
+        {
+          "id": "local-6年级-六年级上册必读-汤姆-索亚历险记-chapter-1",
+          "title": "第二章 刷栅栏",
+          "charCount": 2856,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-6年级-六年级上册必读-汤姆-索亚历险记-chapter-2",
+          "title": "第三章一",
+          "charCount": 4044,
+          "estimatedMinutes": 8,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-6年级-六年级上册必读-汤姆-索亚历险记-chapter-3",
+          "title": "第四章大名人（1）",
+          "charCount": 3186,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        }
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册必读-鲁滨逊漂流记",
+      "title": "鲁滨逊漂流记",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading"
+      ],
+      "outputPath": "data/imported-books/chapters/local-6年级-六年级上册必读-鲁滨逊漂流记.json",
+      "chapters": [
+        {
+          "id": "local-6年级-六年级上册必读-鲁滨逊漂流记-chapter-1",
+          "title": "第一节 ·",
+          "charCount": 1641,
+          "estimatedMinutes": 3,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-6年级-六年级上册必读-鲁滨逊漂流记-chapter-2",
+          "title": "第二节 ·",
+          "charCount": 1599,
+          "estimatedMinutes": 3,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-6年级-六年级上册必读-鲁滨逊漂流记-chapter-3",
+          "title": "第三节 ·",
+          "charCount": 3577,
+          "estimatedMinutes": 7,
+          "splitMethod": "heading"
+        }
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册必读-格列佛游记",
+      "title": "格列佛游记",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading-segment"
+      ],
+      "outputPath": "data/imported-books/chapters/local-6年级-六年级下册必读-格列佛游记.json",
+      "chapters": [
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-1",
+          "title": "0.56825（1）",
+          "charCount": 3196,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-2",
+          "title": "0.56825（2）",
+          "charCount": 3172,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        },
+        {
+          "id": "local-6年级-六年级下册必读-格列佛游记-chapter-3",
+          "title": "0.56825（3）",
+          "charCount": 3185,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        }
+      ]
+    },
+    {
+      "id": "local-6年级-六年级下册必读-老人与海",
+      "title": "老人与海",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading"
+      ],
+      "outputPath": "data/imported-books/chapters/local-6年级-六年级下册必读-老人与海.json",
+      "chapters": [
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-1",
+          "title": "第一章都是打鱼人",
+          "charCount": 2630,
+          "estimatedMinutes": 5,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-2",
+          "title": "第二章祝你好运",
+          "charCount": 1972,
+          "estimatedMinutes": 4,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-6年级-六年级下册必读-老人与海-chapter-3",
+          "title": "第三章军舰鸟与金枪鱼",
+          "charCount": 3017,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading"
+        }
+      ]
+    },
+    {
+      "id": "local-6年级-六年级上册必读-三国演义",
+      "title": "三国演义",
+      "chapterCount": 3,
+      "splitMethods": [
+        "heading",
+        "heading-segment"
+      ],
+      "outputPath": "data/imported-books/chapters/local-6年级-六年级上册必读-三国演义.json",
+      "chapters": [
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-1",
+          "title": "一、作者问题",
+          "charCount": 2592,
+          "estimatedMinutes": 5,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-2",
+          "title": "三、校勘问题",
+          "charCount": 3598,
+          "estimatedMinutes": 7,
+          "splitMethod": "heading"
+        },
+        {
+          "id": "local-6年级-六年级上册必读-三国演义-chapter-3",
+          "title": "四、注释问题（1）",
+          "charCount": 3199,
+          "estimatedMinutes": 6,
+          "splitMethod": "heading-segment"
+        }
+      ]
+    },
+    {
+      "id": "local-5年级-五年级上册必读-水浒传",
+      "title": "水浒传",
+      "chapterCount": 3,
+      "splitMethods": [
+        "chunk"
+      ],
+      "outputPath": "data/imported-books/chapters/local-5年级-五年级上册必读-水浒传.json",
+      "chapters": [
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-1",
+          "title": "水浒传 片段 1",
+          "charCount": 2318,
+          "estimatedMinutes": 5,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-2",
+          "title": "水浒传 片段 2",
+          "charCount": 2349,
+          "estimatedMinutes": 5,
+          "splitMethod": "chunk"
+        },
+        {
+          "id": "local-5年级-五年级上册必读-水浒传-chapter-3",
+          "title": "水浒传 片段 3",
+          "charCount": 3129,
+          "estimatedMinutes": 6,
+          "splitMethod": "chunk"
+        }
+      ]
+    }
+  ]
+}
