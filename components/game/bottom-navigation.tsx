@@ -1,7 +1,6 @@
 "use client"
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Home, BookOpen, Compass, PawPrint, User, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { PLAYER_SHELL_MAX_CLASS } from "@/components/layout/player-page-shell"
@@ -41,10 +40,32 @@ export function BottomNavigation({
   onNavigate,
 }: BottomNavigationProps) {
   const pathname = usePathname()
+  const router = useRouter()
   const resolvedActiveItem = activeItem ?? resolveActiveNavItem(pathname)
 
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    id: NavItem,
+  ) => {
+    onNavigate?.(id)
+    if (pathname === href) {
+      event.preventDefault()
+      return
+    }
+    // 优先客户端路由；若未生效则回退整页跳转（避免生产环境 hydration 异常时点击无反应）
+    event.preventDefault()
+    router.push(href)
+    window.setTimeout(() => {
+      const targetPath = href.split("?")[0]
+      if (window.location.pathname !== targetPath) {
+        window.location.assign(href)
+      }
+    }, 400)
+  }
+
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 px-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-[100] px-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
       <nav
         className={cn(
           "pointer-events-auto relative mx-auto flex w-full items-center justify-around rounded-2xl border border-border/30 bg-white px-2 py-1.5 shadow-lg",
@@ -59,11 +80,10 @@ export function BottomNavigation({
           // Special rendering for Adventure button
           if (isAdventure) {
             return (
-              <Link
+              <a
                 key={item.id}
                 href={item.href}
-                prefetch={true}
-                onClick={() => onNavigate?.(item.id)}
+                onClick={(event) => handleNavClick(event, item.href, item.id)}
                 className="relative flex flex-col items-center -mt-5"
               >
                 {/* Floating circle button */}
@@ -84,21 +104,20 @@ export function BottomNavigation({
                 <span className="text-[10px] font-semibold text-primary mt-1">
                   {item.label}
                 </span>
-              </Link>
+              </a>
             )
           }
 
           return (
-            <Link
+            <a
               key={item.id}
               href={item.href}
-              prefetch={true}
-              onClick={() => onNavigate?.(item.id)}
+              onClick={(event) => handleNavClick(event, item.href, item.id)}
               className={cn(
                 "relative flex flex-col items-center gap-0.5 rounded-xl px-4 py-2 transition-colors",
-                isActive 
-                  ? "text-primary" 
-                  : "text-muted-foreground hover:text-foreground"
+                isActive
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground",
               )}
             >
               {/* Active background */}
@@ -123,7 +142,7 @@ export function BottomNavigation({
               )}>
                 {item.label}
               </span>
-            </Link>
+            </a>
           )
         })}
       </nav>

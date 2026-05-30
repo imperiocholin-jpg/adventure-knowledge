@@ -638,8 +638,9 @@ export default function HomePage() {
       </div>
       
       <div className="relative z-10 py-4">
-        {isAuthChecking && <p className="text-xs text-muted-foreground">正在验证登录状态...</p>}
-        <p className="text-xs text-muted-foreground">Supabase Connected</p>
+        {process.env.NODE_ENV === "development" && isAuthChecking && (
+          <p className="text-xs text-muted-foreground">正在验证登录状态...</p>
+        )}
         {isLoadingData && <p className="text-xs text-muted-foreground">Loading data...</p>}
         {isSubmittingReading && (
           <p className="text-xs text-muted-foreground">正在同步阅读记录...</p>
@@ -767,7 +768,7 @@ export default function HomePage() {
       `}</style>
 
       <PetDeathDialog
-        open={petVitals.isDead}
+        open={!isLoadingData && petVitals.isDead}
         petName={petProfile.name || currentPet.name}
         species={petProfile.species}
       />
