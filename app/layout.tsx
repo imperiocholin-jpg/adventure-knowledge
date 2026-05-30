@@ -4,6 +4,9 @@ import { Analytics } from '@vercel/analytics/next'
 import { GlobalButtonHaptics } from '@/components/global-button-haptics'
 import './globals.css'
 
+/** 规避 Next.js 16 + Vercel 对静态页的 lambda 查找 bug */
+export const dynamic = 'force-dynamic'
+
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 

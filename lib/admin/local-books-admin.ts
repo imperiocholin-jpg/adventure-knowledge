@@ -3,6 +3,8 @@ import path from "node:path"
 
 import {
   buildBookCoverFilesystemCandidates,
+} from "@/lib/library/book-cover.server"
+import {
   resolveBookCoverPublicUrl,
   resolveBookCoverEmoji,
 } from "@/lib/library/book-cover"

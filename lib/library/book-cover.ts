@@ -1,5 +1,3 @@
-import path from "node:path"
-
 import type { AdventureRegionId } from "@/lib/library/adventure-regions"
 import { resolveCoverEmoji } from "@/lib/library/grade-region-map"
 
@@ -47,25 +45,6 @@ export function buildBookCoverPublicCandidates(bookId: string, title?: string) {
   }
 
   return uniqueStrings(urls)
-}
-
-/** 磁盘上的封面文件候选路径（服务端检测用） */
-export function buildBookCoverFilesystemCandidates(bookId: string, title?: string, cwd = process.cwd()) {
-  const dir = path.join(cwd, "public", "image", "book-covers")
-  const paths: string[] = []
-  const trimmedTitle = title?.trim()
-
-  if (trimmedTitle) {
-    for (const ext of BOOK_COVER_EXTENSIONS) {
-      paths.push(path.join(dir, buildBookCoverFileNameByTitle(trimmedTitle, ext)))
-    }
-  }
-
-  for (const ext of BOOK_COVER_EXTENSIONS) {
-    paths.push(path.join(dir, buildBookCoverFileName(bookId, ext)))
-  }
-
-  return uniqueStrings(paths)
 }
 
 export function resolveBookCoverPublicUrl(fileName: string) {

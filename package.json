@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint .",
     "seed:coins": "node scripts/seed-test-coins-vitals.mjs",
