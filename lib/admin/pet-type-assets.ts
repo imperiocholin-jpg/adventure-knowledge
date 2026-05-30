@@ -39,10 +39,21 @@ function aggregateVideoStatus(stages: StageAssetStatus[]): VideoAssetAggregateSt
   return configuredStages.every((stage) => stage.videoComplete) ? "complete" : "missing"
 }
 
+const PUBLIC_ROOT = path.join(process.cwd(), "public")
+
+/** 仅允许扫描宠物素材目录，避免 Vercel 把整个 public/ 打进函数包 */
 function toAbsolutePublicPath(resourcePath: string) {
-  const withoutLeadingSlash = resourcePath.startsWith("/") ? resourcePath.slice(1) : resourcePath
-  const segments = withoutLeadingSlash.split("/").map((segment) => decodeURIComponent(segment))
-  return path.join(process.cwd(), "public", ...segments)
+  const relative = resourcePath.replace(/^\/+/, "").replace(/\\/g, "/")
+  const allowed =
+    relative.startsWith("image/pets/") ||
+    relative.startsWith("image/pets dead/") ||
+    relative.startsWith("video/pets/")
+
+  if (!allowed) {
+    return path.join(PUBLIC_ROOT, "__missing__", "asset")
+  }
+
+  return path.join(PUBLIC_ROOT, relative.replace(/\//g, path.sep))
 }
 
 async function fileExists(resourcePath: string | null | undefined) {

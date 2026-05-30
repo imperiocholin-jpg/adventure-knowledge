@@ -12,6 +12,15 @@ const nextConfig = {
     "/api/library/books/[bookId]": ["./data/imported-books/chapters/**/*"],
     "/api/admin/books": ["./data/imported-books/chapters/**/*"],
   },
+  outputFileTracingExcludes: {
+    "*": [
+      "./public/video/**",
+      "./public/image/book-covers/**",
+      "./public/image/Advance Map/**",
+      "./public/image/boss/**",
+      "./public/image/avatars/**",
+    ],
+  },
 }
 
 export default nextConfig
