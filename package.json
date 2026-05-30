@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@10.6.5",
-  "engines": {
-    "node": "22.x"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
@@ -14,7 +11,8 @@
     "seed:coins": "node scripts/seed-test-coins-vitals.mjs",
     "seed:test": "node scripts/seed-test-resources.mjs",
     "pets:recalc-levels": "node scripts/recalc-pet-levels.mjs",
-    "covers:to-webp": "node scripts/convert-book-covers-to-webp.mjs"
+    "covers:to-webp": "node scripts/convert-book-covers-to-webp.mjs",
+    "pets:thumbs": "node scripts/generate-pet-thumbs.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

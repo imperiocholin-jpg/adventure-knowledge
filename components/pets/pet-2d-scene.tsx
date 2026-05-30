@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
 import { cn } from "@/lib/utils"
 import type { PetImageAction } from "@/lib/pets/avatar-registry"
 
@@ -36,6 +35,7 @@ export function Pet2DScene({
   levelHint = null,
 }: Pet2DSceneProps) {
   const [activeInteraction, setActiveInteraction] = useState<PetImageAction>("idle")
+  const [videoReady, setVideoReady] = useState(false)
   const videoRef = useRef<HTMLVideoElement | null>(null)
 
   useEffect(() => {
@@ -81,6 +81,10 @@ export function Pet2DScene({
   const config = rarityConfig[rarity]
 
   useEffect(() => {
+    setVideoReady(false)
+  }, [activeVideoSrc])
+
+  useEffect(() => {
     const video = videoRef.current
     if (!video) return
     video.muted = !soundEnabled
@@ -112,17 +116,32 @@ export function Pet2DScene({
           <div className={cn("absolute inset-2 rounded-full blur-2xl opacity-50", config.glow)} />
 
           <div className="relative flex h-full w-full min-h-0 items-center justify-center overflow-hidden rounded-[1.35rem]">
+            {activeImageSrc && (!activeVideoSrc || !videoReady) && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={activeImageSrc}
+                alt="宠物动作图"
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="eager"
+                decoding="async"
+              />
+            )}
             {activeVideoSrc ? (
               <video
                 key={activeVideoSrc}
                 ref={videoRef}
                 src={activeVideoSrc}
-                className="h-full w-full object-cover"
+                poster={activeImageSrc ?? undefined}
+                className={cn(
+                  "h-full w-full object-cover",
+                  !videoReady && "opacity-0",
+                )}
                 autoPlay
                 muted={!soundEnabled}
                 loop={!holdLastFrame}
                 playsInline
                 preload="metadata"
+                onCanPlay={() => setVideoReady(true)}
                 onLoadedMetadata={(event) => {
                   event.currentTarget.muted = !soundEnabled
                   if (!holdLastFrame) return
@@ -132,13 +151,9 @@ export function Pet2DScene({
                   video.pause()
                 }}
               />
-            ) : activeImageSrc ? (
-              <div className="relative h-full w-full">
-                <Image src={activeImageSrc} alt="宠物动作图" fill sizes="320px" className="object-cover" />
-              </div>
-            ) : (
+            ) : !activeImageSrc ? (
               <div className="text-8xl">{petEmojis[petType]}</div>
-            )}
+            ) : null}
 
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_52%,rgba(250,245,235,0.28)_86%,rgba(250,245,235,0.55)_100%)]" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#faf5eb]/60 via-[#faf5eb]/15 to-transparent" />

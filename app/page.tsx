@@ -250,16 +250,8 @@ export default function HomePage() {
     ;(async () => {
       try {
         await checkSession()
-        try {
-          await fetch("/api/pets/daily-decay", { method: "POST" })
-        } catch {
-          // 每日饱食度衰减失败不阻塞首页
-        }
-        try {
-          await fetch("/api/users/daily-activity", { method: "POST" })
-        } catch {
-          // 连续天数记录失败不阻塞首页
-        }
+        void fetch("/api/pets/daily-decay", { method: "POST" }).catch(() => {})
+        void fetch("/api/users/daily-activity", { method: "POST" }).catch(() => {})
         await loadDashboardData(isMounted)
       } catch (error) {
         if (isMounted) {

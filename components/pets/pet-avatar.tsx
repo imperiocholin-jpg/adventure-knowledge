@@ -1,6 +1,6 @@
 "use client"
 
-import Image from "next/image"
+import { resolvePetThumbSrc } from "@/lib/pets/pet-thumb"
 import { cn } from "@/lib/utils"
 
 const sizeClassMap = {
@@ -12,16 +12,9 @@ const sizeClassMap = {
   "2xl": "h-28 w-28 text-6xl",
 } as const
 
-const imageSizesMap = {
-  xs: "20px",
-  sm: "32px",
-  md: "48px",
-  lg: "64px",
-  xl: "96px",
-  "2xl": "112px",
-} as const
-
 export type PetAvatarSize = keyof typeof sizeClassMap
+
+const FULL_RES_SIZES = new Set<PetAvatarSize>(["xl", "2xl"])
 
 interface PetAvatarProps {
   src?: string | null
@@ -45,6 +38,11 @@ export function PetAvatar({
   animate = false,
 }: PetAvatarProps) {
   const roundedClass = rounded === "full" ? "rounded-full" : rounded === "2xl" ? "rounded-2xl" : "rounded-xl"
+  const displaySrc = src
+    ? FULL_RES_SIZES.has(size)
+      ? src
+      : resolvePetThumbSrc(src) ?? src
+    : null
 
   return (
     <div
@@ -56,13 +54,14 @@ export function PetAvatar({
         className,
       )}
     >
-      {src ? (
-        <Image
-          src={src}
+      {displaySrc ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={displaySrc}
           alt={alt}
-          fill
-          sizes={imageSizesMap[size]}
-          className={cn("object-cover object-center", imageClassName)}
+          loading="eager"
+          decoding="async"
+          className={cn("h-full w-full object-cover object-center", imageClassName)}
         />
       ) : (
         <span className="flex h-full w-full items-center justify-center leading-none select-none">{emoji}</span>

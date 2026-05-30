@@ -58,6 +58,7 @@ export function BookCoverThumb({
         fill
         sizes={sizes}
         priority={priority}
+        loading={priority ? "eager" : "lazy"}
         className={cn("object-cover", imageClassName)}
         onError={() => setCandidateIndex((prev) => prev + 1)}
       />
