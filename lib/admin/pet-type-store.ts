@@ -3,7 +3,7 @@ import { PET_BREEDS, PET_SPECIES_EMOJI, PET_SPECIES_LABEL, type PetSpecies } fro
 import { PET_TYPE_TO_BREED, PET_TYPE_TO_SPECIES, type PetTypeId } from "@/lib/pets/pet-profile"
 import { PET_TYPE_OPTIONS, type PetTypeOption } from "@/lib/pets/pet-type-options"
 
-const PET_TYPES_FILE = "data/admin/pet-types.json"
+const PET_TYPES_FILE = "pet-types.json"
 
 export interface CustomPetTypeRecord {
   id: string

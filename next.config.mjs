@@ -8,6 +8,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  outputFileTracingIncludes: {
+    "/api/library/books/[bookId]": ["./data/imported-books/chapters/**/*"],
+    "/api/admin/books": ["./data/imported-books/chapters/**/*"],
+  },
 }
 
 export default nextConfig

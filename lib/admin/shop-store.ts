@@ -1,7 +1,7 @@
 import { readJsonFile, writeJsonFile } from "@/lib/admin/file-store"
 import { PET_SHOP_ITEMS, type PetShopItem } from "@/lib/pets/shop"
 
-const SHOP_ITEMS_FILE = "data/admin/shop-items.json"
+const SHOP_ITEMS_FILE = "shop-items.json"
 
 interface ShopItemsFile {
   items: PetShopItem[]
