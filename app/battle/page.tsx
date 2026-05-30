@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useMemo, useRef } from "react"
+import { Suspense, useState, useEffect, useMemo, useRef } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { 
@@ -77,7 +77,7 @@ const sampleQuestions = [
   },
 ]
 
-export default function BattlePage() {
+function BattlePageContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const bossRegionId = searchParams.get("boss")
@@ -1084,5 +1084,19 @@ export default function BattlePage() {
         species={petProfile.species}
       />
     </PlayerPageShell>
+  )
+}
+
+export default function BattlePage() {
+  return (
+    <Suspense
+      fallback={
+        <PlayerPageShell className="flex items-center justify-center bg-background">
+          <p className="text-sm text-muted-foreground">加载中…</p>
+        </PlayerPageShell>
+      }
+    >
+      <BattlePageContent />
+    </Suspense>
   )
 }
